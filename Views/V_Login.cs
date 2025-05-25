@@ -20,7 +20,7 @@ namespace JALOKA.Views
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            KatalogBuku katalogBuku = new KatalogBuku();
+            V_Dasboard katalogBuku = new V_Dasboard();
             katalogBuku.Show();
         }
 

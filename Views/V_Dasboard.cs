@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace JALOKA.Views
 {
-    public partial class KatalogBuku : Form
+    public partial class V_Dasboard : Form
     {
-        public KatalogBuku()
+        public V_Dasboard()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace JALOKA.Views
 {
-    partial class KatalogBuku
+    partial class V_Dasboard
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KatalogBuku));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Dasboard));
             button1 = new Button();
             button2 = new Button();
             button4 = new Button();
@@ -155,7 +155,7 @@
             button7.UseVisualStyleBackColor = false;
             button7.Click += button7_Click;
             // 
-            // KatalogBuku
+            // V_Dasboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -170,7 +170,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "KatalogBuku";
+            Name = "V_Dasboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "KatalogBuku";
             ResumeLayout(false);
