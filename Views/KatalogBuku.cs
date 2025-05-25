@@ -17,13 +17,44 @@ namespace JALOKA.Views
             InitializeComponent();
         }
 
-       
+
 
         private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
             V_Login v_Login = new V_Login();
             v_Login.Show();
+
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }
