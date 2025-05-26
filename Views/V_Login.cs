@@ -24,9 +24,13 @@ namespace JALOKA.Views
             katalogBuku.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonRegister_Click(object sender, EventArgs e)
         {
             
+            this.Hide();
+            V_register v_Register = new V_register();
+            v_Register.Show();
+
         }
     }
 }

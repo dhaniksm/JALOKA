@@ -49,7 +49,7 @@
             button2.Size = new Size(118, 29);
             button2.TabIndex = 4;
             button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            button2.Click += buttonRegister_Click;
             // 
             // button1
             // 
