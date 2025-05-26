@@ -28,25 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.AccessibleRole = AccessibleRole.Grip;
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.Location = new Point(6, 12);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1044, 125);
-            panel1.TabIndex = 0;
-            panel1.Paint += panel1_Paint;
             // 
             // V_Katalogbuku
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1200, 675);
-            Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "V_Katalogbuku";
             StartPosition = FormStartPosition.CenterScreen;
@@ -55,7 +43,5 @@
         }
 
         #endregion
-
-        private Panel panel1;
     }
 }
