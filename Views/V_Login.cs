@@ -26,17 +26,11 @@ namespace JALOKA.Views
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             
             this.Hide();
             V_register v_Register = new V_register();
             v_Register.Show();
 
-=======
-            this.Hide();
-            V_register v_Register = new V_register();
-            v_Register.Show();
->>>>>>> 6f9e7c6fcdbbb41d2175eb3f955b66edd5dc1849
         }
     }
 }
