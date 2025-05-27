@@ -1,12 +1,15 @@
+using JALOKA.Controllers;
+using JALOKA.Models;
 using JALOKA.Views;
 using Microsoft.VisualBasic.ApplicationServices;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace JALOKA
+namespace JALOKA.Views
 {
-    public partial class V_register : Form
+    public partial class V_Register : Form
     {
-        public V_register()
+        private C_User C_User = new C_User();
+        public V_Register()
         {
             InitializeComponent();
         }
@@ -58,11 +61,27 @@ namespace JALOKA
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            V_Login v_Login = new V_Login();
-            v_Login.Show();
+            M_User user = new M_User
+            {
+                id_pelajar = textBoxIDPelajar.Text,
+                password = textBoxPassword.Text,
+                nama = textBoxNama.Text,
+                email = textBoxEmail.Text,
+                nomor_hp = textBoxNoTelp.Text,
+                alamat = textBoxAlamat.Text
+            };
 
-
+            if (C_User.Register(user))
+            {
+                MessageBox.Show("Registrasi berhasil!");
+                this.Close();
+                V_Login v_login = new V_Login();
+                v_login.Show();
+            }
+            else
+            {
+                MessageBox.Show("Registrasi gagal.");
+            }
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
