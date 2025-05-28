@@ -38,11 +38,29 @@ namespace JALOKA.Views
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
-            
+
             this.Hide();
             V_Register v_register = new V_Register();
             v_register.Show();
 
         }
+
+        private void checkBoxPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxPassword.Checked)
+            {
+                textBoxPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                textBoxPassword.PasswordChar = '*';
+            }
+        }
+
+        private void textBoxPassword_TextChanged(object sender, EventArgs e)
+        {
+            textBoxPassword.PasswordChar = '*';
+        }
     }
+
 }
