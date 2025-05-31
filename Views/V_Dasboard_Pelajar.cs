@@ -10,29 +10,26 @@ using System.Windows.Forms;
 
 namespace JALOKA.Views
 {
-    public partial class V_Dasboard : Form
+    public partial class V_Dasboard_Pelajar : Form
     {
-        public V_Dasboard()
+        public V_Dasboard_Pelajar()
         {
             InitializeComponent();
         }
 
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonDashboard_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+       
+        private void buttonKatalogBuku_Click(object sender, EventArgs e)
         {
 
         }
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonKeluar_Click(object sender, EventArgs e)
         {
             this.Hide();
             V_Login v_Login = new V_Login();
@@ -40,17 +37,17 @@ namespace JALOKA.Views
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void buttonPeminjaman_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void buttonRiwayatPeminjaman_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void buttonPengembalian_Click(object sender, EventArgs e)
         {
 
         }

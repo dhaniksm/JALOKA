@@ -10,34 +10,34 @@ using System.Windows.Forms;
 
 namespace JALOKA.Views
 {
-    public partial class V_PengembalianAdmin : Form
+    public partial class V_Peminjaman_pelajar : Form
     {
-        public V_PengembalianAdmin()
+        public V_Peminjaman_pelajar()
         {
             InitializeComponent();
         }
 
-        private void buttonDashboard_Click(object sender, EventArgs e)
+        private void buttonDasboard_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void buttonManajemenBuku_Click(object sender, EventArgs e)
+        private void buttonKatalogBuku_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void buttonDataPengguna_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonRiwayatPeminjaman_Click(object sender, EventArgs e)
+        private void buttonPeminjaman_Click(object sender, EventArgs e)
         {
 
         }
 
         private void buttonPengembalian_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonRiwayatPeminjaman_Click(object sender, EventArgs e)
         {
 
         }

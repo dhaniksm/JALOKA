@@ -1,0 +1,55 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace JALOKA.Views
+{
+    public partial class V_ManajemenBuku_Admin : Form
+    {
+        public V_ManajemenBuku_Admin()
+        {
+            InitializeComponent();
+        }
+
+        private void V_ManajemenBuku_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDashboard_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonManajemenBuku_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDataPengguna_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonRiwayatPeminjaman_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonPengembalian_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonKeluar_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

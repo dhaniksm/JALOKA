@@ -1,6 +1,6 @@
 ﻿namespace JALOKA.Views
 {
-    partial class V_ManajemenBuku
+    partial class V_Dashboard_Admin
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_ManajemenBuku));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Dashboard_Admin));
             buttonPengembalian = new Button();
             buttonKeluar = new Button();
             buttonManajemenBuku = new Button();
@@ -44,10 +44,10 @@
             buttonPengembalian.FlatAppearance.BorderSize = 0;
             buttonPengembalian.FlatStyle = FlatStyle.Flat;
             buttonPengembalian.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonPengembalian.Location = new Point(59, 420);
+            buttonPengembalian.Location = new Point(58, 421);
             buttonPengembalian.Name = "buttonPengembalian";
             buttonPengembalian.Size = new Size(187, 29);
-            buttonPengembalian.TabIndex = 20;
+            buttonPengembalian.TabIndex = 26;
             buttonPengembalian.Text = "Pengembalian";
             buttonPengembalian.UseVisualStyleBackColor = false;
             buttonPengembalian.Click += buttonPengembalian_Click;
@@ -59,10 +59,10 @@
             buttonKeluar.FlatAppearance.BorderSize = 0;
             buttonKeluar.FlatStyle = FlatStyle.Flat;
             buttonKeluar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonKeluar.Location = new Point(69, 565);
+            buttonKeluar.Location = new Point(69, 563);
             buttonKeluar.Name = "buttonKeluar";
             buttonKeluar.Size = new Size(104, 34);
-            buttonKeluar.TabIndex = 19;
+            buttonKeluar.TabIndex = 25;
             buttonKeluar.Text = "Keluar";
             buttonKeluar.UseVisualStyleBackColor = false;
             buttonKeluar.Click += buttonKeluar_Click;
@@ -74,10 +74,10 @@
             buttonManajemenBuku.FlatAppearance.BorderSize = 0;
             buttonManajemenBuku.FlatStyle = FlatStyle.Flat;
             buttonManajemenBuku.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonManajemenBuku.Location = new Point(58, 187);
+            buttonManajemenBuku.Location = new Point(59, 187);
             buttonManajemenBuku.Name = "buttonManajemenBuku";
             buttonManajemenBuku.Size = new Size(187, 29);
-            buttonManajemenBuku.TabIndex = 18;
+            buttonManajemenBuku.TabIndex = 24;
             buttonManajemenBuku.Text = "Manajemen Buku";
             buttonManajemenBuku.UseVisualStyleBackColor = false;
             buttonManajemenBuku.Click += buttonManajemenBuku_Click;
@@ -92,7 +92,7 @@
             buttonDataPengguna.Location = new Point(58, 264);
             buttonDataPengguna.Name = "buttonDataPengguna";
             buttonDataPengguna.Size = new Size(187, 29);
-            buttonDataPengguna.TabIndex = 17;
+            buttonDataPengguna.TabIndex = 23;
             buttonDataPengguna.Text = "Data Pengguna";
             buttonDataPengguna.UseVisualStyleBackColor = false;
             buttonDataPengguna.Click += buttonDataPengguna_Click;
@@ -104,10 +104,10 @@
             buttonRiwayatPeminjaman.FlatAppearance.BorderSize = 0;
             buttonRiwayatPeminjaman.FlatStyle = FlatStyle.Flat;
             buttonRiwayatPeminjaman.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonRiwayatPeminjaman.Location = new Point(58, 344);
+            buttonRiwayatPeminjaman.Location = new Point(57, 344);
             buttonRiwayatPeminjaman.Name = "buttonRiwayatPeminjaman";
             buttonRiwayatPeminjaman.Size = new Size(187, 29);
-            buttonRiwayatPeminjaman.TabIndex = 16;
+            buttonRiwayatPeminjaman.TabIndex = 22;
             buttonRiwayatPeminjaman.Text = "RIwayat Peminjaman";
             buttonRiwayatPeminjaman.UseVisualStyleBackColor = false;
             buttonRiwayatPeminjaman.Click += buttonRiwayatPeminjaman_Click;
@@ -119,20 +119,19 @@
             buttonDashboard.FlatAppearance.BorderSize = 0;
             buttonDashboard.FlatStyle = FlatStyle.Flat;
             buttonDashboard.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonDashboard.Location = new Point(58, 116);
+            buttonDashboard.Location = new Point(59, 116);
             buttonDashboard.Name = "buttonDashboard";
             buttonDashboard.Size = new Size(187, 29);
-            buttonDashboard.TabIndex = 15;
+            buttonDashboard.TabIndex = 21;
             buttonDashboard.Text = "Dashboard";
             buttonDashboard.UseVisualStyleBackColor = false;
             buttonDashboard.Click += buttonDashboard_Click;
             // 
-            // V_ManajemenBuku
+            // V_Dashboard_Admin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1200, 675);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonKeluar);
@@ -140,12 +139,10 @@
             Controls.Add(buttonDataPengguna);
             Controls.Add(buttonRiwayatPeminjaman);
             Controls.Add(buttonDashboard);
-            DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_ManajemenBuku";
+            Name = "V_Dashboard_Admin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "V_ManajemenBuku";
-            Load += V_ManajemenBuku_Load;
+            Text = "V_Dashboard_Admin";
             ResumeLayout(false);
         }
 

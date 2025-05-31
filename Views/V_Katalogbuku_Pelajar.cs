@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace JALOKA.Views
 {
-    public partial class V_pengembalian: Form
+    public partial class V_Katalogbuku_Pelajar : Form
     {
-        public V_pengembalian()
+        public V_Katalogbuku_Pelajar()
         {
             InitializeComponent();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

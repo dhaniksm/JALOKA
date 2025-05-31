@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace JALOKA.Views
 {
-    public partial class V_Datapengguna : Form
+    public partial class V_Dashboard_Admin : Form
     {
-        public V_Datapengguna()
+        public V_Dashboard_Admin()
         {
             InitializeComponent();
         }
@@ -32,12 +32,12 @@ namespace JALOKA.Views
 
         }
 
-        private void buttonPengembalian_Click(object sender, EventArgs e)
+        private void buttonRiwayatPeminjaman_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void buttonRiwayatPeminjaman_Click(object sender, EventArgs e)
+        private void buttonPengembalian_Click(object sender, EventArgs e)
         {
 
         }
