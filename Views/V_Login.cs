@@ -26,7 +26,7 @@ namespace JALOKA.Views
             {
                 MessageBox.Show("Login Berhasil!");
                 this.Hide();
-                V_Dasboard katalogBuku = new V_Dasboard();
+                V_Dasboard_Pelajar katalogBuku = new V_Dasboard_Pelajar();
                 katalogBuku.Show();
             }
             else
