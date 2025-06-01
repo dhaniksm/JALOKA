@@ -10,25 +10,40 @@ namespace JALOKA.Database
 {
     public class Connector : IDisposable
     {
-        private readonly string connectionString = "Host=localhost;Username=postgres;Password=Akugembeng;Database=JALOKA";
-        private NpgsqlConnection connection;
+        private readonly string connStr = "Host=localhost;Username=postgres;Password=@Emcc13;Database=JALOKA";
+        private NpgsqlConnection conn;
 
         public Connector()
         {
-            connection = new NpgsqlConnection(connectionString);
+            try
+            {
+                conn = new NpgsqlConnection(connStr);
+                conn.Open();
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception("Gagal memuat database: " + ex.Message);
+            }
         }
 
-        public NpgsqlConnection GetConnection()
+        public NpgsqlConnection Connection
         {
-            if (connection.State != ConnectionState.Open)
-                connection.Open();
-            return connection;
+            get
+            {
+                if (conn == null || conn.State != ConnectionState.Open)
+                
+                    throw new Exception ("Koneksi ke database belum dibuka atau telah ditutup.");
+                return conn;
+            }
         }
-
         public void Dispose()
         {
-            if (connection != null && connection.State == ConnectionState.Open)
-                connection.Close();
+            if (conn != null && conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+                conn?.Dispose();
+            }
         }
     }
 }
