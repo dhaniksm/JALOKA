@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Register));
-            button1 = new Button();
             buttonRegister = new Button();
             textBoxAlamat = new TextBox();
             textBoxNoTelp = new TextBox();
@@ -38,17 +37,6 @@
             textBoxIDPelajar = new TextBox();
             textBoxPassword = new TextBox();
             SuspendLayout();
-            // 
-            // button1
-            // 
-            button1.BackColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(645, 739);
-            button1.Margin = new Padding(2);
-            button1.Name = "button1";
-            button1.Size = new Size(212, 57);
-            button1.TabIndex = 2;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = false;
             // 
             // buttonRegister
             // 
@@ -112,7 +100,7 @@
             textBoxIDPelajar.Name = "textBoxIDPelajar";
             textBoxIDPelajar.Size = new Size(300, 20);
             textBoxIDPelajar.TabIndex = 13;
-            textBoxIDPelajar.TextChanged += textBoxUsername_TextChanged;
+            textBoxIDPelajar.TextChanged += textBoxIDPelajar_TextChanged;
             // 
             // textBoxPassword
             // 
@@ -137,19 +125,15 @@
             Controls.Add(textBoxNoTelp);
             Controls.Add(textBoxAlamat);
             Controls.Add(buttonRegister);
-            Controls.Add(button1);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(2);
             Name = "V_Register";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
-            Load += FormLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Button button1;
         private Button buttonRegister;
         private TextBox textBoxAlamat;
         private TextBox textBoxNoTelp;
