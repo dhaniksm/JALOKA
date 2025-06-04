@@ -34,9 +34,9 @@ namespace JALOKA.Views
                 if (success)
                 {
                     MessageBox.Show("Berhasil Login!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-                    V_Dasboard katalogBuku = new V_Dasboard();
-                    katalogBuku.Show();
+                    this.Hide();
+                    V_Dasboard_Pelajar V_Dashboard_Pelajar = new V_Dasboard_Pelajar();
+                    V_Dashboard_Pelajar.Show();
                 }
                 else
                 {
