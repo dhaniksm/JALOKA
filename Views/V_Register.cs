@@ -2,6 +2,7 @@ using JALOKA.Controllers;
 using JALOKA.Models;
 using JALOKA.Views;
 using Microsoft.VisualBasic.ApplicationServices;
+using System.Linq.Expressions;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace JALOKA.Views
@@ -30,17 +31,23 @@ namespace JALOKA.Views
                 nomor_hp = textBoxNoTelp.Text,
                 alamat = textBoxAlamat.Text
             };
-
-            if (c_user.Register(user))
+            try
             {
-                MessageBox.Show("Registrasi berhasil!");
-                this.Close();
-                V_Login login = new V_Login();
-                login.Show();
+                if (c_user.Register(user))
+                {
+                    MessageBox.Show("Registrasi berhasil!");
+                    this.Close();
+                    V_Login login = new V_Login();
+                    login.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Registrasi gagal.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Registrasi gagal.");
+                MessageBox.Show($"Error: {ex.Message}", "Register Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -77,6 +84,13 @@ namespace JALOKA.Views
         private void textBoxNoTelp_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBoxKembali_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_Login login = new V_Login();
+            login.Show();
         }
     }
 }

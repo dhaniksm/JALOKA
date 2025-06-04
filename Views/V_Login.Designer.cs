@@ -82,6 +82,7 @@
             textBoxIDPelajar.Name = "textBoxIDPelajar";
             textBoxIDPelajar.Size = new Size(320, 20);
             textBoxIDPelajar.TabIndex = 3;
+            textBoxIDPelajar.TextChanged += textBoxIDPelajar_TextChanged;
             // 
             // checkBoxPassword
             // 
