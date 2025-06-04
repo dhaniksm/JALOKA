@@ -8,53 +8,13 @@ namespace JALOKA.Views
 {
     public partial class V_Register : Form
     {
-        private C_User C_User = new C_User();
+        private C_User c_user = new C_User();
         public V_Register()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelPassword_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonLogin_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -71,12 +31,12 @@ namespace JALOKA.Views
                 alamat = textBoxAlamat.Text
             };
 
-            if (C_User.Register(user))
+            if (c_user.Register(user))
             {
                 MessageBox.Show("Registrasi berhasil!");
                 this.Close();
-                V_Login v_login = new V_Login();
-                v_login.Show();
+                V_Login login = new V_Login();
+                login.Show();
             }
             else
             {
@@ -94,7 +54,7 @@ namespace JALOKA.Views
 
         }
 
-        private void textBoxUsername_TextChanged(object sender, EventArgs e)
+        private void textBoxIDPelajar_TextChanged(object sender, EventArgs e)
         {
 
         }

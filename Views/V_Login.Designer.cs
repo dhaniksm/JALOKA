@@ -33,6 +33,7 @@
             buttonLogin = new Button();
             textBoxPassword = new TextBox();
             textBoxIDPelajar = new TextBox();
+            checkBoxPassword = new CheckBox();
             SuspendLayout();
             // 
             // buttonRegistrasi
@@ -57,7 +58,7 @@
             buttonLogin.FlatAppearance.BorderSize = 0;
             buttonLogin.FlatStyle = FlatStyle.Flat;
             buttonLogin.ForeColor = SystemColors.ActiveCaptionText;
-            buttonLogin.Location = new Point(492, 442);
+            buttonLogin.Location = new Point(492, 460);
             buttonLogin.Name = "buttonLogin";
             buttonLogin.Size = new Size(214, 40);
             buttonLogin.TabIndex = 0;
@@ -68,18 +69,30 @@
             // textBoxPassword
             // 
             textBoxPassword.BorderStyle = BorderStyle.None;
-            textBoxPassword.Location = new Point(440, 346);
+            textBoxPassword.Location = new Point(440, 308);
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.Size = new Size(320, 20);
             textBoxPassword.TabIndex = 2;
+            textBoxPassword.TextChanged += textBoxPassword_TextChanged;
             // 
             // textBoxIDPelajar
             // 
             textBoxIDPelajar.BorderStyle = BorderStyle.None;
-            textBoxIDPelajar.Location = new Point(442, 219);
+            textBoxIDPelajar.Location = new Point(442, 197);
             textBoxIDPelajar.Name = "textBoxIDPelajar";
             textBoxIDPelajar.Size = new Size(320, 20);
             textBoxIDPelajar.TabIndex = 3;
+            // 
+            // checkBoxPassword
+            // 
+            checkBoxPassword.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            checkBoxPassword.Location = new Point(627, 367);
+            checkBoxPassword.Name = "checkBoxPassword";
+            checkBoxPassword.Size = new Size(132, 25);
+            checkBoxPassword.TabIndex = 5;
+            checkBoxPassword.Text = "Show Password\r\n";
+            checkBoxPassword.UseVisualStyleBackColor = true;
+            checkBoxPassword.CheckedChanged += checkBoxPassword_CheckedChanged;
             // 
             // V_Login
             // 
@@ -88,6 +101,7 @@
             BackColor = SystemColors.ControlLightLight;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(checkBoxPassword);
             Controls.Add(buttonRegistrasi);
             Controls.Add(textBoxIDPelajar);
             Controls.Add(textBoxPassword);
@@ -106,5 +120,6 @@
         private TextBox textBoxPassword;
         private TextBox textBoxIDPelajar;
         private Button buttonRegistrasi;
+        private CheckBox checkBoxPassword;
     }
 }
