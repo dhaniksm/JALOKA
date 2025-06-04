@@ -51,6 +51,11 @@ namespace JALOKA.Views
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
+            this.Hide();
+            V_register v_Register = new V_register();
+            v_Register.Show();
+=======
 
             this.Hide();
             V_Register register = new V_Register();
@@ -73,6 +78,7 @@ namespace JALOKA.Views
         private void textBoxPassword_TextChanged(object sender, EventArgs e)
         {
             textBoxPassword.PasswordChar = '*';
+>>>>>>> 15a9b544aa66d8e53f926aecbb43868ee0da6167
         }
     }
 

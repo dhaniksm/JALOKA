@@ -31,6 +31,30 @@ namespace JALOKA.Views
                 alamat = textBoxAlamat.Text
             };
 
+<<<<<<< HEAD
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+=======
             if (c_user.Register(user))
             {
                 MessageBox.Show("Registrasi berhasil!");
@@ -42,6 +66,7 @@ namespace JALOKA.Views
             {
                 MessageBox.Show("Registrasi gagal.");
             }
+>>>>>>> 15a9b544aa66d8e53f926aecbb43868ee0da6167
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
