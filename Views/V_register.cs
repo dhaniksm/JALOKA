@@ -35,8 +35,8 @@ namespace JALOKA.Views
             {
                 MessageBox.Show("Registrasi berhasil!");
                 this.Close();
-                V_Login v_login = new V_Login();
-                v_login.Show();
+                V_Login login = new V_Login();
+                login.Show();
             }
             else
             {

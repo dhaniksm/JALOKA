@@ -1,6 +1,6 @@
 ﻿namespace JALOKA.Views
 {
-    partial class V_Datapengguna_Admin
+    partial class V_DataPengguna_A
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Datapengguna_Admin));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_DataPengguna_A));
             buttonPengembalian = new Button();
             buttonKeluar = new Button();
             buttonManajemenBuku = new Button();

@@ -8,12 +8,12 @@ namespace JALOKA.Controllers
 {
     public class C_Peminjaman
     {
-        private readonly Connector _db = new Connector();
+        private readonly Connector db = new Connector();
 
         public List<M_Peminjaman> DaftarPeminjaman()
         {
             var list = new List<M_Peminjaman>();
-            using var cmd = new NpgsqlCommand("SELECT * FROM peminjamans ORDER BY pinjam_id DESC", _db.Connection);
+            using var cmd = new NpgsqlCommand("SELECT * FROM peminjamans ORDER BY pinjam_id DESC", db.Connection);
             using var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -32,24 +32,16 @@ namespace JALOKA.Controllers
         public bool TambahPeminjaman(M_Peminjaman pinjam)
         {
             var query = "INSERT INTO peminjamans (buku_id, tanggal_peminjaman, id_pelajar) VALUES (@buku_id, @tanggal_peminjaman, @id_pelajar)";
-            using var cmd = new NpgsqlCommand(query, _db.Connection);
+            using var cmd = new NpgsqlCommand(query, db.Connection);
             cmd.Parameters.AddWithValue("buku_id", pinjam.buku_id);
             cmd.Parameters.AddWithValue("tanggal_peminjaman", pinjam.tanggal_peminjaman);
             cmd.Parameters.AddWithValue("id_pelajar", pinjam.id_pelajar);
             return cmd.ExecuteNonQuery() > 0;
         }
 
-        public bool Pengembalian(int pinjam_id)
-        {
-            var query = "UPDATE peminjamans SET Pengembalian = CURRENT_DATE WHERE pinjam_id = @pinjam_id";
-            using var cmd = new NpgsqlCommand(query, _db.Connection);
-            cmd.Parameters.AddWithValue("pinjam_id", pinjam_id);
-            return cmd.ExecuteNonQuery() > 0;
-        }
-
         public bool DeleteLoan(int pinjam_id)
         {
-            var cmd = new NpgsqlCommand("DELETE FROM peminjamans WHERE pinjam_id = @pinjam_id", _db.Connection);
+            var cmd = new NpgsqlCommand("DELETE FROM peminjamans WHERE pinjam_id = @pinjam_id", db.Connection);
             cmd.Parameters.AddWithValue("pinjam_id", pinjam_id);
             return cmd.ExecuteNonQuery() > 0;
         }
