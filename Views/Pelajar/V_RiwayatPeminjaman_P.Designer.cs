@@ -1,6 +1,6 @@
 ﻿namespace JALOKA.Views
 {
-    partial class V_Peminjaman_pelajar
+    partial class V_RiwayatPeminjaman_P
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Peminjaman_pelajar));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_RiwayatPeminjaman_P));
             buttonPengembalian = new Button();
             buttonRiwayatPeminjaman = new Button();
             buttonPeminjaman = new Button();
@@ -49,7 +49,7 @@
             buttonPengembalian.Location = new Point(69, 313);
             buttonPengembalian.Name = "buttonPengembalian";
             buttonPengembalian.Size = new Size(182, 37);
-            buttonPengembalian.TabIndex = 20;
+            buttonPengembalian.TabIndex = 26;
             buttonPengembalian.Text = "Pengembalian";
             buttonPengembalian.UseVisualStyleBackColor = false;
             buttonPengembalian.Click += buttonPengembalian_Click;
@@ -66,7 +66,7 @@
             buttonRiwayatPeminjaman.Location = new Point(66, 386);
             buttonRiwayatPeminjaman.Name = "buttonRiwayatPeminjaman";
             buttonRiwayatPeminjaman.Size = new Size(182, 37);
-            buttonRiwayatPeminjaman.TabIndex = 19;
+            buttonRiwayatPeminjaman.TabIndex = 25;
             buttonRiwayatPeminjaman.Text = "Riwayat Peminjaman";
             buttonRiwayatPeminjaman.UseVisualStyleBackColor = false;
             buttonRiwayatPeminjaman.Click += buttonRiwayatPeminjaman_Click;
@@ -83,7 +83,7 @@
             buttonPeminjaman.Location = new Point(68, 247);
             buttonPeminjaman.Name = "buttonPeminjaman";
             buttonPeminjaman.Size = new Size(182, 35);
-            buttonPeminjaman.TabIndex = 18;
+            buttonPeminjaman.TabIndex = 24;
             buttonPeminjaman.Text = "Peminjaman";
             buttonPeminjaman.UseVisualStyleBackColor = false;
             buttonPeminjaman.Click += buttonPeminjaman_Click;
@@ -100,7 +100,7 @@
             buttonKatalogBuku.Location = new Point(65, 177);
             buttonKatalogBuku.Name = "buttonKatalogBuku";
             buttonKatalogBuku.Size = new Size(182, 37);
-            buttonKatalogBuku.TabIndex = 17;
+            buttonKatalogBuku.TabIndex = 23;
             buttonKatalogBuku.Text = "Katalog Buku";
             buttonKatalogBuku.UseVisualStyleBackColor = false;
             buttonKatalogBuku.Click += buttonKatalogBuku_Click;
@@ -115,7 +115,7 @@
             buttonKeluar.Location = new Point(66, 546);
             buttonKeluar.Name = "buttonKeluar";
             buttonKeluar.Size = new Size(110, 34);
-            buttonKeluar.TabIndex = 16;
+            buttonKeluar.TabIndex = 22;
             buttonKeluar.Text = "Keluar";
             buttonKeluar.UseVisualStyleBackColor = false;
             buttonKeluar.Click += buttonKeluar_Click;
@@ -132,12 +132,12 @@
             buttonDasboard.Location = new Point(66, 110);
             buttonDasboard.Name = "buttonDasboard";
             buttonDasboard.Size = new Size(182, 37);
-            buttonDasboard.TabIndex = 15;
+            buttonDasboard.TabIndex = 21;
             buttonDasboard.Text = "Dasboard";
             buttonDasboard.UseVisualStyleBackColor = false;
             buttonDasboard.Click += buttonDasboard_Click;
             // 
-            // V_Peminjaman_pelajar
+            // V_RiwayatPeminjaman_Pelajar
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -149,11 +149,10 @@
             Controls.Add(buttonKatalogBuku);
             Controls.Add(buttonKeluar);
             Controls.Add(buttonDasboard);
-            Cursor = Cursors.Default;
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_Peminjaman_pelajar";
+            Name = "V_RiwayatPeminjaman_Pelajar";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "V_Peminjaman_pelajar";
+            Text = "V_RiwayatPeminjaman_Pelajar";
             ResumeLayout(false);
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace JALOKA.Views
 {
-    partial class V_Dasboard_Pelajar
+    partial class V_Dashboard_P
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Dasboard_Pelajar));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Dashboard_P));
             buttonDasboard = new Button();
             buttonKeluar = new Button();
             buttonKatalogBuku = new Button();
