@@ -34,9 +34,9 @@ namespace JALOKA.Views
                 if (success)
                 {
                     MessageBox.Show("Berhasil Login!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-                    V_Dasboard katalogBuku = new V_Dasboard();
-                    katalogBuku.Show();
+                    this.Hide();
+                    V_Dashboard_P v_dashboard_pelajar = new V_Dashboard_P();
+                    v_dashboard_pelajar.Show();
                 }
                 else
                 {
@@ -53,8 +53,8 @@ namespace JALOKA.Views
         {
 
             this.Hide();
-            V_Register v_register = new V_Register();
-            v_register.Show();
+            V_Register register = new V_Register();
+            register.Show();
 
         }
 

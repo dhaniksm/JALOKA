@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JALOKA.Models
 {
-    public class M_Book
+    public class M_Buku
     {
         public int buku_id { get; set; }
         public string judul { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace JALOKA.Views
 {
-    partial class V_pengembalian_Pelajar
+    partial class V_Pengembalian_P
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_pengembalian_Pelajar));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Pengembalian_P));
             buttonPengembalian = new Button();
             buttonRiwayatPeminjaman = new Button();
             buttonPeminjaman = new Button();
@@ -150,10 +150,10 @@
             Controls.Add(buttonKeluar);
             Controls.Add(buttonDasboard);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_pengembalian_Pelajar";
+            Name = "V_Pengembalian_Pelajar";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "V_pengembalian";
-            Load += V_pengembalian_Pelajar_Load;
+            Text = "V_Pengembalian";
+            Load += V_Pengembalian_Pelajar_Load;
             ResumeLayout(false);
         }
 

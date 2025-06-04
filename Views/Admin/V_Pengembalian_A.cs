@@ -10,41 +10,51 @@ using System.Windows.Forms;
 
 namespace JALOKA.Views
 {
-    public partial class V_Pengembalian_Admin : Form
+    public partial class V_Pengembalian_A : Form
     {
-        public V_Pengembalian_Admin()
+        public V_Pengembalian_A()
         {
             InitializeComponent();
         }
 
         private void buttonDashboard_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            V_Dashboard_A dashboard = new V_Dashboard_A();
+            dashboard.Show();
         }
 
         private void buttonManajemenBuku_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            V_RiwayatPeminjaman_A riwayatPeminjaman = new V_RiwayatPeminjaman_A();
+            riwayatPeminjaman.Show();
         }
 
         private void buttonDataPengguna_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            V_DataPengguna_A dataPengguna = new V_DataPengguna_A();
+            dataPengguna.Show();
         }
 
         private void buttonRiwayatPeminjaman_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            V_RiwayatPeminjaman_A riwayatPeminjaman = new V_RiwayatPeminjaman_A();
+            riwayatPeminjaman.Show();
         }
 
         private void buttonPengembalian_Click(object sender, EventArgs e)
         {
-
+            this.Refresh();
         }
 
         private void buttonKeluar_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            V_Login login = new V_Login();
+            login.Show();
         }
     }
 }

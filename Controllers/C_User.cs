@@ -8,6 +8,7 @@ namespace JALOKA.Controllers
 {
     public class C_User
     {
+        private readonly Connector db = new Connector();
         public bool Login(M_User user)
         {
             if(string.IsNullOrWhiteSpace(user.id_pelajar) || string.IsNullOrWhiteSpace(user.password))
@@ -15,7 +16,6 @@ namespace JALOKA.Controllers
 
             try
             {
-                using var db = new Connector();
                 var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM users WHERE id_pelajar = @id_pelajar AND password = @password", db.Connection);
                 cmd.Parameters.AddWithValue("@id_pelajar", user.id_pelajar);
                 cmd.Parameters.AddWithValue("@password", user.password);
@@ -40,7 +40,6 @@ namespace JALOKA.Controllers
 
             try
             {
-                using var db = new Connector();
                 var cmd = new NpgsqlCommand(@"INSERT INTO users (id_pelajar, password, nama, email, nomor_hp, alamat) VALUES (@id_pelajar, @password, @nama, @email, @nomor_hp, @alamat)", db.Connection);
                 cmd.Parameters.AddWithValue("@id_pelajar", user.id_pelajar);
                 cmd.Parameters.AddWithValue("@password", user.password);
@@ -59,11 +58,8 @@ namespace JALOKA.Controllers
         public List<M_User> DaftarPegguna()
         {
             var list = new List<M_User>();
-            using (var db = new Connector())
             {
-                var conn = db.Connection;
-                conn.Open();
-                var cmd = new NpgsqlCommand("SELECT * FROM users", conn);
+                var cmd = new NpgsqlCommand("SELECT * FROM users", db.Connection);
                 var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
