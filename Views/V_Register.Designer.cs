@@ -116,7 +116,6 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
             Controls.Add(textBoxPassword);
             Controls.Add(textBoxIDPelajar);
