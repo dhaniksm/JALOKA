@@ -29,57 +29,70 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Login));
-            button2 = new Button();
-            button1 = new Button();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            buttonRegistrasi = new Button();
+            buttonLogin = new Button();
+            textBoxPassword = new TextBox();
+            textBoxIDPelajar = new TextBox();
+            checkBoxPassword = new CheckBox();
             SuspendLayout();
             // 
-            // button2
+            // buttonRegistrasi
             // 
-            button2.BackColor = Color.Transparent;
-            button2.Cursor = Cursors.Hand;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            button2.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.ForeColor = Color.Transparent;
-            button2.Location = new Point(650, 546);
-            button2.Name = "button2";
-            button2.Size = new Size(118, 29);
-            button2.TabIndex = 4;
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += buttonRegister_Click;
+            buttonRegistrasi.BackColor = Color.Transparent;
+            buttonRegistrasi.Cursor = Cursors.Hand;
+            buttonRegistrasi.FlatAppearance.BorderSize = 0;
+            buttonRegistrasi.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            buttonRegistrasi.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            buttonRegistrasi.FlatStyle = FlatStyle.Flat;
+            buttonRegistrasi.ForeColor = Color.Transparent;
+            buttonRegistrasi.Location = new Point(650, 546);
+            buttonRegistrasi.Name = "buttonRegistrasi";
+            buttonRegistrasi.Size = new Size(118, 29);
+            buttonRegistrasi.TabIndex = 4;
+            buttonRegistrasi.UseVisualStyleBackColor = false;
+            buttonRegistrasi.Click += buttonRegister_Click;
             // 
-            // button1
+            // buttonLogin
             // 
-            button1.Cursor = Cursors.Hand;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = SystemColors.ActiveCaptionText;
-            button1.Location = new Point(492, 442);
-            button1.Name = "button1";
-            button1.Size = new Size(214, 40);
-            button1.TabIndex = 0;
-            button1.Text = "Login";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            buttonLogin.Cursor = Cursors.Hand;
+            buttonLogin.FlatAppearance.BorderSize = 0;
+            buttonLogin.FlatStyle = FlatStyle.Flat;
+            buttonLogin.ForeColor = SystemColors.ActiveCaptionText;
+            buttonLogin.Location = new Point(492, 460);
+            buttonLogin.Name = "buttonLogin";
+            buttonLogin.Size = new Size(214, 40);
+            buttonLogin.TabIndex = 0;
+            buttonLogin.Text = "Login";
+            buttonLogin.UseVisualStyleBackColor = true;
+            buttonLogin.Click += button1_Click;
             // 
-            // textBox2
+            // textBoxPassword
             // 
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Location = new Point(440, 346);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(320, 20);
-            textBox2.TabIndex = 2;
+            textBoxPassword.BorderStyle = BorderStyle.None;
+            textBoxPassword.Location = new Point(440, 308);
+            textBoxPassword.Name = "textBoxPassword";
+            textBoxPassword.Size = new Size(320, 20);
+            textBoxPassword.TabIndex = 2;
+            textBoxPassword.TextChanged += textBoxPassword_TextChanged;
             // 
-            // textBox1
+            // textBoxIDPelajar
             // 
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(442, 219);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(320, 20);
-            textBox1.TabIndex = 3;
+            textBoxIDPelajar.BorderStyle = BorderStyle.None;
+            textBoxIDPelajar.Location = new Point(442, 197);
+            textBoxIDPelajar.Name = "textBoxIDPelajar";
+            textBoxIDPelajar.Size = new Size(320, 20);
+            textBoxIDPelajar.TabIndex = 3;
+            // 
+            // checkBoxPassword
+            // 
+            checkBoxPassword.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            checkBoxPassword.Location = new Point(627, 367);
+            checkBoxPassword.Name = "checkBoxPassword";
+            checkBoxPassword.Size = new Size(132, 25);
+            checkBoxPassword.TabIndex = 5;
+            checkBoxPassword.Text = "Show Password\r\n";
+            checkBoxPassword.UseVisualStyleBackColor = true;
+            checkBoxPassword.CheckedChanged += checkBoxPassword_CheckedChanged;
             // 
             // V_Login
             // 
@@ -88,10 +101,11 @@
             BackColor = SystemColors.ControlLightLight;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
-            Controls.Add(button2);
-            Controls.Add(textBox1);
-            Controls.Add(textBox2);
-            Controls.Add(button1);
+            Controls.Add(checkBoxPassword);
+            Controls.Add(buttonRegistrasi);
+            Controls.Add(textBoxIDPelajar);
+            Controls.Add(textBoxPassword);
+            Controls.Add(buttonLogin);
             FormBorderStyle = FormBorderStyle.None;
             Name = "V_Login";
             StartPosition = FormStartPosition.CenterScreen;
@@ -102,9 +116,10 @@
 
         #endregion
 
-        private Button button1;
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private Button button2;
+        private Button buttonLogin;
+        private TextBox textBoxPassword;
+        private TextBox textBoxIDPelajar;
+        private Button buttonRegistrasi;
+        private CheckBox checkBoxPassword;
     }
 }
