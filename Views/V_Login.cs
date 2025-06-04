@@ -1,4 +1,6 @@
-﻿using System;
+﻿using JALOKA.Controllers;
+using JALOKA.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,7 @@ namespace JALOKA.Views
 {
     public partial class V_Login : Form
     {
+        private C_User c_user = new C_User();
         public V_Login()
         {
             InitializeComponent();
@@ -19,24 +22,58 @@ namespace JALOKA.Views
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            V_Dasboard katalogBuku = new V_Dasboard();
-            katalogBuku.Show();
+            var user = new M_User
+            {
+                id_pelajar = textBoxIDPelajar.Text,
+                password = textBoxPassword.Text
+            };
+
+            try
+            {
+                bool success = c_user.Login(user);
+                if (success)
+                {
+                    MessageBox.Show("Berhasil Login!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                    V_Dasboard katalogBuku = new V_Dasboard();
+                    katalogBuku.Show();
+                }
+                else
+                {
+                    MessageBox.Show("ID atau password salah.", "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            
-            this.Hide();
-            V_register v_Register = new V_register();
-            v_Register.Show();
 
-=======
             this.Hide();
-            V_register v_Register = new V_register();
-            v_Register.Show();
->>>>>>> 6f9e7c6fcdbbb41d2175eb3f955b66edd5dc1849
+            V_Register register = new V_Register();
+            register.Show();
+
+        }
+
+        private void checkBoxPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxPassword.Checked)
+            {
+                textBoxPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                textBoxPassword.PasswordChar = '*';
+            }
+        }
+
+        private void textBoxPassword_TextChanged(object sender, EventArgs e)
+        {
+            textBoxPassword.PasswordChar = '*';
         }
     }
+
 }
