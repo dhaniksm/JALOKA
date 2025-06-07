@@ -70,6 +70,15 @@ namespace JALOKA.Views
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = data;
 
+                if (dataGridView1.Columns.Contains("pinjam_id"))
+                    dataGridView1.Columns["pinjam_id"].Visible = false;
+
+                if (dataGridView1.Columns.Contains("buku_id"))
+                    dataGridView1.Columns["buku_id"].Visible = false;
+
+                if (dataGridView1.Columns.Contains("id_user"))
+                    dataGridView1.Columns["id_user"].Visible = false;
+
                 if (dataGridView1.Columns.Count == 0)
                 {
                     MessageBox.Show("Kolom masih kosong.");
@@ -85,6 +94,11 @@ namespace JALOKA.Views
         {
             LoadData();
             dataGridView1.ClearSelection();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
