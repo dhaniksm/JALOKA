@@ -6,10 +6,10 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace JALOKA.Views
 {
-    public partial class V_Register : Form
+    public partial class V_Register_P : Form
     {
         private C_User c_user = new C_User();
-        public V_Register()
+        public V_Register_P()
         {
             InitializeComponent();
         }
@@ -35,7 +35,7 @@ namespace JALOKA.Views
             {
                 MessageBox.Show("Registrasi berhasil!");
                 this.Close();
-                V_Login login = new V_Login();
+                V_Login_P login = new V_Login_P();
                 login.Show();
             }
             else

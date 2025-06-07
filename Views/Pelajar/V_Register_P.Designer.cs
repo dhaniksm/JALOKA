@@ -1,6 +1,6 @@
 ﻿namespace JALOKA.Views
 {
-    partial class V_Register
+    partial class V_Register_P
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Register));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Register_P));
             buttonRegister = new Button();
             textBoxAlamat = new TextBox();
             textBoxNoTelp = new TextBox();
@@ -36,6 +36,8 @@
             textBoxNama = new TextBox();
             textBoxIDPelajar = new TextBox();
             textBoxPassword = new TextBox();
+            pictureBoxKembali = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxKembali).BeginInit();
             SuspendLayout();
             // 
             // buttonRegister
@@ -112,12 +114,26 @@
             textBoxPassword.TabIndex = 14;
             textBoxPassword.TextChanged += textBoxPassword_TextChanged;
             // 
+            // pictureBoxKembali
+            // 
+            pictureBoxKembali.BackColor = Color.Transparent;
+            pictureBoxKembali.BackgroundImage = (Image)resources.GetObject("pictureBoxKembali.BackgroundImage");
+            pictureBoxKembali.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBoxKembali.Cursor = Cursors.Hand;
+            pictureBoxKembali.Location = new Point(60, 43);
+            pictureBoxKembali.Margin = new Padding(0);
+            pictureBoxKembali.Name = "pictureBoxKembali";
+            pictureBoxKembali.Size = new Size(66, 54);
+            pictureBoxKembali.TabIndex = 15;
+            pictureBoxKembali.TabStop = false;
+            // 
             // V_Register
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(pictureBoxKembali);
             Controls.Add(textBoxPassword);
             Controls.Add(textBoxIDPelajar);
             Controls.Add(textBoxNama);
@@ -129,6 +145,7 @@
             Margin = new Padding(2);
             Name = "V_Register";
             StartPosition = FormStartPosition.CenterScreen;
+            ((System.ComponentModel.ISupportInitialize)pictureBoxKembali).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -141,5 +158,6 @@
         private TextBox textBoxNama;
         private TextBox textBoxIDPelajar;
         private TextBox textBoxPassword;
+        private PictureBox pictureBoxKembali;
     }
 }

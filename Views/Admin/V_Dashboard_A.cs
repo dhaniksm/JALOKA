@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JALOKA.Views.Admin;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -53,8 +54,9 @@ namespace JALOKA.Views
         private void buttonKeluar_Click(object sender, EventArgs e)
         {
             this.Hide();
-            V_Login login = new V_Login();
+            V_Login_A login = new V_Login_A();
             login.Show();
+
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JALOKA.Views.Admin;
 
 namespace JALOKA.Views
 {
@@ -58,7 +59,7 @@ namespace JALOKA.Views
         private void buttonKeluar_Click(object sender, EventArgs e)
         {
             this.Hide();
-            V_Login login = new V_Login();
+            V_Login_A login = new V_Login_A();
             login.Show();
         }
     }
