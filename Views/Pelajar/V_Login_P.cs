@@ -51,7 +51,6 @@ namespace JALOKA.Views
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
-
             this.Hide();
             V_Register_P register = new V_Register_P();
             register.Show();
