@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_DataPengguna_A));
             buttonPengembalian = new Button();
             buttonKeluar = new Button();
@@ -35,6 +36,14 @@
             buttonDataPengguna = new Button();
             buttonRiwayatPeminjaman = new Button();
             buttonDashboard = new Button();
+            cUserBindingSource = new BindingSource(components);
+            buttonHapus = new Button();
+            dataGridViewUsers = new DataGridView();
+            textBoxID = new TextBox();
+            pictureBoxRefresh = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)cUserBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewUsers).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxRefresh).BeginInit();
             SuspendLayout();
             // 
             // buttonPengembalian
@@ -127,12 +136,70 @@
             buttonDashboard.UseVisualStyleBackColor = false;
             buttonDashboard.Click += buttonDashboard_Click;
             // 
-            // V_Datapengguna
+            // cUserBindingSource
+            // 
+            cUserBindingSource.DataSource = typeof(Controllers.C_User);
+            // 
+            // buttonHapus
+            // 
+            buttonHapus.BackColor = Color.White;
+            buttonHapus.Cursor = Cursors.Hand;
+            buttonHapus.FlatAppearance.BorderColor = Color.Black;
+            buttonHapus.FlatAppearance.BorderSize = 5;
+            buttonHapus.FlatStyle = FlatStyle.Popup;
+            buttonHapus.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonHapus.Location = new Point(1018, 612);
+            buttonHapus.Name = "buttonHapus";
+            buttonHapus.Size = new Size(102, 38);
+            buttonHapus.TabIndex = 22;
+            buttonHapus.Text = "Hapus";
+            buttonHapus.UseVisualStyleBackColor = false;
+            buttonHapus.Click += buttonHapus_Click;
+            // 
+            // dataGridViewUsers
+            // 
+            dataGridViewUsers.AutoGenerateColumns = false;
+            dataGridViewUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewUsers.DataSource = cUserBindingSource;
+            dataGridViewUsers.Location = new Point(263, 85);
+            dataGridViewUsers.Name = "dataGridViewUsers";
+            dataGridViewUsers.ReadOnly = true;
+            dataGridViewUsers.RowHeadersWidth = 51;
+            dataGridViewUsers.Size = new Size(921, 512);
+            dataGridViewUsers.TabIndex = 24;
+            dataGridViewUsers.CellClick += dataGridViewUsers_CellClick;
+            // 
+            // textBoxID
+            // 
+            textBoxID.BackColor = Color.DarkGray;
+            textBoxID.Location = new Point(328, 612);
+            textBoxID.Name = "textBoxID";
+            textBoxID.Size = new Size(100, 27);
+            textBoxID.TabIndex = 0;
+            // 
+            // pictureBoxRefresh
+            // 
+            pictureBoxRefresh.BackColor = Color.Transparent;
+            pictureBoxRefresh.BackgroundImage = (Image)resources.GetObject("pictureBoxRefresh.BackgroundImage");
+            pictureBoxRefresh.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBoxRefresh.Location = new Point(1084, 12);
+            pictureBoxRefresh.Name = "pictureBoxRefresh";
+            pictureBoxRefresh.Size = new Size(55, 47);
+            pictureBoxRefresh.TabIndex = 25;
+            pictureBoxRefresh.TabStop = false;
+            pictureBoxRefresh.Click += pictureBoxRefresh_Click;
+            // 
+            // V_DataPengguna_A
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(pictureBoxRefresh);
+            Controls.Add(textBoxID);
+            Controls.Add(dataGridViewUsers);
+            Controls.Add(buttonHapus);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonKeluar);
             Controls.Add(buttonManajemenBuku);
@@ -140,10 +207,15 @@
             Controls.Add(buttonRiwayatPeminjaman);
             Controls.Add(buttonDashboard);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_Datapengguna";
+            Name = "V_DataPengguna_A";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_Datapengguna";
+            Load += V_DataPengguna_A_Load;
+            ((System.ComponentModel.ISupportInitialize)cUserBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewUsers).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxRefresh).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -154,5 +226,10 @@
         private Button buttonDataPengguna;
         private Button buttonRiwayatPeminjaman;
         private Button buttonDashboard;
+        private BindingSource cUserBindingSource;
+        private Button buttonHapus;
+        private DataGridView dataGridViewUsers;
+        private TextBox textBoxID;
+        private PictureBox pictureBoxRefresh;
     }
 }

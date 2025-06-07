@@ -127,7 +127,7 @@
             buttonDashboard.UseVisualStyleBackColor = false;
             buttonDashboard.Click += buttonDashboard_Click;
             // 
-            // V_Dashboard_Admin
+            // V_Dashboard_A
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -140,7 +140,7 @@
             Controls.Add(buttonRiwayatPeminjaman);
             Controls.Add(buttonDashboard);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_Dashboard_Admin";
+            Name = "V_Dashboard_A";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_Dashboard_Admin";
             ResumeLayout(false);

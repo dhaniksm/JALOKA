@@ -1,6 +1,4 @@
-﻿using JALOKA.Controllers;
-using JALOKA.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,38 +7,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JALOKA.Controllers;
+using JALOKA.Models;
 
-namespace JALOKA.Views
+
+namespace JALOKA.Views.Admin
 {
-    public partial class V_Login : Form
+    public partial class V_Login_A : Form
     {
-        private C_User c_user = new C_User();
-        public V_Login()
+        private C_Admin c_admin = new C_Admin();
+
+        public V_Login_A()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonLogin_Click(object sender, EventArgs e)
         {
-            var user = new M_User
+            var admin = new M_Admin
             {
-                id_pelajar = textBoxIDPelajar.Text,
+                id_pustakawan = textBoxIDPustakawan.Text,
                 password = textBoxPassword.Text
             };
-
             try
             {
-                bool success = c_user.Login(user);
+                bool success = c_admin.Login(admin);
                 if (success)
                 {
                     MessageBox.Show("Berhasil Login!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
-                    V_Dashboard_P v_dashboard_pelajar = new V_Dashboard_P();
-                    v_dashboard_pelajar.Show();
+                    V_Dashboard_A dashboard = new V_Dashboard_A();
+                    dashboard.Show();
                 }
                 else
                 {
-                    MessageBox.Show("ID atau password salah.", "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("ID Pustakawan atau password salah.", "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
@@ -49,12 +50,14 @@ namespace JALOKA.Views
             }
         }
 
-        private void buttonRegister_Click(object sender, EventArgs e)
+        private void textBoxIDPustakawan_TextChanged(object sender, EventArgs e)
         {
-            this.Hide();
-            V_Register register = new V_Register();
-            register.Show();
 
+        }
+
+        private void textBoxPassword_TextChanged(object sender, EventArgs e)
+        {
+            textBoxPassword.PasswordChar = '*';
         }
 
         private void checkBoxPassword_CheckedChanged(object sender, EventArgs e)
@@ -69,10 +72,11 @@ namespace JALOKA.Views
             }
         }
 
-        private void textBoxPassword_TextChanged(object sender, EventArgs e)
+        private void pictureBoxKembali_Click(object sender, EventArgs e)
         {
-            textBoxPassword.PasswordChar = '*';
+            this.Hide();
+            V_TampilanAwal tampilanAwal = new V_TampilanAwal();
+            tampilanAwal.Show();
         }
     }
-
 }
