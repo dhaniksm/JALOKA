@@ -10,15 +10,7 @@ namespace JALOKA.Database
 {
     public class Connector : IDisposable
     {
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-        private readonly string connStr = "Host=localhost;Username=postgres;Password=Akugembeng;Database=JALOKA";
-=======
         private readonly string connStr = "Host=localhost;Username=postgres;Password=Fahmi77;Database=JALOKA";
->>>>>>> Stashed changes
-=======
-        private readonly string connStr = "Host=localhost;Username=postgres;Password=@Emcc13;Database=JALOKA";
->>>>>>> 48d09d603e55666cd18bade61ae039c3bab64ad6
         private NpgsqlConnection conn;
 
         public Connector()

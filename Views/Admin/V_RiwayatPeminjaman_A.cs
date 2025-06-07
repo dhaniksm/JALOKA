@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JALOKA.Controllers;
 using JALOKA.Views.Admin;
 
 namespace JALOKA.Views
 {
     public partial class V_RiwayatPeminjaman_A : Form
     {
+        private readonly C_Riwayat riwayatController = new C_Riwayat();
         public V_RiwayatPeminjaman_A()
         {
             InitializeComponent();
@@ -56,6 +58,33 @@ namespace JALOKA.Views
             this.Hide();
             V_Login_A login = new V_Login_A();
             login.Show();
+        }
+
+        private void LoadData()
+        {
+            try
+            {
+                var data = riwayatController.ShowRiwayat();
+
+                dataGridView1.AutoGenerateColumns = true;
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = data;
+
+                if (dataGridView1.Columns.Count == 0)
+                {
+                    MessageBox.Show("Kolom masih kosong.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal memuat data: " + ex.Message);
+            }
+        }
+
+        private void V_RiwayatPeminjaman_A_Load_1(object sender, EventArgs e)
+        {
+            LoadData();
+            dataGridView1.ClearSelection();
         }
     }
 }

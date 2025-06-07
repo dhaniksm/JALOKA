@@ -35,24 +35,21 @@ namespace JALOKA.Views
             };
             try
             {
-<<<<<<< HEAD:Views/V_Register.cs
                 if (c_user.Register(user))
                 {
                     MessageBox.Show("Registrasi berhasil!");
                     this.Close();
-                    V_Login login = new V_Login();
-                    login.Show();
+                    V_Login_P Login = new V_Login_P();
+                    Login.Show();
                 }
                 else
                 {
                     MessageBox.Show("Registrasi gagal.");
                 }
-=======
                 MessageBox.Show("Registrasi berhasil!");
                 this.Close();
                 V_Login_P login = new V_Login_P();
                 login.Show();
->>>>>>> Ilham:Views/Pelajar/V_Register_P.cs
             }
             catch (Exception ex)
             {
