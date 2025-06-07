@@ -126,11 +126,13 @@
             pictureBoxKembali.Size = new Size(66, 54);
             pictureBoxKembali.TabIndex = 15;
             pictureBoxKembali.TabStop = false;
+            pictureBoxKembali.Click += this.pictureBoxKembali_Click;
             // 
-            // V_Register
+            // V_Register_P
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
             Controls.Add(pictureBoxKembali);
             Controls.Add(textBoxPassword);
@@ -142,7 +144,7 @@
             Controls.Add(buttonRegister);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(2);
-            Name = "V_Register";
+            Name = "V_Register_P";
             StartPosition = FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)pictureBoxKembali).EndInit();
             ResumeLayout(false);

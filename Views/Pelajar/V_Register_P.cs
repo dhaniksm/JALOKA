@@ -14,8 +14,11 @@ namespace JALOKA.Views
             InitializeComponent();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void pictureBoxKembali_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            V_Login_P login = new V_Login_P();
+            login.Show();
 
         }
 
