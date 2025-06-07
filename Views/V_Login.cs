@@ -20,7 +20,7 @@ namespace JALOKA.Views
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonLogin_Click(object sender, EventArgs e)
         {
             var user = new M_User
             {
@@ -34,15 +34,9 @@ namespace JALOKA.Views
                 if (success)
                 {
                     MessageBox.Show("Berhasil Login!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
-<<<<<<< HEAD
                     this.Close();
-                    V_Dasboard katalogBuku = new V_Dasboard();
-                    katalogBuku.Show();
-=======
-                    this.Hide();
-                    V_Dashboard_P v_dashboard_pelajar = new V_Dashboard_P();
-                    v_dashboard_pelajar.Show();
->>>>>>> 20ae724b9c3a4bf61af12325ed6e67df98dedf64
+                    V_Dashboard_P dashboard = new V_Dashboard_P();
+                    dashboard.Show();
                 }
                 else
                 {
@@ -57,18 +51,9 @@ namespace JALOKA.Views
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-
             this.Hide();
             V_Register register = new V_Register();
             register.Show();
-
-=======
-            this.Hide();
-            V_Register register = new V_Register();
-            register.Show();
-
->>>>>>> 20ae724b9c3a4bf61af12325ed6e67df98dedf64
         }
 
         private void checkBoxPassword_CheckedChanged(object sender, EventArgs e)

@@ -14,11 +14,6 @@ namespace JALOKA.Views
             InitializeComponent();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonRegister_Click(object sender, EventArgs e)
         {
             M_User user = new M_User
@@ -30,53 +25,24 @@ namespace JALOKA.Views
                 nomor_hp = textBoxNoTelp.Text,
                 alamat = textBoxAlamat.Text
             };
-
-            if (c_user.Register(user))
+            try
             {
-                MessageBox.Show("Registrasi berhasil!");
-                this.Close();
-                V_Login login = new V_Login();
-                login.Show();
+                if (c_user.Register(user))
+                {
+                    MessageBox.Show("Registrasi berhasil!");
+                    this.Close();
+                    V_Login login = new V_Login();
+                    login.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Registrasi gagal.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Registrasi gagal.");
+                MessageBox.Show($"Error: {ex.Message}", "Registrasi Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxAlamat_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxIDPelajar_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxPassword_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxNamaLengkap_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxEmail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxNoTelp_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

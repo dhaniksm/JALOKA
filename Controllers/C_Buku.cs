@@ -9,6 +9,12 @@ namespace JALOKA.Controllers
     public class C_Buku
     {
         private readonly Connector db = new Connector();
+
+        public void TabelBuku()
+        {
+            Tabel.CekTabel(db.Connection, "buku");
+        }
+
         public bool TambahBuku(M_Buku buku)
         {
             try
@@ -30,17 +36,18 @@ namespace JALOKA.Controllers
             var books = new List<M_Buku>();
             try
             {
-                using var cmd = new NpgsqlCommand("SELECT * FROM books ORDER BY buku_id", db.Connection);
+                using var cmd = new NpgsqlCommand("SELECT * FROM books ORDER BY id_buku", db.Connection);
                 using var reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
                     books.Add(new M_Buku
                     {
-                        buku_id = Convert.ToInt32(reader["buku_id"]),
+                        id_buku = Convert.ToInt32(reader["id_buku"]),
                         judul = reader["judul"].ToString(),
                         penulis = reader["penulis"].ToString(),
-                        tahun_terbit = Convert.ToInt32(reader["tahun_terbit"])
+                        tahun_terbit = Convert.ToInt32(reader["tahun_terbit"]),
+                        cover_path = reader.IsDBNull(4) ? null : reader.GetString(4)
                     });
                 }
             }
@@ -56,11 +63,11 @@ namespace JALOKA.Controllers
         {
             try
             {
-                using var cmd = new NpgsqlCommand("UPDATE books SET title = @title, author = @author, year = @year WHERE id = @id", db.Connection);
-                cmd.Parameters.AddWithValue("@title", buku.judul);
-                cmd.Parameters.AddWithValue("@author", buku.penulis);
-                cmd.Parameters.AddWithValue("@year", buku.tahun_terbit);
-                cmd.Parameters.AddWithValue("@id", buku.buku_id);
+                using var cmd = new NpgsqlCommand("UPDATE books SET judul = @judul, penulis = @penulis, tahun = @yahun WHERE id_buku = @id_buku", db.Connection);
+                cmd.Parameters.AddWithValue("@id_buku", buku.id_buku);
+                cmd.Parameters.AddWithValue("@judul", buku.judul);
+                cmd.Parameters.AddWithValue("@penulis", buku.penulis);
+                cmd.Parameters.AddWithValue("@tahun", buku.tahun_terbit);
                 return cmd.ExecuteNonQuery() > 0;
             }
             catch (Exception ex)
@@ -69,12 +76,12 @@ namespace JALOKA.Controllers
             }
         }
 
-        public bool HapusBuku(int buku_id)
+        public bool HapusBuku(int id_buku)
         {
             try
             {
                 using var cmd = new NpgsqlCommand("DELETE FROM books WHERE buku_id = @buku_id", db.Connection);
-                cmd.Parameters.AddWithValue("@buku_id", buku_id);
+                cmd.Parameters.AddWithValue("@buku_id", id_buku);
                 return cmd.ExecuteNonQuery() > 0;
             }
             catch (Exception ex)

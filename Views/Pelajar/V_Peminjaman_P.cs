@@ -1,4 +1,7 @@
-﻿using System;
+﻿using JALOKA.Controllers;
+using JALOKA.Database;
+using JALOKA.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,15 +10,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Npgsql;
 
 namespace JALOKA.Views
 {
-    public partial class V_Peminjaman_Pe : Form
+    public partial class V_Peminjaman_P : Form
     {
-        public V_Peminjaman_Pe()
+        private C_Keranjang keranjang;
+        public V_Peminjaman_P(NpgsqlConnection db)
         {
             InitializeComponent();
+            keranjang = new C_Keranjang(db);
+            TampilkanKeranjang();
         }
+
+        private void TampilkanKeranjang()
+        {
+            dataGridViewKeranjang.Rows.Clear();
+            List<M_Buku> daftar = keranjang.AmbilKeranjang();
+
+            foreach (var buku in daftar)
+                dataGridViewKeranjang.Rows.Add(buku.id_buku, buku.judul, buku.penulis, buku.tahun_terbit);
+        }
+
 
         private void buttonDasboard_Click(object sender, EventArgs e)
         {
@@ -26,7 +43,9 @@ namespace JALOKA.Views
 
         private void buttonKatalogBuku_Click(object sender, EventArgs e)
         {
-            this.Refresh();
+            this.Hide();
+            V_KatalogBuku_P katalogbuku = new V_KatalogBuku_P();
+            katalogbuku.Show();
         }
 
         private void buttonPeminjaman_Click(object sender, EventArgs e)
@@ -44,7 +63,7 @@ namespace JALOKA.Views
         private void buttonRiwayatPeminjaman_Click(object sender, EventArgs e)
         {
             this.Hide();
-            V_Peminjaman_Pe riwayatPeminjaman = new V_Peminjaman_Pe();
+            V_Peminjaman_P riwayatPeminjaman = new V_Peminjaman_P();
             riwayatPeminjaman.Show();
         }
 

@@ -10,7 +10,7 @@ namespace JALOKA.Database
 {
     public class Connector : IDisposable
     {
-        private readonly string connStr = "Host=localhost;Username=postgres;Password=Akugembeng;Database=JALOKA";
+        private readonly string connStr = "Host=localhost;Username=postgres;Password=@Emcc13;Database=JALOKA";
         private NpgsqlConnection conn;
 
         public Connector()
@@ -32,8 +32,9 @@ namespace JALOKA.Database
             get
             {
                 if (conn == null || conn.State != ConnectionState.Open)
-                
+                {
                     throw new Exception ("Koneksi ke database belum dibuka atau telah ditutup.");
+                }
                 return conn;
             }
         }

@@ -35,6 +35,7 @@
             buttonKatalogBuku = new Button();
             buttonKeluar = new Button();
             buttonDasboard = new Button();
+            flowLayoutPanelCover = new FlowLayoutPanel();
             SuspendLayout();
             // 
             // buttonPengembalian
@@ -131,12 +132,20 @@
             buttonDasboard.Text = "Dasboard";
             buttonDasboard.UseVisualStyleBackColor = false;
             // 
-            // V_Katalogbuku
+            // flowLayoutPanelCover
+            // 
+            flowLayoutPanelCover.Location = new Point(252, 76);
+            flowLayoutPanelCover.Name = "flowLayoutPanelCover";
+            flowLayoutPanelCover.Size = new Size(948, 599);
+            flowLayoutPanelCover.TabIndex = 21;
+            // 
+            // V_KatalogBuku_P
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(flowLayoutPanelCover);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonRiwayatPeminjaman);
             Controls.Add(buttonPeminjaman);
@@ -144,7 +153,7 @@
             Controls.Add(buttonKeluar);
             Controls.Add(buttonDasboard);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_Katalogbuku";
+            Name = "V_KatalogBuku_P";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_Katalogbuku";
             ResumeLayout(false);
@@ -158,5 +167,6 @@
         private Button buttonKatalogBuku;
         private Button buttonKeluar;
         private Button buttonDasboard;
+        private FlowLayoutPanel flowLayoutPanelCover;
     }
 }

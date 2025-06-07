@@ -9,6 +9,11 @@ namespace JALOKA.Controllers
     public class C_User
     {
         private readonly Connector db = new Connector();
+
+        public void TabelUser()
+        {
+            Tabel.CekTabel(db.Connection, "user");
+        }
         public bool Login(M_User user)
         {
             if(string.IsNullOrWhiteSpace(user.id_pelajar) || string.IsNullOrWhiteSpace(user.password))

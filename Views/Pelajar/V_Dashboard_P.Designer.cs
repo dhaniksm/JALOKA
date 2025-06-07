@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Dashboard_P));
-            buttonDasboard = new Button();
+            buttonDashboard = new Button();
             buttonKeluar = new Button();
             buttonKatalogBuku = new Button();
             buttonPeminjaman = new Button();
@@ -39,20 +39,20 @@
             // 
             // buttonDasboard
             // 
-            buttonDasboard.BackColor = SystemColors.ControlLightLight;
-            buttonDasboard.Cursor = Cursors.Hand;
-            buttonDasboard.FlatAppearance.BorderColor = Color.White;
-            buttonDasboard.FlatAppearance.BorderSize = 0;
-            buttonDasboard.FlatStyle = FlatStyle.Flat;
-            buttonDasboard.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonDasboard.ForeColor = SystemColors.Desktop;
-            buttonDasboard.Location = new Point(65, 110);
-            buttonDasboard.Name = "buttonDasboard";
-            buttonDasboard.Size = new Size(182, 37);
-            buttonDasboard.TabIndex = 1;
-            buttonDasboard.Text = "Dasboard";
-            buttonDasboard.UseVisualStyleBackColor = false;
-            buttonDasboard.Click += buttonDashboard_Click;
+            buttonDashboard.BackColor = SystemColors.ControlLightLight;
+            buttonDashboard.Cursor = Cursors.Hand;
+            buttonDashboard.FlatAppearance.BorderColor = Color.White;
+            buttonDashboard.FlatAppearance.BorderSize = 0;
+            buttonDashboard.FlatStyle = FlatStyle.Flat;
+            buttonDashboard.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonDashboard.ForeColor = SystemColors.Desktop;
+            buttonDashboard.Location = new Point(65, 110);
+            buttonDashboard.Name = "buttonDasboard";
+            buttonDashboard.Size = new Size(182, 37);
+            buttonDashboard.TabIndex = 1;
+            buttonDashboard.Text = "Dashboard";
+            buttonDashboard.UseVisualStyleBackColor = false;
+            buttonDashboard.Click += buttonDashboard_Click;
             // 
             // buttonKeluar
             // 
@@ -137,7 +137,7 @@
             buttonPengembalian.UseVisualStyleBackColor = false;
             buttonPengembalian.Click += buttonPengembalian_Click;
             // 
-            // V_Dasboard
+            // V_Dashboard_P
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -149,16 +149,16 @@
             Controls.Add(buttonPeminjaman);
             Controls.Add(buttonKatalogBuku);
             Controls.Add(buttonKeluar);
-            Controls.Add(buttonDasboard);
+            Controls.Add(buttonDashboard);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_Dasboard";
+            Name = "V_Dashboard_P";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "KatalogBuku";
+            Text = "V_Dashboard_P";
             ResumeLayout(false);
         }
 
         #endregion
-        private Button buttonDasboard;
+        private Button buttonDashboard;
         private Button buttonKeluar;
         private Button buttonKatalogBuku;
         private Button buttonPeminjaman;
