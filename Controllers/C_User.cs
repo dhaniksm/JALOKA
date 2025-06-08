@@ -37,6 +37,8 @@ namespace JALOKA.Controllers
                string.IsNullOrWhiteSpace(user.nomor_hp) || string.IsNullOrWhiteSpace(user.alamat))
                 throw new ArgumentException("Semua field harus diisi.");
 
+            
+
             try
             {
                 var cmd = new NpgsqlCommand(@"INSERT INTO users (id_pelajar, password, nama, email, nomor_hp, alamat) VALUES (@id_pelajar, @password, @nama, @email, @nomor_hp, @alamat)", db.Connection);
@@ -90,7 +92,29 @@ namespace JALOKA.Controllers
             return list;
         }
 
-      
+        public bool UpdateUser(M_User user)
+        {
+            try
+            {
+                if (db.Connection.State != System.Data.ConnectionState.Open)
+                    db.Connection.Open();
+
+                var cmd = new NpgsqlCommand("UPDATE users SET nama = @nama, email = @email, nomor_hp = @nomor_hp, alamat = @alamat WHERE id_pelajar = @id_pelajar", db.Connection);
+                cmd.Parameters.AddWithValue("@id_pelajar", user.id_pelajar);
+                cmd.Parameters.AddWithValue("@nama", user.nama);
+                cmd.Parameters.AddWithValue("@email", user.email);
+                cmd.Parameters.AddWithValue("@nomor_hp", user.nomor_hp);
+                cmd.Parameters.AddWithValue("@alamat", user.alamat);
+
+                return cmd.ExecuteNonQuery() > 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Gagal memperbarui data pengguna: " + ex.Message);
+            }
+        }
+
+
 
         // DELETE
         public bool DeleteUser(string id_pelajar)

@@ -16,7 +16,7 @@ namespace JALOKA.Views
 
         private void pictureBoxKembali_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             V_Login_P login = new V_Login_P();
             login.Show();
 
@@ -24,6 +24,18 @@ namespace JALOKA.Views
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
+            if (!textBoxEmail.Text.Contains("@"))
+            {
+                MessageBox.Show("Format email tidak valid.", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!long.TryParse(textBoxNoTelp.Text, out _))
+            {
+                MessageBox.Show("Nomor HP hanya boleh berisi angka.", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             M_User user = new M_User
             {
                 id_pelajar = textBoxIDPelajar.Text,
