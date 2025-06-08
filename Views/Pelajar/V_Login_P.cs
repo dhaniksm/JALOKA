@@ -35,8 +35,8 @@ namespace JALOKA.Views
                 {
                     MessageBox.Show("Berhasil Login!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
-                    V_DataPengguna_A dataPengguna = new V_DataPengguna_A();
-                    dataPengguna.Show();
+                    V_Dashboard_P dashboard = new V_Dashboard_P();
+                    dashboard.Show();
                 }
                 else
                 {

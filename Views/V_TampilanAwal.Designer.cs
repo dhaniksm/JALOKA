@@ -77,6 +77,7 @@
             buttonLoginKurikulum.Size = new Size(210, 39);
             buttonLoginKurikulum.TabIndex = 2;
             buttonLoginKurikulum.UseVisualStyleBackColor = false;
+            buttonLoginKurikulum.Click += buttonLoginKurikulum_Click;
             // 
             // V_TampilanAwal
             // 

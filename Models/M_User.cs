@@ -8,6 +8,7 @@ namespace JALOKA.Models
 {
     public class M_User
     {
+        public int id_user { get; set; }
         public string id_pelajar { get; set; }
         public string password { get; set; }
         public string nama { get; set; }
