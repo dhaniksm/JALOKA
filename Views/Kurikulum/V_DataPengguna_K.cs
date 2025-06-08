@@ -42,8 +42,6 @@ namespace JALOKA.Views
             this.Hide();
             V_Dashboard_K dashboard = new V_Dashboard_K();
             dashboard.Show();
-            TampilkanDataPengguna();
-            BersihkanForm();
 
         }
 
