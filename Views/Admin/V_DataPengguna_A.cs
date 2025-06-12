@@ -51,7 +51,7 @@ namespace JALOKA.Views
             if (index >= 0)
             {
                 DataGridViewRow row = dataGridViewUsers.Rows[index];
-                textBoxID.Text = row.Cells["id_pelajar"].Value.ToString();
+                textBoxID.Text = row.Cells["nisn"].Value.ToString();
             }
         }
 
@@ -80,7 +80,7 @@ namespace JALOKA.Views
             }
         }
 
-        
+
 
         // Navigasi antar form
         private void buttonDashboard_Click(object sender, EventArgs e)
@@ -128,5 +128,7 @@ namespace JALOKA.Views
             LoadData();
 
         }
+
+        
     }
 }

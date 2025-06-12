@@ -23,7 +23,7 @@ namespace JALOKA.Controllers
                     buku_id = reader.GetInt32(1),
                     tanggal_peminjaman = reader.GetDateTime(3),
                     tanggal_pengembalian = reader.IsDBNull(4) ? null : reader.GetDateTime(4),
-                    id_pelajar = reader.GetString(2)
+                    nisn = reader.GetString(2)
                 });
             }
             return list;
@@ -31,11 +31,11 @@ namespace JALOKA.Controllers
 
         public bool TambahPeminjaman(M_Peminjaman pinjam)
         {
-            var query = "INSERT INTO peminjamans (buku_id, tanggal_peminjaman, id_pelajar) VALUES (@buku_id, @tanggal_peminjaman, @id_pelajar)";
+            var query = "INSERT INTO peminjamans (buku_id, tanggal_peminjaman, nisn) VALUES (@buku_id, @tanggal_peminjaman, @nisn)";
             using var cmd = new NpgsqlCommand(query, db.Connection);
             cmd.Parameters.AddWithValue("buku_id", pinjam.buku_id);
             cmd.Parameters.AddWithValue("tanggal_peminjaman", pinjam.tanggal_peminjaman);
-            cmd.Parameters.AddWithValue("id_pelajar", pinjam.id_pelajar);
+            cmd.Parameters.AddWithValue("nisn", pinjam.nisn);
             return cmd.ExecuteNonQuery() > 0;
         }
 

@@ -112,7 +112,7 @@
             pictureBoxKembali.TabStop = false;
             pictureBoxKembali.Click += pictureBoxKembali_Click;
             // 
-            // V_Login
+            // V_Login_P
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -126,7 +126,7 @@
             Controls.Add(textBoxPassword);
             Controls.Add(buttonLogin);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_Login";
+            Name = "V_Login_P";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_Login";
             ((System.ComponentModel.ISupportInitialize)pictureBoxKembali).EndInit();

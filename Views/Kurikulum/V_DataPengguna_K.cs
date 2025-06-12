@@ -106,7 +106,7 @@ namespace JALOKA.Views
 
             var pengguna = new M_User
             {
-                id_pelajar = textBoxIDPelajar.Text,
+                nisn = textBoxIDPelajar.Text,
                 nama = textBoxNama.Text,
                 email = textBoxEmail.Text,
                 nomor_hp = textBoxNoHP.Text,
@@ -124,7 +124,7 @@ namespace JALOKA.Views
             if (e.RowIndex >= 0)
             {
                 var baris = dataGridViewDataUser.Rows[e.RowIndex];
-                textBoxIDPelajar.Text = baris.Cells["id_pelajar"].Value.ToString();
+                textBoxIDPelajar.Text = baris.Cells["nisn"].Value.ToString();
                 textBoxNama.Text = baris.Cells["nama"].Value.ToString();
                 textBoxEmail.Text = baris.Cells["email"].Value.ToString();
                 textBoxNoHP.Text = baris.Cells["nomor_hp"].Value.ToString();

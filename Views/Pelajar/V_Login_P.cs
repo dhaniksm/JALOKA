@@ -24,7 +24,7 @@ namespace JALOKA.Views
         {
             var user = new M_User
             {
-                id_pelajar = textBoxIDPelajar.Text,
+                nisn = textBoxIDPelajar.Text,
                 password = textBoxPassword.Text
             };
 

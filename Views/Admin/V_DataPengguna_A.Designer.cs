@@ -174,7 +174,7 @@
             // textBoxID
             // 
             textBoxID.BackColor = Color.LightGray;
-            textBoxID.Location = new Point(328, 612);
+            textBoxID.Location = new Point(342, 623);
             textBoxID.Name = "textBoxID";
             textBoxID.Size = new Size(100, 27);
             textBoxID.TabIndex = 0;

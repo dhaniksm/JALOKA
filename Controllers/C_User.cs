@@ -10,15 +10,16 @@ namespace JALOKA.Controllers
     public class C_User
     {
         private readonly Connector db = new Connector();
+
         public bool Login(M_User user)
         {
-            if (string.IsNullOrWhiteSpace(user.id_pelajar) || string.IsNullOrWhiteSpace(user.password))
+            if (string.IsNullOrWhiteSpace(user.nisn) || string.IsNullOrWhiteSpace(user.password))
                 throw new ArgumentException("ID Pelajar dan Password tidak boleh kosong.");
 
             try
             {
-                var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM users WHERE id_pelajar = @id_pelajar AND password = @password", db.Connection);
-                cmd.Parameters.AddWithValue("@id_pelajar", user.id_pelajar);
+                var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM users WHERE nisn = @nisn AND password = @password", db.Connection);
+                cmd.Parameters.AddWithValue("@nisn", user.nisn);
                 cmd.Parameters.AddWithValue("@password", user.password);
 
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
@@ -32,22 +33,27 @@ namespace JALOKA.Controllers
 
         public bool Register(M_User user)
         {
-            if (string.IsNullOrWhiteSpace(user.id_pelajar) || string.IsNullOrWhiteSpace(user.password) ||
-               string.IsNullOrWhiteSpace(user.nama) || string.IsNullOrWhiteSpace(user.email) ||
-               string.IsNullOrWhiteSpace(user.nomor_hp) || string.IsNullOrWhiteSpace(user.alamat))
+            if (string.IsNullOrWhiteSpace(user.nisn) || string.IsNullOrWhiteSpace(user.password) ||
+                string.IsNullOrWhiteSpace(user.nama) || string.IsNullOrWhiteSpace(user.email) ||
+                string.IsNullOrWhiteSpace(user.nomor_hp) || string.IsNullOrWhiteSpace(user.alamat))
                 throw new ArgumentException("Semua field harus diisi.");
-
-            
 
             try
             {
-                var cmd = new NpgsqlCommand(@"INSERT INTO users (id_pelajar, password, nama, email, nomor_hp, alamat) VALUES (@id_pelajar, @password, @nama, @email, @nomor_hp, @alamat)", db.Connection);
-                cmd.Parameters.AddWithValue("@id_pelajar", user.id_pelajar);
+                if (db.Connection.State != ConnectionState.Open)
+                    db.Connection.Open();
+
+                var cmd = new NpgsqlCommand(@"
+                    INSERT INTO users (nisn, password, nama, email, nomor_hp, alamat)
+                    VALUES (@nisn, @password, @nama, @email, @nomor_hp, @alamat)", db.Connection);
+
+                cmd.Parameters.AddWithValue("@nisn", user.nisn);
                 cmd.Parameters.AddWithValue("@password", user.password);
                 cmd.Parameters.AddWithValue("@nama", user.nama);
                 cmd.Parameters.AddWithValue("@email", user.email);
                 cmd.Parameters.AddWithValue("@nomor_hp", user.nomor_hp);
                 cmd.Parameters.AddWithValue("@alamat", user.alamat);
+
                 return cmd.ExecuteNonQuery() > 0;
             }
             catch (Exception ex)
@@ -56,7 +62,6 @@ namespace JALOKA.Controllers
             }
         }
 
-        // READ 
         public List<M_User> DaftarPengguna()
         {
             var list = new List<M_User>();
@@ -66,14 +71,15 @@ namespace JALOKA.Controllers
                 if (db.Connection.State != ConnectionState.Open)
                     db.Connection.Open();
 
-                var cmd = new NpgsqlCommand("SELECT * FROM users", db.Connection);
+                var cmd = new NpgsqlCommand("SELECT * FROM users ORDER BY id_user ASC", db.Connection);
                 var reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
                     list.Add(new M_User
                     {
-                        id_pelajar = reader["id_pelajar"].ToString(),
+                        id_user = Convert.ToInt32(reader["id_user"]),
+                        nisn = reader["nisn"].ToString(),
                         password = reader["password"].ToString(),
                         nama = reader["nama"].ToString(),
                         email = reader["email"].ToString(),
@@ -96,11 +102,15 @@ namespace JALOKA.Controllers
         {
             try
             {
-                if (db.Connection.State != System.Data.ConnectionState.Open)
+                if (db.Connection.State != ConnectionState.Open)
                     db.Connection.Open();
 
-                var cmd = new NpgsqlCommand("UPDATE users SET nama = @nama, email = @email, nomor_hp = @nomor_hp, alamat = @alamat WHERE id_pelajar = @id_pelajar", db.Connection);
-                cmd.Parameters.AddWithValue("@id_pelajar", user.id_pelajar);
+                var cmd = new NpgsqlCommand(@"
+                    UPDATE users 
+                    SET nama = @nama, email = @email, nomor_hp = @nomor_hp, alamat = @alamat
+                    WHERE nisn = @nisn", db.Connection);
+
+                cmd.Parameters.AddWithValue("@nisn", user.nisn);
                 cmd.Parameters.AddWithValue("@nama", user.nama);
                 cmd.Parameters.AddWithValue("@email", user.email);
                 cmd.Parameters.AddWithValue("@nomor_hp", user.nomor_hp);
@@ -114,18 +124,15 @@ namespace JALOKA.Controllers
             }
         }
 
-
-
-        // DELETE
-        public bool DeleteUser(string id_pelajar)
+        public bool DeleteUser(string nisn)
         {
             try
             {
                 if (db.Connection.State != ConnectionState.Open)
                     db.Connection.Open();
 
-                var cmd = new NpgsqlCommand("DELETE FROM users WHERE id_pelajar = @id_pelajar", db.Connection);
-                cmd.Parameters.AddWithValue("@id_pelajar", id_pelajar);
+                var cmd = new NpgsqlCommand("DELETE FROM users WHERE nisn = @nisn", db.Connection);
+                cmd.Parameters.AddWithValue("@nisn", nisn);
 
                 return cmd.ExecuteNonQuery() > 0;
             }
@@ -134,7 +141,5 @@ namespace JALOKA.Controllers
                 throw new Exception("Gagal menghapus data pengguna: " + ex.Message);
             }
         }
-
     }
 }
-

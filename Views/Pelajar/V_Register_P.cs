@@ -38,7 +38,7 @@ namespace JALOKA.Views
 
             M_User user = new M_User
             {
-                id_pelajar = textBoxIDPelajar.Text,
+                nisn = textBoxIDPelajar.Text,
                 password = textBoxPassword.Text,
                 nama = textBoxNama.Text,
                 email = textBoxEmail.Text,
