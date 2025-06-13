@@ -21,7 +21,7 @@ namespace JALOKA.Views
         {
             this.Refresh();
         }
-       
+
         private void buttonKatalogBuku_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -56,6 +56,13 @@ namespace JALOKA.Views
             V_Login_P login = new V_Login_P();
             login.Show();
 
+        }
+
+        private void pictureBoxProfil_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_Profil_P profil = new V_Profil_P();
+            profil.Show();
         }
     }
 }

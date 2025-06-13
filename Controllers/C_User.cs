@@ -11,10 +11,11 @@ namespace JALOKA.Controllers
     {
         private readonly Connector db = new Connector();
 
+        // LOGIN
         public bool Login(M_User user)
         {
             if (string.IsNullOrWhiteSpace(user.nisn) || string.IsNullOrWhiteSpace(user.password))
-                throw new ArgumentException("ID Pelajar dan Password tidak boleh kosong.");
+                throw new ArgumentException("NISN dan Password tidak boleh kosong.");
 
             try
             {
@@ -31,6 +32,7 @@ namespace JALOKA.Controllers
             }
         }
 
+        // REGISTER
         public bool Register(M_User user)
         {
             if (string.IsNullOrWhiteSpace(user.nisn) || string.IsNullOrWhiteSpace(user.password) ||
@@ -62,6 +64,7 @@ namespace JALOKA.Controllers
             }
         }
 
+        // BACA SEMUA DATA
         public List<M_User> DaftarPengguna()
         {
             var list = new List<M_User>();
@@ -98,6 +101,43 @@ namespace JALOKA.Controllers
             return list;
         }
 
+        // AMBIL PROFIL PENGGUNA LOGIN
+        public M_User GetProfil(string nisn)
+        {
+            try
+            {
+                if (db.Connection.State != ConnectionState.Open)
+                    db.Connection.Open();
+
+                var cmd = new NpgsqlCommand("SELECT * FROM users WHERE nisn = @nisn", db.Connection);
+                cmd.Parameters.AddWithValue("@nisn", nisn);
+
+                var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    var user = new M_User
+                    {
+                        id_user = Convert.ToInt32(reader["id_user"]),
+                        nisn = reader["nisn"].ToString(),
+                        nama = reader["nama"].ToString(),
+                        email = reader["email"].ToString(),
+                        nomor_hp = reader["nomor_hp"].ToString(),
+                        alamat = reader["alamat"].ToString()
+                    };
+                    reader.Close();
+                    return user;
+                }
+
+                reader.Close();
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Gagal mengambil data profil: " + ex.Message);
+            }
+        }
+
+        // EDIT
         public bool UpdateUser(M_User user)
         {
             try
@@ -124,6 +164,7 @@ namespace JALOKA.Controllers
             }
         }
 
+        // HAPUS
         public bool DeleteUser(string nisn)
         {
             try

@@ -58,5 +58,10 @@ namespace JALOKA.Views
             login.Show();
 
         }
+
+        private void pictureBoxProfil_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
