@@ -127,7 +127,7 @@
             buttonDashboard.UseVisualStyleBackColor = false;
             buttonDashboard.Click += buttonDashboard_Click;
             // 
-            // V_PengembalianAdmin
+            // V_Pengembalian_A
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -140,7 +140,7 @@
             Controls.Add(buttonRiwayatPeminjaman);
             Controls.Add(buttonDashboard);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_PengembalianAdmin";
+            Name = "V_Pengembalian_A";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_PengembalianAdmin";
             ResumeLayout(false);

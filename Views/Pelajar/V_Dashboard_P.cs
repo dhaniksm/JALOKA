@@ -52,9 +52,9 @@ namespace JALOKA.Views
 
         private void buttonKeluar_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            V_Login_P login = new V_Login_P();
-            login.Show();
+            this.Close();
+            V_TampilanAwal tampilanAwal = new V_TampilanAwal();
+            tampilanAwal.Show();
 
         }
 

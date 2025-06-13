@@ -24,9 +24,9 @@ namespace JALOKA.Views
 
         private void pictureBoxKembali_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            V_Dashboard_K dashboard = new V_Dashboard_K();
-            dashboard.Show();
+            this.Close();
+            V_TampilanAwal tampilanAwal = new V_TampilanAwal();
+            tampilanAwal.Show();
         }
 
         private void textBoxIDKurikulum_TextChanged(object sender, EventArgs e)

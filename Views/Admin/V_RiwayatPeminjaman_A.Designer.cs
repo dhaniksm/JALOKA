@@ -127,7 +127,7 @@
             buttonPengembalian.UseVisualStyleBackColor = false;
             buttonPengembalian.Click += buttonPengembalian_Click;
             // 
-            // V_RiwayatPeminjaman
+            // V_RiwayatPeminjaman_A
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -140,7 +140,7 @@
             Controls.Add(buttonRiwayatPeminjaman);
             Controls.Add(buttonDashboard);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_RiwayatPeminjaman";
+            Name = "V_RiwayatPeminjaman_A";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_RiwayatPeminjaman";
             ResumeLayout(false);

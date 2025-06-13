@@ -50,9 +50,16 @@ namespace JALOKA.Views
 
         private void buttonKeluar_Click(object sender, EventArgs e)
         {
+            this.Close();
+            V_TampilanAwal tampilanAwal = new V_TampilanAwal();
+            tampilanAwal.Show();
+        }
+
+        private void pictureBoxProfil_Click(object sender, EventArgs e)
+        {
             this.Hide();
-            V_Login_P login = new V_Login_P();
-            login.Show();
+            V_Profil_P v_Profil_P = new V_Profil_P();
+            v_Profil_P.ShowDialog();
         }
     }
 }

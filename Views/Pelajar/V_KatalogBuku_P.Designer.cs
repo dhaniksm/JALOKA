@@ -35,6 +35,8 @@
             buttonKatalogBuku = new Button();
             buttonKeluar = new Button();
             buttonDasboard = new Button();
+            pictureBoxProfil = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).BeginInit();
             SuspendLayout();
             // 
             // buttonPengembalian
@@ -114,6 +116,7 @@
             buttonKeluar.TabIndex = 16;
             buttonKeluar.Text = "Keluar";
             buttonKeluar.UseVisualStyleBackColor = false;
+            buttonKeluar.Click += buttonKeluar_Click;
             // 
             // buttonDasboard
             // 
@@ -131,12 +134,25 @@
             buttonDasboard.Text = "Dasboard";
             buttonDasboard.UseVisualStyleBackColor = false;
             // 
-            // V_Katalogbuku
+            // pictureBoxProfil
+            // 
+            pictureBoxProfil.BackColor = Color.Transparent;
+            pictureBoxProfil.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBoxProfil.Cursor = Cursors.Hand;
+            pictureBoxProfil.Location = new Point(22, 11);
+            pictureBoxProfil.Name = "pictureBoxProfil";
+            pictureBoxProfil.Size = new Size(57, 54);
+            pictureBoxProfil.TabIndex = 29;
+            pictureBoxProfil.TabStop = false;
+            pictureBoxProfil.Click += pictureBoxProfil_Click;
+            // 
+            // V_KatalogBuku_P
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(pictureBoxProfil);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonRiwayatPeminjaman);
             Controls.Add(buttonPeminjaman);
@@ -144,9 +160,10 @@
             Controls.Add(buttonKeluar);
             Controls.Add(buttonDasboard);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_Katalogbuku";
+            Name = "V_KatalogBuku_P";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_Katalogbuku";
+            ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).EndInit();
             ResumeLayout(false);
         }
 
@@ -158,5 +175,6 @@
         private Button buttonKatalogBuku;
         private Button buttonKeluar;
         private Button buttonDasboard;
+        private PictureBox pictureBoxProfil;
     }
 }

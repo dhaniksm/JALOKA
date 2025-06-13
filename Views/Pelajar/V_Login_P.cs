@@ -81,7 +81,7 @@ namespace JALOKA.Views
 
         private void pictureBoxKembali_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             V_TampilanAwal tampilanAwal = new V_TampilanAwal();
             tampilanAwal.Show();
         }
