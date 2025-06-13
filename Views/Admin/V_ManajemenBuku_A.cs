@@ -53,8 +53,8 @@ namespace JALOKA.Views
                 {
                     var panel = new Panel
                     {
-                        Width = 400,
-                        Height = 400,
+                        Width = 200,
+                        Height = 200,
                         Margin = new Padding(10)
                     };
 
