@@ -45,17 +45,27 @@ namespace JALOKA.Views
                 nomor_hp = textBoxNoTelp.Text,
                 alamat = textBoxAlamat.Text
             };
-
-            if (c_user.Register(user))
+            try
             {
+                if (c_user.Register(user))
+                {
+                    MessageBox.Show("Registrasi berhasil!");
+                    this.Close();
+                    V_Login_P Login = new V_Login_P();
+                    Login.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Registrasi gagal.");
+                }
                 MessageBox.Show("Registrasi berhasil!");
                 this.Close();
                 V_Login_P login = new V_Login_P();
                 login.Show();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Registrasi gagal.");
+                MessageBox.Show($"Error: {ex.Message}", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

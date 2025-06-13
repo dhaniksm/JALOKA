@@ -40,6 +40,10 @@ namespace JALOKA.Controllers
                 string.IsNullOrWhiteSpace(user.nomor_hp) || string.IsNullOrWhiteSpace(user.alamat))
                 throw new ArgumentException("Semua field harus diisi.");
 
+            
+
+
+
             try
             {
                 if (db.Connection.State != ConnectionState.Open)
