@@ -14,7 +14,6 @@ namespace JALOKA.Views
             InitializeComponent();
         }
 
-<<<<<<< HEAD:Views/Pelajar/V_Register_P.cs
         private void pictureBoxKembali_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -23,8 +22,6 @@ namespace JALOKA.Views
 
         }
 
-=======
->>>>>>> Dhani:Views/V_Register.cs
         private void buttonRegister_Click(object sender, EventArgs e)
         {
             if (!textBoxEmail.Text.Contains("@"))
@@ -41,40 +38,27 @@ namespace JALOKA.Views
 
             M_User user = new M_User
             {
-<<<<<<< HEAD:Views/Pelajar/V_Register_P.cs
                 nisn = textBoxIDPelajar.Text,
-=======
-                id_user = textBoxIDPelajar.Text,
->>>>>>> Dhani:Views/V_Register.cs
                 password = textBoxPassword.Text,
                 nama = textBoxNama.Text,
                 email = textBoxEmail.Text,
                 nomor_hp = textBoxNoTelp.Text,
                 alamat = textBoxAlamat.Text
             };
-<<<<<<< HEAD:Views/Pelajar/V_Register_P.cs
-=======
 
->>>>>>> Dhani:Views/V_Register.cs
             try
             {
                 if (c_user.Register(user))
                 {
                     MessageBox.Show("Registrasi berhasil!");
                     this.Close();
-<<<<<<< HEAD:Views/Pelajar/V_Register_P.cs
                     V_Login_P Login = new V_Login_P();
                     Login.Show();
-=======
-                    V_Login login = new V_Login();
-                    login.Show();
->>>>>>> Dhani:Views/V_Register.cs
                 }
                 else
                 {
                     MessageBox.Show("Registrasi gagal.");
                 }
-<<<<<<< HEAD:Views/Pelajar/V_Register_P.cs
                 MessageBox.Show("Registrasi berhasil!");
                 this.Close();
                 V_Login_P login = new V_Login_P();
@@ -82,13 +66,7 @@ namespace JALOKA.Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-=======
-            }
-            catch (Exception ex)
-            {
                 MessageBox.Show($"Error: {ex.Message}", "Registrasi Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
->>>>>>> Dhani:Views/V_Register.cs
             }
         }
     }

@@ -129,7 +129,6 @@ namespace JALOKA.Views
             return panel;
         }
 
-
         private void buttonDasboard_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -166,7 +165,7 @@ namespace JALOKA.Views
         private void buttonKeluar_Click(object sender, EventArgs e)
         {
             this.Hide();
-            V_Login login = new V_Login();
+            V_Login_P login = new V_Login_P();
             login.Show();
         }
     }

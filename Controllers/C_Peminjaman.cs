@@ -19,14 +19,6 @@ namespace JALOKA.Controllers
             {
                 using (var db = new D_Connector())
                 {
-<<<<<<< HEAD
-                    pinjam_id = reader.GetInt32(0),
-                    buku_id = reader.GetInt32(1),
-                    tanggal_peminjaman = reader.GetDateTime(3),
-                    tanggal_pengembalian = reader.IsDBNull(4) ? null : reader.GetDateTime(4),
-                    nisn = reader.GetString(2)
-                });
-=======
                     using var cmd = new NpgsqlCommand("SELECT b.id_buku, b.judul, b.penulis, b.penerbit, b.tahun_terbit, b.sinopsis, b.cover FROM keranjang k JOIN buku b ON k.id_buku = b.id_buku WHERE k.id_user = @id_user", db.Connection);
                     cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
 
@@ -45,7 +37,6 @@ namespace JALOKA.Controllers
                         });
                     }
                 }
->>>>>>> Dhani
             }
             catch (Exception ex)
             {
@@ -57,14 +48,6 @@ namespace JALOKA.Controllers
 
         public static void TambahKeKeranjang(int id_buku)
         {
-<<<<<<< HEAD
-            var query = "INSERT INTO peminjamans (buku_id, tanggal_peminjaman, nisn) VALUES (@buku_id, @tanggal_peminjaman, @nisn)";
-            using var cmd = new NpgsqlCommand(query, db.Connection);
-            cmd.Parameters.AddWithValue("buku_id", pinjam.buku_id);
-            cmd.Parameters.AddWithValue("tanggal_peminjaman", pinjam.tanggal_peminjaman);
-            cmd.Parameters.AddWithValue("nisn", pinjam.nisn);
-            return cmd.ExecuteNonQuery() > 0;
-=======
             try
             {
                 using var db = new D_Connector();
@@ -94,7 +77,6 @@ namespace JALOKA.Controllers
             {
                 throw new Exception("Gagal menambahkan ke keranjang: " + ex.Message);
             }
->>>>>>> Dhani
         }
 
         public void HapusDariKeranjang(int id_buku)

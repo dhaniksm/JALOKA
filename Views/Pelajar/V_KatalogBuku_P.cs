@@ -25,16 +25,6 @@ namespace JALOKA.Views
             TampilkanBuku();
         }
 
-<<<<<<< HEAD
-
-
-        private void pictureBoxProfil_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            V_Profil_P v_Profil_P = new V_Profil_P();
-            v_Profil_P.ShowDialog();
-
-=======
         public void TabelBuku()
         {
             try
@@ -110,6 +100,13 @@ namespace JALOKA.Views
             }
         }
 
+        private void pictureBoxProfil_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_Profil_P v_Profil_P = new V_Profil_P();
+            v_Profil_P.ShowDialog();
+        }
+
         private void buttonDashboard_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -141,19 +138,13 @@ namespace JALOKA.Views
             this.Hide();
             V_RiwayatPeminjaman_P riwayat = new V_RiwayatPeminjaman_P();
             riwayat.Show();
->>>>>>> Dhani
         }
 
         private void buttonKeluar_Click(object sender, EventArgs e)
         {
             this.Close();
-<<<<<<< HEAD
             V_TampilanAwal tampilanAwal = new V_TampilanAwal();
             tampilanAwal.Show();
-=======
-            V_Login login = new V_Login();
-            login.Show();
->>>>>>> Dhani
         }
     }
 }

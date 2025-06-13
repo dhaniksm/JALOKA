@@ -131,8 +131,6 @@
             buttonDashboard.UseVisualStyleBackColor = false;
             buttonDashboard.Click += buttonDashboard_Click;
             // 
-<<<<<<< HEAD
-=======
             // flowLayoutPanelBuku
             // 
             flowLayoutPanelBuku.AutoScroll = true;
@@ -170,7 +168,6 @@
             buttonHapus.Text = "Hapus";
             buttonHapus.UseVisualStyleBackColor = true;
             // 
->>>>>>> Dhani
             // V_ManajemenBuku_A
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);

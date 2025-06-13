@@ -139,7 +139,6 @@
             buttonPengembalian.UseVisualStyleBackColor = false;
             buttonPengembalian.Click += buttonPengembalian_Click;
             // 
-<<<<<<< HEAD
             // pictureBoxProfil
             // 
             pictureBoxProfil.BackColor = Color.Transparent;
@@ -152,8 +151,6 @@
             pictureBoxProfil.TabStop = false;
             pictureBoxProfil.Click += pictureBoxProfil_Click;
             // 
-=======
->>>>>>> Dhani
             // V_Dashboard_P
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -171,12 +168,8 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "V_Dashboard_P";
             StartPosition = FormStartPosition.CenterScreen;
-<<<<<<< HEAD
-            Text = "KatalogBuku";
-            ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).EndInit();
-=======
             Text = "V_Dashboard_P";
->>>>>>> Dhani
+            ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).EndInit();
             ResumeLayout(false);
         }
 

@@ -29,19 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_KatalogBuku_P));
+            buttonDashboard = new Button();
             buttonPengembalian = new Button();
             buttonRiwayatPeminjaman = new Button();
             buttonPeminjaman = new Button();
             buttonKatalogBuku = new Button();
             buttonKeluar = new Button();
-<<<<<<< HEAD
-            buttonDasboard = new Button();
             pictureBoxProfil = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).BeginInit();
-=======
-            buttonDashboard = new Button();
             flowLayoutPanelCover = new FlowLayoutPanel();
->>>>>>> Dhani
             SuspendLayout();
             // 
             // buttonPengembalian
@@ -144,7 +140,6 @@
             buttonDashboard.UseVisualStyleBackColor = false;
             buttonDashboard.Click += buttonDashboard_Click;
             // 
-<<<<<<< HEAD
             // pictureBoxProfil
             // 
             pictureBoxProfil.BackColor = Color.Transparent;
@@ -156,14 +151,13 @@
             pictureBoxProfil.TabIndex = 29;
             pictureBoxProfil.TabStop = false;
             pictureBoxProfil.Click += pictureBoxProfil_Click;
-=======
+            //
             // flowLayoutPanelCover
             // 
             flowLayoutPanelCover.Location = new Point(268, 86);
             flowLayoutPanelCover.Name = "flowLayoutPanelCover";
             flowLayoutPanelCover.Size = new Size(920, 577);
             flowLayoutPanelCover.TabIndex = 21;
->>>>>>> Dhani
             // 
             // V_KatalogBuku_P
             // 
@@ -171,11 +165,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
-<<<<<<< HEAD
             Controls.Add(pictureBoxProfil);
-=======
             Controls.Add(flowLayoutPanelCover);
->>>>>>> Dhani
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonRiwayatPeminjaman);
             Controls.Add(buttonPeminjaman);
@@ -192,17 +183,13 @@
 
         #endregion
 
+        private Button buttonDashboard;
         private Button buttonPengembalian;
         private Button buttonRiwayatPeminjaman;
         private Button buttonPeminjaman;
         private Button buttonKatalogBuku;
         private Button buttonKeluar;
-<<<<<<< HEAD
-        private Button buttonDasboard;
         private PictureBox pictureBoxProfil;
-=======
-        private Button buttonDashboard;
         private FlowLayoutPanel flowLayoutPanelCover;
->>>>>>> Dhani
     }
 }

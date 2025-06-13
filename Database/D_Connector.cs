@@ -11,11 +11,7 @@ namespace JALOKA.Database
 {
     public class D_Connector : IDisposable
     {
-<<<<<<< HEAD:Database/Connector.cs
-        private readonly string connStr = "Host=localhost;Username=postgres;Password=Fahmi77;Database=JALOKA";
-=======
         private readonly string connStr = "Host=localhost;Username=postgres;Password=@Emcc13;Database=JALOKA";
->>>>>>> Dhani:Database/D_Connector.cs
         private NpgsqlConnection conn;
 
         public D_Connector()
