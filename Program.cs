@@ -6,7 +6,7 @@ namespace JALOKA.Views
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new V_Dashboard_A());
+            Application.Run(new V_TampilanAwal());
 
         }
     }

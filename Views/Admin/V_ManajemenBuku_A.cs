@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace JALOKA.Views.Admin
 {
-    public partial class V_Manajemen_Buku_A: Form
+    public partial class V_ManajemenBuku_A: Form
     {
-        public V_Manajemen_Buku_A()
+        public V_ManajemenBuku_A()
         {
             InitializeComponent();
         }

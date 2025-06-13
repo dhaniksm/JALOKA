@@ -1,6 +1,6 @@
 ﻿namespace JALOKA.Views.Admin
 {
-    partial class V_Manajemen_Buku_A
+    partial class V_ManajemenBuku_A
     {
         /// <summary>
         /// Required designer variable.
