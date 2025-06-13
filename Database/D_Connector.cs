@@ -4,16 +4,21 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JALOKA.Helpers;
 using Npgsql;
 
 namespace JALOKA.Database
 {
-    public class Connector : IDisposable
+    public class D_Connector : IDisposable
     {
+<<<<<<< HEAD:Database/Connector.cs
         private readonly string connStr = "Host=localhost;Username=postgres;Password=Fahmi77;Database=JALOKA";
+=======
+        private readonly string connStr = "Host=localhost;Username=postgres;Password=@Emcc13;Database=JALOKA";
+>>>>>>> Dhani:Database/D_Connector.cs
         private NpgsqlConnection conn;
 
-        public Connector()
+        public D_Connector()
         {
             try
             {
@@ -23,7 +28,7 @@ namespace JALOKA.Database
 
             catch (Exception ex)
             {
-                throw new Exception("Gagal memuat database: " + ex.Message);
+                H_Pesan.Gagal("Gagal memuat database: " + ex.Message);
             }
         }
 
@@ -32,8 +37,9 @@ namespace JALOKA.Database
             get
             {
                 if (conn == null || conn.State != ConnectionState.Open)
-                
-                    throw new Exception ("Koneksi ke database belum dibuka atau telah ditutup.");
+                {
+                    H_Pesan.Peringatan("Koneksi ke database belum dibuka atau telah ditutup.");
+                }
                 return conn;
             }
         }

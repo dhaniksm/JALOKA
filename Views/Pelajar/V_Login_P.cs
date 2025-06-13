@@ -24,9 +24,13 @@ namespace JALOKA.Views
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            var user = new M_User
+            M_User user = new M_User
             {
+<<<<<<< HEAD:Views/Pelajar/V_Login_P.cs
                 nisn = textBoxNisn.Text,
+=======
+                id_user = textBoxIDPelajar.Text,
+>>>>>>> Dhani:Views/V_Login.cs
                 password = textBoxPassword.Text
             };
 
@@ -57,7 +61,10 @@ namespace JALOKA.Views
             this.Hide();
             V_Register_P register = new V_Register_P();
             register.Show();
+<<<<<<< HEAD:Views/Pelajar/V_Login_P.cs
 
+=======
+>>>>>>> Dhani:Views/V_Login.cs
         }
 
         private void checkBoxPassword_CheckedChanged(object sender, EventArgs e)

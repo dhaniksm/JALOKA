@@ -6,7 +6,13 @@ namespace JALOKA.Views
         static void Main()
         {
             ApplicationConfiguration.Initialize();
+<<<<<<< HEAD
             Application.Run(new V_TampilanAwal());
+=======
+
+            Application.Run(new V_Dashboard_A());
+
+>>>>>>> Dhani
         }
     }
 }

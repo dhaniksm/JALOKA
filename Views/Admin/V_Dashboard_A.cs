@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿using JALOKA.Views.Admin;
+=======
+﻿using JALOKA.Models;
+>>>>>>> Dhani
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,7 +33,7 @@ namespace JALOKA.Views
         private void buttonPeminjaman_Click(object sender, EventArgs e)
         {
             this.Hide();
-            V_Peminjaman_Pe peminjaman = new V_Peminjaman_Pe();
+            V_Peminjaman_P peminjaman = new V_Peminjaman_P();
             peminjaman.Show();
         }
 

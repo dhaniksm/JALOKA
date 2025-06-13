@@ -62,7 +62,6 @@
             textBoxAlamat.Name = "textBoxAlamat";
             textBoxAlamat.Size = new Size(300, 20);
             textBoxAlamat.TabIndex = 7;
-            textBoxAlamat.TextChanged += textBoxAlamat_TextChanged;
             // 
             // textBoxNoTelp
             // 
@@ -72,7 +71,6 @@
             textBoxNoTelp.Name = "textBoxNoTelp";
             textBoxNoTelp.Size = new Size(300, 20);
             textBoxNoTelp.TabIndex = 10;
-            textBoxNoTelp.TextChanged += textBoxNoTelp_TextChanged;
             // 
             // textBoxEmail
             // 
@@ -82,7 +80,6 @@
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.Size = new Size(300, 20);
             textBoxEmail.TabIndex = 11;
-            textBoxEmail.TextChanged += textBoxEmail_TextChanged;
             // 
             // textBoxNama
             // 
@@ -92,7 +89,6 @@
             textBoxNama.Name = "textBoxNama";
             textBoxNama.Size = new Size(300, 20);
             textBoxNama.TabIndex = 12;
-            textBoxNama.TextChanged += textBoxNamaLengkap_TextChanged;
             // 
             // textBoxIDPelajar
             // 
@@ -102,7 +98,6 @@
             textBoxIDPelajar.Name = "textBoxIDPelajar";
             textBoxIDPelajar.Size = new Size(300, 20);
             textBoxIDPelajar.TabIndex = 13;
-            textBoxIDPelajar.TextChanged += textBoxIDPelajar_TextChanged;
             // 
             // textBoxPassword
             // 
@@ -112,7 +107,6 @@
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.Size = new Size(300, 20);
             textBoxPassword.TabIndex = 14;
-            textBoxPassword.TextChanged += textBoxPassword_TextChanged;
             // 
             // pictureBoxKembali
             // 

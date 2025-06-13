@@ -1,6 +1,6 @@
 ﻿namespace JALOKA.Views
 {
-    partial class V_Peminjaman_Pe
+    partial class V_Peminjaman_P
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Peminjaman_Pe));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Peminjaman_P));
             buttonPengembalian = new Button();
             buttonRiwayatPeminjaman = new Button();
             buttonPeminjaman = new Button();
             buttonKatalogBuku = new Button();
             buttonKeluar = new Button();
             buttonDasboard = new Button();
+<<<<<<< HEAD:Views/Pelajar/V_Peminjaman_Pe.Designer.cs
             pictureBoxProfil = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).BeginInit();
+=======
+            flowLayoutPanelKeranjang = new FlowLayoutPanel();
+>>>>>>> Dhani:Views/Pelajar/V_Peminjaman_P.Designer.cs
             SuspendLayout();
             // 
             // buttonPengembalian
@@ -139,6 +143,7 @@
             buttonDasboard.UseVisualStyleBackColor = false;
             buttonDasboard.Click += buttonDasboard_Click;
             // 
+<<<<<<< HEAD:Views/Pelajar/V_Peminjaman_Pe.Designer.cs
             // pictureBoxProfil
             // 
             pictureBoxProfil.BackColor = Color.Transparent;
@@ -152,20 +157,40 @@
             pictureBoxProfil.Click += pictureBoxProfil_Click;
             // 
             // V_Peminjaman_Pe
+=======
+            // flowLayoutPanelKeranjang
+            // 
+            flowLayoutPanelKeranjang.Location = new Point(257, 79);
+            flowLayoutPanelKeranjang.Name = "flowLayoutPanelKeranjang";
+            flowLayoutPanelKeranjang.Size = new Size(931, 527);
+            flowLayoutPanelKeranjang.TabIndex = 21;
+            // 
+            // V_Peminjaman_P
+>>>>>>> Dhani:Views/Pelajar/V_Peminjaman_P.Designer.cs
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+<<<<<<< HEAD:Views/Pelajar/V_Peminjaman_Pe.Designer.cs
             Controls.Add(pictureBoxProfil);
+=======
+            Controls.Add(flowLayoutPanelKeranjang);
+>>>>>>> Dhani:Views/Pelajar/V_Peminjaman_P.Designer.cs
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonRiwayatPeminjaman);
             Controls.Add(buttonPeminjaman);
             Controls.Add(buttonKatalogBuku);
             Controls.Add(buttonKeluar);
             Controls.Add(buttonDasboard);
+<<<<<<< HEAD:Views/Pelajar/V_Peminjaman_Pe.Designer.cs
             FormBorderStyle = FormBorderStyle.None;
             Name = "V_Peminjaman_Pe";
+=======
+            DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "V_Peminjaman_P";
+>>>>>>> Dhani:Views/Pelajar/V_Peminjaman_P.Designer.cs
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_Peminjaman_Pelajar";
             ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).EndInit();
@@ -180,6 +205,10 @@
         private Button buttonKatalogBuku;
         private Button buttonKeluar;
         private Button buttonDasboard;
+<<<<<<< HEAD:Views/Pelajar/V_Peminjaman_Pe.Designer.cs
         private PictureBox pictureBoxProfil;
+=======
+        private FlowLayoutPanel flowLayoutPanelKeranjang;
+>>>>>>> Dhani:Views/Pelajar/V_Peminjaman_P.Designer.cs
     }
 }
