@@ -160,6 +160,7 @@
             // 
             dataGridViewUsers.AutoGenerateColumns = false;
             dataGridViewUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewUsers.BackgroundColor = Color.LightGray;
             dataGridViewUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewUsers.DataSource = cUserBindingSource;
             dataGridViewUsers.Location = new Point(263, 85);
@@ -172,8 +173,8 @@
             // 
             // textBoxID
             // 
-            textBoxID.BackColor = Color.DarkGray;
-            textBoxID.Location = new Point(328, 612);
+            textBoxID.BackColor = Color.LightGray;
+            textBoxID.Location = new Point(342, 623);
             textBoxID.Name = "textBoxID";
             textBoxID.Size = new Size(100, 27);
             textBoxID.TabIndex = 0;

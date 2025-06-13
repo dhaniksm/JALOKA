@@ -15,6 +15,8 @@ namespace JALOKA.Views
     public partial class V_Login_P : Form
     {
         private C_User c_user = new C_User();
+        public static string nisnLogin; 
+
         public V_Login_P()
         {
             InitializeComponent();
@@ -24,7 +26,7 @@ namespace JALOKA.Views
         {
             var user = new M_User
             {
-                id_pelajar = textBoxIDPelajar.Text,
+                nisn = textBoxNisn.Text,
                 password = textBoxPassword.Text
             };
 
@@ -33,10 +35,11 @@ namespace JALOKA.Views
                 bool success = c_user.Login(user);
                 if (success)
                 {
+                    nisnLogin = textBoxNisn.Text;
                     MessageBox.Show("Berhasil Login!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
-                    V_DataPengguna_A dataPengguna = new V_DataPengguna_A();
-                    dataPengguna.Show();
+                    V_Dashboard_P dashboard = new V_Dashboard_P();
+                    dashboard.Show();
                 }
                 else
                 {
@@ -74,14 +77,11 @@ namespace JALOKA.Views
             textBoxPassword.PasswordChar = '*';
         }
 
-        private void textBoxIDPelajar_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void pictureBoxKembali_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             V_TampilanAwal tampilanAwal = new V_TampilanAwal();
             tampilanAwal.Show();
         }

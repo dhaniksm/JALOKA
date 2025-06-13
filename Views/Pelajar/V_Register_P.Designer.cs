@@ -126,7 +126,7 @@
             pictureBoxKembali.Size = new Size(66, 54);
             pictureBoxKembali.TabIndex = 15;
             pictureBoxKembali.TabStop = false;
-            pictureBoxKembali.Click += this.pictureBoxKembali_Click;
+            pictureBoxKembali.Click += pictureBoxKembali_Click;
             // 
             // V_Register_P
             // 

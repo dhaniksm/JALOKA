@@ -4,7 +4,6 @@
     {
         /// <summary>
         /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
@@ -32,7 +31,7 @@
             buttonRegistrasi = new Button();
             buttonLogin = new Button();
             textBoxPassword = new TextBox();
-            textBoxIDPelajar = new TextBox();
+            textBoxNisn = new TextBox();
             checkBoxPassword = new CheckBox();
             pictureBoxKembali = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBoxKembali).BeginInit();
@@ -78,14 +77,14 @@
             textBoxPassword.TabIndex = 2;
             textBoxPassword.TextChanged += textBoxPassword_TextChanged;
             // 
-            // textBoxIDPelajar
+            // textBoxNisn
             // 
-            textBoxIDPelajar.BorderStyle = BorderStyle.None;
-            textBoxIDPelajar.Location = new Point(442, 197);
-            textBoxIDPelajar.Name = "textBoxIDPelajar";
-            textBoxIDPelajar.Size = new Size(320, 20);
-            textBoxIDPelajar.TabIndex = 3;
-            textBoxIDPelajar.TextChanged += textBoxIDPelajar_TextChanged;
+            textBoxNisn.BorderStyle = BorderStyle.None;
+            textBoxNisn.Location = new Point(442, 197);
+            textBoxNisn.Name = "textBoxNisn";
+            textBoxNisn.Size = new Size(320, 20);
+            textBoxNisn.TabIndex = 3;
+           
             // 
             // checkBoxPassword
             // 
@@ -112,7 +111,7 @@
             pictureBoxKembali.TabStop = false;
             pictureBoxKembali.Click += pictureBoxKembali_Click;
             // 
-            // V_Login
+            // V_Login_P
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -122,11 +121,11 @@
             Controls.Add(pictureBoxKembali);
             Controls.Add(checkBoxPassword);
             Controls.Add(buttonRegistrasi);
-            Controls.Add(textBoxIDPelajar);
+            Controls.Add(textBoxNisn);
             Controls.Add(textBoxPassword);
             Controls.Add(buttonLogin);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_Login";
+            Name = "V_Login_P";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_Login";
             ((System.ComponentModel.ISupportInitialize)pictureBoxKembali).EndInit();
@@ -138,7 +137,7 @@
 
         private Button buttonLogin;
         private TextBox textBoxPassword;
-        private TextBox textBoxIDPelajar;
+        private TextBox textBoxNisn;
         private Button buttonRegistrasi;
         private CheckBox checkBoxPassword;
         private PictureBox pictureBoxKembali;

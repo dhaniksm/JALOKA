@@ -35,6 +35,8 @@
             buttonDataPengguna = new Button();
             buttonRiwayatPeminjaman = new Button();
             buttonDashboard = new Button();
+            pictureBoxProfil = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).BeginInit();
             SuspendLayout();
             // 
             // buttonPengembalian
@@ -127,12 +129,25 @@
             buttonDashboard.UseVisualStyleBackColor = false;
             buttonDashboard.Click += buttonDashboard_Click;
             // 
+            // pictureBoxProfil
+            // 
+            pictureBoxProfil.BackColor = Color.Transparent;
+            pictureBoxProfil.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBoxProfil.Cursor = Cursors.Hand;
+            pictureBoxProfil.Location = new Point(21, 11);
+            pictureBoxProfil.Name = "pictureBoxProfil";
+            pictureBoxProfil.Size = new Size(57, 54);
+            pictureBoxProfil.TabIndex = 27;
+            pictureBoxProfil.TabStop = false;
+            pictureBoxProfil.Click += pictureBoxProfil_Click;
+            // 
             // V_Dashboard_A
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(pictureBoxProfil);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonKeluar);
             Controls.Add(buttonManajemenBuku);
@@ -143,6 +158,7 @@
             Name = "V_Dashboard_A";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_Dashboard_Admin";
+            ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).EndInit();
             ResumeLayout(false);
         }
 
@@ -154,5 +170,6 @@
         private Button buttonDataPengguna;
         private Button buttonRiwayatPeminjaman;
         private Button buttonDashboard;
+        private PictureBox pictureBoxProfil;
     }
 }

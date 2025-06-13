@@ -17,9 +17,21 @@ namespace JALOKA.Views
             InitializeComponent();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
 
+
+        private void pictureBoxProfil_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_Profil_P v_Profil_P = new V_Profil_P();
+            v_Profil_P.ShowDialog();
+
+        }
+
+        private void buttonKeluar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            V_TampilanAwal tampilanAwal = new V_TampilanAwal();
+            tampilanAwal.Show();
         }
     }
 }
