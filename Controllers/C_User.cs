@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using JALOKA.Database;
 using JALOKA.Models;
 using Npgsql;
@@ -11,7 +12,7 @@ namespace JALOKA.Controllers
         private readonly Connector db = new Connector();
         public bool Login(M_User user)
         {
-            if(string.IsNullOrWhiteSpace(user.id_pelajar) || string.IsNullOrWhiteSpace(user.password))
+            if (string.IsNullOrWhiteSpace(user.id_pelajar) || string.IsNullOrWhiteSpace(user.password))
                 throw new ArgumentException("ID Pelajar dan Password tidak boleh kosong.");
 
             try
@@ -31,11 +32,15 @@ namespace JALOKA.Controllers
 
         public bool Register(M_User user)
         {
-            if(string.IsNullOrWhiteSpace(user.id_pelajar) || string.IsNullOrWhiteSpace(user.password) ||
+            if (string.IsNullOrWhiteSpace(user.id_pelajar) || string.IsNullOrWhiteSpace(user.password) ||
                string.IsNullOrWhiteSpace(user.nama) || string.IsNullOrWhiteSpace(user.email) ||
                string.IsNullOrWhiteSpace(user.nomor_hp) || string.IsNullOrWhiteSpace(user.alamat))
                 throw new ArgumentException("Semua field harus diisi.");
+
             
+
+
+
             try
             {
                 var cmd = new NpgsqlCommand(@"INSERT INTO users (id_pelajar, password, nama, email, nomor_hp, alamat) VALUES (@id_pelajar, @password, @nama, @email, @nomor_hp, @alamat)", db.Connection);
@@ -53,12 +58,19 @@ namespace JALOKA.Controllers
             }
         }
 
-        public List<M_User> DaftarPegguna()
+        // READ 
+        public List<M_User> DaftarPengguna()
         {
             var list = new List<M_User>();
+
+            try
             {
+                if (db.Connection.State != ConnectionState.Open)
+                    db.Connection.Open();
+
                 var cmd = new NpgsqlCommand("SELECT * FROM users", db.Connection);
                 var reader = cmd.ExecuteReader();
+
                 while (reader.Read())
                 {
                     list.Add(new M_User
@@ -71,8 +83,38 @@ namespace JALOKA.Controllers
                         alamat = reader["alamat"].ToString()
                     });
                 }
+
+                reader.Close();
             }
+            catch (Exception ex)
+            {
+                throw new Exception("Gagal mengambil data pengguna: " + ex.Message);
+            }
+
             return list;
         }
+
+      
+
+        // DELETE
+        public bool DeleteUser(string id_pelajar)
+        {
+            try
+            {
+                if (db.Connection.State != ConnectionState.Open)
+                    db.Connection.Open();
+
+                var cmd = new NpgsqlCommand("DELETE FROM users WHERE id_pelajar = @id_pelajar", db.Connection);
+                cmd.Parameters.AddWithValue("@id_pelajar", id_pelajar);
+
+                return cmd.ExecuteNonQuery() > 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Gagal menghapus data pengguna: " + ex.Message);
+            }
+        }
+
     }
 }
+

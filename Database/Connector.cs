@@ -10,7 +10,7 @@ namespace JALOKA.Database
 {
     public class Connector : IDisposable
     {
-        private readonly string connStr = "Host=localhost;Username=postgres;Password=@Emcc13;Database=JALOKA";
+        private readonly string connStr = "Host=localhost;Username=postgres;Password=Fahmi77;Database=JALOKA";
         private NpgsqlConnection conn;
 
         public Connector()
