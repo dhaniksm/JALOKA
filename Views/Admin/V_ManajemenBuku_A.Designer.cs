@@ -35,6 +35,10 @@
             buttonDataPengguna = new Button();
             buttonRiwayatPeminjaman = new Button();
             buttonDashboard = new Button();
+            flowLayoutPanelBuku = new FlowLayoutPanel();
+            buttonTambah = new Button();
+            buttonEdit = new Button();
+            buttonHapus = new Button();
             SuspendLayout();
             // 
             // buttonPengembalian
@@ -127,13 +131,54 @@
             buttonDashboard.UseVisualStyleBackColor = false;
             buttonDashboard.Click += buttonDashboard_Click;
             // 
-            // V_ManajemenBuku
+            // flowLayoutPanelBuku
+            // 
+            flowLayoutPanelBuku.AutoScroll = true;
+            flowLayoutPanelBuku.Location = new Point(264, 89);
+            flowLayoutPanelBuku.Name = "flowLayoutPanelBuku";
+            flowLayoutPanelBuku.Size = new Size(924, 491);
+            flowLayoutPanelBuku.TabIndex = 1;
+            // 
+            // buttonTambah
+            // 
+            buttonTambah.Anchor = AnchorStyles.None;
+            buttonTambah.Location = new Point(296, 599);
+            buttonTambah.Name = "buttonTambah";
+            buttonTambah.Size = new Size(90, 30);
+            buttonTambah.TabIndex = 0;
+            buttonTambah.Text = "Tambah";
+            buttonTambah.Click += buttonTambah_Click;
+            // 
+            // buttonEdit
+            // 
+            buttonEdit.Location = new Point(622, 599);
+            buttonEdit.Name = "buttonEdit";
+            buttonEdit.Size = new Size(90, 30);
+            buttonEdit.TabIndex = 1;
+            buttonEdit.Text = "Edit";
+            buttonEdit.UseVisualStyleBackColor = true;
+            buttonEdit.Click += buttonEdit_Click;
+            // 
+            // buttonHapus
+            // 
+            buttonHapus.Location = new Point(938, 599);
+            buttonHapus.Name = "buttonHapus";
+            buttonHapus.Size = new Size(90, 30);
+            buttonHapus.TabIndex = 2;
+            buttonHapus.Text = "Hapus";
+            buttonHapus.UseVisualStyleBackColor = true;
+            // 
+            // V_ManajemenBuku_A
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1200, 675);
+            Controls.Add(buttonTambah);
+            Controls.Add(buttonEdit);
+            Controls.Add(buttonHapus);
+            Controls.Add(flowLayoutPanelBuku);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonKeluar);
             Controls.Add(buttonManajemenBuku);
@@ -142,10 +187,9 @@
             Controls.Add(buttonDashboard);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_ManajemenBuku";
+            Name = "V_ManajemenBuku_A";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "V_ManajemenBuku";
-            Load += V_ManajemenBuku_Load;
+            Text = "V_ManajemenBuku_A";
             ResumeLayout(false);
         }
 
@@ -157,5 +201,9 @@
         private Button buttonDataPengguna;
         private Button buttonRiwayatPeminjaman;
         private Button buttonDashboard;
+        private FlowLayoutPanel flowLayoutPanelBuku;
+        private Button buttonTambah;
+        private Button buttonHapus;
+        private Button buttonEdit;
     }
 }

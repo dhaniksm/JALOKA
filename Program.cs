@@ -12,7 +12,7 @@ namespace JALOKA.Views
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            Application.Run(new V_Login());
+            Application.Run(new V_Dashboard_A());
 
         }
     }

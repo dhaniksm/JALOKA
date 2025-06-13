@@ -1,93 +1,140 @@
 ﻿using JALOKA.Database;
+using JALOKA.Helpers;
 using JALOKA.Models;
 using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace JALOKA.Controllers
 {
     public class C_Buku
     {
-        private readonly Connector db = new Connector();
-
-        public void TabelBuku()
-        {
-            Tabel.CekTabel(db.Connection, "buku");
-        }
-
-        public bool TambahBuku(M_Buku buku)
+        public void TambahBuku(M_Buku buku)
         {
             try
             {
-                using var cmd = new NpgsqlCommand("INSERT INTO books (judul, penulis, tahun_terbit) VALUES (@judul, @penulis, @tahun_terbit)", db.Connection);
-                cmd.Parameters.AddWithValue("@judul", buku.judul);
-                cmd.Parameters.AddWithValue("@penulis", buku.penulis);
-                cmd.Parameters.AddWithValue("@tahun_terbit", buku.tahun_terbit);
-                return cmd.ExecuteNonQuery() > 0;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Gagal menambahkan buku: " + ex.Message);
-            }
-        }
-
-        public List<M_Buku> DaftarBuku()
-        {
-            var books = new List<M_Buku>();
-            try
-            {
-                using var cmd = new NpgsqlCommand("SELECT * FROM books ORDER BY id_buku", db.Connection);
-                using var reader = cmd.ExecuteReader();
-
-                while (reader.Read())
+                using (var db = new D_Connector())
                 {
-                    books.Add(new M_Buku
-                    {
-                        id_buku = Convert.ToInt32(reader["id_buku"]),
-                        judul = reader["judul"].ToString(),
-                        penulis = reader["penulis"].ToString(),
-                        tahun_terbit = Convert.ToInt32(reader["tahun_terbit"]),
-                        cover_path = reader.IsDBNull(4) ? null : reader.GetString(4)
-                    });
+                    using var cmd = new NpgsqlCommand("INSERT INTO buku (judul, penulis, penerbit, tahun_terbit, sinopsis, cover) VALUES (@judul, @penulis, @penerbit, @tahun_terbit, @sinopsis, @cover)", db.Connection);
+                    cmd.Parameters.AddWithValue("@judul", buku.judul);
+                    cmd.Parameters.AddWithValue("@penulis", buku.penulis);
+                    cmd.Parameters.AddWithValue("@penerbit", buku.penerbit);
+                    cmd.Parameters.AddWithValue("@tahun_terbit", buku.tahun_terbit);
+                    cmd.Parameters.AddWithValue("@sinopsis", buku.sinopsis);
+                    cmd.Parameters.AddWithValue("@cover", buku.cover ?? (object) DBNull.Value);
+                    cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Gagal menampilkan buku: " + ex.Message);
+                H_Pesan.Gagal("Gagal menambah buku: " + ex.Message);
             }
-
-            return books;
         }
 
-        public bool UpdateBuku(M_Buku buku)
+        public List<M_Buku> AmbilSemua()
         {
+            var daftar = new List<M_Buku>();
             try
             {
-                using var cmd = new NpgsqlCommand("UPDATE books SET judul = @judul, penulis = @penulis, tahun = @yahun WHERE id_buku = @id_buku", db.Connection);
-                cmd.Parameters.AddWithValue("@id_buku", buku.id_buku);
-                cmd.Parameters.AddWithValue("@judul", buku.judul);
-                cmd.Parameters.AddWithValue("@penulis", buku.penulis);
-                cmd.Parameters.AddWithValue("@tahun", buku.tahun_terbit);
-                return cmd.ExecuteNonQuery() > 0;
+                using (var db = new D_Connector())
+                {
+                    using var cmd = new NpgsqlCommand("SELECT * FROM buku ORDER BY id_buku", db.Connection);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            daftar.Add(new M_Buku
+                            {
+                                id_buku = reader.GetInt32(0),
+                                judul = reader.GetString(1),
+                                penulis = reader.GetString(2),
+                                penerbit = reader.GetString(3),
+                                tahun_terbit = reader.GetInt32(4),
+                                cover = reader["cover"] as byte[]
+                            });
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
-                throw new Exception("Gagal memperbarui buku: " + ex.Message);
+                H_Pesan.Gagal("Gagal mengambil data buku: " + ex.Message);
             }
+            return daftar;
         }
 
-        public bool HapusBuku(int id_buku)
+        public void EditBuku(M_Buku buku)
         {
             try
             {
-                using var cmd = new NpgsqlCommand("DELETE FROM books WHERE buku_id = @buku_id", db.Connection);
-                cmd.Parameters.AddWithValue("@buku_id", id_buku);
-                return cmd.ExecuteNonQuery() > 0;
+                using (var db = new D_Connector())
+                {
+                    using var cmd = new NpgsqlCommand("UPDATE buku SET judul = @judul, penulis = @penulis, penerbit = @penerbit, tahun_terbit = @tahun_terbit, cover = @cover WHERE id_buku = @id_buku", db.Connection);
+                    cmd.Parameters.AddWithValue("@id_buku", buku.id_buku);
+                    cmd.Parameters.AddWithValue("@judul", buku.judul);
+                    cmd.Parameters.AddWithValue("@penulis", buku.penulis);
+                    cmd.Parameters.AddWithValue("@penerbit", buku.penerbit);
+                    cmd.Parameters.AddWithValue("@tahun_terbit", buku.tahun_terbit);
+                    cmd.Parameters.AddWithValue("@cover", buku.cover ?? (object)DBNull.Value);
+                    cmd.ExecuteNonQuery();
+                }
             }
             catch (Exception ex)
             {
-                throw new Exception("Gagal menghapus buku: " + ex.Message);
+                H_Pesan.Gagal("Gagal mengubah data buku: " + ex.Message);
             }
         }
+
+        public void HapusBuku(int id_buku)
+        {
+            try
+            {
+                using (var db = new D_Connector())
+                {
+                    using var cmd = new NpgsqlCommand("DELETE FROM buku WHERE id_buku = @id_buku", db.Connection);
+                    cmd.Parameters.AddWithValue("@id_buku", id_buku);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                H_Pesan.Gagal("Gagal menghapus buku: " + ex.Message);
+            }
+        }
+
+        public static M_Buku? AmbilDetailBuku(int id_buku)
+        {
+            try
+            {
+                using (var db = new D_Connector())
+                {
+                    using var cmd = new NpgsqlCommand(@"SELECT id_buku, judul, penulis, penerbit, tahun_terbit, sinopsis, cover FROM buku WHERE id_buku = @id_buku", db.Connection);
+                    cmd.Parameters.AddWithValue("@id_buku", id_buku);
+
+                    using var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        return new M_Buku
+                        {
+                            id_buku = reader.GetInt32(0),
+                            judul = reader.GetString(1),
+                            penulis = reader.GetString(2),
+                            penerbit = reader.GetString(3),
+                            tahun_terbit = reader.GetInt32(4),
+                            sinopsis = reader.IsDBNull(5) ? "" : reader.GetString(5),
+                            cover = reader["cover"] as byte[]
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                H_Pesan.Gagal("Gagal mengambil detail buku: " + ex.Message);
+            }
+
+            return null;
+        }
+
     }
 }

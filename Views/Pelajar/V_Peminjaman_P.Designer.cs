@@ -35,12 +35,7 @@
             buttonKatalogBuku = new Button();
             buttonKeluar = new Button();
             buttonDasboard = new Button();
-            dataGridViewKeranjang = new DataGridView();
-            id_buku = new DataGridViewTextBoxColumn();
-            judul = new DataGridViewTextBoxColumn();
-            penulis = new DataGridViewTextBoxColumn();
-            tahun_terbit = new DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewKeranjang).BeginInit();
+            flowLayoutPanelKeranjang = new FlowLayoutPanel();
             SuspendLayout();
             // 
             // buttonPengembalian
@@ -143,49 +138,12 @@
             buttonDasboard.UseVisualStyleBackColor = false;
             buttonDasboard.Click += buttonDasboard_Click;
             // 
-            // dataGridViewKeranjang
+            // flowLayoutPanelKeranjang
             // 
-            dataGridViewKeranjang.AllowUserToAddRows = false;
-            dataGridViewKeranjang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewKeranjang.Columns.AddRange(new DataGridViewColumn[] { id_buku, judul, penulis, tahun_terbit });
-            dataGridViewKeranjang.Location = new Point(253, 78);
-            dataGridViewKeranjang.Name = "dataGridViewKeranjang";
-            dataGridViewKeranjang.ReadOnly = true;
-            dataGridViewKeranjang.RowHeadersWidth = 51;
-            dataGridViewKeranjang.Size = new Size(553, 188);
-            dataGridViewKeranjang.TabIndex = 21;
-            // 
-            // id_buku
-            // 
-            id_buku.HeaderText = "ID Buku";
-            id_buku.MinimumWidth = 6;
-            id_buku.Name = "id_buku";
-            id_buku.ReadOnly = true;
-            id_buku.Width = 125;
-            // 
-            // judul
-            // 
-            judul.HeaderText = "Judul";
-            judul.MinimumWidth = 6;
-            judul.Name = "judul";
-            judul.ReadOnly = true;
-            judul.Width = 125;
-            // 
-            // penulis
-            // 
-            penulis.HeaderText = "Penulis";
-            penulis.MinimumWidth = 6;
-            penulis.Name = "penulis";
-            penulis.ReadOnly = true;
-            penulis.Width = 125;
-            // 
-            // tahun_terbit
-            // 
-            tahun_terbit.HeaderText = "Tahun Terbit";
-            tahun_terbit.MinimumWidth = 6;
-            tahun_terbit.Name = "tahun_terbit";
-            tahun_terbit.ReadOnly = true;
-            tahun_terbit.Width = 125;
+            flowLayoutPanelKeranjang.Location = new Point(257, 79);
+            flowLayoutPanelKeranjang.Name = "flowLayoutPanelKeranjang";
+            flowLayoutPanelKeranjang.Size = new Size(931, 527);
+            flowLayoutPanelKeranjang.TabIndex = 21;
             // 
             // V_Peminjaman_P
             // 
@@ -193,18 +151,18 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
-            Controls.Add(dataGridViewKeranjang);
+            Controls.Add(flowLayoutPanelKeranjang);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonRiwayatPeminjaman);
             Controls.Add(buttonPeminjaman);
             Controls.Add(buttonKatalogBuku);
             Controls.Add(buttonKeluar);
             Controls.Add(buttonDasboard);
+            DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Name = "V_Peminjaman_P";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_Peminjaman_Pelajar";
-            ((System.ComponentModel.ISupportInitialize)dataGridViewKeranjang).EndInit();
             ResumeLayout(false);
         }
 
@@ -216,10 +174,6 @@
         private Button buttonKatalogBuku;
         private Button buttonKeluar;
         private Button buttonDasboard;
-        private DataGridView dataGridViewKeranjang;
-        private DataGridViewTextBoxColumn id_buku;
-        private DataGridViewTextBoxColumn judul;
-        private DataGridViewTextBoxColumn penulis;
-        private DataGridViewTextBoxColumn tahun_terbit;
+        private FlowLayoutPanel flowLayoutPanelKeranjang;
     }
 }

@@ -1,7 +1,13 @@
-﻿using System;
+﻿using JALOKA.Controllers;
+using JALOKA.Database;
+using JALOKA.Helpers;
+using JALOKA.Models;
+using JALOKA.Views.Admin;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,14 +18,87 @@ namespace JALOKA.Views
 {
     public partial class V_ManajemenBuku_A : Form
     {
+        private C_Buku c_buku = new C_Buku();
+
         public V_ManajemenBuku_A()
         {
             InitializeComponent();
+            TabelBuku();
+            MuatBuku();
         }
 
-        private void V_ManajemenBuku_Load(object sender, EventArgs e)
+        public void TabelBuku()
         {
+            try
+            {
+                using (var db = new D_Connector())
+                {
+                    D_Tabel.CekTabel(db.Connection, "buku");
+                }
+            }
+            catch (Exception ex)
+            {
+                H_Pesan.Gagal("Gagal memeriksa tabel buku: " + ex.Message);
+            }
+        }
 
+        private void MuatBuku()
+        {
+            try
+            {
+                flowLayoutPanelBuku.Controls.Clear();
+                var daftarBuku = c_buku.AmbilSemua();
+
+                foreach (var buku in daftarBuku)
+                {
+                    var panel = new Panel
+                    {
+                        Width = 400,
+                        Height = 400,
+                        Margin = new Padding(10)
+                    };
+
+                    PictureBox cover = new PictureBox
+                    {
+                        Width = 120,
+                        Height = 150,
+                        Image = H_Konversi.ByteArrayToImage(buku.cover),
+                        SizeMode = PictureBoxSizeMode.StretchImage,
+                        Top = 5,
+                        Left = 10,
+                        Cursor = Cursors.Hand,
+                        Tag = buku
+                    };
+                    cover.Click += Cover_Click;
+
+                    Label judul = new Label
+                    {
+                        Text = buku.judul,
+                        Width = 120,
+                        Height = 30,
+                        Top = 160,
+                        Left = 10,
+                        TextAlign = ContentAlignment.MiddleCenter
+                    };
+
+                    panel.Controls.Add(cover);
+                    panel.Controls.Add(judul);
+                    flowLayoutPanelBuku.Controls.Add(panel);
+                }
+            }
+            catch (Exception ex)
+            {
+                H_Pesan.Gagal("Gagal memuat buku: " + ex.Message);
+            }
+        }
+
+        private void Cover_Click(object sender, EventArgs e)
+        {
+            if (sender is PictureBox pb && pb.Tag is M_Buku buku)
+            {
+                var detail = new V_DetailBuku_A(buku.id_buku);
+                detail.ShowDialog();
+            }
         }
 
         private void buttonDashboard_Click(object sender, EventArgs e)
@@ -44,8 +123,9 @@ namespace JALOKA.Views
         private void buttonRiwayatPeminjaman_Click(object sender, EventArgs e)
         {
             this.Hide();
-            V_RiwayatPeminjaman_A riwayatPeminjaman = new V_RiwayatPeminjaman_A();
-            riwayatPeminjaman.Show();
+
+            V_RiwayatPeminjaman_A riwayat = new V_RiwayatPeminjaman_A();
+            riwayat.Show();
         }
 
         private void buttonPengembalian_Click(object sender, EventArgs e)
@@ -60,6 +140,18 @@ namespace JALOKA.Views
             this.Hide();
             V_Login login = new V_Login();
             login.Show();
+        }
+
+        private void buttonTambah_Click(object sender, EventArgs e)
+        {
+            V_TambahEdit_A tambahEdit = new V_TambahEdit_A();
+            tambahEdit.Show();
+            this.Close();
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

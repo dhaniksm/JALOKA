@@ -18,13 +18,14 @@ namespace JALOKA.Views
         {
             M_User user = new M_User
             {
-                id_pelajar = textBoxIDPelajar.Text,
+                id_user = textBoxIDPelajar.Text,
                 password = textBoxPassword.Text,
                 nama = textBoxNama.Text,
                 email = textBoxEmail.Text,
                 nomor_hp = textBoxNoTelp.Text,
                 alamat = textBoxAlamat.Text
             };
+
             try
             {
                 if (c_user.Register(user))

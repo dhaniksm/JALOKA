@@ -22,9 +22,9 @@ namespace JALOKA.Views
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            var user = new M_User
+            M_User user = new M_User
             {
-                id_pelajar = textBoxIDPelajar.Text,
+                id_user = textBoxIDPelajar.Text,
                 password = textBoxPassword.Text
             };
 
@@ -34,7 +34,7 @@ namespace JALOKA.Views
                 if (success)
                 {
                     MessageBox.Show("Berhasil Login!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                    this.Hide();
                     V_Dashboard_P dashboard = new V_Dashboard_P();
                     dashboard.Show();
                 }
