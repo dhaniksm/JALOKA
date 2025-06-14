@@ -13,14 +13,14 @@ namespace JALOKA.Controllers
         public bool Login(M_User user)
         {
             if(string.IsNullOrWhiteSpace(user.nisn) || string.IsNullOrWhiteSpace(user.password))
-                throw new ArgumentException("ID Pelajar dan Password tidak boleh kosong.");
+                throw new ArgumentException("nisn dan Password tidak boleh kosong.");
 
             try
             {
                 using (var db = new D_Connector())
                 {
-                    var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM users WHERE id_user = @id_user AND password = @password", db.Connection);
-                    cmd.Parameters.AddWithValue("@id_user", user.id_user);
+                    var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM pengguna WHERE nisn = @nisn AND password = @password", db.Connection);
+                    cmd.Parameters.AddWithValue("@nisn", user.nisn);
                     cmd.Parameters.AddWithValue("@password", user.password);
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
                     return count > 0;
@@ -44,8 +44,8 @@ namespace JALOKA.Controllers
             {
                 using (var db = new D_Connector())
                 {
-                    using var cmd = new NpgsqlCommand(@"INSERT INTO users (id_user, password, nama, email, nomor_hp, alamat) VALUES (@id_user, @password, @nama, @email, @nomor_hp, @alamat)", db.Connection);
-                    cmd.Parameters.AddWithValue("@id_user", user.nisn);
+                    using var cmd = new NpgsqlCommand(@"INSERT INTO pengguna (nisn, password, nama, email, nomor_hp, alamat) VALUES (@nisn, @password, @nama, @email, @nomor_hp, @alamat)", db.Connection);
+                    cmd.Parameters.AddWithValue("@nisn", user.nisn);
                     cmd.Parameters.AddWithValue("@password", user.password);
                     cmd.Parameters.AddWithValue("@nama", user.nama);
                     cmd.Parameters.AddWithValue("@email", user.email);
@@ -68,7 +68,7 @@ namespace JALOKA.Controllers
             {
                 using(var db = new D_Connector())
                 {
-                    var cmd = new NpgsqlCommand("SELECT * FROM users ORDER BY id_user ASC", db.Connection);
+                    var cmd = new NpgsqlCommand("SELECT * FROM pengguna ORDER BY id_user ASC", db.Connection);
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
@@ -99,7 +99,7 @@ namespace JALOKA.Controllers
             {
                 using (var db = new D_Connector())
                 {
-                    var cmd = new NpgsqlCommand("SELECT * FROM users WHERE nisn = @nisn", db.Connection);
+                    var cmd = new NpgsqlCommand("SELECT * FROM pengguna WHERE nisn = @nisn", db.Connection);
                     cmd.Parameters.AddWithValue("@nisn", nisn);
 
                     var reader = cmd.ExecuteReader();
@@ -134,7 +134,7 @@ namespace JALOKA.Controllers
                 using (var db = new D_Connector())
                 {
                     var cmd = new NpgsqlCommand(@"
-                    UPDATE users 
+                    UPDATE pengguna 
                     SET nama = @nama, email = @email, nomor_hp = @nomor_hp, alamat = @alamat
                     WHERE nisn = @nisn", db.Connection);
 
@@ -160,7 +160,7 @@ namespace JALOKA.Controllers
             {
                 using (var db = new D_Connector())
                 {
-                    var cmd = new NpgsqlCommand("DELETE FROM users WHERE nisn = @nisn", db.Connection);
+                    var cmd = new NpgsqlCommand("DELETE FROM pengguna WHERE nisn = @nisn", db.Connection);
                     cmd.Parameters.AddWithValue("@nisn", nisn);
 
                     return cmd.ExecuteNonQuery() > 0;

@@ -137,7 +137,7 @@ namespace JALOKA.Views
 
         private void buttonKeluar_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             V_Login_A login = new V_Login_A();
             login.Show();
         }
@@ -148,5 +148,7 @@ namespace JALOKA.Views
             tambahEdit.Show();
             this.Close();
         }
+
+        
     }
 }
