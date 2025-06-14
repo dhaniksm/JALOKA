@@ -26,7 +26,7 @@ namespace JALOKA.Views
         private void buttonManajemenBuku_Click(object sender, EventArgs e)
         {
             this.Hide();
-            V_ManajemenBuku_A manajemenBuku = new V_ManajemenBuku_A();
+            V_ManajemenBuku manajemenBuku = new V_ManajemenBuku();
             manajemenBuku.Show();
         }
 

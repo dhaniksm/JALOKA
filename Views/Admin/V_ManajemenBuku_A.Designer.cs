@@ -173,7 +173,6 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1200, 675);
             Controls.Add(buttonTambah);
             Controls.Add(buttonEdit);
