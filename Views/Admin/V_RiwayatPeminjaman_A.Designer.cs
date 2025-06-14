@@ -35,6 +35,8 @@
             buttonRiwayatPeminjaman = new Button();
             buttonDashboard = new Button();
             buttonPengembalian = new Button();
+            dataGridView1 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // buttonKeluar
@@ -127,12 +129,25 @@
             buttonPengembalian.UseVisualStyleBackColor = false;
             buttonPengembalian.Click += buttonPengembalian_Click;
             // 
-            // V_RiwayatPeminjaman
+            // dataGridView1
+            // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.ColumnHeadersHeight = 29;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView1.Location = new Point(285, 108);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(882, 516);
+            dataGridView1.TabIndex = 15;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // V_RiwayatPeminjaman_A
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(dataGridView1);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonKeluar);
             Controls.Add(button8);
@@ -140,9 +155,11 @@
             Controls.Add(buttonRiwayatPeminjaman);
             Controls.Add(buttonDashboard);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_RiwayatPeminjaman";
+            Name = "V_RiwayatPeminjaman_A";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_RiwayatPeminjaman";
+            Load += V_RiwayatPeminjaman_A_Load_1;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -154,5 +171,6 @@
         private Button buttonRiwayatPeminjaman;
         private Button buttonDashboard;
         private Button buttonPengembalian;
+        private DataGridView dataGridView1;
     }
 }

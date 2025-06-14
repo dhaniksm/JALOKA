@@ -6,19 +6,39 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace JALOKA.Views
 {
-    public partial class V_Register : Form
+    public partial class V_Register_P : Form
     {
         private C_User c_user = new C_User();
-        public V_Register()
+        public V_Register_P()
         {
             InitializeComponent();
         }
 
+        private void pictureBoxKembali_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            V_Login_P login = new V_Login_P();
+            login.Show();
+
+        }
+
         private void buttonRegister_Click(object sender, EventArgs e)
         {
+            if (!textBoxEmail.Text.Contains("@"))
+            {
+                MessageBox.Show("Format email tidak valid.", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!long.TryParse(textBoxNoTelp.Text, out _))
+            {
+                MessageBox.Show("Nomor HP hanya boleh berisi angka.", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             M_User user = new M_User
             {
-                id_user = textBoxIDPelajar.Text,
+                nisn = textBoxIDPelajar.Text,
                 password = textBoxPassword.Text,
                 nama = textBoxNama.Text,
                 email = textBoxEmail.Text,
@@ -32,13 +52,17 @@ namespace JALOKA.Views
                 {
                     MessageBox.Show("Registrasi berhasil!");
                     this.Close();
-                    V_Login login = new V_Login();
-                    login.Show();
+                    V_Login_P Login = new V_Login_P();
+                    Login.Show();
                 }
                 else
                 {
                     MessageBox.Show("Registrasi gagal.");
                 }
+                MessageBox.Show("Registrasi berhasil!");
+                this.Close();
+                V_Login_P login = new V_Login_P();
+                login.Show();
             }
             catch (Exception ex)
             {

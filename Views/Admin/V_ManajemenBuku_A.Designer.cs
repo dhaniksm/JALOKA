@@ -1,4 +1,4 @@
-﻿namespace JALOKA.Views
+﻿namespace JALOKA.Views.Admin
 {
     partial class V_ManajemenBuku_A
     {
@@ -193,16 +193,5 @@
         }
 
         #endregion
-
-        private Button buttonPengembalian;
-        private Button buttonKeluar;
-        private Button buttonManajemenBuku;
-        private Button buttonDataPengguna;
-        private Button buttonRiwayatPeminjaman;
-        private Button buttonDashboard;
-        private FlowLayoutPanel flowLayoutPanelBuku;
-        private Button buttonTambah;
-        private Button buttonHapus;
-        private Button buttonEdit;
     }
 }

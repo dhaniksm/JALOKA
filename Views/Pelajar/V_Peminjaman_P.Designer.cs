@@ -35,6 +35,8 @@
             buttonKatalogBuku = new Button();
             buttonKeluar = new Button();
             buttonDasboard = new Button();
+            pictureBoxProfil = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).BeginInit();
             flowLayoutPanelKeranjang = new FlowLayoutPanel();
             SuspendLayout();
             // 
@@ -138,6 +140,17 @@
             buttonDasboard.UseVisualStyleBackColor = false;
             buttonDasboard.Click += buttonDasboard_Click;
             // 
+            // pictureBoxProfil
+            // 
+            pictureBoxProfil.BackColor = Color.Transparent;
+            pictureBoxProfil.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBoxProfil.Cursor = Cursors.Hand;
+            pictureBoxProfil.Location = new Point(22, 9);
+            pictureBoxProfil.Name = "pictureBoxProfil";
+            pictureBoxProfil.Size = new Size(57, 54);
+            pictureBoxProfil.TabIndex = 29;
+            pictureBoxProfil.TabStop = false;
+            // 
             // flowLayoutPanelKeranjang
             // 
             flowLayoutPanelKeranjang.Location = new Point(257, 79);
@@ -151,6 +164,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(pictureBoxProfil);
             Controls.Add(flowLayoutPanelKeranjang);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonRiwayatPeminjaman);
@@ -163,6 +177,7 @@
             Name = "V_Peminjaman_P";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_Peminjaman_Pelajar";
+            ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).EndInit();
             ResumeLayout(false);
         }
 
@@ -174,6 +189,7 @@
         private Button buttonKatalogBuku;
         private Button buttonKeluar;
         private Button buttonDasboard;
+        private PictureBox pictureBoxProfil;
         private FlowLayoutPanel flowLayoutPanelKeranjang;
     }
 }

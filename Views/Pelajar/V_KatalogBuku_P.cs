@@ -100,6 +100,13 @@ namespace JALOKA.Views
             }
         }
 
+        private void pictureBoxProfil_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_Profil_P v_Profil_P = new V_Profil_P();
+            v_Profil_P.ShowDialog();
+        }
+
         private void buttonDashboard_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -136,8 +143,8 @@ namespace JALOKA.Views
         private void buttonKeluar_Click(object sender, EventArgs e)
         {
             this.Close();
-            V_Login login = new V_Login();
-            login.Show();
+            V_TampilanAwal tampilanAwal = new V_TampilanAwal();
+            tampilanAwal.Show();
         }
     }
 }

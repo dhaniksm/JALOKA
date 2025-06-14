@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_KatalogBuku_P));
+            buttonDashboard = new Button();
             buttonPengembalian = new Button();
             buttonRiwayatPeminjaman = new Button();
             buttonPeminjaman = new Button();
             buttonKatalogBuku = new Button();
             buttonKeluar = new Button();
-            buttonDashboard = new Button();
+            pictureBoxProfil = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).BeginInit();
             flowLayoutPanelCover = new FlowLayoutPanel();
             SuspendLayout();
             // 
@@ -138,6 +140,18 @@
             buttonDashboard.UseVisualStyleBackColor = false;
             buttonDashboard.Click += buttonDashboard_Click;
             // 
+            // pictureBoxProfil
+            // 
+            pictureBoxProfil.BackColor = Color.Transparent;
+            pictureBoxProfil.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBoxProfil.Cursor = Cursors.Hand;
+            pictureBoxProfil.Location = new Point(22, 11);
+            pictureBoxProfil.Name = "pictureBoxProfil";
+            pictureBoxProfil.Size = new Size(57, 54);
+            pictureBoxProfil.TabIndex = 29;
+            pictureBoxProfil.TabStop = false;
+            pictureBoxProfil.Click += pictureBoxProfil_Click;
+            //
             // flowLayoutPanelCover
             // 
             flowLayoutPanelCover.Location = new Point(268, 86);
@@ -151,6 +165,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(pictureBoxProfil);
             Controls.Add(flowLayoutPanelCover);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonRiwayatPeminjaman);
@@ -162,17 +177,19 @@
             Name = "V_KatalogBuku_P";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_Katalogbuku";
+            ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
+        private Button buttonDashboard;
         private Button buttonPengembalian;
         private Button buttonRiwayatPeminjaman;
         private Button buttonPeminjaman;
         private Button buttonKatalogBuku;
         private Button buttonKeluar;
-        private Button buttonDashboard;
+        private PictureBox pictureBoxProfil;
         private FlowLayoutPanel flowLayoutPanelCover;
     }
 }

@@ -1,4 +1,6 @@
 ﻿using JALOKA.Models;
+using JALOKA.Controllers;
+using JALOKA.Views.Admin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,9 +55,15 @@ namespace JALOKA.Views
 
         private void buttonKeluar_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            V_Login login = new V_Login();
+            this.Close();
+            V_Login_A login = new V_Login_A();
             login.Show();
+
+        }
+
+        private void pictureBoxProfil_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

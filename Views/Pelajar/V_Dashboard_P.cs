@@ -22,7 +22,7 @@ namespace JALOKA.Views
         {
             this.Refresh();
         }
-       
+
         private void buttonKatalogBuku_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -53,10 +53,17 @@ namespace JALOKA.Views
 
         private void buttonKeluar_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            V_Login login = new V_Login();
-            login.Show();
+            this.Close();
+            V_TampilanAwal tampilanAwal = new V_TampilanAwal();
+            tampilanAwal.Show();
 
+        }
+
+        private void pictureBoxProfil_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_Profil_P profil = new V_Profil_P();
+            profil.Show();
         }
     }
 }
