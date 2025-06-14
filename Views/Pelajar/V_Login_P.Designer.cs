@@ -79,21 +79,20 @@
             // 
             // textBoxNisn
             // 
-<<<<<<< HEAD:Views/V_Login.Designer.cs
-            textBoxIDPelajar.BorderStyle = BorderStyle.None;
-            textBoxIDPelajar.Location = new Point(442, 197);
-            textBoxIDPelajar.Name = "textBoxIDPelajar";
-            textBoxIDPelajar.Size = new Size(320, 20);
-            textBoxIDPelajar.TabIndex = 3;
-            textBoxIDPelajar.TextChanged += textBoxIDPelajar_TextChanged;
-=======
+
+            textBoxNisn.BorderStyle = BorderStyle.None;
+            textBoxNisn.Location = new Point(442, 197);
+            textBoxNisn.Name = "textBoxIDPelajar";
+            textBoxNisn.Size = new Size(320, 20);
+            textBoxNisn.TabIndex = 3;
+            textBoxNisn.TextChanged += textBoxIDPelajar_TextChanged;
             textBoxNisn.BorderStyle = BorderStyle.None;
             textBoxNisn.Location = new Point(442, 197);
             textBoxNisn.Name = "textBoxNisn";
             textBoxNisn.Size = new Size(320, 20);
             textBoxNisn.TabIndex = 3;
            
->>>>>>> 7b07456c2043db45c53120c39ce57b740f6df8ce:Views/Pelajar/V_Login_P.Designer.cs
+
             // 
             // checkBoxPassword
             // 

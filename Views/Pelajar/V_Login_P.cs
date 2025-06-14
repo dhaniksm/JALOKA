@@ -76,11 +76,13 @@ namespace JALOKA.Views
             textBoxPassword.PasswordChar = '*';
         }
 
-<<<<<<< HEAD:Views/V_Login.cs
-        private void textBoxIDPelajar_TextChanged(object sender, EventArgs e)
-        {
 
-=======
+        private void textBoxIDPelajar_TextChanged(object sender, EventArgs e)
+        { 
+        
+        }
+
+
         
 
         private void pictureBoxKembali_Click(object sender, EventArgs e)
@@ -88,7 +90,7 @@ namespace JALOKA.Views
             this.Close();
             V_TampilanAwal tampilanAwal = new V_TampilanAwal();
             tampilanAwal.Show();
->>>>>>> 7b07456c2043db45c53120c39ce57b740f6df8ce:Views/Pelajar/V_Login_P.cs
+
         }
     }
 

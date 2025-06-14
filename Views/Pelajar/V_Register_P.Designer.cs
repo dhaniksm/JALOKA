@@ -110,15 +110,12 @@
             // 
             // pictureBoxKembali
             // 
-<<<<<<< HEAD:Views/V_Register.Designer.cs
+
             pictureBoxKembali.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-=======
->>>>>>> 7b07456c2043db45c53120c39ce57b740f6df8ce:Views/Pelajar/V_Register_P.Designer.cs
             pictureBoxKembali.BackColor = Color.Transparent;
             pictureBoxKembali.BackgroundImage = (Image)resources.GetObject("pictureBoxKembali.BackgroundImage");
             pictureBoxKembali.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBoxKembali.Cursor = Cursors.Hand;
-<<<<<<< HEAD:Views/V_Register.Designer.cs
             pictureBoxKembali.Location = new Point(58, 43);
             pictureBoxKembali.Margin = new Padding(0);
             pictureBoxKembali.Name = "pictureBoxKembali";
@@ -128,7 +125,7 @@
             pictureBoxKembali.Click += pictureBoxKembali_Click;
             // 
             // V_Register
-=======
+
             pictureBoxKembali.Location = new Point(60, 43);
             pictureBoxKembali.Margin = new Padding(0);
             pictureBoxKembali.Name = "pictureBoxKembali";
@@ -138,7 +135,6 @@
             pictureBoxKembali.Click += pictureBoxKembali_Click;
             // 
             // V_Register_P
->>>>>>> 7b07456c2043db45c53120c39ce57b740f6df8ce:Views/Pelajar/V_Register_P.Designer.cs
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -169,10 +165,7 @@
         private TextBox textBoxNama;
         private TextBox textBoxIDPelajar;
         private TextBox textBoxPassword;
-<<<<<<< HEAD:Views/V_Register.Designer.cs
         private Button buttonKembali;
-=======
->>>>>>> 7b07456c2043db45c53120c39ce57b740f6df8ce:Views/Pelajar/V_Register_P.Designer.cs
         private PictureBox pictureBoxKembali;
     }
 }
