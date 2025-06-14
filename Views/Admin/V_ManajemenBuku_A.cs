@@ -1,17 +1,25 @@
-﻿using System;
+﻿using JALOKA.Controllers;
+using JALOKA.Database;
+using JALOKA.Helpers;
+using JALOKA.Models;
+using JALOKA.Views.Admin;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace JALOKA.Views.Admin
+namespace JALOKA.Views
 {
-    public partial class V_ManajemenBuku_A: Form
+    public partial class V_ManajemenBuku_A : Form
     {
+        private C_Buku c_buku = new C_Buku();
+
         public V_ManajemenBuku_A()
         {
             InitializeComponent();
@@ -130,7 +138,7 @@ namespace JALOKA.Views.Admin
         private void buttonKeluar_Click(object sender, EventArgs e)
         {
             this.Hide();
-            V_Login login = new V_Login();
+            V_Login_A login = new V_Login_A();
             login.Show();
         }
 
@@ -140,6 +148,5 @@ namespace JALOKA.Views.Admin
             tambahEdit.Show();
             this.Close();
         }
-
     }
 }

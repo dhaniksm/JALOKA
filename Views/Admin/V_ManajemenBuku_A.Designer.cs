@@ -1,4 +1,4 @@
-﻿namespace JALOKA.Views.Admin
+﻿namespace JALOKA.Views
 {
     partial class V_ManajemenBuku_A
     {
@@ -29,47 +29,37 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_ManajemenBuku_A));
-            buttonPengembalian = new Button();
-            buttonKeluar = new Button();
+            flowLayoutPanelBuku = new FlowLayoutPanel();
+            buttonDashboard = new Button();
             buttonManajemenBuku = new Button();
             buttonDataPengguna = new Button();
             buttonRiwayatPeminjaman = new Button();
-            buttonDashboard = new Button();
-            flowLayoutPanelBuku = new FlowLayoutPanel();
+            buttonPengembalian = new Button();
+            buttonKeluar = new Button();
             buttonTambah = new Button();
-            buttonEdit = new Button();
-            buttonHapus = new Button();
             SuspendLayout();
             // 
-            // buttonPengembalian
+            // flowLayoutPanelBuku
             // 
-            buttonPengembalian.BackColor = SystemColors.ControlLightLight;
-            buttonPengembalian.Cursor = Cursors.Hand;
-            buttonPengembalian.FlatAppearance.BorderSize = 0;
-            buttonPengembalian.FlatStyle = FlatStyle.Flat;
-            buttonPengembalian.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonPengembalian.Location = new Point(59, 420);
-            buttonPengembalian.Name = "buttonPengembalian";
-            buttonPengembalian.Size = new Size(187, 29);
-            buttonPengembalian.TabIndex = 20;
-            buttonPengembalian.Text = "Pengembalian";
-            buttonPengembalian.UseVisualStyleBackColor = false;
-            buttonPengembalian.Click += buttonPengembalian_Click;
+            flowLayoutPanelBuku.AutoScroll = true;
+            flowLayoutPanelBuku.Location = new Point(264, 85);
+            flowLayoutPanelBuku.Name = "flowLayoutPanelBuku";
+            flowLayoutPanelBuku.Size = new Size(924, 491);
+            flowLayoutPanelBuku.TabIndex = 2;
             // 
-            // buttonKeluar
+            // buttonDashboard
             // 
-            buttonKeluar.BackColor = SystemColors.ControlLightLight;
-            buttonKeluar.Cursor = Cursors.Hand;
-            buttonKeluar.FlatAppearance.BorderSize = 0;
-            buttonKeluar.FlatStyle = FlatStyle.Flat;
-            buttonKeluar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonKeluar.Location = new Point(69, 565);
-            buttonKeluar.Name = "buttonKeluar";
-            buttonKeluar.Size = new Size(104, 34);
-            buttonKeluar.TabIndex = 19;
-            buttonKeluar.Text = "Keluar";
-            buttonKeluar.UseVisualStyleBackColor = false;
-            buttonKeluar.Click += buttonKeluar_Click;
+            buttonDashboard.BackColor = SystemColors.ControlLightLight;
+            buttonDashboard.Cursor = Cursors.Hand;
+            buttonDashboard.FlatAppearance.BorderSize = 0;
+            buttonDashboard.FlatStyle = FlatStyle.Flat;
+            buttonDashboard.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonDashboard.Location = new Point(58, 117);
+            buttonDashboard.Name = "buttonDashboard";
+            buttonDashboard.Size = new Size(187, 29);
+            buttonDashboard.TabIndex = 16;
+            buttonDashboard.Text = "Dashboard";
+            buttonDashboard.UseVisualStyleBackColor = false;
             // 
             // buttonManajemenBuku
             // 
@@ -81,10 +71,9 @@
             buttonManajemenBuku.Location = new Point(58, 187);
             buttonManajemenBuku.Name = "buttonManajemenBuku";
             buttonManajemenBuku.Size = new Size(187, 29);
-            buttonManajemenBuku.TabIndex = 18;
+            buttonManajemenBuku.TabIndex = 19;
             buttonManajemenBuku.Text = "Manajemen Buku";
             buttonManajemenBuku.UseVisualStyleBackColor = false;
-            buttonManajemenBuku.Click += buttonManajemenBuku_Click;
             // 
             // buttonDataPengguna
             // 
@@ -96,10 +85,9 @@
             buttonDataPengguna.Location = new Point(58, 264);
             buttonDataPengguna.Name = "buttonDataPengguna";
             buttonDataPengguna.Size = new Size(187, 29);
-            buttonDataPengguna.TabIndex = 17;
+            buttonDataPengguna.TabIndex = 20;
             buttonDataPengguna.Text = "Data Pengguna";
             buttonDataPengguna.UseVisualStyleBackColor = false;
-            buttonDataPengguna.Click += buttonDataPengguna_Click;
             // 
             // buttonRiwayatPeminjaman
             // 
@@ -108,90 +96,79 @@
             buttonRiwayatPeminjaman.FlatAppearance.BorderSize = 0;
             buttonRiwayatPeminjaman.FlatStyle = FlatStyle.Flat;
             buttonRiwayatPeminjaman.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonRiwayatPeminjaman.Location = new Point(58, 344);
+            buttonRiwayatPeminjaman.Location = new Point(58, 345);
             buttonRiwayatPeminjaman.Name = "buttonRiwayatPeminjaman";
             buttonRiwayatPeminjaman.Size = new Size(187, 29);
-            buttonRiwayatPeminjaman.TabIndex = 16;
+            buttonRiwayatPeminjaman.TabIndex = 21;
             buttonRiwayatPeminjaman.Text = "RIwayat Peminjaman";
             buttonRiwayatPeminjaman.UseVisualStyleBackColor = false;
-            buttonRiwayatPeminjaman.Click += buttonRiwayatPeminjaman_Click;
             // 
-            // buttonDashboard
+            // buttonPengembalian
             // 
-            buttonDashboard.BackColor = SystemColors.ControlLightLight;
-            buttonDashboard.Cursor = Cursors.Hand;
-            buttonDashboard.FlatAppearance.BorderSize = 0;
-            buttonDashboard.FlatStyle = FlatStyle.Flat;
-            buttonDashboard.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonDashboard.Location = new Point(58, 116);
-            buttonDashboard.Name = "buttonDashboard";
-            buttonDashboard.Size = new Size(187, 29);
-            buttonDashboard.TabIndex = 15;
-            buttonDashboard.Text = "Dashboard";
-            buttonDashboard.UseVisualStyleBackColor = false;
-            buttonDashboard.Click += buttonDashboard_Click;
+            buttonPengembalian.BackColor = SystemColors.ControlLightLight;
+            buttonPengembalian.Cursor = Cursors.Hand;
+            buttonPengembalian.FlatAppearance.BorderSize = 0;
+            buttonPengembalian.FlatStyle = FlatStyle.Flat;
+            buttonPengembalian.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonPengembalian.Location = new Point(58, 420);
+            buttonPengembalian.Name = "buttonPengembalian";
+            buttonPengembalian.Size = new Size(187, 29);
+            buttonPengembalian.TabIndex = 22;
+            buttonPengembalian.Text = "Pengembalian";
+            buttonPengembalian.UseVisualStyleBackColor = false;
             // 
-            // flowLayoutPanelBuku
+            // buttonKeluar
             // 
-            flowLayoutPanelBuku.AutoScroll = true;
-            flowLayoutPanelBuku.Location = new Point(264, 89);
-            flowLayoutPanelBuku.Name = "flowLayoutPanelBuku";
-            flowLayoutPanelBuku.Size = new Size(924, 491);
-            flowLayoutPanelBuku.TabIndex = 1;
+            buttonKeluar.BackColor = SystemColors.ControlLightLight;
+            buttonKeluar.Cursor = Cursors.Hand;
+            buttonKeluar.FlatAppearance.BorderSize = 0;
+            buttonKeluar.FlatStyle = FlatStyle.Flat;
+            buttonKeluar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonKeluar.Location = new Point(69, 566);
+            buttonKeluar.Name = "buttonKeluar";
+            buttonKeluar.Size = new Size(104, 34);
+            buttonKeluar.TabIndex = 23;
+            buttonKeluar.Text = "Keluar";
+            buttonKeluar.UseVisualStyleBackColor = false;
             // 
             // buttonTambah
             // 
             buttonTambah.Anchor = AnchorStyles.None;
-            buttonTambah.Location = new Point(296, 599);
+            buttonTambah.Location = new Point(686, 612);
             buttonTambah.Name = "buttonTambah";
             buttonTambah.Size = new Size(90, 30);
-            buttonTambah.TabIndex = 0;
+            buttonTambah.TabIndex = 24;
             buttonTambah.Text = "Tambah";
-            buttonTambah.Click += buttonTambah_Click;
             // 
-            // buttonEdit
-            // 
-            buttonEdit.Location = new Point(622, 599);
-            buttonEdit.Name = "buttonEdit";
-            buttonEdit.Size = new Size(90, 30);
-            buttonEdit.TabIndex = 1;
-            buttonEdit.Text = "Edit";
-            buttonEdit.UseVisualStyleBackColor = true;
-            buttonEdit.Click += buttonEdit_Click;
-            // 
-            // buttonHapus
-            // 
-            buttonHapus.Location = new Point(938, 599);
-            buttonHapus.Name = "buttonHapus";
-            buttonHapus.Size = new Size(90, 30);
-            buttonHapus.TabIndex = 2;
-            buttonHapus.Text = "Hapus";
-            buttonHapus.UseVisualStyleBackColor = true;
-            // 
-            // V_ManajemenBuku_A
+            // V_ManajemenBuku
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
             Controls.Add(buttonTambah);
-            Controls.Add(buttonEdit);
-            Controls.Add(buttonHapus);
-            Controls.Add(flowLayoutPanelBuku);
-            Controls.Add(buttonPengembalian);
             Controls.Add(buttonKeluar);
-            Controls.Add(buttonManajemenBuku);
-            Controls.Add(buttonDataPengguna);
+            Controls.Add(buttonPengembalian);
             Controls.Add(buttonRiwayatPeminjaman);
+            Controls.Add(buttonDataPengguna);
+            Controls.Add(buttonManajemenBuku);
             Controls.Add(buttonDashboard);
-            DoubleBuffered = true;
+            Controls.Add(flowLayoutPanelBuku);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_ManajemenBuku_A";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "V_ManajemenBuku_A";
+            Name = "V_ManajemenBuku";
+            Text = "V_ManajemenBuku";
             ResumeLayout(false);
         }
 
         #endregion
+
+        private FlowLayoutPanel flowLayoutPanelBuku;
+        private Button buttonDashboard;
+        private Button buttonManajemenBuku;
+        private Button buttonDataPengguna;
+        private Button buttonRiwayatPeminjaman;
+        private Button buttonPengembalian;
+        private Button buttonKeluar;
+        private Button buttonTambah;
     }
 }

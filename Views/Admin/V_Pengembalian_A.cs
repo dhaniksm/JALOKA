@@ -7,15 +7,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JALOKA.Controllers;
+using JALOKA.Helpers;
+using JALOKA.Models;
 using JALOKA.Views.Admin;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace JALOKA.Views
 {
     public partial class V_Pengembalian_A : Form
     {
+        private readonly C_Pengembalian c_pengembalian = new C_Pengembalian();
+
         public V_Pengembalian_A()
         {
             InitializeComponent();
+            LoadPeminjaman();
+        }
+
+        private void LoadPeminjaman()
+        {
+            listView1.Items.Clear();
+            var data = c_pengembalian.AmbilPeminjamanAktif();
+
+            foreach (var item in data)
+            {
+                var row = new ListViewItem(item.id_peminjaman.ToString());
+                row.SubItems.Add(item.judul);
+                row.SubItems.Add(item.tanggal_pinjam.ToShortDateString());
+                row.Tag = item; // simpan objek untuk akses saat diklik
+                listView1.Items.Add(row);
+            }
         }
 
         private void buttonDashboard_Click(object sender, EventArgs e)
@@ -56,6 +78,20 @@ namespace JALOKA.Views
             this.Hide();
             V_Login_A login = new V_Login_A();
             login.Show();
+        }
+
+        private void btnKembalikan_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                var item = (M_Peminjaman)listView1.SelectedItems[0].Tag;
+                c_pengembalian.ProsesPengembalian(item.id_peminjaman, item.id_buku);
+                LoadPeminjaman(); // refresh list
+            }
+            else
+            {
+                H_Pesan.Peringatan("Silakan pilih buku yang akan dikembalikan.");
+            }
         }
     }
 }

@@ -22,7 +22,23 @@ namespace JALOKA.Views
         public V_Peminjaman_P()
         {
             InitializeComponent();
+            TabelPeminjaman();
             MuatKeranjang();
+        }
+
+        private void TabelPeminjaman()
+        {
+            try
+            {
+                using (var db = new D_Connector())
+                {
+                    D_Tabel.CekTabel(db.Connection, "peminjaman");
+                }
+            }
+            catch (Exception ex)
+            {
+                H_Pesan.Gagal("Gagal memeriksa tabel peminjaman: " + ex.Message);
+            }
         }
 
         private void MuatKeranjang()
@@ -167,6 +183,12 @@ namespace JALOKA.Views
             this.Hide();
             V_Login_P login = new V_Login_P();
             login.Show();
+        }
+
+        private void buttonPinjam_Click(object sender, EventArgs e)
+        {
+            controller.ProsesPeminjaman();
+            MuatKeranjang();
         }
     }
 }
