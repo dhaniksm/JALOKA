@@ -15,7 +15,7 @@ namespace JALOKA.Controllers
 {
     class C_Kurikulum
     {
-        private readonly Connector db = new Connector();
+        private readonly D_Connector db = new D_Connector();
 
         public bool login(M_Kurikulum kurikulum)
         {

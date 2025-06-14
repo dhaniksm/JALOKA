@@ -11,7 +11,7 @@ namespace JALOKA.Controllers
 {
     public class C_Admin
     {
-        private readonly Connector db = new Connector();
+        private readonly D_Connector db = new D_Connector();
 
         public bool Login(M_Admin admin)
         {

@@ -62,7 +62,6 @@
             textBoxAlamat.Name = "textBoxAlamat";
             textBoxAlamat.Size = new Size(300, 20);
             textBoxAlamat.TabIndex = 7;
-            textBoxAlamat.TextChanged += textBoxAlamat_TextChanged;
             // 
             // textBoxNoTelp
             // 
@@ -72,7 +71,6 @@
             textBoxNoTelp.Name = "textBoxNoTelp";
             textBoxNoTelp.Size = new Size(300, 20);
             textBoxNoTelp.TabIndex = 10;
-            textBoxNoTelp.TextChanged += textBoxNoTelp_TextChanged;
             // 
             // textBoxEmail
             // 
@@ -82,7 +80,6 @@
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.Size = new Size(300, 20);
             textBoxEmail.TabIndex = 11;
-            textBoxEmail.TextChanged += textBoxEmail_TextChanged;
             // 
             // textBoxNama
             // 
@@ -92,7 +89,6 @@
             textBoxNama.Name = "textBoxNama";
             textBoxNama.Size = new Size(300, 20);
             textBoxNama.TabIndex = 12;
-            textBoxNama.TextChanged += textBoxNamaLengkap_TextChanged;
             // 
             // textBoxIDPelajar
             // 
@@ -102,7 +98,6 @@
             textBoxIDPelajar.Name = "textBoxIDPelajar";
             textBoxIDPelajar.Size = new Size(300, 20);
             textBoxIDPelajar.TabIndex = 13;
-            textBoxIDPelajar.TextChanged += textBoxIDPelajar_TextChanged;
             // 
             // textBoxPassword
             // 
@@ -112,14 +107,25 @@
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.Size = new Size(300, 20);
             textBoxPassword.TabIndex = 14;
-            textBoxPassword.TextChanged += textBoxPassword_TextChanged;
             // 
             // pictureBoxKembali
             // 
+
+            pictureBoxKembali.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBoxKembali.BackColor = Color.Transparent;
             pictureBoxKembali.BackgroundImage = (Image)resources.GetObject("pictureBoxKembali.BackgroundImage");
             pictureBoxKembali.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBoxKembali.Cursor = Cursors.Hand;
+            pictureBoxKembali.Location = new Point(58, 43);
+            pictureBoxKembali.Margin = new Padding(0);
+            pictureBoxKembali.Name = "pictureBoxKembali";
+            pictureBoxKembali.Size = new Size(78, 48);
+            pictureBoxKembali.TabIndex = 16;
+            pictureBoxKembali.TabStop = false;
+            pictureBoxKembali.Click += pictureBoxKembali_Click;
+            // 
+            // V_Register
+
             pictureBoxKembali.Location = new Point(60, 43);
             pictureBoxKembali.Margin = new Padding(0);
             pictureBoxKembali.Name = "pictureBoxKembali";
@@ -159,6 +165,7 @@
         private TextBox textBoxNama;
         private TextBox textBoxIDPelajar;
         private TextBox textBoxPassword;
+        private Button buttonKembali;
         private PictureBox pictureBoxKembali;
     }
 }

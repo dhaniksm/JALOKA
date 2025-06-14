@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_KatalogBuku_P));
+            buttonDashboard = new Button();
             buttonPengembalian = new Button();
             buttonRiwayatPeminjaman = new Button();
             buttonPeminjaman = new Button();
             buttonKatalogBuku = new Button();
             buttonKeluar = new Button();
-            buttonDasboard = new Button();
             pictureBoxProfil = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).BeginInit();
+            flowLayoutPanelCover = new FlowLayoutPanel();
             SuspendLayout();
             // 
             // buttonPengembalian
@@ -54,6 +55,7 @@
             buttonPengembalian.TabIndex = 20;
             buttonPengembalian.Text = "Pengembalian";
             buttonPengembalian.UseVisualStyleBackColor = false;
+            buttonPengembalian.Click += buttonPengembalian_Click;
             // 
             // buttonRiwayatPeminjaman
             // 
@@ -70,6 +72,7 @@
             buttonRiwayatPeminjaman.TabIndex = 19;
             buttonRiwayatPeminjaman.Text = "Riwayat Peminjaman";
             buttonRiwayatPeminjaman.UseVisualStyleBackColor = false;
+            buttonRiwayatPeminjaman.Click += buttonRiwayatPeminjaman_Click;
             // 
             // buttonPeminjaman
             // 
@@ -86,6 +89,7 @@
             buttonPeminjaman.TabIndex = 18;
             buttonPeminjaman.Text = "Peminjaman";
             buttonPeminjaman.UseVisualStyleBackColor = false;
+            buttonPeminjaman.Click += buttonPeminjaman_Click;
             // 
             // buttonKatalogBuku
             // 
@@ -102,6 +106,7 @@
             buttonKatalogBuku.TabIndex = 17;
             buttonKatalogBuku.Text = "Katalog Buku";
             buttonKatalogBuku.UseVisualStyleBackColor = false;
+            buttonKatalogBuku.Click += buttonKatalogBuku_Click;
             // 
             // buttonKeluar
             // 
@@ -118,21 +123,22 @@
             buttonKeluar.UseVisualStyleBackColor = false;
             buttonKeluar.Click += buttonKeluar_Click;
             // 
-            // buttonDasboard
+            // buttonDashboard
             // 
-            buttonDasboard.BackColor = SystemColors.ControlLightLight;
-            buttonDasboard.Cursor = Cursors.Hand;
-            buttonDasboard.FlatAppearance.BorderColor = Color.White;
-            buttonDasboard.FlatAppearance.BorderSize = 0;
-            buttonDasboard.FlatStyle = FlatStyle.Flat;
-            buttonDasboard.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonDasboard.ForeColor = SystemColors.Desktop;
-            buttonDasboard.Location = new Point(65, 110);
-            buttonDasboard.Name = "buttonDasboard";
-            buttonDasboard.Size = new Size(182, 37);
-            buttonDasboard.TabIndex = 15;
-            buttonDasboard.Text = "Dasboard";
-            buttonDasboard.UseVisualStyleBackColor = false;
+            buttonDashboard.BackColor = SystemColors.ControlLightLight;
+            buttonDashboard.Cursor = Cursors.Hand;
+            buttonDashboard.FlatAppearance.BorderColor = Color.White;
+            buttonDashboard.FlatAppearance.BorderSize = 0;
+            buttonDashboard.FlatStyle = FlatStyle.Flat;
+            buttonDashboard.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonDashboard.ForeColor = SystemColors.Desktop;
+            buttonDashboard.Location = new Point(65, 110);
+            buttonDashboard.Name = "buttonDashboard";
+            buttonDashboard.Size = new Size(182, 37);
+            buttonDashboard.TabIndex = 15;
+            buttonDashboard.Text = "Dasboard";
+            buttonDashboard.UseVisualStyleBackColor = false;
+            buttonDashboard.Click += buttonDashboard_Click;
             // 
             // pictureBoxProfil
             // 
@@ -145,6 +151,13 @@
             pictureBoxProfil.TabIndex = 29;
             pictureBoxProfil.TabStop = false;
             pictureBoxProfil.Click += pictureBoxProfil_Click;
+            //
+            // flowLayoutPanelCover
+            // 
+            flowLayoutPanelCover.Location = new Point(268, 86);
+            flowLayoutPanelCover.Name = "flowLayoutPanelCover";
+            flowLayoutPanelCover.Size = new Size(920, 577);
+            flowLayoutPanelCover.TabIndex = 21;
             // 
             // V_KatalogBuku_P
             // 
@@ -153,12 +166,13 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
             Controls.Add(pictureBoxProfil);
+            Controls.Add(flowLayoutPanelCover);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonRiwayatPeminjaman);
             Controls.Add(buttonPeminjaman);
             Controls.Add(buttonKatalogBuku);
             Controls.Add(buttonKeluar);
-            Controls.Add(buttonDasboard);
+            Controls.Add(buttonDashboard);
             FormBorderStyle = FormBorderStyle.None;
             Name = "V_KatalogBuku_P";
             StartPosition = FormStartPosition.CenterScreen;
@@ -169,12 +183,13 @@
 
         #endregion
 
+        private Button buttonDashboard;
         private Button buttonPengembalian;
         private Button buttonRiwayatPeminjaman;
         private Button buttonPeminjaman;
         private Button buttonKatalogBuku;
         private Button buttonKeluar;
-        private Button buttonDasboard;
         private PictureBox pictureBoxProfil;
+        private FlowLayoutPanel flowLayoutPanelCover;
     }
 }

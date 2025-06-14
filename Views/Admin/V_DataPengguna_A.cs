@@ -1,4 +1,4 @@
-﻿using JALOKA.Controllers;
+using JALOKA.Controllers;
 using JALOKA.Models;
 using System;
 using System.Collections.Generic;

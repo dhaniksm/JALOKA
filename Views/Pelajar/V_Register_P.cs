@@ -45,6 +45,7 @@ namespace JALOKA.Views
                 nomor_hp = textBoxNoTelp.Text,
                 alamat = textBoxAlamat.Text
             };
+
             try
             {
                 if (c_user.Register(user))
@@ -65,43 +66,8 @@ namespace JALOKA.Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "Registrasi Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxAlamat_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxIDPelajar_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxPassword_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxNamaLengkap_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxEmail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxNoTelp_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

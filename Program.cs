@@ -7,6 +7,7 @@ namespace JALOKA.Views
         {
             ApplicationConfiguration.Initialize();
             Application.Run(new V_TampilanAwal());
+
         }
     }
 }

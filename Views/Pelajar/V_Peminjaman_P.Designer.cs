@@ -1,6 +1,6 @@
 ﻿namespace JALOKA.Views
 {
-    partial class V_Peminjaman_Pe
+    partial class V_Peminjaman_P
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Peminjaman_Pe));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Peminjaman_P));
             buttonPengembalian = new Button();
             buttonRiwayatPeminjaman = new Button();
             buttonPeminjaman = new Button();
@@ -36,6 +36,8 @@
             buttonKeluar = new Button();
             buttonDasboard = new Button();
             pictureBoxProfil = new PictureBox();
+            flowLayoutPanelKeranjang = new FlowLayoutPanel();
+            buttonPinjam = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).BeginInit();
             SuspendLayout();
             // 
@@ -149,23 +151,49 @@
             pictureBoxProfil.Size = new Size(57, 54);
             pictureBoxProfil.TabIndex = 29;
             pictureBoxProfil.TabStop = false;
-            pictureBoxProfil.Click += pictureBoxProfil_Click;
             // 
-            // V_Peminjaman_Pe
+            // flowLayoutPanelKeranjang
+            // 
+            flowLayoutPanelKeranjang.Location = new Point(257, 79);
+            flowLayoutPanelKeranjang.Name = "flowLayoutPanelKeranjang";
+            flowLayoutPanelKeranjang.Size = new Size(931, 527);
+            flowLayoutPanelKeranjang.TabIndex = 21;
+            // 
+            // buttonPinjam
+            // 
+            buttonPinjam.BackColor = SystemColors.ControlLightLight;
+            buttonPinjam.Cursor = Cursors.Hand;
+            buttonPinjam.FlatAppearance.BorderColor = Color.White;
+            buttonPinjam.FlatAppearance.BorderSize = 0;
+            buttonPinjam.FlatStyle = FlatStyle.Flat;
+            buttonPinjam.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonPinjam.ForeColor = SystemColors.Desktop;
+            buttonPinjam.Location = new Point(703, 623);
+            buttonPinjam.Name = "buttonPinjam";
+            buttonPinjam.Size = new Size(100, 30);
+            buttonPinjam.TabIndex = 30;
+            buttonPinjam.Text = "Pinjam";
+            buttonPinjam.UseVisualStyleBackColor = false;
+            buttonPinjam.Click += buttonPinjam_Click;
+            // 
+            // V_Peminjaman_P
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(buttonPinjam);
             Controls.Add(pictureBoxProfil);
+            Controls.Add(flowLayoutPanelKeranjang);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonRiwayatPeminjaman);
             Controls.Add(buttonPeminjaman);
             Controls.Add(buttonKatalogBuku);
             Controls.Add(buttonKeluar);
             Controls.Add(buttonDasboard);
+            DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_Peminjaman_Pe";
+            Name = "V_Peminjaman_P";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_Peminjaman_Pelajar";
             ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).EndInit();
@@ -181,5 +209,7 @@
         private Button buttonKeluar;
         private Button buttonDasboard;
         private PictureBox pictureBoxProfil;
+        private FlowLayoutPanel flowLayoutPanelKeranjang;
+        private Button buttonPinjam;
     }
 }
