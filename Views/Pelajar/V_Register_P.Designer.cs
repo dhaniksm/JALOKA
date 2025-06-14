@@ -1,6 +1,6 @@
 ﻿namespace JALOKA.Views
 {
-    partial class V_Register
+    partial class V_Register_P
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Register));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Register_P));
             buttonRegister = new Button();
             textBoxAlamat = new TextBox();
             textBoxNoTelp = new TextBox();
@@ -62,7 +62,6 @@
             textBoxAlamat.Name = "textBoxAlamat";
             textBoxAlamat.Size = new Size(300, 20);
             textBoxAlamat.TabIndex = 7;
-            textBoxAlamat.TextChanged += textBoxAlamat_TextChanged;
             // 
             // textBoxNoTelp
             // 
@@ -72,7 +71,6 @@
             textBoxNoTelp.Name = "textBoxNoTelp";
             textBoxNoTelp.Size = new Size(300, 20);
             textBoxNoTelp.TabIndex = 10;
-            textBoxNoTelp.TextChanged += textBoxNoTelp_TextChanged;
             // 
             // textBoxEmail
             // 
@@ -82,7 +80,6 @@
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.Size = new Size(300, 20);
             textBoxEmail.TabIndex = 11;
-            textBoxEmail.TextChanged += textBoxEmail_TextChanged;
             // 
             // textBoxNama
             // 
@@ -92,7 +89,6 @@
             textBoxNama.Name = "textBoxNama";
             textBoxNama.Size = new Size(300, 20);
             textBoxNama.TabIndex = 12;
-            textBoxNama.TextChanged += textBoxNamaLengkap_TextChanged;
             // 
             // textBoxIDPelajar
             // 
@@ -102,7 +98,6 @@
             textBoxIDPelajar.Name = "textBoxIDPelajar";
             textBoxIDPelajar.Size = new Size(300, 20);
             textBoxIDPelajar.TabIndex = 13;
-            textBoxIDPelajar.TextChanged += textBoxIDPelajar_TextChanged;
             // 
             // textBoxPassword
             // 
@@ -112,15 +107,18 @@
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.Size = new Size(300, 20);
             textBoxPassword.TabIndex = 14;
-            textBoxPassword.TextChanged += textBoxPassword_TextChanged;
             // 
             // pictureBoxKembali
             // 
+<<<<<<< HEAD:Views/V_Register.Designer.cs
             pictureBoxKembali.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+=======
+>>>>>>> 7b07456c2043db45c53120c39ce57b740f6df8ce:Views/Pelajar/V_Register_P.Designer.cs
             pictureBoxKembali.BackColor = Color.Transparent;
             pictureBoxKembali.BackgroundImage = (Image)resources.GetObject("pictureBoxKembali.BackgroundImage");
             pictureBoxKembali.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBoxKembali.Cursor = Cursors.Hand;
+<<<<<<< HEAD:Views/V_Register.Designer.cs
             pictureBoxKembali.Location = new Point(58, 43);
             pictureBoxKembali.Margin = new Padding(0);
             pictureBoxKembali.Name = "pictureBoxKembali";
@@ -130,6 +128,17 @@
             pictureBoxKembali.Click += pictureBoxKembali_Click;
             // 
             // V_Register
+=======
+            pictureBoxKembali.Location = new Point(60, 43);
+            pictureBoxKembali.Margin = new Padding(0);
+            pictureBoxKembali.Name = "pictureBoxKembali";
+            pictureBoxKembali.Size = new Size(66, 54);
+            pictureBoxKembali.TabIndex = 15;
+            pictureBoxKembali.TabStop = false;
+            pictureBoxKembali.Click += pictureBoxKembali_Click;
+            // 
+            // V_Register_P
+>>>>>>> 7b07456c2043db45c53120c39ce57b740f6df8ce:Views/Pelajar/V_Register_P.Designer.cs
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -145,7 +154,7 @@
             Controls.Add(buttonRegister);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(2);
-            Name = "V_Register";
+            Name = "V_Register_P";
             StartPosition = FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)pictureBoxKembali).EndInit();
             ResumeLayout(false);
@@ -160,7 +169,10 @@
         private TextBox textBoxNama;
         private TextBox textBoxIDPelajar;
         private TextBox textBoxPassword;
+<<<<<<< HEAD:Views/V_Register.Designer.cs
         private Button buttonKembali;
+=======
+>>>>>>> 7b07456c2043db45c53120c39ce57b740f6df8ce:Views/Pelajar/V_Register_P.Designer.cs
         private PictureBox pictureBoxKembali;
     }
 }

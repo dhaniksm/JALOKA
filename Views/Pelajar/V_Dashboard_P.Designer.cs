@@ -29,30 +29,32 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Dashboard_P));
-            buttonDasboard = new Button();
+            buttonDashboard = new Button();
             buttonKeluar = new Button();
             buttonKatalogBuku = new Button();
             buttonPeminjaman = new Button();
             buttonRiwayatPeminjaman = new Button();
             buttonPengembalian = new Button();
+            pictureBoxProfil = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).BeginInit();
             SuspendLayout();
             // 
             // buttonDasboard
             // 
-            buttonDasboard.BackColor = SystemColors.ControlLightLight;
-            buttonDasboard.Cursor = Cursors.Hand;
-            buttonDasboard.FlatAppearance.BorderColor = Color.White;
-            buttonDasboard.FlatAppearance.BorderSize = 0;
-            buttonDasboard.FlatStyle = FlatStyle.Flat;
-            buttonDasboard.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonDasboard.ForeColor = SystemColors.Desktop;
-            buttonDasboard.Location = new Point(65, 110);
-            buttonDasboard.Name = "buttonDasboard";
-            buttonDasboard.Size = new Size(182, 37);
-            buttonDasboard.TabIndex = 1;
-            buttonDasboard.Text = "Dasboard";
-            buttonDasboard.UseVisualStyleBackColor = false;
-            buttonDasboard.Click += buttonDashboard_Click;
+            buttonDashboard.BackColor = SystemColors.ControlLightLight;
+            buttonDashboard.Cursor = Cursors.Hand;
+            buttonDashboard.FlatAppearance.BorderColor = Color.White;
+            buttonDashboard.FlatAppearance.BorderSize = 0;
+            buttonDashboard.FlatStyle = FlatStyle.Flat;
+            buttonDashboard.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonDashboard.ForeColor = SystemColors.Desktop;
+            buttonDashboard.Location = new Point(65, 110);
+            buttonDashboard.Name = "buttonDasboard";
+            buttonDashboard.Size = new Size(182, 37);
+            buttonDashboard.TabIndex = 1;
+            buttonDashboard.Text = "Dashboard";
+            buttonDashboard.UseVisualStyleBackColor = false;
+            buttonDashboard.Click += buttonDashboard_Click;
             // 
             // buttonKeluar
             // 
@@ -137,32 +139,47 @@
             buttonPengembalian.UseVisualStyleBackColor = false;
             buttonPengembalian.Click += buttonPengembalian_Click;
             // 
-            // V_Dasboard
+            // pictureBoxProfil
+            // 
+            pictureBoxProfil.BackColor = Color.Transparent;
+            pictureBoxProfil.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBoxProfil.Cursor = Cursors.Hand;
+            pictureBoxProfil.Location = new Point(22, 11);
+            pictureBoxProfil.Name = "pictureBoxProfil";
+            pictureBoxProfil.Size = new Size(57, 54);
+            pictureBoxProfil.TabIndex = 28;
+            pictureBoxProfil.TabStop = false;
+            pictureBoxProfil.Click += pictureBoxProfil_Click;
+            // 
+            // V_Dashboard_P
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.AppWorkspace;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(pictureBoxProfil);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonRiwayatPeminjaman);
             Controls.Add(buttonPeminjaman);
             Controls.Add(buttonKatalogBuku);
             Controls.Add(buttonKeluar);
-            Controls.Add(buttonDasboard);
+            Controls.Add(buttonDashboard);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_Dasboard";
+            Name = "V_Dashboard_P";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "KatalogBuku";
+            Text = "V_Dashboard_P";
+            ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-        private Button buttonDasboard;
+        private Button buttonDashboard;
         private Button buttonKeluar;
         private Button buttonKatalogBuku;
         private Button buttonPeminjaman;
         private Button buttonRiwayatPeminjaman;
         private Button buttonPengembalian;
+        private PictureBox pictureBoxProfil;
     }
 }

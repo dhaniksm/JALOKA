@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            ListViewItem listViewItem1 = new ListViewItem("");
+            ListViewItem listViewItem2 = new ListViewItem("");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Pengembalian_A));
             buttonPengembalian = new Button();
             buttonKeluar = new Button();
@@ -35,6 +37,9 @@
             buttonDataPengguna = new Button();
             buttonRiwayatPeminjaman = new Button();
             buttonDashboard = new Button();
+            listView1 = new ListView();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
             SuspendLayout();
             // 
             // buttonPengembalian
@@ -127,12 +132,23 @@
             buttonDashboard.UseVisualStyleBackColor = false;
             buttonDashboard.Click += buttonDashboard_Click;
             // 
-            // V_PengembalianAdmin
+            // listView1
+            // 
+            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
+            listView1.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2 });
+            listView1.Location = new Point(262, 85);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(926, 533);
+            listView1.TabIndex = 27;
+            listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // V_Pengembalian_A
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(listView1);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonKeluar);
             Controls.Add(buttonManajemenBuku);
@@ -140,7 +156,7 @@
             Controls.Add(buttonRiwayatPeminjaman);
             Controls.Add(buttonDashboard);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_PengembalianAdmin";
+            Name = "V_Pengembalian_A";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_PengembalianAdmin";
             ResumeLayout(false);
@@ -154,5 +170,8 @@
         private Button buttonDataPengguna;
         private Button buttonRiwayatPeminjaman;
         private Button buttonDashboard;
+        private ListView listView1;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
     }
 }

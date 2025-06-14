@@ -1,0 +1,75 @@
+using JALOKA.Controllers;
+using JALOKA.Models;
+using JALOKA.Views;
+using Microsoft.VisualBasic.ApplicationServices;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace JALOKA.Views
+{
+    public partial class V_Register_P : Form
+    {
+        private C_User c_user = new C_User();
+        public V_Register_P()
+        {
+            InitializeComponent();
+        }
+
+        private void pictureBoxKembali_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            V_Login_P login = new V_Login_P();
+            login.Show();
+
+        }
+
+        private void buttonRegister_Click(object sender, EventArgs e)
+        {
+            if (!textBoxEmail.Text.Contains("@"))
+            {
+                MessageBox.Show("Format email tidak valid.", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!long.TryParse(textBoxNoTelp.Text, out _))
+            {
+                MessageBox.Show("Nomor HP hanya boleh berisi angka.", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            M_User user = new M_User
+            {
+                nisn = textBoxIDPelajar.Text,
+                password = textBoxPassword.Text,
+                nama = textBoxNama.Text,
+                email = textBoxEmail.Text,
+                nomor_hp = textBoxNoTelp.Text,
+                alamat = textBoxAlamat.Text
+            };
+
+            try
+            {
+                if (c_user.Register(user))
+                {
+                    MessageBox.Show("Registrasi berhasil!");
+                    this.Close();
+                    V_Login_P Login = new V_Login_P();
+                    Login.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Registrasi gagal.");
+                }
+                MessageBox.Show("Registrasi berhasil!");
+                this.Close();
+                V_Login_P login = new V_Login_P();
+                login.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Registrasi Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+    }
+}
+
+

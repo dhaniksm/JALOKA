@@ -35,6 +35,8 @@
             buttonKatalogBuku = new Button();
             buttonKeluar = new Button();
             buttonDasboard = new Button();
+            pictureBoxProfil = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).BeginInit();
             SuspendLayout();
             // 
             // buttonPengembalian
@@ -137,12 +139,25 @@
             buttonDasboard.UseVisualStyleBackColor = false;
             buttonDasboard.Click += buttonDasboard_Click;
             // 
-            // V_RiwayatPeminjaman_Pelajar
+            // pictureBoxProfil
+            // 
+            pictureBoxProfil.BackColor = Color.Transparent;
+            pictureBoxProfil.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBoxProfil.Cursor = Cursors.Hand;
+            pictureBoxProfil.Location = new Point(22, 11);
+            pictureBoxProfil.Name = "pictureBoxProfil";
+            pictureBoxProfil.Size = new Size(57, 54);
+            pictureBoxProfil.TabIndex = 29;
+            pictureBoxProfil.TabStop = false;
+            pictureBoxProfil.Click += pictureBoxProfil_Click;
+            // 
+            // V_RiwayatPeminjaman_P
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(pictureBoxProfil);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonRiwayatPeminjaman);
             Controls.Add(buttonPeminjaman);
@@ -150,9 +165,10 @@
             Controls.Add(buttonKeluar);
             Controls.Add(buttonDasboard);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_RiwayatPeminjaman_Pelajar";
+            Name = "V_RiwayatPeminjaman_P";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_RiwayatPeminjaman_Pelajar";
+            ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).EndInit();
             ResumeLayout(false);
         }
 
@@ -164,5 +180,6 @@
         private Button buttonKatalogBuku;
         private Button buttonKeluar;
         private Button buttonDasboard;
+        private PictureBox pictureBoxProfil;
     }
 }

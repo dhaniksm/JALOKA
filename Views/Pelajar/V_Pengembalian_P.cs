@@ -19,7 +19,7 @@ namespace JALOKA.Views
 
         private void V_Pengembalian_Pelajar_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void buttonDasboard_Click(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace JALOKA.Views
         private void buttonPeminjaman_Click(object sender, EventArgs e)
         {
             this.Hide();
-            V_Peminjaman_Pe peminjaman = new V_Peminjaman_Pe();
+            V_Peminjaman_P peminjaman = new V_Peminjaman_P();
             peminjaman.Show();
         }
 
@@ -57,9 +57,17 @@ namespace JALOKA.Views
 
         private void buttonKeluar_Click(object sender, EventArgs e)
         {
+            this.Close();
+            V_TampilanAwal tampilanAwal = new V_TampilanAwal();
+            tampilanAwal.Show();
+        }
+
+        private void pictureBoxProfil_Click(object sender, EventArgs e)
+        {
             this.Hide();
-            V_Login login = new V_Login();
-            login.Show();
+            V_Profil_P v_Profil_P = new V_Profil_P();
+            v_Profil_P.ShowDialog();
+
         }
     }
 }
