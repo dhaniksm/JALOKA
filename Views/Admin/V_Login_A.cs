@@ -29,25 +29,17 @@ namespace JALOKA.Views.Admin
                 id_pustakawan = textBoxIDPustakawan.Text,
                 password = textBoxPassword.Text
             };
-            try
+
+            bool success = c_admin.Login(admin);
+            if (success)
             {
-                bool success = c_admin.Login(admin);
-                if (success)
-                {
-                    MessageBox.Show("Berhasil Login!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Hide();
-                    V_Dashboard_A dashboard = new V_Dashboard_A();
-                    dashboard.Show();
-                }
-                else
-                {
-                    MessageBox.Show("ID Pustakawan atau password salah.", "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                MessageBox.Show("Berhasil Login!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+                V_Dashboard_A dashboard = new V_Dashboard_A();
+                dashboard.Show();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
+            
         }
 
         private void textBoxIDPustakawan_TextChanged(object sender, EventArgs e)

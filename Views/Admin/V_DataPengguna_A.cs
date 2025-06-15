@@ -1,11 +1,9 @@
 using JALOKA.Controllers;
 using JALOKA.Models;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 using JALOKA.Views.Admin;
+using JALOKA.Helpers;
 
 namespace JALOKA.Views
 {
@@ -29,106 +27,103 @@ namespace JALOKA.Views
             try
             {
                 var data = userController.DaftarPengguna();
-
                 dataGridViewUsers.AutoGenerateColumns = true;
                 dataGridViewUsers.DataSource = null;
                 dataGridViewUsers.DataSource = data;
 
+                if (dataGridViewUsers.Columns.Contains("password"))
+                    dataGridViewUsers.Columns["password"].Visible = false;
+
+                dataGridViewUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
                 if (dataGridViewUsers.Columns.Count == 0)
-                {
-                    MessageBox.Show("Kolom masih kosong.");
-                }
+                    H_Pesan.Peringatan("Kolom masih kosong.");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Gagal memuat data: " + ex.Message);
+                H_Pesan.Gagal("Gagal memuat data: " + ex.Message);
             }
         }
 
         private void dataGridViewUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = e.RowIndex;
-            if (index >= 0)
+            if (e.RowIndex >= 0 && dataGridViewUsers.Columns.Contains("nisn"))
             {
-                DataGridViewRow row = dataGridViewUsers.Rows[index];
+                var row = dataGridViewUsers.Rows[e.RowIndex];
                 textBoxID.Text = row.Cells["nisn"].Value.ToString();
             }
         }
 
         private void buttonHapus_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textBoxID.Text))
+            if (string.IsNullOrWhiteSpace(textBoxID.Text))
             {
-                MessageBox.Show("Silakan pilih pengguna terlebih dahulu.");
+                H_Pesan.Peringatan("Silakan pilih pengguna terlebih dahulu.");
                 return;
             }
 
-            DialogResult confirm = MessageBox.Show("Yakin ingin menghapus data ini?", "Konfirmasi", MessageBoxButtons.YesNo);
-            if (confirm == DialogResult.Yes)
+            if (H_Pesan.Konfirmasi("Yakin ingin menghapus data ini?"))
             {
                 bool success = userController.DeleteUser(textBoxID.Text);
                 if (success)
                 {
-                    MessageBox.Show("Data berhasil dihapus.");
+                    H_Pesan.Sukses("Data berhasil dihapus.");
                     LoadData();
                     textBoxID.Clear();
                 }
                 else
                 {
-                    MessageBox.Show("Gagal menghapus data.");
+                    H_Pesan.Gagal("Gagal menghapus data.");
                 }
             }
+            else
+            {
+                H_Pesan.Peringatan("Penghapusan dibatalkan.");
+            }
+
         }
 
 
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
 
-        // Navigasi antar form
+        
+        private void buttonDataPengguna_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        
         private void buttonDashboard_Click(object sender, EventArgs e)
         {
             this.Hide();
-            V_Dashboard_A dashboard = new V_Dashboard_A();
-            dashboard.Show();
+            new V_Dashboard_A().Show();
         }
 
         private void buttonManajemenBuku_Click(object sender, EventArgs e)
         {
             this.Hide();
-            V_ManajemenBuku_A manajemenBuku = new V_ManajemenBuku_A();
-            manajemenBuku.Show();
-        }
-
-        private void buttonDataPengguna_Click(object sender, EventArgs e)
-        {
-            this.Refresh();
+            new V_ManajemenBuku_A().Show();
         }
 
         private void buttonPengembalian_Click(object sender, EventArgs e)
         {
             this.Hide();
-            V_Pengembalian_A pengembalian = new V_Pengembalian_A();
-            pengembalian.Show();
+            new V_Pengembalian_A().Show();
         }
 
         private void buttonRiwayatPeminjaman_Click(object sender, EventArgs e)
         {
             this.Hide();
-            V_RiwayatPeminjaman_A riwayatPeminjaman = new V_RiwayatPeminjaman_A();
-            riwayatPeminjaman.Show();
+            new V_RiwayatPeminjaman_A().Show();
         }
 
         private void buttonKeluar_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            V_Login_A login = new V_Login_A();
-            login.Show();
+            this.Close();
+            new V_TampilanAwal().Show();
         }
-
-        private void pictureBoxRefresh_Click(object sender, EventArgs e)
-        {
-            LoadData();
-
-        }
-
-        
     }
 }

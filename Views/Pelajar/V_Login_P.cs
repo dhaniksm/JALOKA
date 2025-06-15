@@ -47,26 +47,17 @@ namespace JALOKA.Views
                 password = textBoxPassword.Text
             };
 
-            try
+            bool success = c_user.Login(user);
+            if (success)
             {
-                bool success = c_user.Login(user);
-                if (success)
-                {
-                    nisnLogin = textBoxNisn.Text;
-                    MessageBox.Show("Berhasil Login!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Hide();
-                    V_Dashboard_P dashboard = new V_Dashboard_P();
-                    dashboard.Show();
-                }
-                else
-                {
-                    MessageBox.Show("ID atau password salah.", "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                nisnLogin = user.nisn; // Simpan ID untuk akses profil
+                MessageBox.Show("Berhasil Login!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+                V_Dashboard_P dashboard = new V_Dashboard_P();
+                dashboard.Show();
             }
-            catch (Exception ex)
-            {
-                H_Pesan.Gagal("Login Error" + ex.Message);
-            }
+
+            
         }
 
         private void buttonRegister_Click(object sender, EventArgs e)

@@ -1,14 +1,14 @@
 using JALOKA.Controllers;
 using JALOKA.Models;
 using JALOKA.Views;
-using Microsoft.VisualBasic.ApplicationServices;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using JALOKA.Helpers;
 
 namespace JALOKA.Views
 {
     public partial class V_Register_P : Form
     {
-        private C_User c_user = new C_User();
+        private readonly C_User c_user = new C_User();
+
         public V_Register_P()
         {
             InitializeComponent();
@@ -17,26 +17,39 @@ namespace JALOKA.Views
         private void pictureBoxKembali_Click(object sender, EventArgs e)
         {
             this.Close();
-            V_Login_P login = new V_Login_P();
-            login.Show();
-
+            new V_Login_P().Show();
         }
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
+            
+            if (string.IsNullOrWhiteSpace(textBoxIDPelajar.Text) ||
+                string.IsNullOrWhiteSpace(textBoxPassword.Text) ||
+                string.IsNullOrWhiteSpace(textBoxNama.Text) ||
+                string.IsNullOrWhiteSpace(textBoxEmail.Text) ||
+                string.IsNullOrWhiteSpace(textBoxNoTelp.Text) ||
+                string.IsNullOrWhiteSpace(textBoxAlamat.Text))
+            {
+                H_Pesan.Peringatan("Semua field wajib diisi.");
+                return;
+            }
+
+            
             if (!textBoxEmail.Text.Contains("@"))
             {
-                MessageBox.Show("Format email tidak valid.", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                H_Pesan.Peringatan("Format email tidak valid.");
                 return;
             }
 
+            
             if (!long.TryParse(textBoxNoTelp.Text, out _))
             {
-                MessageBox.Show("Nomor HP hanya boleh berisi angka.", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                H_Pesan.Peringatan("Nomor HP hanya boleh berisi angka.");
                 return;
             }
 
-            M_User user = new M_User
+            
+            var user = new M_User
             {
                 nisn = textBoxIDPelajar.Text,
                 password = textBoxPassword.Text,
@@ -46,30 +59,18 @@ namespace JALOKA.Views
                 alamat = textBoxAlamat.Text
             };
 
-            try
+            
+            bool success = c_user.Register(user);
+            if (success)
             {
-                if (c_user.Register(user))
-                {
-                    MessageBox.Show("Registrasi berhasil!");
-                    this.Close();
-                    V_Login_P Login = new V_Login_P();
-                    Login.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Registrasi gagal.");
-                }
-                MessageBox.Show("Registrasi berhasil!");
+                H_Pesan.Sukses("Registrasi berhasil!");
                 this.Close();
-                V_Login_P login = new V_Login_P();
-                login.Show();
+                new V_Login_P().Show();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Error: {ex.Message}", "Registrasi Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                H_Pesan.Gagal("Registrasi gagal. Silakan coba lagi.");
             }
         }
     }
 }
-
-

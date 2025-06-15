@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using JALOKA.Database;
 using JALOKA.Helpers;
 using JALOKA.Models;
@@ -12,51 +11,77 @@ namespace JALOKA.Controllers
     {
         public bool Login(M_User user)
         {
-            if(string.IsNullOrWhiteSpace(user.nisn) || string.IsNullOrWhiteSpace(user.password))
-                throw new ArgumentException("nisn dan Password tidak boleh kosong.");
+            if (string.IsNullOrWhiteSpace(user.nisn) && string.IsNullOrWhiteSpace(user.password))
+            {
+                H_Pesan.Peringatan("NISN dan Password tidak boleh kosong.");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(user.nisn))
+            {
+                H_Pesan.Peringatan("NISN tidak boleh kosong.");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(user.password))
+            {
+                H_Pesan.Peringatan("Password tidak boleh kosong.");
+                return false;
+            }
 
             try
             {
                 using (var db = new D_Connector())
                 {
-                    var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM pengguna WHERE nisn = @nisn AND password = @password", db.Connection);
+                    var cmd = new NpgsqlCommand(
+                        "SELECT COUNT(*) FROM pengguna WHERE nisn = @nisn AND password = @password", db.Connection);
                     cmd.Parameters.AddWithValue("@nisn", user.nisn);
                     cmd.Parameters.AddWithValue("@password", user.password);
-                    int count = Convert.ToInt32(cmd.ExecuteScalar());
-                    return count > 0;
-                } ;
 
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    if (count == 0)
+                    {
+                        H_Pesan.Gagal("NISN atau Password salah.");
+                        return false;
+                    }
+
+                    return true;
+                }
             }
             catch (Exception ex)
             {
-                throw new Exception("Gagal melakukan login: " + ex.Message);
+                H_Pesan.Gagal("Gagal melakukan login: " + ex.Message);
+                return false;
             }
         }
 
         public bool Register(M_User user)
         {
-            if (string.IsNullOrWhiteSpace(user.nisn) || string.IsNullOrWhiteSpace(user.password) ||
-                string.IsNullOrWhiteSpace(user.nama) || string.IsNullOrWhiteSpace(user.email) ||
-                string.IsNullOrWhiteSpace(user.nomor_hp) || string.IsNullOrWhiteSpace(user.alamat))
-                throw new ArgumentException("Semua field harus diisi.");
+            
 
             try
             {
                 using (var db = new D_Connector())
                 {
-                    using var cmd = new NpgsqlCommand(@"INSERT INTO users (id_user, password, nama, email, nomor_hp, alamat) VALUES (@id_user, @password, @nama, @email, @nomor_hp, @alamat)", db.Connection);
-                    cmd.Parameters.AddWithValue("@id_user", user.nisn);
+                    using var cmd = new NpgsqlCommand(@"
+                        INSERT INTO pengguna (nisn, password, nama, email, nomor_hp, alamat) 
+                        VALUES (@nisn, @password, @nama, @email, @nomor_hp, @alamat)", db.Connection);
+
+                    cmd.Parameters.AddWithValue("@nisn", user.nisn);
                     cmd.Parameters.AddWithValue("@password", user.password);
                     cmd.Parameters.AddWithValue("@nama", user.nama);
                     cmd.Parameters.AddWithValue("@email", user.email);
                     cmd.Parameters.AddWithValue("@nomor_hp", user.nomor_hp);
                     cmd.Parameters.AddWithValue("@alamat", user.alamat);
+
                     return cmd.ExecuteNonQuery() > 0;
                 }
             }
             catch (Exception ex)
             {
-                throw new ArgumentException("Gagal Melakukan Registrasi" + ex.Message);
+                H_Pesan.Gagal("Gagal melakukan registrasi: " + ex.Message);
+                return false;
             }
         }
 
@@ -66,10 +91,10 @@ namespace JALOKA.Controllers
 
             try
             {
-                using(var db = new D_Connector())
+                using (var db = new D_Connector())
                 {
-                    var cmd = new NpgsqlCommand("SELECT * FROM users ORDER BY id_user ASC", db.Connection);
-                    var reader = cmd.ExecuteReader();
+                    var cmd = new NpgsqlCommand("SELECT * FROM pengguna ORDER BY id_user ASC", db.Connection);
+                    using var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
                         list.Add(new M_User
@@ -87,7 +112,7 @@ namespace JALOKA.Controllers
             }
             catch (Exception ex)
             {
-                throw new Exception("Gagal mengambil data pengguna: " + ex.Message);
+                H_Pesan.Gagal("Gagal mengambil data pengguna: " + ex.Message);
             }
 
             return list;
@@ -102,10 +127,10 @@ namespace JALOKA.Controllers
                     var cmd = new NpgsqlCommand("SELECT * FROM pengguna WHERE nisn = @nisn", db.Connection);
                     cmd.Parameters.AddWithValue("@nisn", nisn);
 
-                    var reader = cmd.ExecuteReader();
+                    using var reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
-                        var user = new M_User
+                        return new M_User
                         {
                             id_user = reader["id_user"].ToString(),
                             nisn = reader["nisn"].ToString(),
@@ -114,17 +139,15 @@ namespace JALOKA.Controllers
                             nomor_hp = reader["nomor_hp"].ToString(),
                             alamat = reader["alamat"].ToString()
                         };
-                        reader.Close();
-                        return user;
                     }
-                    reader.Close();
-                    return null;
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Gagal mengambil data profil: " + ex.Message);
+                H_Pesan.Gagal("Gagal mengambil data profil: " + ex.Message);
             }
+
+            return null;
         }
 
         public bool UpdateUser(M_User user)
@@ -134,9 +157,9 @@ namespace JALOKA.Controllers
                 using (var db = new D_Connector())
                 {
                     var cmd = new NpgsqlCommand(@"
-                    UPDATE pengguna 
-                    SET nama = @nama, email = @email, nomor_hp = @nomor_hp, alamat = @alamat
-                    WHERE nisn = @nisn", db.Connection);
+                        UPDATE pengguna 
+                        SET nama = @nama, email = @email, nomor_hp = @nomor_hp, alamat = @alamat
+                        WHERE nisn = @nisn", db.Connection);
 
                     cmd.Parameters.AddWithValue("@nisn", user.nisn);
                     cmd.Parameters.AddWithValue("@nama", user.nama);
@@ -146,11 +169,11 @@ namespace JALOKA.Controllers
 
                     return cmd.ExecuteNonQuery() > 0;
                 }
-
             }
             catch (Exception ex)
             {
-                throw new Exception("Gagal memperbarui data pengguna: " + ex.Message);
+                H_Pesan.Gagal("Gagal memperbarui data pengguna: " + ex.Message);
+                return false;
             }
         }
 
@@ -168,7 +191,8 @@ namespace JALOKA.Controllers
             }
             catch (Exception ex)
             {
-                throw new Exception("Gagal menghapus data pengguna: " + ex.Message);
+                H_Pesan.Gagal("Gagal menghapus data pengguna: " + ex.Message);
+                return false;
             }
         }
     }
