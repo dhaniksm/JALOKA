@@ -1,6 +1,6 @@
 ﻿namespace JALOKA.Views.Admin
 {
-    partial class V_TambahEdit_A
+    partial class V_Tambah_A
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_TambahEdit_A));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Tambah_A));
             pictureBoxCover = new PictureBox();
             textBoxJudul = new TextBox();
             textBoxPenulis = new TextBox();

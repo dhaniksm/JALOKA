@@ -20,7 +20,7 @@ namespace JALOKA.Controllers
                 using (var db = new D_Connector())
                 {
                     using var cmd = new NpgsqlCommand("SELECT b.id_buku, b.judul, b.penulis, b.penerbit, b.tahun_terbit, b.sinopsis, b.cover FROM keranjang k JOIN buku b ON k.id_buku = b.id_buku WHERE k.id_user = @id_user", db.Connection);
-                    cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
+                    cmd.Parameters.AddWithValue("@id_user", H_Sesi.nisn);
 
                     using var reader = cmd.ExecuteReader();
                     while (reader.Read())
@@ -53,7 +53,7 @@ namespace JALOKA.Controllers
                 using var db = new D_Connector();
                 using (var cek = new NpgsqlCommand("SELECT 1 FROM keranjang WHERE id_user = @id_user AND id_buku = @id_buku", db.Connection))
                 {
-                    cek.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
+                    cek.Parameters.AddWithValue("@id_user", H_Sesi.nisn);
                     cek.Parameters.AddWithValue("@id_buku", id_buku);
 
                     if (cek.ExecuteScalar() != null)
@@ -62,14 +62,14 @@ namespace JALOKA.Controllers
 
                 using (var hitung = new NpgsqlCommand("SELECT COUNT(*) FROM keranjang WHERE id_user = @id_user", db.Connection))
                 {
-                    hitung.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
+                    hitung.Parameters.AddWithValue("@id_user", H_Sesi.nisn);
                     int total = Convert.ToInt32(hitung.ExecuteScalar());
                     if (total >= 3)
                         throw new Exception("Maksimal peminjaman adalah 3 buku.");
                 }
 
                 using var insert = new NpgsqlCommand("INSERT INTO keranjang (id_user, id_buku) VALUES (@id_user, @id_buku)", db.Connection);
-                insert.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
+                insert.Parameters.AddWithValue("@id_user", H_Sesi.nisn);
                 insert.Parameters.AddWithValue("@id_buku", id_buku);
                 insert.ExecuteNonQuery();
             }
@@ -85,7 +85,7 @@ namespace JALOKA.Controllers
             {
                 using var db = new D_Connector();
                 using var cmd = new NpgsqlCommand("DELETE FROM keranjang WHERE id_user = @id_user AND id_buku = @id_buku", db.Connection);
-                cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
+                cmd.Parameters.AddWithValue("@id_user", H_Sesi.nisn);
                 cmd.Parameters.AddWithValue("@id_buku", id_buku);
                 cmd.ExecuteNonQuery();
             }
@@ -105,7 +105,7 @@ namespace JALOKA.Controllers
                     foreach (var buku in keranjang)
                     {
                         using var cmd = new NpgsqlCommand("INSERT INTO peminjaman (nisn, id_buku, tanggal_pinjam) VALUES(@nisn, @id_buku, @tanggal)", db.Connection);
-                        cmd.Parameters.AddWithValue("@nisn", H_Sesi.id_user);
+                        cmd.Parameters.AddWithValue("@nisn", H_Sesi.nisn);
                         cmd.Parameters.AddWithValue("@id_buku", buku.id_buku);
                         cmd.Parameters.AddWithValue("@tanggal", DateTime.Now);
                         cmd.ExecuteNonQuery();
@@ -197,7 +197,7 @@ namespace JALOKA.Controllers
             using (var db = new D_Connector())
             {
                 using var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM peminjaman WHERE nisn = @nisn AND status = 'aktif'", db.Connection);
-                cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
+                cmd.Parameters.AddWithValue("@id_user", H_Sesi.nisn);
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }
         }
