@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem("");
-            ListViewItem listViewItem2 = new ListViewItem("");
+            ListViewItem listViewItem3 = new ListViewItem("");
+            ListViewItem listViewItem4 = new ListViewItem("");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Pengembalian_A));
             buttonPengembalian = new Button();
             buttonKeluar = new Button();
@@ -37,7 +37,7 @@
             buttonDataPengguna = new Button();
             buttonRiwayatPeminjaman = new Button();
             buttonDashboard = new Button();
-            listView1 = new ListView();
+            listViewPeminjaman = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             SuspendLayout();
@@ -132,15 +132,15 @@
             buttonDashboard.UseVisualStyleBackColor = false;
             buttonDashboard.Click += buttonDashboard_Click;
             // 
-            // listView1
+            // listViewPeminjaman
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
-            listView1.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2 });
-            listView1.Location = new Point(262, 85);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(926, 533);
-            listView1.TabIndex = 27;
-            listView1.UseCompatibleStateImageBehavior = false;
+            listViewPeminjaman.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
+            listViewPeminjaman.Items.AddRange(new ListViewItem[] { listViewItem3, listViewItem4 });
+            listViewPeminjaman.Location = new Point(262, 85);
+            listViewPeminjaman.Name = "listViewPeminjaman";
+            listViewPeminjaman.Size = new Size(926, 533);
+            listViewPeminjaman.TabIndex = 27;
+            listViewPeminjaman.UseCompatibleStateImageBehavior = false;
             // 
             // V_Pengembalian_A
             // 
@@ -148,7 +148,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
-            Controls.Add(listView1);
+            Controls.Add(listViewPeminjaman);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonKeluar);
             Controls.Add(buttonManajemenBuku);
@@ -170,7 +170,7 @@
         private Button buttonDataPengguna;
         private Button buttonRiwayatPeminjaman;
         private Button buttonDashboard;
-        private ListView listView1;
+        private ListView listViewPeminjaman;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
     }

@@ -77,8 +77,8 @@ namespace JALOKA.Views
                 if (dataGridView1.Columns.Contains("buku_id"))
                     dataGridView1.Columns["buku_id"].Visible = false;
 
-                if (dataGridView1.Columns.Contains("id_user"))
-                    dataGridView1.Columns["id_user"].Visible = false;
+                if (dataGridView1.Columns.Contains("nisn"))
+                    dataGridView1.Columns["nisn"].Visible = false;
 
                 if (dataGridView1.Columns.Count == 0)
                 {

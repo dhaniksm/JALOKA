@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using JALOKA.Controllers;
+using JALOKA.Database;
+using JALOKA.Helpers;
 using JALOKA.Models;
 
 
@@ -20,6 +22,22 @@ namespace JALOKA.Views.Admin
         public V_Login_A()
         {
             InitializeComponent();
+            TabelAdmin();
+        }
+
+        private void TabelAdmin()
+        {
+            try
+            {
+                using (var db = new D_Connector())
+                {
+                    D_Tabel.CekTabel(db.Connection, "admin");
+                }
+            }
+            catch (Exception ex)
+            {
+                H_Pesan.Gagal("Gagal memeriksa tabel admin: " + ex.Message);
+            }
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)

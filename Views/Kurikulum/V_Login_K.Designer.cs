@@ -69,7 +69,6 @@
             textBoxIDKurikulum.Name = "textBoxIDKurikulum";
             textBoxIDKurikulum.Size = new Size(320, 20);
             textBoxIDKurikulum.TabIndex = 13;
-            textBoxIDKurikulum.TextChanged += textBoxIDKurikulum_TextChanged;
             // 
             // textBoxPassword
             // 

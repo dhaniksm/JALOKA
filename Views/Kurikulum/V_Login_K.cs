@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using JALOKA.Controllers;
+using JALOKA.Database;
+using JALOKA.Helpers;
 using JALOKA.Models;
 
 namespace JALOKA.Views
@@ -18,20 +20,29 @@ namespace JALOKA.Views
         public V_Login_K()
         {
             InitializeComponent();
+            TabelKurikulum();
         }
 
-        
+        private void TabelKurikulum()
+        {
+            try
+            {
+                using (var db = new D_Connector())
+                {
+                    D_Tabel.CekTabel(db.Connection, "kurikulum");
+                }
+            }
+            catch (Exception ex)
+            {
+                H_Pesan.Gagal("Gagal memeriksa tabel kurikulum: " + ex.Message);
+            }
+        }
 
         private void pictureBoxKembali_Click(object sender, EventArgs e)
         {
             this.Close();
             V_TampilanAwal tampilanAwal = new V_TampilanAwal();
             tampilanAwal.Show();
-        }
-
-        private void textBoxIDKurikulum_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void textBoxPassword_TextChanged(object sender, EventArgs e)
@@ -57,8 +68,6 @@ namespace JALOKA.Views
                 V_Dashboard_K dashboard = new V_Dashboard_K();
                 dashboard.Show();
             }
-
-            
         }
 
         private void checkBoxPassword_CheckedChanged(object sender, EventArgs e)

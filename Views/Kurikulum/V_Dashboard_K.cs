@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JALOKA.Controllers;
+using JALOKA.Database;
+using JALOKA.Helpers;
 
 namespace JALOKA.Views
 {
@@ -19,7 +22,7 @@ namespace JALOKA.Views
 
         private void buttonDashboard_Click(object sender, EventArgs e)
         {
-
+            this.Refresh();
         }
 
         private void buttonDataPengguna_Click(object sender, EventArgs e)

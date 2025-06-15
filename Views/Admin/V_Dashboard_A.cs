@@ -1,4 +1,7 @@
-﻿using JALOKA.Models;
+﻿using JALOKA.Database;
+using JALOKA.Helpers;
+using JALOKA.Models;
+using JALOKA.Views.Admin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,9 +56,9 @@ namespace JALOKA.Views
 
         private void buttonKeluar_Click(object sender, EventArgs e)
         {
-            this.Close();
             V_TampilanAwal v_TampilanAwal = new V_TampilanAwal();
             v_TampilanAwal.Show();
+            this.Hide();
 
         }
 
@@ -63,6 +66,13 @@ namespace JALOKA.Views
         {
 
 
+        }
+
+        private void buttonPeminjaman_Click(object sender, EventArgs e)
+        {
+            V_Peminjaman_A peminjaman = new V_Peminjaman_A();
+            peminjaman.Show();
+            this.Hide();
         }
     }
 }
