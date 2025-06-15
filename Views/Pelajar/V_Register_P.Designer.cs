@@ -110,10 +110,22 @@
             // 
             // pictureBoxKembali
             // 
+
+            pictureBoxKembali.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBoxKembali.BackColor = Color.Transparent;
             pictureBoxKembali.BackgroundImage = (Image)resources.GetObject("pictureBoxKembali.BackgroundImage");
             pictureBoxKembali.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBoxKembali.Cursor = Cursors.Hand;
+            pictureBoxKembali.Location = new Point(58, 43);
+            pictureBoxKembali.Margin = new Padding(0);
+            pictureBoxKembali.Name = "pictureBoxKembali";
+            pictureBoxKembali.Size = new Size(78, 48);
+            pictureBoxKembali.TabIndex = 16;
+            pictureBoxKembali.TabStop = false;
+            pictureBoxKembali.Click += pictureBoxKembali_Click;
+            // 
+            // V_Register
+
             pictureBoxKembali.Location = new Point(60, 43);
             pictureBoxKembali.Margin = new Padding(0);
             pictureBoxKembali.Name = "pictureBoxKembali";
@@ -153,6 +165,7 @@
         private TextBox textBoxNama;
         private TextBox textBoxIDPelajar;
         private TextBox textBoxPassword;
+        private Button buttonKembali;
         private PictureBox pictureBoxKembali;
     }
 }

@@ -1,4 +1,6 @@
 ﻿using JALOKA.Controllers;
+using JALOKA.Database;
+using JALOKA.Helpers;
 using JALOKA.Models;
 using System;
 using System.Collections.Generic;
@@ -20,8 +22,23 @@ namespace JALOKA.Views
         public V_Login_P()
         {
             InitializeComponent();
+            TabelPengguna();
         }
 
+        private void TabelPengguna()
+        {
+            try
+            {
+                using (var db = new D_Connector())
+                {
+                    D_Tabel.CekTabel(db.Connection, "pengguna");
+                }
+            }
+            catch (Exception ex)
+            {
+                H_Pesan.Gagal("Gagal memeriksa tabel pengguna " + ex.Message);
+            }
+        }
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             M_User user = new M_User
@@ -48,7 +65,7 @@ namespace JALOKA.Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                H_Pesan.Gagal("Login Error" + ex.Message);
             }
         }
 
@@ -76,6 +93,13 @@ namespace JALOKA.Views
             textBoxPassword.PasswordChar = '*';
         }
 
+
+        private void textBoxIDPelajar_TextChanged(object sender, EventArgs e)
+        { 
+        
+        }
+
+
         
 
         private void pictureBoxKembali_Click(object sender, EventArgs e)
@@ -83,6 +107,7 @@ namespace JALOKA.Views
             this.Close();
             V_TampilanAwal tampilanAwal = new V_TampilanAwal();
             tampilanAwal.Show();
+
         }
     }
 

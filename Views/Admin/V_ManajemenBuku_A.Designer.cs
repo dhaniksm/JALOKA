@@ -131,10 +131,12 @@
             buttonKeluar.TabIndex = 23;
             buttonKeluar.Text = "Keluar";
             buttonKeluar.UseVisualStyleBackColor = false;
+            buttonKeluar.Click += buttonKeluar_Click;
             // 
             // buttonTambah
             // 
             buttonTambah.Anchor = AnchorStyles.None;
+            buttonTambah.Cursor = Cursors.Hand;
             buttonTambah.Location = new Point(686, 612);
             buttonTambah.Name = "buttonTambah";
             buttonTambah.Size = new Size(90, 30);
