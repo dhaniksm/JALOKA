@@ -35,7 +35,7 @@ namespace JALOKA.Views
                 var row = new ListViewItem(item.id_peminjaman.ToString());
                 row.SubItems.Add(item.judul);
                 row.SubItems.Add(item.tanggal_pinjam.ToShortDateString());
-                row.Tag = item; // simpan objek untuk akses saat diklik
+                row.Tag = item;
                 listView1.Items.Add(row);
             }
         }

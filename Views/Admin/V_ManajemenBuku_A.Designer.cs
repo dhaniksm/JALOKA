@@ -74,6 +74,7 @@
             buttonManajemenBuku.TabIndex = 19;
             buttonManajemenBuku.Text = "Manajemen Buku";
             buttonManajemenBuku.UseVisualStyleBackColor = false;
+            buttonManajemenBuku.Click += buttonManajemenBuku_Click;
             // 
             // buttonDataPengguna
             // 

@@ -95,7 +95,6 @@ namespace JALOKA.Controllers
                 {
                     var cmd = new NpgsqlCommand("SELECT * FROM pengguna ORDER BY id_user ASC", db.Connection);
                     using var reader = cmd.ExecuteReader();
-
                     while (reader.Read())
                     {
                         list.Add(new M_User
