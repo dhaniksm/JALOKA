@@ -46,26 +46,19 @@ namespace JALOKA.Views
                 id_kurikulum = textBoxIDKurikulum.Text,
                 password = textBoxPassword.Text
             };
-            try
-            {
-                bool success = new C_Kurikulum().login(kurikulum);
-                if (success)
-                {
-                    MessageBox.Show("Berhasil Login!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Hide();
-                    V_Dashboard_K dashboard = new V_Dashboard_K();
-                    dashboard.Show();
-                }
-                else
-                {
-                    MessageBox.Show("ID Kurikulum atau password salah.", "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            var controller = new C_Kurikulum();
+            bool success = controller.Login(kurikulum);
+
+            if (success)
+            {
+                MessageBox.Show("Berhasil Login!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+                V_Dashboard_K dashboard = new V_Dashboard_K();
+                dashboard.Show();
             }
+
+            
         }
 
         private void checkBoxPassword_CheckedChanged(object sender, EventArgs e)

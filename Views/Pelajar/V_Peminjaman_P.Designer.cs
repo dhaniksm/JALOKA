@@ -160,6 +160,7 @@
             flowLayoutPanelKeranjang.Size = new Size(937, 300);
             flowLayoutPanelKeranjang.TabIndex = 21;
             // 
+
             // flowLayoutPanelMenunggu
             // 
             flowLayoutPanelMenunggu.FlowDirection = FlowDirection.TopDown;
@@ -203,5 +204,6 @@
         private PictureBox pictureBoxProfil;
         private FlowLayoutPanel flowLayoutPanelKeranjang;
         private FlowLayoutPanel flowLayoutPanelMenunggu;
+
     }
 }

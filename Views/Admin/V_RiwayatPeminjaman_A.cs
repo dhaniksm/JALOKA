@@ -56,9 +56,9 @@ namespace JALOKA.Views
 
         private void buttonKeluar_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            V_Login_A login = new V_Login_A();
-            login.Show();
+            this.Close();
+            V_TampilanAwal v_TampilanAwal = new V_TampilanAwal();
+            v_TampilanAwal.Show();
         }
 
         private void LoadData()

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace JALOKA.Views.Admin
 {
-    public partial class V_TambahEdit_A : Form
+    public partial class V_Tambah_A : Form
     {
         private C_Buku controller = new C_Buku();
         private byte[] cover = null;
@@ -24,7 +24,7 @@ namespace JALOKA.Views.Admin
             Title = "Pilih Cover Buku"
         };
 
-        public V_TambahEdit_A()
+        public V_Tambah_A()
         {
             InitializeComponent();
         }

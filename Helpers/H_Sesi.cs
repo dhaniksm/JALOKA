@@ -22,10 +22,5 @@ namespace JALOKA.Helpers
             nisn = 0;
             nama_lengkap = null;
         }
-
-        public static bool IsLoggedIn()
-        {
-            return nisn > 0;
-        }
     }
 }

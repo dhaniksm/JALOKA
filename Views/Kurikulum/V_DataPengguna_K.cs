@@ -9,10 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using JALOKA.Controllers;
 using JALOKA.Models;
-using JALOKA.Views.Admin;
-using JALOKA.Views;
-
-
+using JALOKA.Helpers;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace JALOKA.Views
 {
@@ -23,6 +21,12 @@ namespace JALOKA.Views
         public V_DataPengguna_K()
         {
             InitializeComponent();
+        }
+
+        private void V_DataPengguna_K_Load(object sender, EventArgs e)
+        {
+            TampilkanDataPengguna();
+            dataGridViewDataUser.ClearSelection();
         }
 
         private void TampilkanDataPengguna()
@@ -36,47 +40,16 @@ namespace JALOKA.Views
                 dataGridViewDataUser.Columns["password"].Visible = false;
         }
 
-
-        private void buttonDashboard_Click(object sender, EventArgs e)
+        private void dataGridViewDatauser_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.Hide();
-            V_Dashboard_K dashboard = new V_Dashboard_K();
-            dashboard.Show();
-
-        }
-
-        private void buttonDataPengguna_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonKeluar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            V_TampilanAwal tampilanAwal = new V_TampilanAwal();
-            tampilanAwal.Show();
-
-        }
-
-        private void buttonHapus_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(textBoxIDPelajar.Text))
+            if (e.RowIndex >= 0)
             {
-                MessageBox.Show("Silakan pilih data pengguna yang akan dihapus.", "Hapus Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            DialogResult konfirmasi = MessageBox.Show("Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi Hapus", MessageBoxButtons.YesNo);
-            if (konfirmasi == DialogResult.Yes)
-            {
-                bool berhasil = userController.DeleteUser(textBoxIDPelajar.Text);
-                MessageBox.Show(berhasil ? "Data berhasil dihapus." : "Gagal menghapus data.");
-                if (berhasil)
-                {
-                    TampilkanDataPengguna();
-                    BersihkanForm();
-                }
-
+                var row = dataGridViewDataUser.Rows[e.RowIndex];
+                textBoxIDPelajar.Text = row.Cells["nisn"].Value.ToString();
+                textBoxNama.Text = row.Cells["nama"].Value.ToString();
+                textBoxEmail.Text = row.Cells["email"].Value.ToString();
+                textBoxNoHP.Text = row.Cells["nomor_hp"].Value.ToString();
+                textBoxAlamat.Text = row.Cells["alamat"].Value.ToString();
             }
         }
 
@@ -88,19 +61,19 @@ namespace JALOKA.Views
                 string.IsNullOrWhiteSpace(textBoxNoHP.Text) ||
                 string.IsNullOrWhiteSpace(textBoxAlamat.Text))
             {
-                MessageBox.Show("Semua kolom wajib diisi.", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                H_Pesan.Peringatan("Semua kolom wajib diisi.");
                 return;
             }
 
             if (!textBoxEmail.Text.Contains("@"))
             {
-                MessageBox.Show("Format email tidak valid.", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                H_Pesan.Peringatan("Format email tidak valid.");
                 return;
             }
 
             if (!long.TryParse(textBoxNoHP.Text, out _))
             {
-                MessageBox.Show("Nomor HP hanya boleh berisi angka.", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                H_Pesan.Peringatan("Nomor HP hanya boleh berisi angka.");
                 return;
             }
 
@@ -114,24 +87,64 @@ namespace JALOKA.Views
             };
 
             bool berhasil = userController.UpdateUser(pengguna);
-            MessageBox.Show(berhasil ? "Data berhasil diperbarui." : "Gagal memperbarui data.");
-            if (berhasil) TampilkanDataPengguna();
-
+            if (berhasil)
+            {
+                H_Pesan.Sukses("Data berhasil diperbarui.");
+                TampilkanDataPengguna();
+            }
+            else
+            {
+                H_Pesan.Gagal("Gagal memperbarui data.");
+            }
         }
 
-        private void dataGridViewDatauser_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void buttonHapus_Click(object sender, EventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (string.IsNullOrWhiteSpace(textBoxIDPelajar.Text))
             {
-                var baris = dataGridViewDataUser.Rows[e.RowIndex];
-                textBoxIDPelajar.Text = baris.Cells["nisn"].Value.ToString();
-                textBoxNama.Text = baris.Cells["nama"].Value.ToString();
-                textBoxEmail.Text = baris.Cells["email"].Value.ToString();
-                textBoxNoHP.Text = baris.Cells["nomor_hp"].Value.ToString();
-                textBoxAlamat.Text = baris.Cells["alamat"].Value.ToString();
+                H_Pesan.Peringatan("Silakan pilih data pengguna terlebih dahulu.");
+                return;
+            }
+
+            if (H_Pesan.Konfirmasi("Apakah Anda yakin ingin menghapus data ini?"))
+            {
+                bool berhasil = userController.DeleteUser(textBoxIDPelajar.Text);
+                if (berhasil)
+                {
+                    H_Pesan.Sukses("Data berhasil dihapus.");
+                    TampilkanDataPengguna();
+                    BersihkanForm();
+                }
+                else
+                {
+                    H_Pesan.Gagal("Gagal menghapus data.");
+                }
+
+            }
+            else
+            {
+                H_Pesan.Peringatan("Penghapusan dibatalkan.");
             }
 
         }
+
+        private void buttonDashboard_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new V_Dashboard_K().Show();
+        }
+
+        private void buttonKeluar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new V_TampilanAwal().Show();
+        }
+
+        private void buttonDataPengguna_Click(object sender, EventArgs e)
+        {
+            
+        }
+
         private void BersihkanForm()
         {
             textBoxIDPelajar.Clear();
@@ -140,13 +153,5 @@ namespace JALOKA.Views
             textBoxNoHP.Clear();
             textBoxAlamat.Clear();
         }
-
-        private void V_DataPengguna_K_Load(object sender, EventArgs e)
-        {
-            TampilkanDataPengguna();
-            dataGridViewDataUser.ClearSelection();
-
-        }
     }
 }
-
