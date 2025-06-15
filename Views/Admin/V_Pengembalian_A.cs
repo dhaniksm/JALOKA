@@ -27,16 +27,16 @@ namespace JALOKA.Views
 
         private void LoadPeminjaman()
         {
-            listView1.Items.Clear();
+            listViewPeminjaman.Items.Clear();
             var data = c_pengembalian.AmbilPeminjamanAktif();
 
             foreach (var item in data)
             {
                 var row = new ListViewItem(item.id_peminjaman.ToString());
-                row.SubItems.Add(item.judul);
+                row.SubItems.Add(item.judul_buku);
                 row.SubItems.Add(item.tanggal_pinjam.ToShortDateString());
                 row.Tag = item;
-                listView1.Items.Add(row);
+                listViewPeminjaman.Items.Add(row);
             }
         }
 
@@ -82,9 +82,9 @@ namespace JALOKA.Views
 
         private void btnKembalikan_Click(object sender, EventArgs e)
         {
-            if (listView1.SelectedItems.Count > 0)
+            if (listViewPeminjaman.SelectedItems.Count > 0)
             {
-                var item = (M_Peminjaman)listView1.SelectedItems[0].Tag;
+                var item = (M_Peminjaman)listViewPeminjaman.SelectedItems[0].Tag;
                 c_pengembalian.ProsesPengembalian(item.id_peminjaman, item.id_buku);
                 LoadPeminjaman(); // refresh list
             }

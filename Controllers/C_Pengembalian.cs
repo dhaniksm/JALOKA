@@ -26,7 +26,7 @@ namespace JALOKA.Controllers
                     {
                         id_peminjaman = reader.GetInt32(0),
                         id_buku = reader.GetInt32(1),
-                        judul = reader.GetString(2),
+                        judul_buku = reader.GetString(2),
                         tanggal_pinjam = reader.GetDateTime(3),
                         status = reader.GetString(4)
                     });

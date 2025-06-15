@@ -38,6 +38,7 @@
             pictureBoxProfil = new PictureBox();
             flowLayoutPanelKeranjang = new FlowLayoutPanel();
             flowLayoutPanelMenunggu = new FlowLayoutPanel();
+            buttonPinjam = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).BeginInit();
             SuspendLayout();
             // 
@@ -154,13 +155,11 @@
             // 
             // flowLayoutPanelKeranjang
             // 
-            flowLayoutPanelKeranjang.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanelKeranjang.Location = new Point(257, 79);
             flowLayoutPanelKeranjang.Name = "flowLayoutPanelKeranjang";
-            flowLayoutPanelKeranjang.Size = new Size(937, 300);
+            flowLayoutPanelKeranjang.Size = new Size(825, 300);
             flowLayoutPanelKeranjang.TabIndex = 21;
             // 
-
             // flowLayoutPanelMenunggu
             // 
             flowLayoutPanelMenunggu.FlowDirection = FlowDirection.TopDown;
@@ -169,12 +168,30 @@
             flowLayoutPanelMenunggu.Size = new Size(937, 286);
             flowLayoutPanelMenunggu.TabIndex = 22;
             // 
+            // buttonPinjam
+            // 
+            buttonPinjam.BackColor = SystemColors.ControlLightLight;
+            buttonPinjam.Cursor = Cursors.Hand;
+            buttonPinjam.FlatAppearance.BorderColor = Color.White;
+            buttonPinjam.FlatAppearance.BorderSize = 0;
+            buttonPinjam.FlatStyle = FlatStyle.Flat;
+            buttonPinjam.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonPinjam.ForeColor = SystemColors.Desktop;
+            buttonPinjam.Location = new Point(1088, 203);
+            buttonPinjam.Name = "buttonPinjam";
+            buttonPinjam.Size = new Size(100, 30);
+            buttonPinjam.TabIndex = 5;
+            buttonPinjam.Text = "Pinjam";
+            buttonPinjam.UseVisualStyleBackColor = false;
+            buttonPinjam.Click += buttonPinjam_Click;
+            // 
             // V_Peminjaman_P
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(buttonPinjam);
             Controls.Add(flowLayoutPanelMenunggu);
             Controls.Add(pictureBoxProfil);
             Controls.Add(flowLayoutPanelKeranjang);
@@ -204,6 +221,6 @@
         private PictureBox pictureBoxProfil;
         private FlowLayoutPanel flowLayoutPanelKeranjang;
         private FlowLayoutPanel flowLayoutPanelMenunggu;
-
+        private Button buttonPinjam;
     }
 }

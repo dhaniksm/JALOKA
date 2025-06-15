@@ -12,10 +12,10 @@ using System.Windows.Forms;
 
 namespace JALOKA.Views.Admin
 {
-    public partial class V_Peminjaman : Form
+    public partial class V_Peminjaman_A : Form
     {
         private C_Peminjaman c_peminjaman = new C_Peminjaman();
-        public V_Peminjaman()
+        public V_Peminjaman_A()
         {
             InitializeComponent();
             TampilkanDaftar();

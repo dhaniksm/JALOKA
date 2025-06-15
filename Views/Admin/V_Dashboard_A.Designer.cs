@@ -36,6 +36,7 @@
             buttonRiwayatPeminjaman = new Button();
             buttonDashboard = new Button();
             pictureBoxProfil = new PictureBox();
+            buttonPeminjaman = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).BeginInit();
             SuspendLayout();
             // 
@@ -140,12 +141,28 @@
             pictureBoxProfil.TabIndex = 27;
             pictureBoxProfil.TabStop = false;
             // 
+            // buttonPeminjaman
+            // 
+            buttonPeminjaman.BackColor = SystemColors.ControlLightLight;
+            buttonPeminjaman.Cursor = Cursors.Hand;
+            buttonPeminjaman.FlatAppearance.BorderSize = 0;
+            buttonPeminjaman.FlatStyle = FlatStyle.Flat;
+            buttonPeminjaman.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonPeminjaman.Location = new Point(57, 492);
+            buttonPeminjaman.Name = "buttonPeminjaman";
+            buttonPeminjaman.Size = new Size(187, 29);
+            buttonPeminjaman.TabIndex = 28;
+            buttonPeminjaman.Text = "Peminjaman";
+            buttonPeminjaman.UseVisualStyleBackColor = false;
+            buttonPeminjaman.Click += buttonPeminjaman_Click;
+            // 
             // V_Dashboard_A
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(buttonPeminjaman);
             Controls.Add(pictureBoxProfil);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonKeluar);
@@ -170,5 +187,6 @@
         private Button buttonRiwayatPeminjaman;
         private Button buttonDashboard;
         private PictureBox pictureBoxProfil;
+        private Button buttonPeminjaman;
     }
 }
