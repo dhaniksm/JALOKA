@@ -17,11 +17,6 @@ namespace JALOKA.Views
             InitializeComponent();
         }
 
-        private void V_Pengembalian_Pelajar_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonDasboard_Click(object sender, EventArgs e)
         {
             this.Hide();

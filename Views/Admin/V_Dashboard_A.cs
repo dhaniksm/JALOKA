@@ -1,6 +1,4 @@
 ﻿using JALOKA.Models;
-using JALOKA.Controllers;
-using JALOKA.Views.Admin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +26,7 @@ namespace JALOKA.Views
         private void buttonManajemenBuku_Click(object sender, EventArgs e)
         {
             this.Hide();
-            V_ManajemenBuku manajemenBuku = new V_ManajemenBuku();
+            V_ManajemenBuku_A manajemenBuku = new V_ManajemenBuku_A();
             manajemenBuku.Show();
         }
 
@@ -55,15 +53,9 @@ namespace JALOKA.Views
 
         private void buttonKeluar_Click(object sender, EventArgs e)
         {
-            this.Close();
-            V_Login_A login = new V_Login_A();
+            this.Hide();
+            V_Login_P login = new V_Login_P();
             login.Show();
-
-        }
-
-        private void pictureBoxProfil_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
