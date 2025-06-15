@@ -17,7 +17,8 @@ namespace JALOKA.Views.Admin
     {
         private readonly int idBuku;
         private M_Buku? buku;
-        private C_Buku c_buku = new C_Buku();
+        private readonly C_Buku c_buku = new C_Buku();
+
         public V_DetailBuku_A(int id_buku)
         {
             InitializeComponent();
@@ -60,8 +61,8 @@ namespace JALOKA.Views.Admin
             {
                 c_buku.HapusBuku(idBuku);
                 H_Pesan.Sukses("Buku berhasil dihapus.");
-                V_ManajemenBuku_A manajemenBuku = new V_ManajemenBuku_A();
-                manajemenBuku.Refresh();
+                V_ManajemenBuku_A manajemen = new V_ManajemenBuku_A();
+                manajemen.Show();
                 this.Close();
             }
             catch (Exception ex)

@@ -74,6 +74,7 @@
             buttonManajemenBuku.TabIndex = 19;
             buttonManajemenBuku.Text = "Manajemen Buku";
             buttonManajemenBuku.UseVisualStyleBackColor = false;
+            buttonManajemenBuku.Click += buttonManajemenBuku_Click;
             // 
             // buttonDataPengguna
             // 
@@ -139,8 +140,9 @@
             buttonTambah.Size = new Size(90, 30);
             buttonTambah.TabIndex = 24;
             buttonTambah.Text = "Tambah";
+            buttonTambah.Click += buttonTambah_Click;
             // 
-            // V_ManajemenBuku
+            // V_ManajemenBuku_A
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -155,7 +157,8 @@
             Controls.Add(buttonDashboard);
             Controls.Add(flowLayoutPanelBuku);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_ManajemenBuku";
+            Name = "V_ManajemenBuku_A";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "V_ManajemenBuku";
             ResumeLayout(false);
         }

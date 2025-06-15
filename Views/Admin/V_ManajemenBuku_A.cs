@@ -97,7 +97,8 @@ namespace JALOKA.Views
             if (sender is PictureBox pb && pb.Tag is M_Buku buku)
             {
                 var detail = new V_DetailBuku_A(buku.id_buku);
-                detail.ShowDialog();
+                detail.Show();
+                this.Close();
             }
         }
 
@@ -144,8 +145,8 @@ namespace JALOKA.Views
 
         private void buttonTambah_Click(object sender, EventArgs e)
         {
-            V_TambahEdit_A tambahEdit = new V_TambahEdit_A();
-            tambahEdit.Show();
+            V_Tambah_A tambah = new V_Tambah_A();
+            tambah.Show();
             this.Close();
         }
     }

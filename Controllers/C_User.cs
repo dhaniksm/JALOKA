@@ -19,8 +19,8 @@ namespace JALOKA.Controllers
             {
                 using (var db = new D_Connector())
                 {
-                    var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM users WHERE id_user = @id_user AND password = @password", db.Connection);
-                    cmd.Parameters.AddWithValue("@id_user", user.id_user);
+                    var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM users WHERE nisn = @nisn AND password = @password", db.Connection);
+                    cmd.Parameters.AddWithValue("@nisn", user.nisn);
                     cmd.Parameters.AddWithValue("@password", user.password);
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
                     return count > 0;
@@ -44,8 +44,8 @@ namespace JALOKA.Controllers
             {
                 using (var db = new D_Connector())
                 {
-                    using var cmd = new NpgsqlCommand(@"INSERT INTO users (id_user, password, nama, email, nomor_hp, alamat) VALUES (@id_user, @password, @nama, @email, @nomor_hp, @alamat)", db.Connection);
-                    cmd.Parameters.AddWithValue("@id_user", user.nisn);
+                    using var cmd = new NpgsqlCommand(@"INSERT INTO users (nisn, password, nama, email, nomor_hp, alamat) VALUES (@nisn, @password, @nama, @email, @nomor_hp, @alamat)", db.Connection);
+                    cmd.Parameters.AddWithValue("@nisn", user.nisn);
                     cmd.Parameters.AddWithValue("@password", user.password);
                     cmd.Parameters.AddWithValue("@nama", user.nama);
                     cmd.Parameters.AddWithValue("@email", user.email);
@@ -68,7 +68,7 @@ namespace JALOKA.Controllers
             {
                 using(var db = new D_Connector())
                 {
-                    var cmd = new NpgsqlCommand("SELECT * FROM users ORDER BY id_user ASC", db.Connection);
+                    var cmd = new NpgsqlCommand("SELECT * FROM users ORDER BY nisn ASC", db.Connection);
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
