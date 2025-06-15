@@ -139,7 +139,6 @@
             pictureBoxProfil.Size = new Size(57, 54);
             pictureBoxProfil.TabIndex = 27;
             pictureBoxProfil.TabStop = false;
-            pictureBoxProfil.Click += pictureBoxProfil_Click;
             // 
             // V_Dashboard_A
             // 

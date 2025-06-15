@@ -149,7 +149,5 @@ namespace JALOKA.Views
             tambah.Show();
             this.Close();
         }
-
-        
     }
 }

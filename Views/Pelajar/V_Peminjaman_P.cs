@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using JALOKA.Helpers;
+using JALOKA.Views.Admin;
 
 namespace JALOKA.Views
 {
@@ -24,6 +25,7 @@ namespace JALOKA.Views
             InitializeComponent();
             TabelPeminjaman();
             MuatKeranjang();
+            MuatMenunggu();
             TabelKeranjang();
         }
 
@@ -78,8 +80,13 @@ namespace JALOKA.Views
 
                 foreach (var buku in keranjang)
                 {
-                    Panel item = BuatPanelBuku(buku);
-                    flowLayoutPanelKeranjang.Controls.Add(item);
+                    var panel = BuatPanelBuku(buku, "Ajukan", () =>
+                    {
+                        controller.AjukanPeminjaman(buku.id_buku);
+                        MuatKeranjang();
+                        MuatMenunggu();
+                    });
+                    flowLayoutPanelKeranjang.Controls.Add(panel);
                 }
             }
             catch (Exception ex)
@@ -88,7 +95,19 @@ namespace JALOKA.Views
             }
         }
 
-        private Panel BuatPanelBuku(M_Buku buku)
+        private void MuatMenunggu()
+        {
+            flowLayoutPanelMenunggu.Controls.Clear();
+            var menunggu = controller.MenungguKonfirmasi();
+
+            foreach (var peminjaman in menunggu)
+            {
+                var panel = BuatPanelBuku(peminjaman.buku, "Menunggu", null, true);
+                flowLayoutPanelMenunggu.Controls.Add(panel);
+            }
+        }
+
+        private Panel BuatPanelBuku(M_Buku buku, string tombolText, Action onClick, bool disabled = false)
         {
             Panel panel = new Panel
             {

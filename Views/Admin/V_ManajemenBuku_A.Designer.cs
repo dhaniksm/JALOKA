@@ -74,7 +74,6 @@
             buttonManajemenBuku.TabIndex = 19;
             buttonManajemenBuku.Text = "Manajemen Buku";
             buttonManajemenBuku.UseVisualStyleBackColor = false;
-            buttonManajemenBuku.Click += buttonManajemenBuku_Click;
             // 
             // buttonDataPengguna
             // 
@@ -161,7 +160,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "V_ManajemenBuku_A";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "V_ManajemenBuku";
+            Text = "V_ManajemenBuku_A";
             ResumeLayout(false);
         }
 

@@ -1,6 +1,4 @@
 ﻿using JALOKA.Models;
-using JALOKA.Controllers;
-using JALOKA.Views.Admin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -63,6 +61,7 @@ namespace JALOKA.Views
 
         private void pictureBoxProfil_Click(object sender, EventArgs e)
         {
+
 
         }
     }

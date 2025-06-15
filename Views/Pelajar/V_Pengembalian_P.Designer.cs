@@ -168,7 +168,6 @@
             Name = "V_Pengembalian_P";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_Pengembalian";
-            Load += V_Pengembalian_Pelajar_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).EndInit();
             ResumeLayout(false);
         }
