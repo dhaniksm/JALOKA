@@ -149,5 +149,20 @@ namespace JALOKA.Views
             tambah.Show();
             this.Close();
         }
+
+        private void buttonDataPengguna_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonRiwayatPeminjaman_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonPengembalian_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -20,22 +20,6 @@ namespace JALOKA.Views
         public V_Login_K()
         {
             InitializeComponent();
-            TabelKurikulum();
-        }
-
-        private void TabelKurikulum()
-        {
-            try
-            {
-                using (var db = new D_Connector())
-                {
-                    D_Tabel.CekTabel(db.Connection, "kurikulum");
-                }
-            }
-            catch (Exception ex)
-            {
-                H_Pesan.Gagal("Gagal memeriksa tabel kurikulum: " + ex.Message);
-            }
         }
 
         private void pictureBoxKembali_Click(object sender, EventArgs e)

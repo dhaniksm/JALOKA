@@ -28,30 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            flowLayoutPanelKonfirmasi = new FlowLayoutPanel();
+            components = new System.ComponentModel.Container();
+            dataGridViewPeminjaman = new DataGridView();
+            cPeminjamanBindingSource = new BindingSource(components);
+            textBoxID = new TextBox();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPeminjaman).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cPeminjamanBindingSource).BeginInit();
             SuspendLayout();
             // 
-            // flowLayoutPanelKonfirmasi
+            // dataGridViewPeminjaman
             // 
-            flowLayoutPanelKonfirmasi.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanelKonfirmasi.Location = new Point(283, 108);
-            flowLayoutPanelKonfirmasi.Name = "flowLayoutPanelKonfirmasi";
-            flowLayoutPanelKonfirmasi.Size = new Size(887, 499);
-            flowLayoutPanelKonfirmasi.TabIndex = 0;
+            dataGridViewPeminjaman.AllowUserToAddRows = false;
+            dataGridViewPeminjaman.AutoGenerateColumns = false;
+            dataGridViewPeminjaman.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewPeminjaman.DataSource = cPeminjamanBindingSource;
+            dataGridViewPeminjaman.Location = new Point(220, 104);
+            dataGridViewPeminjaman.Name = "dataGridViewPeminjaman";
+            dataGridViewPeminjaman.RowHeadersWidth = 51;
+            dataGridViewPeminjaman.Size = new Size(950, 512);
+            dataGridViewPeminjaman.TabIndex = 0;
+            dataGridViewPeminjaman.CellContentClick += dataGridViewPeminjaman_CellContentClick;
             // 
-            // V_Peminjaman
+            // cPeminjamanBindingSource
+            // 
+            cPeminjamanBindingSource.DataSource = typeof(Controllers.C_Peminjaman);
+            // 
+            // textBoxID
+            // 
+            textBoxID.Location = new Point(1034, 170);
+            textBoxID.Name = "textBoxID";
+            textBoxID.ReadOnly = true;
+            textBoxID.Size = new Size(125, 27);
+            textBoxID.TabIndex = 1;
+            // 
+            // V_Peminjaman_A
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1182, 628);
-            Controls.Add(flowLayoutPanelKonfirmasi);
-            Name = "V_Peminjaman";
+            Controls.Add(textBoxID);
+            Controls.Add(dataGridViewPeminjaman);
+            Name = "V_Peminjaman_A";
             Text = "V_Peminjaman";
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPeminjaman).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cPeminjamanBindingSource).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private FlowLayoutPanel flowLayoutPanelKonfirmasi;
+        private DataGridView dataGridViewPeminjaman;
+        private BindingSource cPeminjamanBindingSource;
+        private TextBox textBoxID;
     }
 }

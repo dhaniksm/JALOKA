@@ -25,7 +25,6 @@ namespace JALOKA.Views
             InitializeComponent();
             TabelPeminjaman();
             MuatKeranjang();
-            MuatMenunggu();
             TabelKeranjang();
         }
 
@@ -82,9 +81,8 @@ namespace JALOKA.Views
                 {
                     var panel = BuatPanelBuku(buku, "Ajukan", () =>
                     {
-                        controller.AjukanPeminjaman(buku.id_buku);
+                        controller.Peminjaman(buku.id_buku);
                         MuatKeranjang();
-                        MuatMenunggu();
                     });
                     flowLayoutPanelKeranjang.Controls.Add(panel);
                 }
@@ -92,18 +90,6 @@ namespace JALOKA.Views
             catch (Exception ex)
             {
                 H_Pesan.Gagal("Gagal memuat keranjang: " + ex.Message);
-            }
-        }
-
-        private void MuatMenunggu()
-        {
-            flowLayoutPanelMenunggu.Controls.Clear();
-            var menunggu = controller.MenungguKonfirmasi();
-
-            foreach (var peminjaman in menunggu)
-            {
-                var panel = BuatPanelBuku(peminjaman.buku, "Menunggu", null, true);
-                flowLayoutPanelMenunggu.Controls.Add(panel);
             }
         }
 

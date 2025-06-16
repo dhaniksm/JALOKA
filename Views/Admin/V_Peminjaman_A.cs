@@ -9,87 +9,53 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace JALOKA.Views.Admin
 {
     public partial class V_Peminjaman_A : Form
     {
-        private C_Peminjaman c_peminjaman = new C_Peminjaman();
+        private readonly C_Peminjaman c_peminjaman = new C_Peminjaman();
+
         public V_Peminjaman_A()
         {
             InitializeComponent();
-            TampilkanDaftar();
+            LoadPengembalian();
         }
-        private void TampilkanDaftar()
+
+        private void LoadPengembalian()
         {
-            flowLayoutPanelKonfirmasi.Controls.Clear();
-            var daftar = c_peminjaman.MenungguKonfirmasi();
-
-            foreach (var item in daftar)
+            try
             {
-                Panel panel = new Panel
-                {
-                    Width = 600,
-                    Height = 120,
-                    Margin = new Padding(10),
-                    BorderStyle = BorderStyle.FixedSingle
-                };
+                var data = c_peminjaman.DaftarPeminjamanBelumDikembalikan();
+                dataGridViewPeminjaman.AutoGenerateColumns = true;
+                dataGridViewPeminjaman.DataSource = null;
+                dataGridViewPeminjaman.DataSource = data;
 
-                Label labelInfo = new Label
-                {
-                    Text = $"User: {item.nama_peminjam}\nBuku: {item.judul_buku}\nTanggal: {item.tanggal_pinjam:dd MMM yyyy}",
-                    AutoSize = true,
-                    Left = 10,
-                    Top = 10
-                };
+                dataGridViewPeminjaman.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-                Button btnKonfirmasi = new Button
-                {
-                    Text = "Konfirmasi",
-                    Width = 100,
-                    Height = 30,
-                    Top = 10,
-                    Left = 400,
-                    Tag = item.id_peminjaman
-                };
-                btnKonfirmasi.Click += BtnKonfirmasi_Click;
+                if (dataGridViewPeminjaman.Columns.Count == 0)
+                    H_Pesan.Peringatan("Belum ada data peminjaman.");
 
-                Button btnTolak = new Button
-                {
-                    Text = "Tolak",
-                    Width = 100,
-                    Height = 30,
-                    Top = 50,
-                    Left = 400,
-                    Tag = item.id_peminjaman
-                };
-                btnTolak.Click += BtnTolak_Click;
-
-                panel.Controls.Add(labelInfo);
-                panel.Controls.Add(btnKonfirmasi);
-                panel.Controls.Add(btnTolak);
-                flowLayoutPanelKonfirmasi.Controls.Add(panel);
+            }
+            catch (Exception ex)
+            {
+                H_Pesan.Gagal("Gagal memuat data peminjaman: " + ex.Message);
             }
         }
 
-        private void BtnKonfirmasi_Click(object sender, EventArgs e)
+        private void dataGridViewPengembalian_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (sender is Button btn && btn.Tag is int id)
+            if (e.RowIndex >= 0 && dataGridViewPeminjaman.Columns.Contains("id_peminjaman"))
             {
-                c_peminjaman.KonfirmasiPeminjaman(id);
-                H_Pesan.Sukses("Peminjaman dikonfirmasi.");
-                TampilkanDaftar();
+                var row = dataGridViewPeminjaman.Rows[e.RowIndex];
+                textBoxID.Text = row.Cells["id_peminjaman"].Value.ToString();
             }
         }
 
-        private void BtnTolak_Click(object sender, EventArgs e)
+        private void dataGridViewPeminjaman_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (sender is Button btn && btn.Tag is int id)
-            {
-                c_peminjaman.TolakPeminjaman(id);
-                H_Pesan.Sukses("Peminjaman ditolak.");
-                TampilkanDaftar();
-            }
+
         }
     }
 }

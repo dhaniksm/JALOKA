@@ -58,15 +58,11 @@ namespace JALOKA.Controllers
 
         public bool Register(M_User user)
         {
-            
-
             try
             {
                 using (var db = new D_Connector())
                 {
-                    using var cmd = new NpgsqlCommand(@"
-                        INSERT INTO pengguna (nisn, password, nama, email, nomor_hp, alamat) 
-                        VALUES (@nisn, @password, @nama, @email, @nomor_hp, @alamat)", db.Connection);
+                    using var cmd = new NpgsqlCommand(@"INSERT INTO pengguna (nisn, password, nama, email, nomor_hp, alamat) VALUES (@nisn, @password, @nama, @email, @nomor_hp, @alamat)", db.Connection);
 
                     cmd.Parameters.AddWithValue("@nisn", user.nisn);
                     cmd.Parameters.AddWithValue("@password", user.password);
@@ -83,39 +79,6 @@ namespace JALOKA.Controllers
                 H_Pesan.Gagal("Gagal melakukan registrasi: " + ex.Message);
                 return false;
             }
-        }
-
-        public List<M_User> DaftarPengguna()
-        {
-            var list = new List<M_User>();
-
-            try
-            {
-                using (var db = new D_Connector())
-                {
-                    var cmd = new NpgsqlCommand("SELECT * FROM pengguna ORDER BY id_user ASC", db.Connection);
-                    using var reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        list.Add(new M_User
-                        {
-                            id_user = reader["id_user"].ToString(),
-                            nisn = reader["nisn"].ToString(),
-                            password = reader["password"].ToString(),
-                            nama = reader["nama"].ToString(),
-                            email = reader["email"].ToString(),
-                            nomor_hp = reader["nomor_hp"].ToString(),
-                            alamat = reader["alamat"].ToString()
-                        });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                H_Pesan.Gagal("Gagal mengambil data pengguna: " + ex.Message);
-            }
-
-            return list;
         }
 
         public M_User GetProfil(string nisn)

@@ -60,6 +60,7 @@
             buttonDashboard.TabIndex = 16;
             buttonDashboard.Text = "Dashboard";
             buttonDashboard.UseVisualStyleBackColor = false;
+            buttonDashboard.Click += buttonDashboard_Click;
             // 
             // buttonManajemenBuku
             // 
@@ -88,6 +89,7 @@
             buttonDataPengguna.TabIndex = 20;
             buttonDataPengguna.Text = "Data Pengguna";
             buttonDataPengguna.UseVisualStyleBackColor = false;
+            buttonDataPengguna.Click += buttonDataPengguna_Click_1;
             // 
             // buttonRiwayatPeminjaman
             // 
@@ -102,6 +104,7 @@
             buttonRiwayatPeminjaman.TabIndex = 21;
             buttonRiwayatPeminjaman.Text = "RIwayat Peminjaman";
             buttonRiwayatPeminjaman.UseVisualStyleBackColor = false;
+            buttonRiwayatPeminjaman.Click += buttonRiwayatPeminjaman_Click_1;
             // 
             // buttonPengembalian
             // 
@@ -116,6 +119,7 @@
             buttonPengembalian.TabIndex = 22;
             buttonPengembalian.Text = "Pengembalian";
             buttonPengembalian.UseVisualStyleBackColor = false;
+            buttonPengembalian.Click += buttonPengembalian_Click_1;
             // 
             // buttonKeluar
             // 
