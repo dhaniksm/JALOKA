@@ -77,7 +77,7 @@ namespace JALOKA.Views
                 return;
             }
 
-            var pengguna = new M_User
+            var pengguna = new M_Pengguna
             {
                 nisn = textBoxIDPelajar.Text,
                 nama = textBoxNama.Text,

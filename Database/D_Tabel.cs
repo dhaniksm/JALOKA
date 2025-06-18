@@ -63,7 +63,7 @@ namespace JALOKA.Database
                         tanggal_pinjam DATE NOT NULL,
                         tanggal_kembali DATE,
                         status VARCHAR(20) DEFAULT 'menunggu',
-                        FOREIGN KEY (id_user) REFERENCES users(id_user),
+                        FOREIGN KEY (id_user) REFERENCES pengguna(id_user),
                         FOREIGN KEY (id_buku) REFERENCES buku(id_buku)
                     );",
                 "keranjang" => @"

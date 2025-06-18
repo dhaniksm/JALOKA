@@ -17,8 +17,6 @@ namespace JALOKA.Views.Admin
 {
     public partial class V_Login_A : Form
     {
-        private C_Admin c_admin = new C_Admin();
-
         public V_Login_A()
         {
             InitializeComponent();
@@ -26,27 +24,28 @@ namespace JALOKA.Views.Admin
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            var admin = new M_Admin
+            C_Admin c_admin = new C_Admin();
+            try
             {
-                id_pustakawan = textBoxIDPustakawan.Text,
-                password = textBoxPassword.Text
-            };
+                var admin = new M_Admin
+                {
+                    id_pustakawan = textBoxIDPustakawan.Text,
+                    password = textBoxPassword.Text
+                };
 
-            bool success = c_admin.Login(admin);
-            if (success)
-            {
-                MessageBox.Show("Berhasil Login!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-                V_Dashboard_A dashboard = new V_Dashboard_A();
-                dashboard.Show();
+                bool success = c_admin.Login(admin);
+                if (success)
+                {
+                    MessageBox.Show("Berhasil Login!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                    V_Dashboard_A dashboard = new V_Dashboard_A();
+                    dashboard.Show();
+                }
             }
-
-            
-        }
-
-        private void textBoxIDPustakawan_TextChanged(object sender, EventArgs e)
-        {
-
+            catch (Exception ex)
+            {
+                H_Pesan.Gagal("Login Gagal: " + ex.Message);
+            }
         }
 
         private void textBoxPassword_TextChanged(object sender, EventArgs e)

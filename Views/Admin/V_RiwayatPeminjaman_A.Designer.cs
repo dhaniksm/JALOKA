@@ -36,6 +36,7 @@
             buttonDashboard = new Button();
             buttonPengembalian = new Button();
             dataGridView1 = new DataGridView();
+            buttonPeminjaman = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -141,12 +142,28 @@
             dataGridView1.TabIndex = 15;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
+            // buttonPeminjaman
+            // 
+            buttonPeminjaman.BackColor = SystemColors.ControlLightLight;
+            buttonPeminjaman.Cursor = Cursors.Hand;
+            buttonPeminjaman.FlatAppearance.BorderSize = 0;
+            buttonPeminjaman.FlatStyle = FlatStyle.Flat;
+            buttonPeminjaman.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonPeminjaman.Location = new Point(58, 492);
+            buttonPeminjaman.Name = "buttonPeminjaman";
+            buttonPeminjaman.Size = new Size(187, 29);
+            buttonPeminjaman.TabIndex = 29;
+            buttonPeminjaman.Text = "Peminjaman";
+            buttonPeminjaman.UseVisualStyleBackColor = false;
+            buttonPeminjaman.Click += buttonPeminjaman_Click;
+            // 
             // V_RiwayatPeminjaman_A
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(buttonPeminjaman);
             Controls.Add(dataGridView1);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonKeluar);
@@ -172,5 +189,6 @@
         private Button buttonDashboard;
         private Button buttonPengembalian;
         private DataGridView dataGridView1;
+        private Button buttonPeminjaman;
     }
 }

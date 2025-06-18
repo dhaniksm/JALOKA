@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem3 = new ListViewItem("");
-            ListViewItem listViewItem4 = new ListViewItem("");
+            ListViewItem listViewItem1 = new ListViewItem("");
+            ListViewItem listViewItem2 = new ListViewItem("");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Pengembalian_A));
             buttonPengembalian = new Button();
             buttonKeluar = new Button();
@@ -40,6 +40,7 @@
             listViewPeminjaman = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
+            buttonPeminjaman = new Button();
             SuspendLayout();
             // 
             // buttonPengembalian
@@ -135,12 +136,27 @@
             // listViewPeminjaman
             // 
             listViewPeminjaman.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
-            listViewPeminjaman.Items.AddRange(new ListViewItem[] { listViewItem3, listViewItem4 });
+            listViewPeminjaman.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2 });
             listViewPeminjaman.Location = new Point(262, 85);
             listViewPeminjaman.Name = "listViewPeminjaman";
             listViewPeminjaman.Size = new Size(926, 533);
             listViewPeminjaman.TabIndex = 27;
             listViewPeminjaman.UseCompatibleStateImageBehavior = false;
+            // 
+            // buttonPeminjaman
+            // 
+            buttonPeminjaman.BackColor = SystemColors.ControlLightLight;
+            buttonPeminjaman.Cursor = Cursors.Hand;
+            buttonPeminjaman.FlatAppearance.BorderSize = 0;
+            buttonPeminjaman.FlatStyle = FlatStyle.Flat;
+            buttonPeminjaman.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonPeminjaman.Location = new Point(58, 489);
+            buttonPeminjaman.Name = "buttonPeminjaman";
+            buttonPeminjaman.Size = new Size(187, 29);
+            buttonPeminjaman.TabIndex = 29;
+            buttonPeminjaman.Text = "Peminjaman";
+            buttonPeminjaman.UseVisualStyleBackColor = false;
+            buttonPeminjaman.Click += buttonPeminjaman_Click;
             // 
             // V_Pengembalian_A
             // 
@@ -148,6 +164,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(buttonPeminjaman);
             Controls.Add(listViewPeminjaman);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonKeluar);
@@ -173,5 +190,6 @@
         private ListView listViewPeminjaman;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
+        private Button buttonPeminjaman;
     }
 }

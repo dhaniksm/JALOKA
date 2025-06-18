@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JALOKA.Models
 {
-    public class M_User
+    public class M_Pengguna
     {
         public string id_user { get; set; }
         public string nisn { get; set; }

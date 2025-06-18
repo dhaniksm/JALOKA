@@ -9,51 +9,140 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace JALOKA.Views.Admin
 {
     public partial class V_Peminjaman_A : Form
     {
-        private readonly C_Peminjaman c_peminjaman = new C_Peminjaman();
+        C_Peminjaman c_peminjaman = new C_Peminjaman();
 
         public V_Peminjaman_A()
         {
             InitializeComponent();
-            LoadPengembalian();
+            TampilkanDaftar();
         }
-
-        private void LoadPengembalian()
+        private void TampilkanDaftar()
         {
             try
             {
-                var data = c_peminjaman.DaftarPeminjamanBelumDikembalikan();
-                dataGridViewPeminjaman.AutoGenerateColumns = true;
-                dataGridViewPeminjaman.DataSource = null;
-                dataGridViewPeminjaman.DataSource = data;
+                flowLayoutPanelKonfirmasi.Controls.Clear();
+                var daftar = c_peminjaman.MenungguKonfirmasi();
 
-                dataGridViewPeminjaman.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                foreach (var item in daftar)
+                {
+                    Panel panel = new Panel
+                    {
+                        Width = 600,
+                        Height = 120,
+                        Margin = new Padding(10),
+                        BorderStyle = BorderStyle.FixedSingle
+                    };
 
-                if (dataGridViewPeminjaman.Columns.Count == 0)
-                    H_Pesan.Peringatan("Belum ada data peminjaman.");
+                    Label labelInfo = new Label
+                    {
+                        Text = $"User: {item.id_user}\nBuku: {item.judul_buku}\nTanggal: {item.tanggal_pinjam:dd MMM yyyy}",
+                        AutoSize = true,
+                        Left = 10,
+                        Top = 10
+                    };
 
+                    Button btnKonfirmasi = new Button
+                    {
+                        Text = "Konfirmasi",
+                        Width = 100,
+                        Height = 30,
+                        Top = 10,
+                        Left = 400,
+                        Tag = item.id_peminjaman
+                    };
+                    btnKonfirmasi.Click += BtnKonfirmasi_Click;
+
+                    Button btnTolak = new Button
+                    {
+                        Text = "Tolak",
+                        Width = 100,
+                        Height = 30,
+                        Top = 50,
+                        Left = 400,
+                        Tag = item.id_peminjaman
+                    };
+                    btnTolak.Click += BtnTolak_Click;
+
+                    flowLayoutPanelKonfirmasi.Controls.Add(panel);
+                    panel.Controls.Add(labelInfo);
+                    panel.Controls.Add(btnKonfirmasi);
+                    panel.Controls.Add(btnTolak);
+                }
             }
             catch (Exception ex)
             {
-                H_Pesan.Gagal("Gagal memuat data peminjaman: " + ex.Message);
+                H_Pesan.Gagal("Gagal menampilkan daftar peminjaman: " + ex.Message);
             }
         }
 
-        private void dataGridViewPengembalian_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void BtnKonfirmasi_Click(object sender, EventArgs e)
         {
-            if (e.RowIndex >= 0 && dataGridViewPeminjaman.Columns.Contains("id_peminjaman"))
+            if (sender is Button btn && btn.Tag is int id)
             {
-                var row = dataGridViewPeminjaman.Rows[e.RowIndex];
-                textBoxID.Text = row.Cells["id_peminjaman"].Value.ToString();
+                c_peminjaman.KonfirmasiPeminjaman(id);
+                H_Pesan.Sukses("Peminjaman dikonfirmasi.");
+                TampilkanDaftar();
             }
         }
 
-        private void dataGridViewPeminjaman_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void BtnTolak_Click(object sender, EventArgs e)
+        {
+            if (sender is Button btn && btn.Tag is int id)
+            {
+                c_peminjaman.TolakPeminjaman(id);
+                H_Pesan.Sukses("Peminjaman ditolak.");
+                TampilkanDaftar();
+            }
+        }
+
+        private void buttonDashboard_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_Dashboard_A dashboard = new V_Dashboard_A();
+            dashboard.Show();
+        }
+
+        private void buttonManajemenBuku_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_ManajemenBuku_A manajemenBuku = new V_ManajemenBuku_A();
+            manajemenBuku.Show();
+        }
+
+        private void buttonDataPengguna_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_DataPengguna_A dataPengguna = new V_DataPengguna_A();
+            dataPengguna.Show();
+        }
+
+        private void buttonPeminjaman_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_Peminjaman_A peminjaman = new V_Peminjaman_A();
+            peminjaman.Show();
+        }
+
+        private void buttonRiwayatPeminjaman_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_RiwayatPeminjaman_A riwayat = new V_RiwayatPeminjaman_A();
+            riwayat.Show();
+        }
+
+        private void buttonPengembalian_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_Pengembalian_A pengembalian = new V_Pengembalian_A();
+            pengembalian.Show();
+        }
+
+        private void flowLayoutPanelKonfirmasi_Paint(object sender, PaintEventArgs e)
         {
 
         }

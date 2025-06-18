@@ -93,5 +93,10 @@ namespace JALOKA.Views
                 H_Pesan.Peringatan("Silakan pilih buku yang akan dikembalikan.");
             }
         }
+
+        private void buttonPeminjaman_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

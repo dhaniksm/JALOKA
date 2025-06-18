@@ -25,7 +25,7 @@ namespace JALOKA.Views
                 C_User userController = new C_User();
                 string nisn = V_Login_P.nisnLogin; // Ambil NISN dari login
 
-                M_User user = userController.GetProfil(nisn);
+                M_Pengguna user = userController.GetProfil(nisn);
                 if (user != null)
                 {
                     textBoxNisn.Text = user.nisn;

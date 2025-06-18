@@ -89,13 +89,13 @@ namespace JALOKA.Views
             LoadData();
         }
 
-        
+
         private void buttonDataPengguna_Click(object sender, EventArgs e)
         {
-           
+
         }
 
-        
+
         private void buttonDashboard_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -124,6 +124,11 @@ namespace JALOKA.Views
         {
             this.Close();
             new V_TampilanAwal().Show();
+        }
+
+        private void buttonPeminjaman_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

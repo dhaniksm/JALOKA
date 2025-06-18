@@ -39,7 +39,9 @@
             flowLayoutPanelKeranjang = new FlowLayoutPanel();
             flowLayoutPanelMenunggu = new FlowLayoutPanel();
             buttonPinjam = new Button();
+            pictureBoxRefresh = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxRefresh).BeginInit();
             SuspendLayout();
             // 
             // buttonPengembalian
@@ -155,6 +157,7 @@
             // 
             // flowLayoutPanelKeranjang
             // 
+            flowLayoutPanelKeranjang.AutoScroll = true;
             flowLayoutPanelKeranjang.Location = new Point(257, 79);
             flowLayoutPanelKeranjang.Name = "flowLayoutPanelKeranjang";
             flowLayoutPanelKeranjang.Size = new Size(825, 300);
@@ -165,7 +168,7 @@
             flowLayoutPanelMenunggu.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanelMenunggu.Location = new Point(257, 385);
             flowLayoutPanelMenunggu.Name = "flowLayoutPanelMenunggu";
-            flowLayoutPanelMenunggu.Size = new Size(937, 286);
+            flowLayoutPanelMenunggu.Size = new Size(825, 286);
             flowLayoutPanelMenunggu.TabIndex = 22;
             // 
             // buttonPinjam
@@ -185,12 +188,25 @@
             buttonPinjam.UseVisualStyleBackColor = false;
             buttonPinjam.Click += buttonPinjam_Click;
             // 
+            // pictureBoxRefresh
+            // 
+            pictureBoxRefresh.BackColor = Color.Transparent;
+            pictureBoxRefresh.BackgroundImage = (Image)resources.GetObject("pictureBoxRefresh.BackgroundImage");
+            pictureBoxRefresh.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBoxRefresh.Location = new Point(1053, 16);
+            pictureBoxRefresh.Name = "pictureBoxRefresh";
+            pictureBoxRefresh.Size = new Size(55, 47);
+            pictureBoxRefresh.TabIndex = 30;
+            pictureBoxRefresh.TabStop = false;
+            pictureBoxRefresh.Click += pictureBoxRefresh_Click;
+            // 
             // V_Peminjaman_P
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(pictureBoxRefresh);
             Controls.Add(buttonPinjam);
             Controls.Add(flowLayoutPanelMenunggu);
             Controls.Add(pictureBoxProfil);
@@ -207,6 +223,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_Peminjaman_Pelajar";
             ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxRefresh).EndInit();
             ResumeLayout(false);
         }
 
@@ -222,5 +239,6 @@
         private FlowLayoutPanel flowLayoutPanelKeranjang;
         private FlowLayoutPanel flowLayoutPanelMenunggu;
         private Button buttonPinjam;
+        private PictureBox pictureBoxRefresh;
     }
 }

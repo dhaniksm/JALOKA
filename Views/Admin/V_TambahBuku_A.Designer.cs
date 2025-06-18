@@ -1,6 +1,6 @@
 ﻿namespace JALOKA.Views.Admin
 {
-    partial class V_Tambah_A
+    partial class V_TambahBuku_A
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Tambah_A));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_TambahBuku_A));
             pictureBoxCover = new PictureBox();
             textBoxJudul = new TextBox();
             textBoxPenulis = new TextBox();
@@ -58,9 +58,9 @@
             textBoxJudul.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             textBoxJudul.Location = new Point(94, 573);
             textBoxJudul.Name = "textBoxJudul";
+            textBoxJudul.PlaceholderText = "Masukkan Judul";
             textBoxJudul.Size = new Size(300, 34);
             textBoxJudul.TabIndex = 1;
-            textBoxJudul.Text = "Masukkan Judul";
             textBoxJudul.TextAlign = HorizontalAlignment.Center;
             // 
             // textBoxPenulis
@@ -69,9 +69,9 @@
             textBoxPenulis.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             textBoxPenulis.Location = new Point(599, 159);
             textBoxPenulis.Name = "textBoxPenulis";
+            textBoxPenulis.PlaceholderText = "Masukkan Penulis";
             textBoxPenulis.Size = new Size(300, 20);
             textBoxPenulis.TabIndex = 2;
-            textBoxPenulis.Text = "Masukkan Penulis";
             // 
             // textBoxPenerbit
             // 
@@ -79,9 +79,9 @@
             textBoxPenerbit.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             textBoxPenerbit.Location = new Point(599, 231);
             textBoxPenerbit.Name = "textBoxPenerbit";
+            textBoxPenerbit.PlaceholderText = "Masukkan Penerbit";
             textBoxPenerbit.Size = new Size(300, 20);
             textBoxPenerbit.TabIndex = 3;
-            textBoxPenerbit.Text = "Masukkan Penerbit";
             // 
             // textBoxTahunTerbit
             // 
@@ -89,9 +89,9 @@
             textBoxTahunTerbit.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             textBoxTahunTerbit.Location = new Point(599, 310);
             textBoxTahunTerbit.Name = "textBoxTahunTerbit";
+            textBoxTahunTerbit.PlaceholderText = "Masukkan Tahun Terbit";
             textBoxTahunTerbit.Size = new Size(300, 20);
             textBoxTahunTerbit.TabIndex = 4;
-            textBoxTahunTerbit.Text = "Masukkan Tahun Terbit";
             // 
             // textBoxSinopsis
             // 
@@ -100,9 +100,9 @@
             textBoxSinopsis.Location = new Point(570, 413);
             textBoxSinopsis.Multiline = true;
             textBoxSinopsis.Name = "textBoxSinopsis";
+            textBoxSinopsis.PlaceholderText = "Masukkan Sinopsis";
             textBoxSinopsis.Size = new Size(430, 210);
             textBoxSinopsis.TabIndex = 5;
-            textBoxSinopsis.Text = "Masukkan Sinopsis";
             // 
             // buttonKembali
             // 
@@ -149,7 +149,7 @@
             buttonPilihGambar.UseVisualStyleBackColor = true;
             buttonPilihGambar.Click += buttonPilihGambar_Click;
             // 
-            // V_TambahEdit_A
+            // V_Tambah_A
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -165,7 +165,7 @@
             Controls.Add(textBoxJudul);
             Controls.Add(pictureBoxCover);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "V_TambahEdit_A";
+            Name = "V_Tambah_A";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_KatalogBuku_A";
             ((System.ComponentModel.ISupportInitialize)pictureBoxCover).EndInit();
