@@ -11,7 +11,7 @@ namespace JALOKA.Controllers
 {
     public class C_Peminjaman
     {
-        private M_Buku buku = new M_Buku();
+        private readonly M_Buku buku;
 
         public List<M_Buku> AmbilKeranjang()
         {
@@ -129,7 +129,6 @@ namespace JALOKA.Controllers
                 }
 
                 KosongkanKeranjang();
-                H_Pesan.Sukses("Peminjaman diajukan, menunggu konfirmasi pustakawan.");
             }
             catch (Exception ex)
             {
@@ -165,6 +164,8 @@ namespace JALOKA.Controllers
                     KurangiStok(buku.id_buku);
                     HapusDariKeranjang(buku.id_buku);
                 }
+                
+                H_Pesan.Sukses("Peminjaman diajukan, menunggu konfirmasi pustakawan.");
             }
             catch (Exception ex)
             {
@@ -206,7 +207,7 @@ namespace JALOKA.Controllers
             var daftar = new List<M_Peminjaman>();
 
             using var db = new D_Connector();
-            using var cmd = new NpgsqlCommand("SELECT p.id_buku, b.judul, b.penulis, b.penerbit, b.tahun_terbit, b.cover FROM peminjaman p JOIN buku b ON p.id_buku = b.id_buku WHERE p.id_user = @id_user AND p.status = 'menunggu'", db.Connection);
+            using var cmd = new NpgsqlCommand("SELECT p.id_peminjaman, p.id_user, p.id_buku, p.tanggal_pinjam, b.judul, b.penulis, b.penerbit, b.tahun_terbit, b.cover FROM peminjaman p JOIN buku b ON p.id_buku = b.id_buku WHERE p.id_user = @id_user AND p.status = 'menunggu'", db.Connection);
             cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
 
             using var reader = cmd.ExecuteReader();
@@ -214,6 +215,10 @@ namespace JALOKA.Controllers
             {
                 daftar.Add(new M_Peminjaman
                 {
+                    id_peminjaman = reader.GetInt32(0),
+                    id_user = reader.GetInt32(1),
+                    tanggal_pinjam = reader.GetDateTime(2),
+
                     buku = new M_Buku
                     {
                         id_buku = reader.GetInt32(0),

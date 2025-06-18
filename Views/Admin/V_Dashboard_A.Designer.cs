@@ -107,7 +107,7 @@
             buttonRiwayatPeminjaman.FlatAppearance.BorderSize = 0;
             buttonRiwayatPeminjaman.FlatStyle = FlatStyle.Flat;
             buttonRiwayatPeminjaman.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonRiwayatPeminjaman.Location = new Point(57, 344);
+            buttonRiwayatPeminjaman.Location = new Point(59, 485);
             buttonRiwayatPeminjaman.Name = "buttonRiwayatPeminjaman";
             buttonRiwayatPeminjaman.Size = new Size(187, 29);
             buttonRiwayatPeminjaman.TabIndex = 22;
@@ -148,7 +148,7 @@
             buttonPeminjaman.FlatAppearance.BorderSize = 0;
             buttonPeminjaman.FlatStyle = FlatStyle.Flat;
             buttonPeminjaman.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonPeminjaman.Location = new Point(57, 492);
+            buttonPeminjaman.Location = new Point(58, 343);
             buttonPeminjaman.Name = "buttonPeminjaman";
             buttonPeminjaman.Size = new Size(187, 29);
             buttonPeminjaman.TabIndex = 28;

@@ -18,15 +18,16 @@ namespace JALOKA.Views
 {
     public partial class V_Peminjaman_P : Form
     {
-        private C_Peminjaman controller = new C_Peminjaman();
+        C_Peminjaman controller = new C_Peminjaman();
         private List<M_Buku> keranjang;
+
         public V_Peminjaman_P()
         {
             InitializeComponent();
+            TabelKeranjang();
             TabelPeminjaman();
             MuatKeranjang();
             MuatMenunggu();
-            TabelKeranjang();
         }
 
         private void TabelKeranjang()
@@ -230,6 +231,7 @@ namespace JALOKA.Views
         {
             controller.ProsesPeminjaman();
             MuatKeranjang();
+            MuatMenunggu();
         }
     }
 }

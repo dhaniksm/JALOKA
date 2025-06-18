@@ -17,7 +17,7 @@ namespace JALOKA.Views
     public partial class V_DetailBuku_P : Form
     {
         private readonly int idBuku;
-        private readonly C_Buku c_buku;
+        C_Buku c_buku = new C_Buku();
         public V_DetailBuku_P(int id_buku)
         {
             InitializeComponent();
@@ -46,7 +46,6 @@ namespace JALOKA.Views
             try
             {
                 var buku = c_buku.AmbilDetailBuku(idBuku);
-
                 labelJudul.Text = buku.judul;
                 labelPenulis.Text = buku.penulis;
                 labelPenerbit.Text = buku.penerbit;

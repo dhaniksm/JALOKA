@@ -54,7 +54,7 @@ namespace JALOKA.Views
                     var panel = new Panel
                     {
                         Width = 200,
-                        Height = 200,
+                        Height = 250,
                         Margin = new Padding(10)
                     };
 
@@ -75,7 +75,7 @@ namespace JALOKA.Views
                     {
                         Text = buku.judul,
                         Width = 120,
-                        Height = 30,
+                        Height = 40,
                         Top = 160,
                         Left = 10,
                         TextAlign = ContentAlignment.MiddleCenter
@@ -140,7 +140,6 @@ namespace JALOKA.Views
             V_RiwayatPeminjaman_A riwayat = new V_RiwayatPeminjaman_A();
             riwayat.Show();
         }
-
 
         private void buttonKeluar_Click(object sender, EventArgs e)
         {

@@ -30,7 +30,6 @@ namespace JALOKA.Views.Admin
             try
             {
                 var buku = c_buku.AmbilDetailBuku(idBuku);
-
                 labelJudul.Text = buku.judul;
                 labelPenulis.Text = buku.penulis;
                 labelPenerbit.Text = buku.penerbit;
@@ -70,6 +69,11 @@ namespace JALOKA.Views.Admin
             {
                 H_Pesan.Gagal("Gagal menghapus buku: " + ex.Message);
             }
+        }
+
+        private void buttonKembali_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

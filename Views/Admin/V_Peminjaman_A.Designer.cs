@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Peminjaman_A));
             buttonPeminjaman = new Button();
             buttonDashboard = new Button();
             buttonManajemenBuku = new Button();
@@ -44,7 +45,7 @@
             buttonPeminjaman.FlatAppearance.BorderSize = 0;
             buttonPeminjaman.FlatStyle = FlatStyle.Flat;
             buttonPeminjaman.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonPeminjaman.Location = new Point(77, 329);
+            buttonPeminjaman.Location = new Point(62, 343);
             buttonPeminjaman.Name = "buttonPeminjaman";
             buttonPeminjaman.Size = new Size(187, 29);
             buttonPeminjaman.TabIndex = 29;
@@ -59,7 +60,7 @@
             buttonDashboard.FlatAppearance.BorderSize = 0;
             buttonDashboard.FlatStyle = FlatStyle.Flat;
             buttonDashboard.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonDashboard.Location = new Point(77, 108);
+            buttonDashboard.Location = new Point(62, 115);
             buttonDashboard.Name = "buttonDashboard";
             buttonDashboard.Size = new Size(187, 29);
             buttonDashboard.TabIndex = 30;
@@ -74,7 +75,7 @@
             buttonManajemenBuku.FlatAppearance.BorderSize = 0;
             buttonManajemenBuku.FlatStyle = FlatStyle.Flat;
             buttonManajemenBuku.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonManajemenBuku.Location = new Point(77, 163);
+            buttonManajemenBuku.Location = new Point(62, 188);
             buttonManajemenBuku.Name = "buttonManajemenBuku";
             buttonManajemenBuku.Size = new Size(187, 29);
             buttonManajemenBuku.TabIndex = 31;
@@ -89,7 +90,7 @@
             buttonDataPengguna.FlatAppearance.BorderSize = 0;
             buttonDataPengguna.FlatStyle = FlatStyle.Flat;
             buttonDataPengguna.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonDataPengguna.Location = new Point(77, 223);
+            buttonDataPengguna.Location = new Point(62, 265);
             buttonDataPengguna.Name = "buttonDataPengguna";
             buttonDataPengguna.Size = new Size(187, 29);
             buttonDataPengguna.TabIndex = 32;
@@ -104,7 +105,7 @@
             buttonRiwayatPeminjaman.FlatAppearance.BorderSize = 0;
             buttonRiwayatPeminjaman.FlatStyle = FlatStyle.Flat;
             buttonRiwayatPeminjaman.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonRiwayatPeminjaman.Location = new Point(77, 384);
+            buttonRiwayatPeminjaman.Location = new Point(21, 568);
             buttonRiwayatPeminjaman.Name = "buttonRiwayatPeminjaman";
             buttonRiwayatPeminjaman.Size = new Size(187, 29);
             buttonRiwayatPeminjaman.TabIndex = 33;
@@ -119,7 +120,7 @@
             buttonPengembalian.FlatAppearance.BorderSize = 0;
             buttonPengembalian.FlatStyle = FlatStyle.Flat;
             buttonPengembalian.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonPengembalian.Location = new Point(77, 275);
+            buttonPengembalian.Location = new Point(62, 421);
             buttonPengembalian.Name = "buttonPengembalian";
             buttonPengembalian.Size = new Size(187, 29);
             buttonPengembalian.TabIndex = 34;
@@ -129,15 +130,17 @@
             // 
             // flowLayoutPanelKonfirmasi
             // 
-            flowLayoutPanelKonfirmasi.Location = new Point(325, 77);
+            flowLayoutPanelKonfirmasi.Location = new Point(253, 72);
             flowLayoutPanelKonfirmasi.Name = "flowLayoutPanelKonfirmasi";
-            flowLayoutPanelKonfirmasi.Size = new Size(839, 543);
+            flowLayoutPanelKonfirmasi.Size = new Size(941, 601);
             flowLayoutPanelKonfirmasi.TabIndex = 35;
+            flowLayoutPanelKonfirmasi.Paint += flowLayoutPanelKonfirmasi_Paint;
             // 
             // V_Peminjaman_A
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
             Controls.Add(flowLayoutPanelKonfirmasi);
             Controls.Add(buttonPengembalian);
