@@ -224,5 +224,10 @@ namespace JALOKA.Views
             controller.ProsesPeminjaman();
             MuatKeranjang();
         }
+
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
