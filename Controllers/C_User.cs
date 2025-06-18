@@ -43,7 +43,7 @@ namespace JALOKA.Controllers
                         int id_user = Convert.ToInt32(reader["id_user"]);
                         string nama = reader["nama"].ToString();
 
-                        H_Sesi.SetSession(id_user, nama); // ✅ menyimpan sesi
+                        H_Sesi.SetSession(id_user, nama); //  menyimpan sesi
                         return true;
                     }
                     else
