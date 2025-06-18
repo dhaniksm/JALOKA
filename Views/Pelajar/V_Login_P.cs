@@ -16,7 +16,6 @@ namespace JALOKA.Views
 {
     public partial class V_Login_P : Form
     {
-        private C_User c_user = new C_User();
         public static string nisnLogin; 
 
         public V_Login_P()
@@ -41,23 +40,35 @@ namespace JALOKA.Views
         }
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            M_User user = new M_User
+            C_User c_user = new C_User();
+            M_Pengguna user = new M_Pengguna()
             {
                 nisn = textBoxNisn.Text,
                 password = textBoxPassword.Text
             };
 
-            bool success = c_user.Login(user);
-            if (success)
+            try
             {
-                nisnLogin = user.nisn; // Simpan ID untuk akses profil
-                MessageBox.Show("Berhasil Login!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-                V_Dashboard_P dashboard = new V_Dashboard_P();
-                dashboard.Show();
-            }
+                c_user.Login(user);
 
-            
+                if (H_Sesi.LoggedIn())
+                {
+                    H_Sesi.SetSession(H_Sesi.id_user, H_Sesi.nama_user);
+                    H_Pesan.Sukses("Login Berhasil");
+                
+                    this.Close();
+                    V_Dashboard_P dashboard = new V_Dashboard_P();
+                    dashboard.Show();
+                }
+                else
+                {
+                    H_Pesan.Gagal("Login Gagal, Periksa NISN dan Password Anda");
+                }
+            }
+            catch (Exception ex)
+            {
+                H_Pesan.Gagal("Login Gagal: " + ex.Message);
+            }
         }
 
         private void buttonRegister_Click(object sender, EventArgs e)
@@ -83,15 +94,6 @@ namespace JALOKA.Views
         {
             textBoxPassword.PasswordChar = '*';
         }
-
-
-        private void textBoxIDPelajar_TextChanged(object sender, EventArgs e)
-        { 
-        
-        }
-
-
-        
 
         private void pictureBoxKembali_Click(object sender, EventArgs e)
         {

@@ -55,7 +55,6 @@
             textBoxIDPustakawan.Name = "textBoxIDPustakawan";
             textBoxIDPustakawan.Size = new Size(320, 20);
             textBoxIDPustakawan.TabIndex = 8;
-            textBoxIDPustakawan.TextChanged += textBoxIDPustakawan_TextChanged;
             // 
             // textBoxPassword
             // 

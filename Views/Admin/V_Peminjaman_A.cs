@@ -71,6 +71,7 @@ namespace JALOKA.Views.Admin
                 flowLayoutPanelKonfirmasi.Controls.Add(panel);
             }
         }
+        
 
         private void BtnKonfirmasi_Click(object sender, EventArgs e)
         {
@@ -90,6 +91,49 @@ namespace JALOKA.Views.Admin
                 H_Pesan.Sukses("Peminjaman ditolak.");
                 TampilkanDaftar();
             }
+        }
+
+
+        private void buttonDashboard_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_Dashboard_A dashboard = new V_Dashboard_A();
+            dashboard.Show();
+        }
+
+        private void buttonManajemenBuku_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_ManajemenBuku_A manajemenBuku = new V_ManajemenBuku_A();
+            manajemenBuku.Show();
+        }
+
+        private void buttonDataPengguna_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_DataPengguna_A dataPengguna = new V_DataPengguna_A();
+            dataPengguna.Show();
+        }
+
+        private void buttonPeminjaman_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_Peminjaman_A peminjaman = new V_Peminjaman_A();
+            peminjaman.Show();
+        }
+
+        private void buttonRiwayatPeminjaman_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_RiwayatPeminjaman_A riwayat = new V_RiwayatPeminjaman_A();
+            riwayat.Show();
+        }
+
+        private void buttonPengembalian_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_Pengembalian_A pengembalian = new V_Pengembalian_A();
+            pengembalian.Show();
         }
     }
 }

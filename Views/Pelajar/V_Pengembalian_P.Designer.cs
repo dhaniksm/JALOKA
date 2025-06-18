@@ -36,6 +36,7 @@
             buttonKeluar = new Button();
             buttonDasboard = new Button();
             pictureBoxProfil = new PictureBox();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).BeginInit();
             SuspendLayout();
             // 
@@ -151,12 +152,20 @@
             pictureBoxProfil.TabStop = false;
             pictureBoxProfil.Click += pictureBoxProfil_Click;
             // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Location = new Point(259, 83);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(929, 580);
+            flowLayoutPanel1.TabIndex = 30;
+            // 
             // V_Pengembalian_P
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(flowLayoutPanel1);
             Controls.Add(pictureBoxProfil);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonRiwayatPeminjaman);
@@ -181,5 +190,6 @@
         private Button buttonKeluar;
         private Button buttonDasboard;
         private PictureBox pictureBoxProfil;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }

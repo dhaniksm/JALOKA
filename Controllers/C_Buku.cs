@@ -16,7 +16,7 @@ namespace JALOKA.Controllers
             {
                 using (var db = new D_Connector())
                 {
-                    using var cmd = new NpgsqlCommand("INSERT INTO buku (judul, penulis, penerbit, tahun_terbit, sinopsis, cover) VALUES (@judul, @penulis, @penerbit, @tahun_terbit, @sinopsis, @cover)", db.Connection);
+                    using var cmd = new NpgsqlCommand("INSERT INTO buku (judul, penulis, penerbit, tahun_terbit, sinopsis, cover, stok) VALUES (@judul, @penulis, @penerbit, @tahun_terbit, @sinopsis, @cover, 1)", db.Connection);
                     cmd.Parameters.AddWithValue("@judul", buku.judul);
                     cmd.Parameters.AddWithValue("@penulis", buku.penulis);
                     cmd.Parameters.AddWithValue("@penerbit", buku.penerbit);
@@ -103,7 +103,7 @@ namespace JALOKA.Controllers
             }
         }
 
-        public static M_Buku? AmbilDetailBuku(int id_buku)
+        public M_Buku? AmbilDetailBuku(int id_buku)
         {
             try
             {

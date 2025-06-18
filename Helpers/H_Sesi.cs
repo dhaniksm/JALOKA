@@ -8,19 +8,24 @@ namespace JALOKA.Helpers
 {
     public static class H_Sesi
     {
-        public static int nisn { get; private set; }
-        public static string nama_lengkap { get; private set; }
+        public static int id_user { get; private set; }
+        public static string nama_user { get; private set; }
 
-        public static void SetSession(int id, string nama, string role)
+        public static void SetSession(int id, string nama)
         {
-            nisn = id;
-            nama_lengkap = nama;
+            id_user = id;
+            nama_user = nama;
         }
 
         public static void ClearSession()
         {
-            nisn = 0;
-            nama_lengkap = null;
+            id_user = 0;
+            nama_user = null;
+        }
+
+        public static bool LoggedIn()
+        {
+            return id_user > 0;
         }
     }
 }

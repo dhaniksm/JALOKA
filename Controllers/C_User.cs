@@ -9,7 +9,7 @@ namespace JALOKA.Controllers
 {
     public class C_User
     {
-        public bool Login(M_User user)
+        public bool Login(M_Pengguna user)
         {
             if (string.IsNullOrWhiteSpace(user.nisn) && string.IsNullOrWhiteSpace(user.password))
             {
@@ -33,20 +33,26 @@ namespace JALOKA.Controllers
             {
                 using (var db = new D_Connector())
                 {
-                    var cmd = new NpgsqlCommand(
-                        "SELECT COUNT(*) FROM pengguna WHERE nisn = @nisn AND password = @password", db.Connection);
+                    var cmd = new NpgsqlCommand("SELECT id_user, nama FROM pengguna WHERE nisn = @nisn AND password = @password", db.Connection);
                     cmd.Parameters.AddWithValue("@nisn", user.nisn);
                     cmd.Parameters.AddWithValue("@password", user.password);
 
-                    int count = Convert.ToInt32(cmd.ExecuteScalar());
-
-                    if (count == 0)
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        H_Pesan.Gagal("NISN atau Password salah.");
-                        return false;
-                    }
+                        if (reader.Read())
+                        {
+                            int id = reader.GetInt32(0);
+                            string nama = reader.GetString(1);
 
-                    return true;
+                            H_Sesi.SetSession(id, nama);
+                            return true;
+                        }
+                        else
+                        {
+                            H_Pesan.Gagal("Username atau password salah.");
+                            return false;
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -56,25 +62,19 @@ namespace JALOKA.Controllers
             }
         }
 
-        public bool Register(M_User user)
+        public bool Register(M_Pengguna user)
         {
-            
-
             try
             {
                 using (var db = new D_Connector())
                 {
-                    using var cmd = new NpgsqlCommand(@"
-                        INSERT INTO pengguna (nisn, password, nama, email, nomor_hp, alamat) 
-                        VALUES (@nisn, @password, @nama, @email, @nomor_hp, @alamat)", db.Connection);
-
+                    using var cmd = new NpgsqlCommand(@"INSERT INTO pengguna (nisn, password, nama, email, nomor_hp, alamat) VALUES (@nisn, @password, @nama, @email, @nomor_hp, @alamat)", db.Connection);
                     cmd.Parameters.AddWithValue("@nisn", user.nisn);
                     cmd.Parameters.AddWithValue("@password", user.password);
                     cmd.Parameters.AddWithValue("@nama", user.nama);
                     cmd.Parameters.AddWithValue("@email", user.email);
                     cmd.Parameters.AddWithValue("@nomor_hp", user.nomor_hp);
                     cmd.Parameters.AddWithValue("@alamat", user.alamat);
-
                     return cmd.ExecuteNonQuery() > 0;
                 }
             }
@@ -85,9 +85,9 @@ namespace JALOKA.Controllers
             }
         }
 
-        public List<M_User> DaftarPengguna()
+        public List<M_Pengguna> DaftarPengguna()
         {
-            var list = new List<M_User>();
+            var list = new List<M_Pengguna>();
 
             try
             {
@@ -97,7 +97,7 @@ namespace JALOKA.Controllers
                     using var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        list.Add(new M_User
+                        list.Add(new M_Pengguna
                         {
                             id_user = reader["id_user"].ToString(),
                             nisn = reader["nisn"].ToString(),
@@ -118,7 +118,7 @@ namespace JALOKA.Controllers
             return list;
         }
 
-        public M_User GetProfil(string nisn)
+        public M_Pengguna GetProfil(string nisn)
         {
             try
             {
@@ -130,7 +130,7 @@ namespace JALOKA.Controllers
                     using var reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
-                        return new M_User
+                        return new M_Pengguna
                         {
                             id_user = reader["id_user"].ToString(),
                             nisn = reader["nisn"].ToString(),
@@ -150,23 +150,18 @@ namespace JALOKA.Controllers
             return null;
         }
 
-        public bool UpdateUser(M_User user)
+        public bool UpdateUser(M_Pengguna user)
         {
             try
             {
                 using (var db = new D_Connector())
                 {
-                    var cmd = new NpgsqlCommand(@"
-                        UPDATE pengguna 
-                        SET nama = @nama, email = @email, nomor_hp = @nomor_hp, alamat = @alamat
-                        WHERE nisn = @nisn", db.Connection);
-
+                    var cmd = new NpgsqlCommand(@"UPDATE pengguna SET nama = @nama, email = @email, nomor_hp = @nomor_hp, alamat = @alam WHERE nisn = @nisn", db.Connection);
                     cmd.Parameters.AddWithValue("@nisn", user.nisn);
                     cmd.Parameters.AddWithValue("@nama", user.nama);
                     cmd.Parameters.AddWithValue("@email", user.email);
                     cmd.Parameters.AddWithValue("@nomor_hp", user.nomor_hp);
                     cmd.Parameters.AddWithValue("@alamat", user.alamat);
-
                     return cmd.ExecuteNonQuery() > 0;
                 }
             }

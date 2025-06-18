@@ -49,7 +49,7 @@ namespace JALOKA.Views
             }
 
             
-            var user = new M_User
+            var user = new M_Pengguna
             {
                 nisn = textBoxIDPelajar.Text,
                 password = textBoxPassword.Text,

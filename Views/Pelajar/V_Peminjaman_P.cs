@@ -97,13 +97,20 @@ namespace JALOKA.Views
 
         private void MuatMenunggu()
         {
-            flowLayoutPanelMenunggu.Controls.Clear();
-            var menunggu = controller.MenungguKonfirmasi();
-
-            foreach (var peminjaman in menunggu)
+            try
             {
-                var panel = BuatPanelBuku(peminjaman.buku, "Menunggu", null, true);
-                flowLayoutPanelMenunggu.Controls.Add(panel);
+                flowLayoutPanelMenunggu.Controls.Clear();
+                var menunggu = controller.MenungguKonfirmasi();
+
+                foreach (var peminjaman in menunggu)
+                {
+                    var panel = BuatPanelBuku(peminjaman.buku, "Menunggu", null, true);
+                    flowLayoutPanelMenunggu.Controls.Add(panel);
+                }
+            }
+            catch (Exception ex)
+            {
+                H_Pesan.Gagal("Gagal memuat peminjaman menunggu: " + ex.Message);
             }
         }
 

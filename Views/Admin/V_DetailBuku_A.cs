@@ -16,8 +16,7 @@ namespace JALOKA.Views.Admin
     public partial class V_DetailBuku_A : Form
     {
         private readonly int idBuku;
-        private M_Buku? buku;
-        private readonly C_Buku c_buku = new C_Buku();
+        C_Buku c_buku = new C_Buku();
 
         public V_DetailBuku_A(int id_buku)
         {
@@ -30,7 +29,7 @@ namespace JALOKA.Views.Admin
         {
             try
             {
-                buku = C_Buku.AmbilDetailBuku(idBuku);
+                var buku = c_buku.AmbilDetailBuku(idBuku);
 
                 labelJudul.Text = buku.judul;
                 labelPenulis.Text = buku.penulis;
@@ -52,7 +51,9 @@ namespace JALOKA.Views.Admin
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            V_EditBuku_A editBuku = new V_EditBuku_A(idBuku);
+            editBuku.Show();
         }
 
         private void buttonHapus_Click(object sender, EventArgs e)

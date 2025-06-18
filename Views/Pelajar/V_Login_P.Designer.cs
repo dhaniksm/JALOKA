@@ -85,7 +85,6 @@
             textBoxNisn.Name = "textBoxIDPelajar";
             textBoxNisn.Size = new Size(320, 20);
             textBoxNisn.TabIndex = 3;
-            textBoxNisn.TextChanged += textBoxIDPelajar_TextChanged;
             textBoxNisn.BorderStyle = BorderStyle.None;
             textBoxNisn.Location = new Point(442, 197);
             textBoxNisn.Name = "textBoxNisn";
