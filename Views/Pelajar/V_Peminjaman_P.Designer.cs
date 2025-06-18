@@ -157,6 +157,7 @@
             // 
             // flowLayoutPanelKeranjang
             // 
+            flowLayoutPanelKeranjang.AutoScroll = true;
             flowLayoutPanelKeranjang.Location = new Point(257, 79);
             flowLayoutPanelKeranjang.Name = "flowLayoutPanelKeranjang";
             flowLayoutPanelKeranjang.Size = new Size(825, 300);
@@ -167,7 +168,7 @@
             flowLayoutPanelMenunggu.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanelMenunggu.Location = new Point(257, 385);
             flowLayoutPanelMenunggu.Name = "flowLayoutPanelMenunggu";
-            flowLayoutPanelMenunggu.Size = new Size(937, 286);
+            flowLayoutPanelMenunggu.Size = new Size(825, 286);
             flowLayoutPanelMenunggu.TabIndex = 22;
             // 
             // buttonPinjam

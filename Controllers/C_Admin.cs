@@ -8,8 +8,6 @@ namespace JALOKA.Controllers
 {
     public class C_Admin
     {
-        private readonly D_Connector db = new D_Connector();
-
         public bool Login(M_Admin admin)
         {
             
@@ -33,24 +31,22 @@ namespace JALOKA.Controllers
 
             try
             {
-                if (db.Connection.State != System.Data.ConnectionState.Open)
-                    db.Connection.Open();
-
-                var cmd = new NpgsqlCommand(
-                    "SELECT COUNT(*) FROM admin WHERE id_pustakawan = @id AND password = @pw", db.Connection);
-
-                cmd.Parameters.AddWithValue("@id", admin.id_pustakawan);
-                cmd.Parameters.AddWithValue("@pw", admin.password);
-
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-
-                if (count == 0)
+                using (var db = new D_Connector())
                 {
-                    H_Pesan.Gagal("ID atau Password salah.");
-                    return false;
-                }
+                    var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM admin WHERE id_pustakawan = @id AND password = @pw", db.Connection);
+                    cmd.Parameters.AddWithValue("@id", admin.id_pustakawan);
+                    cmd.Parameters.AddWithValue("@pw", admin.password);
 
-                return true;
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    if (count == 0)
+                    {
+                        H_Pesan.Gagal("ID atau Password salah.");
+                        return false;
+                    }
+
+                    return true;
+                }
             }
             catch (Exception ex)
             {

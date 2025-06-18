@@ -17,8 +17,7 @@ namespace JALOKA.Views
     public partial class V_DetailBuku_P : Form
     {
         private readonly int idBuku;
-        private M_Buku? buku;
-        private readonly C_Buku c_buku;
+        C_Buku c_buku = new C_Buku();
         public V_DetailBuku_P(int id_buku)
         {
             InitializeComponent();
@@ -46,8 +45,7 @@ namespace JALOKA.Views
         {
             try
             {
-                buku = C_Buku.AmbilDetailBuku(idBuku);
-
+                var buku = c_buku.AmbilDetailBuku(idBuku);
                 labelJudul.Text = buku.judul;
                 labelPenulis.Text = buku.penulis;
                 labelPenerbit.Text = buku.penerbit;
@@ -68,9 +66,11 @@ namespace JALOKA.Views
 
         private void buttonPinjam_Click(object sender, EventArgs e)
         {
+            C_Peminjaman c_peminjaman = new C_Peminjaman();
+
             try
             {
-                C_Peminjaman.TambahKeKeranjang(idBuku);
+                c_peminjaman.TambahKeKeranjang(idBuku);
                 H_Pesan.Sukses("Buku berhasil ditambahkan ke keranjang.");
                 this.Close();
             }

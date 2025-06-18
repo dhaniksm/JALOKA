@@ -36,9 +36,26 @@
             buttonKatalogBuku = new Button();
             buttonKeluar = new Button();
             pictureBoxProfil = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).BeginInit();
             flowLayoutPanelCover = new FlowLayoutPanel();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).BeginInit();
             SuspendLayout();
+            // 
+            // buttonDashboard
+            // 
+            buttonDashboard.BackColor = SystemColors.ControlLightLight;
+            buttonDashboard.Cursor = Cursors.Hand;
+            buttonDashboard.FlatAppearance.BorderColor = Color.White;
+            buttonDashboard.FlatAppearance.BorderSize = 0;
+            buttonDashboard.FlatStyle = FlatStyle.Flat;
+            buttonDashboard.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonDashboard.ForeColor = SystemColors.Desktop;
+            buttonDashboard.Location = new Point(65, 110);
+            buttonDashboard.Name = "buttonDashboard";
+            buttonDashboard.Size = new Size(182, 37);
+            buttonDashboard.TabIndex = 15;
+            buttonDashboard.Text = "Dasboard";
+            buttonDashboard.UseVisualStyleBackColor = false;
+            buttonDashboard.Click += buttonDashboard_Click;
             // 
             // buttonPengembalian
             // 
@@ -123,23 +140,6 @@
             buttonKeluar.UseVisualStyleBackColor = false;
             buttonKeluar.Click += buttonKeluar_Click;
             // 
-            // buttonDashboard
-            // 
-            buttonDashboard.BackColor = SystemColors.ControlLightLight;
-            buttonDashboard.Cursor = Cursors.Hand;
-            buttonDashboard.FlatAppearance.BorderColor = Color.White;
-            buttonDashboard.FlatAppearance.BorderSize = 0;
-            buttonDashboard.FlatStyle = FlatStyle.Flat;
-            buttonDashboard.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonDashboard.ForeColor = SystemColors.Desktop;
-            buttonDashboard.Location = new Point(65, 110);
-            buttonDashboard.Name = "buttonDashboard";
-            buttonDashboard.Size = new Size(182, 37);
-            buttonDashboard.TabIndex = 15;
-            buttonDashboard.Text = "Dasboard";
-            buttonDashboard.UseVisualStyleBackColor = false;
-            buttonDashboard.Click += buttonDashboard_Click;
-            // 
             // pictureBoxProfil
             // 
             pictureBoxProfil.BackColor = Color.Transparent;
@@ -151,9 +151,10 @@
             pictureBoxProfil.TabIndex = 29;
             pictureBoxProfil.TabStop = false;
             pictureBoxProfil.Click += pictureBoxProfil_Click;
-            //
+            // 
             // flowLayoutPanelCover
             // 
+            flowLayoutPanelCover.AutoScroll = true;
             flowLayoutPanelCover.Location = new Point(268, 86);
             flowLayoutPanelCover.Name = "flowLayoutPanelCover";
             flowLayoutPanelCover.Size = new Size(920, 577);

@@ -37,6 +37,7 @@
             buttonPengembalian = new Button();
             buttonKeluar = new Button();
             buttonTambah = new Button();
+            buttonPeminjaman = new Button();
             SuspendLayout();
             // 
             // flowLayoutPanelBuku
@@ -60,6 +61,7 @@
             buttonDashboard.TabIndex = 16;
             buttonDashboard.Text = "Dashboard";
             buttonDashboard.UseVisualStyleBackColor = false;
+            buttonDashboard.Click += buttonDashboard_Click;
             // 
             // buttonManajemenBuku
             // 
@@ -74,6 +76,7 @@
             buttonManajemenBuku.TabIndex = 19;
             buttonManajemenBuku.Text = "Manajemen Buku";
             buttonManajemenBuku.UseVisualStyleBackColor = false;
+            buttonManajemenBuku.Click += buttonManajemenBuku_Click;
             // 
             // buttonDataPengguna
             // 
@@ -88,6 +91,7 @@
             buttonDataPengguna.TabIndex = 20;
             buttonDataPengguna.Text = "Data Pengguna";
             buttonDataPengguna.UseVisualStyleBackColor = false;
+            buttonDataPengguna.Click += buttonDataPengguna_Click;
             // 
             // buttonRiwayatPeminjaman
             // 
@@ -96,12 +100,13 @@
             buttonRiwayatPeminjaman.FlatAppearance.BorderSize = 0;
             buttonRiwayatPeminjaman.FlatStyle = FlatStyle.Flat;
             buttonRiwayatPeminjaman.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonRiwayatPeminjaman.Location = new Point(58, 345);
+            buttonRiwayatPeminjaman.Location = new Point(58, 484);
             buttonRiwayatPeminjaman.Name = "buttonRiwayatPeminjaman";
             buttonRiwayatPeminjaman.Size = new Size(187, 29);
             buttonRiwayatPeminjaman.TabIndex = 21;
             buttonRiwayatPeminjaman.Text = "RIwayat Peminjaman";
             buttonRiwayatPeminjaman.UseVisualStyleBackColor = false;
+            buttonRiwayatPeminjaman.Click += buttonRiwayatPeminjaman_Click;
             // 
             // buttonPengembalian
             // 
@@ -116,6 +121,7 @@
             buttonPengembalian.TabIndex = 22;
             buttonPengembalian.Text = "Pengembalian";
             buttonPengembalian.UseVisualStyleBackColor = false;
+            buttonPengembalian.Click += buttonPengembalian_Click;
             // 
             // buttonKeluar
             // 
@@ -143,12 +149,28 @@
             buttonTambah.Text = "Tambah";
             buttonTambah.Click += buttonTambah_Click;
             // 
+            // buttonPeminjaman
+            // 
+            buttonPeminjaman.BackColor = SystemColors.ControlLightLight;
+            buttonPeminjaman.Cursor = Cursors.Hand;
+            buttonPeminjaman.FlatAppearance.BorderSize = 0;
+            buttonPeminjaman.FlatStyle = FlatStyle.Flat;
+            buttonPeminjaman.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonPeminjaman.Location = new Point(58, 346);
+            buttonPeminjaman.Name = "buttonPeminjaman";
+            buttonPeminjaman.Size = new Size(187, 29);
+            buttonPeminjaman.TabIndex = 29;
+            buttonPeminjaman.Text = "Peminjaman";
+            buttonPeminjaman.UseVisualStyleBackColor = false;
+            buttonPeminjaman.Click += buttonPeminjaman_Click;
+            // 
             // V_ManajemenBuku_A
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(buttonPeminjaman);
             Controls.Add(buttonTambah);
             Controls.Add(buttonKeluar);
             Controls.Add(buttonPengembalian);
@@ -174,5 +196,6 @@
         private Button buttonPengembalian;
         private Button buttonKeluar;
         private Button buttonTambah;
+        private Button buttonPeminjaman;
     }
 }

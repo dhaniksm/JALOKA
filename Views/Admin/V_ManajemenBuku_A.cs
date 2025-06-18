@@ -54,7 +54,7 @@ namespace JALOKA.Views
                     var panel = new Panel
                     {
                         Width = 200,
-                        Height = 200,
+                        Height = 250,
                         Margin = new Padding(10)
                     };
 
@@ -75,7 +75,7 @@ namespace JALOKA.Views
                     {
                         Text = buku.judul,
                         Width = 120,
-                        Height = 30,
+                        Height = 40,
                         Top = 160,
                         Left = 10,
                         TextAlign = ContentAlignment.MiddleCenter
@@ -120,6 +120,18 @@ namespace JALOKA.Views
             V_DataPengguna_A dataPengguna = new V_DataPengguna_A();
             dataPengguna.Show();
         }
+        private void buttonPeminjaman_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_Peminjaman_A peminjaman = new V_Peminjaman_A();
+            peminjaman.Show();
+        }
+        private void buttonPengembalian_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_Pengembalian_A pengembalian = new V_Pengembalian_A();
+            pengembalian.Show();
+        }
 
         private void buttonRiwayatPeminjaman_Click(object sender, EventArgs e)
         {
@@ -127,13 +139,6 @@ namespace JALOKA.Views
 
             V_RiwayatPeminjaman_A riwayat = new V_RiwayatPeminjaman_A();
             riwayat.Show();
-        }
-
-        private void buttonPengembalian_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            V_Pengembalian_A pengembalian = new V_Pengembalian_A();
-            pengembalian.Show();
         }
 
         private void buttonKeluar_Click(object sender, EventArgs e)
@@ -145,9 +150,10 @@ namespace JALOKA.Views
 
         private void buttonTambah_Click(object sender, EventArgs e)
         {
-            V_Tambah_A tambah = new V_Tambah_A();
+            V_TambahBuku_A tambah = new V_TambahBuku_A();
             tambah.Show();
             this.Close();
         }
+
     }
 }

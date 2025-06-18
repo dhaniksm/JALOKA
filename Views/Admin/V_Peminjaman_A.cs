@@ -14,7 +14,8 @@ namespace JALOKA.Views.Admin
 {
     public partial class V_Peminjaman_A : Form
     {
-        private C_Peminjaman c_peminjaman = new C_Peminjaman();
+        C_Peminjaman c_peminjaman = new C_Peminjaman();
+
         public V_Peminjaman_A()
         {
             InitializeComponent();
@@ -22,53 +23,60 @@ namespace JALOKA.Views.Admin
         }
         private void TampilkanDaftar()
         {
-            flowLayoutPanelKonfirmasi.Controls.Clear();
-            var daftar = c_peminjaman.MenungguKonfirmasi();
-
-            foreach (var item in daftar)
+            try
             {
-                Panel panel = new Panel
-                {
-                    Width = 600,
-                    Height = 120,
-                    Margin = new Padding(10),
-                    BorderStyle = BorderStyle.FixedSingle
-                };
+                flowLayoutPanelKonfirmasi.Controls.Clear();
+                var daftar = c_peminjaman.MenungguKonfirmasi();
 
-                Label labelInfo = new Label
+                foreach (var item in daftar)
                 {
-                    Text = $"User: {item.nama_peminjam}\nBuku: {item.judul_buku}\nTanggal: {item.tanggal_pinjam:dd MMM yyyy}",
-                    AutoSize = true,
-                    Left = 10,
-                    Top = 10
-                };
+                    Panel panel = new Panel
+                    {
+                        Width = 600,
+                        Height = 120,
+                        Margin = new Padding(10),
+                        BorderStyle = BorderStyle.FixedSingle
+                    };
 
-                Button btnKonfirmasi = new Button
-                {
-                    Text = "Konfirmasi",
-                    Width = 100,
-                    Height = 30,
-                    Top = 10,
-                    Left = 400,
-                    Tag = item.id_peminjaman
-                };
-                btnKonfirmasi.Click += BtnKonfirmasi_Click;
+                    Label labelInfo = new Label
+                    {
+                        Text = $"User: {item.id_user}\nBuku: {item.judul_buku}\nTanggal: {item.tanggal_pinjam:dd MMM yyyy}",
+                        AutoSize = true,
+                        Left = 10,
+                        Top = 10
+                    };
 
-                Button btnTolak = new Button
-                {
-                    Text = "Tolak",
-                    Width = 100,
-                    Height = 30,
-                    Top = 50,
-                    Left = 400,
-                    Tag = item.id_peminjaman
-                };
-                btnTolak.Click += BtnTolak_Click;
+                    Button btnKonfirmasi = new Button
+                    {
+                        Text = "Konfirmasi",
+                        Width = 100,
+                        Height = 30,
+                        Top = 10,
+                        Left = 400,
+                        Tag = item.id_peminjaman
+                    };
+                    btnKonfirmasi.Click += BtnKonfirmasi_Click;
 
-                panel.Controls.Add(labelInfo);
-                panel.Controls.Add(btnKonfirmasi);
-                panel.Controls.Add(btnTolak);
-                flowLayoutPanelKonfirmasi.Controls.Add(panel);
+                    Button btnTolak = new Button
+                    {
+                        Text = "Tolak",
+                        Width = 100,
+                        Height = 30,
+                        Top = 50,
+                        Left = 400,
+                        Tag = item.id_peminjaman
+                    };
+                    btnTolak.Click += BtnTolak_Click;
+
+                    flowLayoutPanelKonfirmasi.Controls.Add(panel);
+                    panel.Controls.Add(labelInfo);
+                    panel.Controls.Add(btnKonfirmasi);
+                    panel.Controls.Add(btnTolak);
+                }
+            }
+            catch (Exception ex)
+            {
+                H_Pesan.Gagal("Gagal menampilkan daftar peminjaman: " + ex.Message);
             }
         }
 
@@ -90,6 +98,53 @@ namespace JALOKA.Views.Admin
                 H_Pesan.Sukses("Peminjaman ditolak.");
                 TampilkanDaftar();
             }
+        }
+
+        private void buttonDashboard_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_Dashboard_A dashboard = new V_Dashboard_A();
+            dashboard.Show();
+        }
+
+        private void buttonManajemenBuku_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_ManajemenBuku_A manajemenBuku = new V_ManajemenBuku_A();
+            manajemenBuku.Show();
+        }
+
+        private void buttonDataPengguna_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_DataPengguna_A dataPengguna = new V_DataPengguna_A();
+            dataPengguna.Show();
+        }
+
+        private void buttonPeminjaman_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_Peminjaman_A peminjaman = new V_Peminjaman_A();
+            peminjaman.Show();
+        }
+
+        private void buttonRiwayatPeminjaman_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_RiwayatPeminjaman_A riwayat = new V_RiwayatPeminjaman_A();
+            riwayat.Show();
+        }
+
+        private void buttonPengembalian_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_Pengembalian_A pengembalian = new V_Pengembalian_A();
+            pengembalian.Show();
+        }
+
+        private void flowLayoutPanelKonfirmasi_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

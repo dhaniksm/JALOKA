@@ -11,33 +11,33 @@ namespace JALOKA.Controllers
 {
     public class C_Peminjaman
     {
-        private M_Buku buku = new M_Buku();
+        private readonly M_Buku buku;
+
         public List<M_Buku> AmbilKeranjang()
         {
             var keranjang = new List<M_Buku>();
 
             try
             {
-                using (var db = new D_Connector())
-                {
-                    using var cmd = new NpgsqlCommand("SELECT b.id_buku, b.judul, b.penulis, b.penerbit, b.tahun_terbit, b.sinopsis, b.cover FROM keranjang k JOIN buku b ON k.id_buku = b.id_buku WHERE k.id_user = @id_user", db.Connection);
-                    cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
+                using var db = new D_Connector();
+                using var cmd = new NpgsqlCommand("SELECT b.id_buku, b.judul, b.penulis, b.penerbit, b.tahun_terbit, b.sinopsis, b.cover FROM keranjang k JOIN buku b ON k.id_buku = b.id_buku WHERE k.id_user = @id_user", db.Connection);
+                cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
 
-                    using var reader = cmd.ExecuteReader();
-                    while (reader.Read())
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    keranjang.Add(new M_Buku
                     {
-                        keranjang.Add(new M_Buku
-                        {
-                            id_buku = reader.GetInt32(0),
-                            judul = reader.GetString(1),
-                            penulis = reader.GetString(2),
-                            penerbit = reader.GetString(3),
-                            tahun_terbit = reader.GetInt32(4),
-                            sinopsis = reader.IsDBNull(5) ? "" : reader.GetString(5),
-                            cover = reader["cover"] as byte[]
-                        });
-                    }
+                        id_buku = reader.GetInt32(0),
+                        judul = reader.GetString(1),
+                        penulis = reader.GetString(2),
+                        penerbit = reader.GetString(3),
+                        tahun_terbit = reader.GetInt32(4),
+                        sinopsis = reader.IsDBNull(5) ? "" : reader.GetString(5),
+                        cover = reader["cover"] as byte[]
+                    });
                 }
+                
             }
             catch (Exception ex)
             {
@@ -47,7 +47,7 @@ namespace JALOKA.Controllers
             return keranjang;
         }
 
-        public static void TambahKeKeranjang(int id_buku)
+        public void TambahKeKeranjang(int id_buku)
         {
             try
             {
@@ -120,7 +120,7 @@ namespace JALOKA.Controllers
 
                 foreach (var buku in keranjang)
                 {
-                    using var cmd = new NpgsqlCommand("INSERT INTO peminjaman (id_user, id_buku, tanggal_pinjam, tanggal_kembali, status) " + "VALUES (@id_user, @id_buku, @tanggal_pinjam, @tanggal_kembali, 'menunggu')", db.Connection);
+                    using var cmd = new NpgsqlCommand("INSERT INTO peminjaman (id_user, id_buku, tanggal_pinjam, tanggal_kembali, status) VALUES (@id_user, @id_buku, @tanggal_pinjam, @tanggal_kembali, 'menunggu')", db.Connection);
 
                     cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
                     cmd.Parameters.AddWithValue("@id_buku", buku.id_buku);
@@ -130,7 +130,6 @@ namespace JALOKA.Controllers
                 }
 
                 KosongkanKeranjang();
-                H_Pesan.Sukses("Peminjaman diajukan, menunggu konfirmasi pustakawan.");
             }
             catch (Exception ex)
             {
@@ -141,19 +140,33 @@ namespace JALOKA.Controllers
         public void ProsesPeminjaman()
         {
             try
-            { 
-                if (!ValidasiMaksimalPeminjaman()) return;
-                if (!ValidasiStokBuku()) return;
-
-                AjukanPeminjaman(buku.id_buku);
-                KurangiStok();
-
-                foreach (var buku in AmbilKeranjang())
+            {
+                int jumlahAktif = JumlahPeminjamanAktif();
+                if (jumlahAktif >= 3)
                 {
-                    HapusDariKeranjang(buku.id_buku);
+                    H_Pesan.Peringatan("Anda hanya dapat memiliki maksimal 3 buku aktif.");
+                    return;
                 }
 
-                H_Pesan.Sukses("Peminjaman berhasil dilakukan.");
+                var keranjang = AmbilKeranjang();
+                foreach (var buku in keranjang)
+                {
+                    int stok = AmbilStok(buku.id_buku);
+                    if (stok <= 0)
+                    {
+                        H_Pesan.Peringatan($"Stok buku \"{buku.judul}\" tidak mencukupi.");
+                        return;
+                    }
+                }
+
+                foreach (var buku in keranjang)
+                {
+                    AjukanPeminjaman(buku.id_buku);
+                    KurangiStok(buku.id_buku);
+                    HapusDariKeranjang(buku.id_buku);
+                }
+                
+                H_Pesan.Sukses("Peminjaman diajukan, menunggu konfirmasi pustakawan.");
             }
             catch (Exception ex)
             {
@@ -161,44 +174,12 @@ namespace JALOKA.Controllers
             }
         }
 
-        private bool ValidasiMaksimalPeminjaman()
+        private void KurangiStok(int id_buku)
         {
-            int jumlahAktif = JumlahPeminjamanAktif();
-            if (jumlahAktif >= 3)
-            {
-                H_Pesan.Peringatan("Anda hanya dapat memiliki maksimal 3 buku aktif.");
-                return false;
-            }
-            return true;
-        }
-
-        private bool ValidasiStokBuku()
-        {
-            List<M_Buku> keranjang = AmbilKeranjang();
-            foreach (var buku in keranjang)
-            {
-                int stok = AmbilStok(buku.id_buku);
-                if (stok < 0)
-                {
-                    H_Pesan.Peringatan($"Stok buku \"{buku.judul}\" tidak mencukupi.");
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        private void KurangiStok()
-        {
-            var keranjang = AmbilKeranjang();
-            using (var db = new D_Connector())
-            {
-                foreach (var item in keranjang)
-                {
-                    using var cmd = new NpgsqlCommand("UPDATE buku SET stok = stok - 1 WHERE id_buku = @id_buku", db.Connection);
-                    cmd.Parameters.AddWithValue("@id_buku", item.id_buku);
-                    cmd.ExecuteNonQuery();
-                }
-            }
+            using var db = new D_Connector();
+            using var cmd = new NpgsqlCommand("UPDATE buku SET stok = stok - 1 WHERE id_buku = @id_buku", db.Connection);
+            cmd.Parameters.AddWithValue("@id_buku", id_buku);
+            cmd.ExecuteNonQuery();
         }
 
         private int AmbilStok(int id_buku)
@@ -217,8 +198,6 @@ namespace JALOKA.Controllers
             using (var db = new D_Connector())
             {
                 using var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM peminjaman WHERE id_user = @id_user AND status = 'aktif'", db.Connection);
-
-
                 cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }
@@ -229,9 +208,7 @@ namespace JALOKA.Controllers
             var daftar = new List<M_Peminjaman>();
 
             using var db = new D_Connector();
-            using var cmd = new NpgsqlCommand("SELECT p.id_buku, b.judul, b.penulis, b.penerbit, b.tahun_terbit, b.cover " +
-                                              "FROM peminjaman p JOIN buku b ON p.id_buku = b.id_buku " +
-                                              "WHERE p.id_user = @id_user AND p.status = 'menunggu'", db.Connection);
+            using var cmd = new NpgsqlCommand("SELECT p.id_peminjaman, p.id_user, p.id_buku, p.tanggal_pinjam, b.judul, b.penulis, b.penerbit, b.tahun_terbit, b.cover FROM peminjaman p JOIN buku b ON p.id_buku = b.id_buku WHERE p.id_user = @id_user AND p.status = 'menunggu'", db.Connection);
             cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
 
             using var reader = cmd.ExecuteReader();
@@ -239,6 +216,10 @@ namespace JALOKA.Controllers
             {
                 daftar.Add(new M_Peminjaman
                 {
+                    id_peminjaman = reader.GetInt32(0),
+                    id_user = reader.GetInt32(1),
+                    tanggal_pinjam = reader.GetDateTime(2),
+
                     buku = new M_Buku
                     {
                         id_buku = reader.GetInt32(0),

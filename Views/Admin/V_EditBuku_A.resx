@@ -120,29 +120,26 @@
   <metadata name="pictureBoxCover.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="labelJudul.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="labelPenulis.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="labelPenerbit.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="labelTahunTerbit.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="labelSinopsis.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="buttonKembali.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="textBoxPenulis.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="textBoxPenerbit.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="textBoxTahunTerbit.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="textBoxSinopsis.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABLAAAAKjCAYAAAANs/bAAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAJ
-        OAAACTgBj5pRwwAA/7JJREFUeF7snQd8ZFd5vsk/BWJagLgQQjEEQkJJwAQSQrCNK9hge21TbGN6MSYB
+        NwAACTcB+VT/2QAA/7JJREFUeF7snQd8ZFd5vsk/BWJagLgQQjEEQkJJwAQSQrCNK9hge21TbGN6MSYB
         e9d1V2WlrerSrrert+2999577321TasuTdf3/73nzrk6ujOqK2k0s++bPIw0c+uZuzs7j7/z3Xd9+9Uy
         IYQQQgghhBBCCCGkv/Iu5xOEEEIIIYQQQgghhPQnKLAIIYQQQgghhBBCSL+GAosQQgghhBBCCCGE9Gso
         sAghhBBCCCGEEEJIv4YCixBCCCGEEEIIIYT0ayiwCCGEEEIIIYQQQki/hgKLEEIIIYQQQgghhPRrKLAI

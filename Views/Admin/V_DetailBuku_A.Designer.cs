@@ -152,6 +152,7 @@
             buttonKembali.TabIndex = 13;
             buttonKembali.Text = "Kembali";
             buttonKembali.UseVisualStyleBackColor = false;
+            buttonKembali.Click += buttonKembali_Click;
             // 
             // V_DetailBuku_A
             // 

@@ -18,15 +18,16 @@ namespace JALOKA.Views
 {
     public partial class V_Peminjaman_P : Form
     {
-        private C_Peminjaman controller = new C_Peminjaman();
+        C_Peminjaman controller = new C_Peminjaman();
         private List<M_Buku> keranjang;
+
         public V_Peminjaman_P()
         {
             InitializeComponent();
+            TabelKeranjang();
             TabelPeminjaman();
             MuatKeranjang();
             MuatMenunggu();
-            TabelKeranjang();
         }
 
         private void TabelKeranjang()
@@ -97,13 +98,20 @@ namespace JALOKA.Views
 
         private void MuatMenunggu()
         {
-            flowLayoutPanelMenunggu.Controls.Clear();
-            var menunggu = controller.MenungguKonfirmasi();
-
-            foreach (var peminjaman in menunggu)
+            try
             {
-                var panel = BuatPanelBuku(peminjaman.buku, "Menunggu", null, true);
-                flowLayoutPanelMenunggu.Controls.Add(panel);
+                flowLayoutPanelMenunggu.Controls.Clear();
+                var menunggu = controller.MenungguKonfirmasi();
+
+                foreach (var peminjaman in menunggu)
+                {
+                    var panel = BuatPanelBuku(peminjaman.buku, "Menunggu", null, true);
+                    flowLayoutPanelMenunggu.Controls.Add(panel);
+                }
+            }
+            catch (Exception ex)
+            {
+                H_Pesan.Gagal("Gagal memuat peminjaman menunggu: " + ex.Message);
             }
         }
 
@@ -223,6 +231,7 @@ namespace JALOKA.Views
         {
             controller.ProsesPeminjaman();
             MuatKeranjang();
+            MuatMenunggu();
         }
 
         private void pictureBoxRefresh_Click(object sender, EventArgs e)

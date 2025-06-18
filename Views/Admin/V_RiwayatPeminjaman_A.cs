@@ -101,5 +101,10 @@ namespace JALOKA.Views
         {
 
         }
+
+        private void buttonPeminjaman_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
