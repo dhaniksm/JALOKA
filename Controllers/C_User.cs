@@ -33,20 +33,24 @@ namespace JALOKA.Controllers
             {
                 using (var db = new D_Connector())
                 {
-                    var cmd = new NpgsqlCommand(
-                        "SELECT COUNT(*) FROM pengguna WHERE nisn = @nisn AND password = @password", db.Connection);
+                    var cmd = new NpgsqlCommand("SELECT id_user, nama FROM pengguna WHERE nisn = @nisn AND password = @password", db.Connection);
                     cmd.Parameters.AddWithValue("@nisn", user.nisn);
                     cmd.Parameters.AddWithValue("@password", user.password);
 
-                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    using var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        int id_user = Convert.ToInt32(reader["id_user"]);
+                        string nama = reader["nama"].ToString();
 
-                    if (count == 0)
+                        H_Sesi.SetSession(id_user, nama); //  menyimpan sesi
+                        return true;
+                    }
+                    else
                     {
                         H_Pesan.Gagal("NISN atau Password salah.");
                         return false;
                     }
-
-                    return true;
                 }
             }
             catch (Exception ex)

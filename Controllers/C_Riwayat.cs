@@ -3,47 +3,46 @@ using JALOKA.Models;
 using Npgsql;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Reflection.Metadata.BlobBuilder;
 
 namespace JALOKA.Controllers
 {
-    class C_Riwayat
+    public class C_Riwayat
     {
         private readonly D_Connector db = new D_Connector();
 
         public List<M_Riwayat> ShowRiwayat()
         {
             var riwayat = new List<M_Riwayat>();
+
             try
             {
                 using var cmd = new NpgsqlCommand(@"
                     SELECT 
-                        p.pinjam_id AS id_peminjaman, 
-                        p.buku_id, 
-                        b.judul AS judul_buku, 
-                        p.id_user, 
-                        u.nama AS nama_user, 
-                        p.tanggal_peminjaman, 
-                        p.tanggal_pengembalian 
-                    FROM M_Peminjaman p 
-                    JOIN users u ON p.id_user = u.id_user 
-                    JOIN m_buku b ON p.buku_id = b.buku_id 
-                    ORDER BY p.tanggal_peminjaman DESC;", db.Connection);
+                        p.id_peminjaman, 
+                        b.judul, 
+                        u.nama, 
+                        p.tanggal_pinjam, 
+                        p.tanggal_kembali, 
+                        p.status
+                    FROM peminjaman p
+                    JOIN pengguna u ON p.id_user = u.id_user
+                    JOIN buku b ON p.id_buku = b.id_buku
+                    ORDER BY p.tanggal_pinjam DESC;
+                ", db.Connection);
 
                 using var reader = cmd.ExecuteReader();
-
                 while (reader.Read())
                 {
                     riwayat.Add(new M_Riwayat
                     {
-                        judul = reader["judul_buku"].ToString(),
-                        nama = reader["nama_user"].ToString(),
-                        tanggal_peminjaman = Convert.ToDateTime(reader["tanggal_peminjaman"]),
-                        tanggal_pengembalian = Convert.ToDateTime(reader["tanggal_pengembalian"]),
-                        pinjam_id = Convert.ToInt32(reader["id_peminjaman"])
+                        id_peminjaman = Convert.ToInt32(reader["id_peminjaman"]),
+                        judul = reader["judul"].ToString(),
+                        nama = reader["nama"].ToString(),
+                        tanggal_peminjaman = Convert.ToDateTime(reader["tanggal_pinjam"]),
+                        tanggal_pengembalian = reader["tanggal_kembali"] == DBNull.Value
+                            ? (DateTime?)null
+                            : Convert.ToDateTime(reader["tanggal_kembali"]),
+                        status = reader["status"].ToString()
                     });
                 }
             }
@@ -54,6 +53,43 @@ namespace JALOKA.Controllers
 
             return riwayat;
         }
+        public List<M_Riwayat> ShowRiwayatUser(int id_user)
+        {
+            var riwayat = new List<M_Riwayat>();
+
+            using var db = new D_Connector();
+            using var cmd = new NpgsqlCommand(@"
+        SELECT 
+            p.id_peminjaman,
+            b.judul,
+            p.tanggal_pinjam,
+            p.tanggal_kembali,
+            p.status
+        FROM peminjaman p
+        JOIN buku b ON p.id_buku = b.id_buku
+        WHERE p.id_user = @id_user
+        ORDER BY p.tanggal_pinjam DESC", db.Connection);
+
+            cmd.Parameters.AddWithValue("@id_user", id_user);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                riwayat.Add(new M_Riwayat
+                {
+                    id_peminjaman = Convert.ToInt32(reader["id_peminjaman"]),
+                    judul = reader["judul"].ToString(),
+                    tanggal_peminjaman = Convert.ToDateTime(reader["tanggal_pinjam"]),
+                    tanggal_pengembalian = reader["tanggal_kembali"] is DBNull ? (DateTime?)null : Convert.ToDateTime(reader["tanggal_kembali"]),
+                    status = reader["status"].ToString()
+                });
+            }
+
+            return riwayat;
+        }
+
 
     }
 }
+
+
