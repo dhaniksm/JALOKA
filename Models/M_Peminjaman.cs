@@ -14,4 +14,5 @@
         public string penulis_buku { get; set; }
         public byte[] cover_buku { get; set; }
         public string nama_peminjam { get; set; }
+    }
 }

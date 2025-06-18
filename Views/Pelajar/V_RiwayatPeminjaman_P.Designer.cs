@@ -36,7 +36,9 @@
             buttonKeluar = new Button();
             buttonDasboard = new Button();
             pictureBoxProfil = new PictureBox();
+            dataGridView1 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // buttonPengembalian
@@ -151,12 +153,24 @@
             pictureBoxProfil.TabStop = false;
             pictureBoxProfil.Click += pictureBoxProfil_Click;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.ColumnHeadersHeight = 29;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView1.Location = new Point(270, 97);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(882, 516);
+            dataGridView1.TabIndex = 30;
+            // 
             // V_RiwayatPeminjaman_P
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(dataGridView1);
             Controls.Add(pictureBoxProfil);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonRiwayatPeminjaman);
@@ -168,7 +182,9 @@
             Name = "V_RiwayatPeminjaman_P";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_RiwayatPeminjaman_Pelajar";
+            Load += V_RiwayatPeminjaman_P_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -181,5 +197,6 @@
         private Button buttonKeluar;
         private Button buttonDasboard;
         private PictureBox pictureBoxProfil;
+        private DataGridView dataGridView1;
     }
 }
