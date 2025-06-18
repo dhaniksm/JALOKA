@@ -37,21 +37,19 @@ namespace JALOKA.Controllers
                     cmd.Parameters.AddWithValue("@nisn", user.nisn);
                     cmd.Parameters.AddWithValue("@password", user.password);
 
-                    using (var reader = cmd.ExecuteReader())
+                    using var reader = cmd.ExecuteReader();
+                    if (reader.Read())
                     {
-                        if (reader.Read())
-                        {
-                            int id = reader.GetInt32(0);
-                            string nama = reader.GetString(1);
+                        int id_user = Convert.ToInt32(reader["id_user"]);
+                        string nama = reader["nama"].ToString();
 
-                            H_Sesi.SetSession(id, nama);
-                            return true;
-                        }
-                        else
-                        {
-                            H_Pesan.Gagal("Username atau password salah.");
-                            return false;
-                        }
+                        H_Sesi.SetSession(id_user, nama); //  menyimpan sesi
+                        return true;
+                    }
+                    else
+                    {
+                        H_Pesan.Gagal("NISN atau Password salah.");
+                        return false;
                     }
                 }
             }

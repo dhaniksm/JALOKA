@@ -1,4 +1,6 @@
-﻿using System;
+﻿using JALOKA.Controllers;
+using JALOKA.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,8 @@ namespace JALOKA.Views
 {
     public partial class V_RiwayatPeminjaman_P : Form
     {
+        private readonly C_Riwayat riwayatController = new C_Riwayat();
+
         public V_RiwayatPeminjaman_P()
         {
             InitializeComponent();
@@ -63,5 +67,33 @@ namespace JALOKA.Views
             V_Profil_P v_Profil_P = new V_Profil_P();
             v_Profil_P.Show();
         }
+
+        private void V_RiwayatPeminjaman_P_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            try
+            {
+                var data = riwayatController.ShowRiwayatUser(H_Sesi.id_user);
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = data;
+
+                // Sembunyikan kolom 
+
+                if (dataGridView1.Columns.Contains("nama"))
+                    dataGridView1.Columns["nama"].Visible = false;
+
+                dataGridView1.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal memuat riwayat: " + ex.Message);
+            }
+        }
+
+
     }
 }

@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace JALOKA.Helpers
 {
     public static class H_Sesi
     {
         public static int id_user { get; private set; }
         public static string nama_user { get; private set; }
-
+      
         public static void SetSession(int id, string nama)
         {
             id_user = id;

@@ -233,5 +233,10 @@ namespace JALOKA.Views
             MuatKeranjang();
             MuatMenunggu();
         }
+
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

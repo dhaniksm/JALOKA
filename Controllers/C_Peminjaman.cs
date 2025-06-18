@@ -121,6 +121,7 @@ namespace JALOKA.Controllers
                 foreach (var buku in keranjang)
                 {
                     using var cmd = new NpgsqlCommand("INSERT INTO peminjaman (id_user, id_buku, tanggal_pinjam, tanggal_kembali, status) VALUES (@id_user, @id_buku, @tanggal_pinjam, @tanggal_kembali, 'menunggu')", db.Connection);
+
                     cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
                     cmd.Parameters.AddWithValue("@id_buku", buku.id_buku);
                     cmd.Parameters.AddWithValue("@tanggal_pinjam", DateTime.Now);
