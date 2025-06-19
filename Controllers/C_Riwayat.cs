@@ -1,4 +1,5 @@
-﻿using JALOKA.Database;
+﻿
+using JALOKA.Database;
 using JALOKA.Models;
 using Npgsql;
 using System;
@@ -13,10 +14,10 @@ namespace JALOKA.Controllers
         public List<M_Riwayat> ShowRiwayat()
         {
             var riwayat = new List<M_Riwayat>();
+
             try
             {
-                using var cmd = new NpgsqlCommand(@" SELECT p.pinjam_id AS id_peminjaman, p.buku_id, b.judul AS judul_buku, p.id_user, u.nama AS nama_lengkap, p.tanggal_peminjaman, p.tanggal_pengembalian 
-                    FROM peminjaman p JOIN pengguna u ON p.id_user = u.id_user JOIN m_buku b ON p.buku_id = b.buku_id ORDER BY p.tanggal_peminjaman DESC;", db.Connection);
+                using var cmd = new NpgsqlCommand(@" SELECT p.id_peminjaman, p.id_buku, b.judul, p.id_user, u.nama, p.tanggal_pinjam, p.tanggal_kembali, p.status FROM peminjaman p JOIN pengguna u ON p.id_user = u.id_user JOIN buku b ON p.id_buku = b.id_buku ORDER BY p.tanggal_pinjam DESC;", db.Connection);
                 using var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -25,8 +26,8 @@ namespace JALOKA.Controllers
                         id_peminjaman = Convert.ToInt32(reader["id_peminjaman"]),
                         judul = reader["judul"].ToString(),
                         nama = reader["nama"].ToString(),
-                        tanggal_peminjaman = Convert.ToDateTime(reader["tanggal_pinjam"]),
-                        tanggal_pengembalian = reader["tanggal_kembali"] == DBNull.Value
+                        tanggal_pinjam = Convert.ToDateTime(reader["tanggal_pinjam"]),
+                        tanggal_kembali = reader["tanggal_kembali"] == DBNull.Value
                             ? (DateTime?)null
                             : Convert.ToDateTime(reader["tanggal_kembali"]),
                         status = reader["status"].ToString()
@@ -45,12 +46,7 @@ namespace JALOKA.Controllers
             var riwayat = new List<M_Riwayat>();
 
             using var db = new D_Connector();
-            using var cmd = new NpgsqlCommand(@" SELECT p.id_peminjaman, b.judul, p.tanggal_pinjam, p.tanggal_kembali, p.status
-        FROM peminjaman p
-        JOIN buku b ON p.id_buku = b.id_buku
-        WHERE p.id_user = @id_user
-        ORDER BY p.tanggal_pinjam DESC", db.Connection);
-
+            using var cmd = new NpgsqlCommand(@"SELECT p.id_peminjaman, b.judul, p.tanggal_pinjam, p.tanggal_kembali, p.status FROM peminjaman p JOIN buku b ON p.id_buku = b.id_buku WHERE p.id_user = @id_user ORDER BY p.tanggal_pinjam DESC", db.Connection);
             cmd.Parameters.AddWithValue("@id_user", id_user);
 
             using var reader = cmd.ExecuteReader();
@@ -60,8 +56,8 @@ namespace JALOKA.Controllers
                 {
                     id_peminjaman = Convert.ToInt32(reader["id_peminjaman"]),
                     judul = reader["judul"].ToString(),
-                    tanggal_peminjaman = Convert.ToDateTime(reader["tanggal_pinjam"]),
-                    tanggal_pengembalian = reader["tanggal_kembali"] is DBNull ? (DateTime?)null : Convert.ToDateTime(reader["tanggal_kembali"]),
+                    tanggal_pinjam = Convert.ToDateTime(reader["tanggal_pinjam"]),
+                    tanggal_kembali = reader["tanggal_kembali"] is DBNull ? (DateTime?)null : Convert.ToDateTime(reader["tanggal_kembali"]),
                     status = reader["status"].ToString()
                 });
             }
@@ -72,5 +68,3 @@ namespace JALOKA.Controllers
 
     }
 }
-
-

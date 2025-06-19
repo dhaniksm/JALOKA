@@ -142,7 +142,7 @@ namespace JALOKA.Views.Admin
             pengembalian.Show();
         }
 
-        private void flowLayoutPanelKonfirmasi_Paint(object sender, PaintEventArgs e)
+        private void buttonKeluar_Click(object sender, EventArgs e)
         {
 
         }

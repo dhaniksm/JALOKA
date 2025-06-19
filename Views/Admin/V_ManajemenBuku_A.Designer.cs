@@ -45,7 +45,7 @@
             flowLayoutPanelBuku.AutoScroll = true;
             flowLayoutPanelBuku.Location = new Point(264, 85);
             flowLayoutPanelBuku.Name = "flowLayoutPanelBuku";
-            flowLayoutPanelBuku.Size = new Size(924, 491);
+            flowLayoutPanelBuku.Size = new Size(924, 528);
             flowLayoutPanelBuku.TabIndex = 2;
             // 
             // buttonDashboard
@@ -70,7 +70,7 @@
             buttonManajemenBuku.FlatAppearance.BorderSize = 0;
             buttonManajemenBuku.FlatStyle = FlatStyle.Flat;
             buttonManajemenBuku.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonManajemenBuku.Location = new Point(58, 187);
+            buttonManajemenBuku.Location = new Point(58, 244);
             buttonManajemenBuku.Name = "buttonManajemenBuku";
             buttonManajemenBuku.Size = new Size(187, 29);
             buttonManajemenBuku.TabIndex = 19;
@@ -85,7 +85,7 @@
             buttonDataPengguna.FlatAppearance.BorderSize = 0;
             buttonDataPengguna.FlatStyle = FlatStyle.Flat;
             buttonDataPengguna.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonDataPengguna.Location = new Point(58, 264);
+            buttonDataPengguna.Location = new Point(58, 181);
             buttonDataPengguna.Name = "buttonDataPengguna";
             buttonDataPengguna.Size = new Size(187, 29);
             buttonDataPengguna.TabIndex = 20;
@@ -100,7 +100,7 @@
             buttonRiwayatPeminjaman.FlatAppearance.BorderSize = 0;
             buttonRiwayatPeminjaman.FlatStyle = FlatStyle.Flat;
             buttonRiwayatPeminjaman.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonRiwayatPeminjaman.Location = new Point(58, 484);
+            buttonRiwayatPeminjaman.Location = new Point(58, 443);
             buttonRiwayatPeminjaman.Name = "buttonRiwayatPeminjaman";
             buttonRiwayatPeminjaman.Size = new Size(187, 29);
             buttonRiwayatPeminjaman.TabIndex = 21;
@@ -115,7 +115,7 @@
             buttonPengembalian.FlatAppearance.BorderSize = 0;
             buttonPengembalian.FlatStyle = FlatStyle.Flat;
             buttonPengembalian.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonPengembalian.Location = new Point(58, 420);
+            buttonPengembalian.Location = new Point(58, 375);
             buttonPengembalian.Name = "buttonPengembalian";
             buttonPengembalian.Size = new Size(187, 29);
             buttonPengembalian.TabIndex = 22;
@@ -142,7 +142,7 @@
             // 
             buttonTambah.Anchor = AnchorStyles.None;
             buttonTambah.Cursor = Cursors.Hand;
-            buttonTambah.Location = new Point(686, 612);
+            buttonTambah.Location = new Point(686, 633);
             buttonTambah.Name = "buttonTambah";
             buttonTambah.Size = new Size(90, 30);
             buttonTambah.TabIndex = 24;
@@ -156,7 +156,7 @@
             buttonPeminjaman.FlatAppearance.BorderSize = 0;
             buttonPeminjaman.FlatStyle = FlatStyle.Flat;
             buttonPeminjaman.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonPeminjaman.Location = new Point(58, 346);
+            buttonPeminjaman.Location = new Point(58, 308);
             buttonPeminjaman.Name = "buttonPeminjaman";
             buttonPeminjaman.Size = new Size(187, 29);
             buttonPeminjaman.TabIndex = 29;

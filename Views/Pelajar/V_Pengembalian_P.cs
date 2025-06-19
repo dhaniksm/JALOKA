@@ -1,4 +1,7 @@
-﻿using System;
+﻿using JALOKA.Controllers;
+using JALOKA.Helpers;
+using JALOKA.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,60 +10,56 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using JALOKA.Controllers;
-using JALOKA.Helpers;
-using JALOKA.Models;
 
 namespace JALOKA.Views
 {
     public partial class V_Pengembalian_P : Form
     {
-        private readonly C_Pengembalian c_pengembalian = new C_Pengembalian();
+        C_Pengembalian c_pengembalian = new C_Pengembalian();
 
         public V_Pengembalian_P()
         {
             InitializeComponent();
+            TampilkanPeminjaman();
         }
 
-        private void V_Pengembalian_P_Load(object sender, EventArgs e)
+        private void TampilkanPeminjaman()
         {
-            
+            var daftar = c_pengembalian.PeminjamanBelumDikembalikan();
+            flowLayoutPanelPengembalian.Controls.Clear();
 
-            LoadPeminjaman();
-        }
-
-        private void LoadPeminjaman()
-        {
-            listViewPeminjaman.Items.Clear();
-            var data = c_pengembalian.AmbilPeminjamanAktif();
-
-            foreach (var item in data)
+            foreach (var item in daftar)
             {
-                var row = new ListViewItem(item.id_peminjaman.ToString());
-                row.SubItems.Add(item.judul_buku);
-                row.SubItems.Add(item.tanggal_pinjam.ToShortDateString());
-                row.Tag = item;
-                listViewPeminjaman.Items.Add(row);
-            }
-        }
+                Panel panel = new Panel { Width = 500, Height = 120, BorderStyle = BorderStyle.FixedSingle, Margin = new Padding(10) };
 
-        private void buttonKembalikan_Click(object sender, EventArgs e)
-        {
-            if (listViewPeminjaman.SelectedItems.Count > 0)
-            {
-                var item = (M_Peminjaman)listViewPeminjaman.SelectedItems[0].Tag;
-                c_pengembalian.ProsesPengembalian(item.id_peminjaman, item.id_buku);
-                LoadPeminjaman();
-            }
-            else
-            {
-                H_Pesan.Peringatan("Silakan pilih buku yang akan dikembalikan.");
-            }
-        }
+                Label labelInfo = new Label
+                {
+                    Text = $"Judul: {item.judul_buku}\nPinjam: {item.tanggal_pinjam:dd MMM yyyy}\nKembali: {item.tanggal_kembali:dd MMM yyyy}",
+                    AutoSize = true,
+                    Top = 10,
+                    Left = 10
+                };
 
-        private void listViewPeminjaman_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // (Opsional) Kosongkan jika tidak digunakan
+                Button btnKembalikan = new Button
+                {
+                    Text = "Ajukan Pengembalian",
+                    Width = 150,
+                    Top = 10,
+                    Left = 300,
+                    Tag = item.id_peminjaman
+                };
+                btnKembalikan.Click += (s, e) =>
+                {
+                    int id = (int)((Button)s).Tag;
+                    c_pengembalian.AjukanPengembalian(id);
+                    H_Pesan.Sukses("Permintaan pengembalian dikirim.");
+                    TampilkanPeminjaman();
+                };
+
+                panel.Controls.Add(labelInfo);
+                panel.Controls.Add(btnKembalikan);
+                flowLayoutPanelPengembalian.Controls.Add(panel);
+            }
         }
 
         private void buttonDasboard_Click(object sender, EventArgs e)
@@ -108,6 +107,7 @@ namespace JALOKA.Views
             this.Hide();
             V_Profil_P v_Profil_P = new V_Profil_P();
             v_Profil_P.ShowDialog();
+
         }
     }
 }

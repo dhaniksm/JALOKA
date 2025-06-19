@@ -182,6 +182,7 @@ namespace JALOKA.Views
                 controller.HapusDariKeranjang(buku.id_buku);
                 MuatKeranjang();
             };
+
             panel.Controls.Add(btnHapus);
 
             return panel;

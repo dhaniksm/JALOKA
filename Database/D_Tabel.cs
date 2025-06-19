@@ -58,13 +58,15 @@ namespace JALOKA.Database
                 "peminjaman" => @"
                     CREATE TABLE peminjaman (
                         id_peminjaman SERIAL PRIMARY KEY,
-                        id_user INT NOT NULL,
+                        id_user int NOT NULL,
                         id_buku INT NOT NULL,
                         tanggal_pinjam DATE NOT NULL,
-                        tanggal_kembali DATE,
+                        tanggal_kembali DATE NOT NULL,
                         status VARCHAR(20) DEFAULT 'menunggu',
-                        FOREIGN KEY (id_user) REFERENCES pengguna(id_user),
-                        FOREIGN KEY (id_buku) REFERENCES buku(id_buku)
+                        dikonfirmasi_oleh INT,
+                        tanggal_dikembalikan DATE,
+                        FOREIGN KEY (id_buku) REFERENCES buku(id_buku),
+                        FOREIGN KEY (id_user) REFERENCES pengguna(id_user)
                     );",
                 "keranjang" => @"
                     CREATE TABLE keranjang (
