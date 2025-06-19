@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem("");
-            ListViewItem listViewItem2 = new ListViewItem("");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Pengembalian_A));
             buttonPengembalian = new Button();
             buttonKeluar = new Button();
@@ -37,10 +35,8 @@
             buttonDataPengguna = new Button();
             buttonRiwayatPeminjaman = new Button();
             buttonDashboard = new Button();
-            listViewPeminjaman = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
             buttonPeminjaman = new Button();
+            flowLayoutPanelKonfirmasi = new FlowLayoutPanel();
             SuspendLayout();
             // 
             // buttonPengembalian
@@ -133,16 +129,6 @@
             buttonDashboard.UseVisualStyleBackColor = false;
             buttonDashboard.Click += buttonDashboard_Click;
             // 
-            // listViewPeminjaman
-            // 
-            listViewPeminjaman.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
-            listViewPeminjaman.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2 });
-            listViewPeminjaman.Location = new Point(262, 85);
-            listViewPeminjaman.Name = "listViewPeminjaman";
-            listViewPeminjaman.Size = new Size(926, 533);
-            listViewPeminjaman.TabIndex = 27;
-            listViewPeminjaman.UseCompatibleStateImageBehavior = false;
-            // 
             // buttonPeminjaman
             // 
             buttonPeminjaman.BackColor = SystemColors.ControlLightLight;
@@ -158,14 +144,21 @@
             buttonPeminjaman.UseVisualStyleBackColor = false;
             buttonPeminjaman.Click += buttonPeminjaman_Click;
             // 
+            // flowLayoutPanelKonfirmasi
+            // 
+            flowLayoutPanelKonfirmasi.Location = new Point(252, 76);
+            flowLayoutPanelKonfirmasi.Name = "flowLayoutPanelKonfirmasi";
+            flowLayoutPanelKonfirmasi.Size = new Size(947, 596);
+            flowLayoutPanelKonfirmasi.TabIndex = 30;
+            // 
             // V_Pengembalian_A
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1200, 675);
+            Controls.Add(flowLayoutPanelKonfirmasi);
             Controls.Add(buttonPeminjaman);
-            Controls.Add(listViewPeminjaman);
             Controls.Add(buttonPengembalian);
             Controls.Add(buttonKeluar);
             Controls.Add(buttonManajemenBuku);
@@ -187,9 +180,7 @@
         private Button buttonDataPengguna;
         private Button buttonRiwayatPeminjaman;
         private Button buttonDashboard;
-        private ListView listViewPeminjaman;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
         private Button buttonPeminjaman;
+        private FlowLayoutPanel flowLayoutPanelKonfirmasi;
     }
 }

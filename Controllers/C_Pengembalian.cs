@@ -9,62 +9,63 @@ namespace JALOKA.Controllers
 {
     public class C_Pengembalian
     {
-        public List<M_Peminjaman> AmbilPeminjamanAktif()
+        public List<M_Peminjaman> PeminjamanBelumDikembalikan()
         {
-            var list = new List<M_Peminjaman>();
+            var daftar = new List<M_Peminjaman>();
+            using var db = new D_Connector();
+            using var cmd = new NpgsqlCommand(@"SELECT p.id_peminjaman, b.judul, p.tanggal_pinjam, p.tanggal_kembali FROM peminjaman p  JOIN buku b ON p.id_buku = b.id_buku WHERE p.id_user = @id_user AND p.status = 'dipinjam'", db.Connection);
 
-            try
+            cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
             {
-                using var db = new D_Connector();
-                using var cmd = new NpgsqlCommand(@"SELECT p.id_peminjaman, b.id_buku, b.judul, p.tanggal_pinjam, p.status FROM peminjaman p JOIN buku b ON p.id_buku = b.id_buku WHERE p.id_pelajar = @id_pelajar AND p.status = 'aktif'", db.Connection);
-                cmd.Parameters.AddWithValue("@id_pelajar", H_Sesi.id_user);
-
-                using var reader = cmd.ExecuteReader();
-                while (reader.Read())
+                daftar.Add(new M_Peminjaman
                 {
-                    list.Add(new M_Peminjaman
-                    {
-                        id_peminjaman = reader.GetInt32(0),
-                        id_buku = reader.GetInt32(1),
-                        judul_buku = reader.GetString(2),
-                        tanggal_pinjam = reader.GetDateTime(3),
-                        status = reader.GetString(4)
-                    });
-                }
+                    id_peminjaman = reader.GetInt32(0),
+                    judul_buku = reader.GetString(1),
+                    tanggal_pinjam = reader.GetDateTime(2),
+                    tanggal_kembali = reader.GetDateTime(3),
+                });
             }
-            catch (Exception ex)
-            {
-                H_Pesan.Gagal("Gagal mengambil data peminjaman: " + ex.Message);
-            }
-
-            return list;
+            return daftar;
         }
 
-        public void ProsesPengembalian(int id_peminjaman, int id_buku)
+        public void AjukanPengembalian(int id_peminjaman)
         {
-            try
+            using var db = new D_Connector();
+            using var cmd = new NpgsqlCommand("UPDATE peminjaman SET status = 'menunggu pengembalian' WHERE id_peminjaman = @id", db.Connection);
+            cmd.Parameters.AddWithValue("@id", id_peminjaman);
+            cmd.ExecuteNonQuery();
+        }
+
+        public List<M_Peminjaman> DaftarPengembalian()
+        {
+            var daftar = new List<M_Peminjaman>();
+            using var db = new D_Connector();
+            using var cmd = new NpgsqlCommand(@"SELECT p.id_peminjaman, u.nama, b.judul, p.tanggal_pinjam, p.tanggal_kembali FROM peminjaman p JOIN buku b ON p.id_buku = b.id_buku JOIN pengguna u ON u.id_user = p.id_user WHERE p.status = 'menunggu pengembalian'", db.Connection);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
             {
-                using var db = new D_Connector();
-
-                using (var update = new NpgsqlCommand("UPDATE peminjaman SET status = 'dikembalikan', tanggal_kembali = @tanggal_kembali WHERE id_peminjaman = @id", db.Connection))
+                daftar.Add(new M_Peminjaman
                 {
-                    update.Parameters.AddWithValue("@id", id_peminjaman);
-                    update.Parameters.AddWithValue("@tanggal_kembali", DateTime.Now);
-                    update.ExecuteNonQuery();
-                }
-
-                using (var tambahStok = new NpgsqlCommand("UPDATE buku SET stok = stok + 1 WHERE id_buku = @id", db.Connection))
-                {
-                    tambahStok.Parameters.AddWithValue("@id", id_buku);
-                    tambahStok.ExecuteNonQuery();
-                }
-
-                H_Pesan.Sukses("Buku berhasil dikembalikan.");
+                    id_peminjaman = reader.GetInt32(0),
+                    nama_user = reader.GetString(1),
+                    judul_buku = reader.GetString(2),
+                    tanggal_pinjam = reader.GetDateTime(3),
+                    tanggal_kembali = reader.GetDateTime(4)
+                });
             }
-            catch (Exception ex)
-            {
-                H_Pesan.Gagal("Gagal mengembalikan buku: " + ex.Message);
-            }
+            return daftar;
+        }
+
+        public void KonfirmasiPengembalian(int id_peminjaman)
+        {
+            using var db = new D_Connector();
+            using var cmd = new NpgsqlCommand(@"UPDATE peminjaman SET status = 'dikembalikan', tanggal_dikembalikan = CURRENT_DATE, dikonfirmasi_oleh = @admin WHERE id_peminjaman = @id", db.Connection);
+            cmd.Parameters.AddWithValue("@admin", H_Sesi.id_user);
+            cmd.Parameters.AddWithValue("@id", id_peminjaman);
+            cmd.ExecuteNonQuery();
         }
     }
 }

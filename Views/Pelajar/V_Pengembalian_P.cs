@@ -1,4 +1,7 @@
-﻿using System;
+﻿using JALOKA.Controllers;
+using JALOKA.Helpers;
+using JALOKA.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +15,51 @@ namespace JALOKA.Views
 {
     public partial class V_Pengembalian_P : Form
     {
+        C_Pengembalian c_pengembalian = new C_Pengembalian();
+
         public V_Pengembalian_P()
         {
             InitializeComponent();
+            TampilkanPeminjaman();
+        }
+
+        private void TampilkanPeminjaman()
+        {
+            var daftar = c_pengembalian.PeminjamanBelumDikembalikan();
+            flowLayoutPanelPengembalian.Controls.Clear();
+
+            foreach (var item in daftar)
+            {
+                Panel panel = new Panel { Width = 500, Height = 120, BorderStyle = BorderStyle.FixedSingle, Margin = new Padding(10) };
+
+                Label labelInfo = new Label
+                {
+                    Text = $"Judul: {item.judul_buku}\nPinjam: {item.tanggal_pinjam:dd MMM yyyy}\nKembali: {item.tanggal_kembali:dd MMM yyyy}",
+                    AutoSize = true,
+                    Top = 10,
+                    Left = 10
+                };
+
+                Button btnKembalikan = new Button
+                {
+                    Text = "Ajukan Pengembalian",
+                    Width = 150,
+                    Top = 10,
+                    Left = 300,
+                    Tag = item.id_peminjaman
+                };
+                btnKembalikan.Click += (s, e) =>
+                {
+                    int id = (int)((Button)s).Tag;
+                    c_pengembalian.AjukanPengembalian(id);
+                    H_Pesan.Sukses("Permintaan pengembalian dikirim.");
+                    TampilkanPeminjaman();
+                };
+
+                panel.Controls.Add(labelInfo);
+                panel.Controls.Add(btnKembalikan);
+                flowLayoutPanelPengembalian.Controls.Add(panel);
+            }
         }
 
         private void buttonDasboard_Click(object sender, EventArgs e)

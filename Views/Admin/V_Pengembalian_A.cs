@@ -11,7 +11,6 @@ using JALOKA.Controllers;
 using JALOKA.Helpers;
 using JALOKA.Models;
 using JALOKA.Views.Admin;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace JALOKA.Views
 {
@@ -22,21 +21,46 @@ namespace JALOKA.Views
         public V_Pengembalian_A()
         {
             InitializeComponent();
-            LoadPeminjaman();
+            TampilkanDaftarPengembalian();
         }
 
-        private void LoadPeminjaman()
+        private void TampilkanDaftarPengembalian()
         {
-            listViewPeminjaman.Items.Clear();
-            var data = c_pengembalian.AmbilPeminjamanAktif();
+            var daftar = c_pengembalian.DaftarPengembalian();
+            flowLayoutPanelKonfirmasi.Controls.Clear();
 
-            foreach (var item in data)
+            foreach (var item in daftar)
             {
-                var row = new ListViewItem(item.id_peminjaman.ToString());
-                row.SubItems.Add(item.judul_buku);
-                row.SubItems.Add(item.tanggal_pinjam.ToShortDateString());
-                row.Tag = item;
-                listViewPeminjaman.Items.Add(row);
+                Panel panel = new Panel { Width = 600, Height = 120, BorderStyle = BorderStyle.FixedSingle, Margin = new Padding(10) };
+
+                Label info = new Label
+                {
+                    Text = $"User: {item.nama_user}\nJudul: {item.judul_buku}\nPinjam: {item.tanggal_pinjam:dd MMM yyyy}\nKembali: {item.tanggal_kembali:dd MMM yyyy}",
+                    AutoSize = true,
+                    Top = 10,
+                    Left = 10
+                };
+
+                Button buttonKonfirmasi = new Button
+                {
+                    Text = "Konfirmasi",
+                    Width = 100,
+                    Top = 10,
+                    Left = 400,
+                    Tag = item.id_peminjaman
+                };
+
+                buttonKonfirmasi.Click += (s, e) =>
+                {
+                    int id = (int)((Button)s).Tag;
+                    c_pengembalian.KonfirmasiPengembalian(id);
+                    H_Pesan.Sukses("Pengembalian dikonfirmasi.");
+                    TampilkanDaftarPengembalian();
+                };
+
+                panel.Controls.Add(info);
+                panel.Controls.Add(buttonKonfirmasi);
+                flowLayoutPanelKonfirmasi.Controls.Add(panel);
             }
         }
 
@@ -78,20 +102,6 @@ namespace JALOKA.Views
             this.Close();
             V_TampilanAwal v_TampilanAwal = new V_TampilanAwal();
             v_TampilanAwal.Show();
-        }
-
-        private void btnKembalikan_Click(object sender, EventArgs e)
-        {
-            if (listViewPeminjaman.SelectedItems.Count > 0)
-            {
-                var item = (M_Peminjaman)listViewPeminjaman.SelectedItems[0].Tag;
-                c_pengembalian.ProsesPengembalian(item.id_peminjaman, item.id_buku);
-                LoadPeminjaman(); // refresh list
-            }
-            else
-            {
-                H_Pesan.Peringatan("Silakan pilih buku yang akan dikembalikan.");
-            }
         }
 
         private void buttonPeminjaman_Click(object sender, EventArgs e)
