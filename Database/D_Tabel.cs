@@ -62,7 +62,7 @@ namespace JALOKA.Database
                         id_buku INT NOT NULL,
                         tanggal_pinjam DATE NOT NULL,
                         tanggal_kembali DATE NOT NULL,
-                        status VARCHAR(20) DEFAULT 'menunggu',
+                        status VARCHAR(50) DEFAULT 'menunggu',
                         dikonfirmasi_oleh INT,
                         tanggal_dikembalikan DATE,
                         FOREIGN KEY (id_buku) REFERENCES buku(id_buku),
