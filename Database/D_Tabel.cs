@@ -58,7 +58,7 @@ namespace JALOKA.Database
                 "peminjaman" => @"
                     CREATE TABLE peminjaman (
                         id_peminjaman SERIAL PRIMARY KEY,
-                        id_user VARCHAR(20) NOT NULL,
+                        id_user int NOT NULL,
                         id_buku INT NOT NULL,
                         tanggal_pinjam DATE NOT NULL,
                         tanggal_kembali DATE NOT NULL,

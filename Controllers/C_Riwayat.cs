@@ -16,7 +16,7 @@ namespace JALOKA.Controllers
 
             try
             {
-                using var cmd = new NpgsqlCommand(@" SELECT p.id_peminjaman, p.id_buku, b.judul, p.id_user, u.nama, p.tanggal_pinjam, p.tanggal_kembali FROM peminjaman p JOIN pengguna u ON p.id_user = u.id_user JOIN buku b ON p.id_buku = b.id_buku ORDER BY p.tanggal_pinjam DESC;", db.Connection);
+                using var cmd = new NpgsqlCommand(@" SELECT p.id_peminjaman, p.id_buku, b.judul, p.id_user, u.nama, p.tanggal_pinjam, p.tanggal_kembali, p.status FROM peminjaman p JOIN pengguna u ON p.id_user = u.id_user JOIN buku b ON p.id_buku = b.id_buku ORDER BY p.tanggal_pinjam DESC;", db.Connection);
                 using var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -25,8 +25,8 @@ namespace JALOKA.Controllers
                         id_peminjaman = Convert.ToInt32(reader["id_peminjaman"]),
                         judul = reader["judul"].ToString(),
                         nama = reader["nama"].ToString(),
-                        tanggal_peminjaman = Convert.ToDateTime(reader["tanggal_pinjam"]),
-                        tanggal_pengembalian = reader["tanggal_kembali"] == DBNull.Value
+                        tanggal_pinjam = Convert.ToDateTime(reader["tanggal_pinjam"]),
+                        tanggal_kembali = reader["tanggal_kembali"] == DBNull.Value
                             ? (DateTime?)null
                             : Convert.ToDateTime(reader["tanggal_kembali"]),
                         status = reader["status"].ToString()
@@ -55,8 +55,8 @@ namespace JALOKA.Controllers
                 {
                     id_peminjaman = Convert.ToInt32(reader["id_peminjaman"]),
                     judul = reader["judul"].ToString(),
-                    tanggal_peminjaman = Convert.ToDateTime(reader["tanggal_pinjam"]),
-                    tanggal_pengembalian = reader["tanggal_kembali"] is DBNull ? (DateTime?)null : Convert.ToDateTime(reader["tanggal_kembali"]),
+                    tanggal_pinjam = Convert.ToDateTime(reader["tanggal_pinjam"]),
+                    tanggal_kembali = reader["tanggal_kembali"] is DBNull ? (DateTime?)null : Convert.ToDateTime(reader["tanggal_kembali"]),
                     status = reader["status"].ToString()
                 });
             }

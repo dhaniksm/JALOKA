@@ -218,15 +218,15 @@ namespace JALOKA.Controllers
                 {
                     id_peminjaman = reader.GetInt32(0),
                     id_user = reader.GetInt32(1),
-                    tanggal_pinjam = reader.GetDateTime(2),
+                    tanggal_pinjam = reader.GetDateTime(3),
 
                     buku = new M_Buku
                     {
-                        id_buku = reader.GetInt32(0),
-                        judul = reader.GetString(1),
-                        penulis = reader.GetString(2),
-                        penerbit = reader.GetString(3),
-                        tahun_terbit = reader.GetInt32(4),
+                        id_buku = reader.GetInt32(2),
+                        judul = reader.GetString(4),
+                        penulis = reader.GetString(5),
+                        penerbit = reader.GetString(6),
+                        tahun_terbit = reader.GetInt32(7),
                         cover = reader["cover"] as byte[]
                     }
                 });
