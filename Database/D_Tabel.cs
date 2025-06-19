@@ -37,7 +37,7 @@ namespace JALOKA.Database
                 "pengguna" => @"
                     CREATE TABLE pengguna (
                         id_user SERIAL PRIMARY KEY,
-                        nisn VARCHAR(20) NOT NULL,
+                        nisn VARCHAR(10) NOT NULL,
                         password VARCHAR(50) NOT NULL,
                         nama VARCHAR(100) NOT NULL,
                         email VARCHAR(100) NOT NULL UNIQUE,
