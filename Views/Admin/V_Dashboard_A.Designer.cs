@@ -111,7 +111,7 @@
             buttonRiwayatPeminjaman.Name = "buttonRiwayatPeminjaman";
             buttonRiwayatPeminjaman.Size = new Size(187, 29);
             buttonRiwayatPeminjaman.TabIndex = 22;
-            buttonRiwayatPeminjaman.Text = "RIwayat Peminjaman";
+            buttonRiwayatPeminjaman.Text = "Riwayat Peminjaman";
             buttonRiwayatPeminjaman.UseVisualStyleBackColor = false;
             buttonRiwayatPeminjaman.Click += buttonRiwayatPeminjaman_Click;
             // 

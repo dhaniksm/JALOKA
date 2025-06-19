@@ -50,9 +50,10 @@ namespace JALOKA.Views.Admin
 
         private void buttonKembali_Click(object sender, EventArgs e)
         {
+            this.Close();
             V_ManajemenBuku_A manajemenBuku = new V_ManajemenBuku_A();
             manajemenBuku.Show();
-            this.Close();
+            
         }
 
         private void buttonKonfirmasi_Click(object sender, EventArgs e)

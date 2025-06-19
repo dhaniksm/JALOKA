@@ -142,6 +142,7 @@
             // 
             buttonTambah.Anchor = AnchorStyles.None;
             buttonTambah.Cursor = Cursors.Hand;
+            buttonTambah.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             buttonTambah.Location = new Point(686, 633);
             buttonTambah.Name = "buttonTambah";
             buttonTambah.Size = new Size(90, 30);

@@ -96,7 +96,7 @@
             buttonRiwayatPeminjaman.Name = "buttonRiwayatPeminjaman";
             buttonRiwayatPeminjaman.Size = new Size(187, 29);
             buttonRiwayatPeminjaman.TabIndex = 10;
-            buttonRiwayatPeminjaman.Text = "RIwayat Peminjaman";
+            buttonRiwayatPeminjaman.Text = "Riwayat Peminjaman";
             buttonRiwayatPeminjaman.UseVisualStyleBackColor = false;
             buttonRiwayatPeminjaman.Click += buttonRiwayatPeminjaman_Click;
             // 
@@ -135,10 +135,10 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeight = 29;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView1.Location = new Point(285, 108);
+            dataGridView1.Location = new Point(266, 84);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(882, 516);
+            dataGridView1.Size = new Size(922, 545);
             dataGridView1.TabIndex = 15;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
