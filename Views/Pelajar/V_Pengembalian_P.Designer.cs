@@ -37,7 +37,13 @@
             buttonDasboard = new Button();
             pictureBoxProfil = new PictureBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
+            listViewPeminjaman = new ListView();
+            ID_Peminjaman = new ColumnHeader();
+            Judul_Buku = new ColumnHeader();
+            Tanggal_pinjam = new ColumnHeader();
+            buttonKembalikan = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).BeginInit();
+            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // buttonPengembalian
@@ -154,10 +160,50 @@
             // 
             // flowLayoutPanel1
             // 
+            flowLayoutPanel1.Controls.Add(listViewPeminjaman);
+            flowLayoutPanel1.Controls.Add(buttonKembalikan);
             flowLayoutPanel1.Location = new Point(259, 83);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(929, 580);
             flowLayoutPanel1.TabIndex = 30;
+            // 
+            // listViewPeminjaman
+            // 
+            listViewPeminjaman.Columns.AddRange(new ColumnHeader[] { ID_Peminjaman, Judul_Buku, Tanggal_pinjam });
+            listViewPeminjaman.Location = new Point(3, 3);
+            listViewPeminjaman.Name = "listViewPeminjaman";
+            listViewPeminjaman.Size = new Size(707, 501);
+            listViewPeminjaman.TabIndex = 0;
+            listViewPeminjaman.UseCompatibleStateImageBehavior = false;
+            listViewPeminjaman.View = View.Details;
+            listViewPeminjaman.SelectedIndexChanged += listViewPeminjaman_SelectedIndexChanged;
+            // 
+            // ID_Peminjaman
+            // 
+            ID_Peminjaman.Text = "ID Peminjaman";
+            ID_Peminjaman.Width = 120;
+            // 
+            // Judul_Buku
+            // 
+            Judul_Buku.Text = "Judul Buku";
+            Judul_Buku.TextAlign = HorizontalAlignment.Center;
+            Judul_Buku.Width = 250;
+            // 
+            // Tanggal_pinjam
+            // 
+            Tanggal_pinjam.Text = "Tanggal Pinjam";
+            Tanggal_pinjam.TextAlign = HorizontalAlignment.Center;
+            Tanggal_pinjam.Width = 150;
+            // 
+            // buttonKembalikan
+            // 
+            buttonKembalikan.Location = new Point(716, 3);
+            buttonKembalikan.Name = "buttonKembalikan";
+            buttonKembalikan.Size = new Size(124, 29);
+            buttonKembalikan.TabIndex = 1;
+            buttonKembalikan.Text = "Kembalikan";
+            buttonKembalikan.UseVisualStyleBackColor = true;
+            buttonKembalikan.Click += buttonKembalikan_Click;
             // 
             // V_Pengembalian_P
             // 
@@ -177,8 +223,12 @@
             Name = "V_Pengembalian_P";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_Pengembalian";
+            Load += V_Pengembalian_P_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBoxProfil).EndInit();
+            flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
+
+
         }
 
         #endregion
@@ -191,5 +241,10 @@
         private Button buttonDasboard;
         private PictureBox pictureBoxProfil;
         private FlowLayoutPanel flowLayoutPanel1;
+        private ListView listViewPeminjaman;
+        private ColumnHeader ID_Peminjaman;
+        private ColumnHeader Judul_Buku;
+        private ColumnHeader Tanggal_pinjam;
+        private Button buttonKembalikan;
     }
 }

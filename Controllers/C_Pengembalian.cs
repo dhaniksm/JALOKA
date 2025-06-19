@@ -16,8 +16,8 @@ namespace JALOKA.Controllers
             try
             {
                 using var db = new D_Connector();
-                using var cmd = new NpgsqlCommand(@"SELECT p.id_peminjaman, b.id_buku, b.judul, p.tanggal_pinjam, p.status FROM peminjaman p JOIN buku b ON p.id_buku = b.id_buku WHERE p.id_pelajar = @id_pelajar AND p.status = 'aktif'", db.Connection);
-                cmd.Parameters.AddWithValue("@id_pelajar", H_Sesi.id_user);
+                using var cmd = new NpgsqlCommand(@"SELECT p.id_peminjaman, b.id_buku, b.judul, p.tanggal_pinjam, p.status FROM peminjaman p JOIN buku b ON p.id_buku = b.id_buku WHERE p.id_user = @id_user AND p.status = 'dipinjam'", db.Connection);
+                cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
 
                 using var reader = cmd.ExecuteReader();
                 while (reader.Read())

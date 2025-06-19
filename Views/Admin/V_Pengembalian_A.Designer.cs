@@ -176,6 +176,7 @@
             Name = "V_Pengembalian_A";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_PengembalianAdmin";
+            Load += V_Pengembalian_A_Load;
             ResumeLayout(false);
         }
 

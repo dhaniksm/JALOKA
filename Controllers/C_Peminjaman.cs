@@ -207,32 +207,53 @@ namespace JALOKA.Controllers
         {
             var daftar = new List<M_Peminjaman>();
 
-            using var db = new D_Connector();
-            using var cmd = new NpgsqlCommand("SELECT p.id_peminjaman, p.id_user, p.id_buku, p.tanggal_pinjam, b.judul, b.penulis, b.penerbit, b.tahun_terbit, b.cover FROM peminjaman p JOIN buku b ON p.id_buku = b.id_buku WHERE p.id_user = @id_user AND p.status = 'menunggu'", db.Connection);
-            cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
-
-            using var reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                daftar.Add(new M_Peminjaman
-                {
-                    id_peminjaman = reader.GetInt32(0),
-                    id_user = reader.GetInt32(1),
-                    tanggal_pinjam = reader.GetDateTime(2),
+                using var db = new D_Connector();
+                using var cmd = new NpgsqlCommand(@"
+        SELECT 
+            p.id_peminjaman,
+            p.id_user,
+            p.id_buku,
+            p.tanggal_pinjam,
+            b.judul,
+            b.penulis,
+            b.penerbit,
+            b.tahun_terbit,
+            b.cover
+        FROM peminjaman p
+        JOIN buku b ON p.id_buku = b.id_buku
+        WHERE p.id_user = @id_user AND p.status = 'menunggu'", db.Connection);
 
-                    buku = new M_Buku
+                cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
+
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    daftar.Add(new M_Peminjaman
                     {
-                        id_buku = reader.GetInt32(0),
-                        judul = reader.GetString(1),
-                        penulis = reader.GetString(2),
-                        penerbit = reader.GetString(3),
-                        tahun_terbit = reader.GetInt32(4),
-                        cover = reader["cover"] as byte[]
-                    }
-                });
+                        id_peminjaman = Convert.ToInt32(reader["id_peminjaman"]),
+                        id_user = Convert.ToInt32(reader["id_user"]),
+                        tanggal_pinjam = Convert.ToDateTime(reader["tanggal_pinjam"]),
+                        buku = new M_Buku
+                        {
+                            id_buku = Convert.ToInt32(reader["id_buku"]),
+                            judul = reader["judul"].ToString(),
+                            penulis = reader["penulis"].ToString(),
+                            penerbit = reader["penerbit"].ToString(),
+                            tahun_terbit = Convert.ToInt32(reader["tahun_terbit"]),
+                            cover = reader["cover"] as byte[]
+                        }
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                H_Pesan.Gagal("Gagal memuat peminjaman menunggu: " + ex.Message);
             }
 
             return daftar;
+
         }
 
         public void KonfirmasiPeminjaman(int id)

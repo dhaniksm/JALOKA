@@ -98,5 +98,10 @@ namespace JALOKA.Views
         {
 
         }
+
+        private void V_Pengembalian_A_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
