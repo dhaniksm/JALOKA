@@ -154,7 +154,7 @@ namespace JALOKA.Controllers
             {
                 using (var db = new D_Connector())
                 {
-                    var cmd = new NpgsqlCommand(@"UPDATE pengguna SET nama = @nama, email = @email, nomor_hp = @nomor_hp, alamat = @alam WHERE nisn = @nisn", db.Connection);
+                    var cmd = new NpgsqlCommand(@"UPDATE pengguna SET nama = @nama, email = @email, nomor_hp = @nomor_hp, alamat = @alamat WHERE nisn = @nisn", db.Connection);
                     cmd.Parameters.AddWithValue("@nisn", user.nisn);
                     cmd.Parameters.AddWithValue("@nama", user.nama);
                     cmd.Parameters.AddWithValue("@email", user.email);
