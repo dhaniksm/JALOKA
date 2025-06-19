@@ -165,8 +165,8 @@ namespace JALOKA.Controllers
                     KurangiStok(buku.id_buku);
                     HapusDariKeranjang(buku.id_buku);
                 }
-                
-                H_Pesan.Sukses("Peminjaman diajukan, menunggu konfirmasi pustakawan.");
+
+                H_Pesan.Sukses("Peminjaman berhasil dilakukan.");
             }
             catch (Exception ex)
             {

@@ -16,7 +16,7 @@ namespace JALOKA.Controllers
 
             try
             {
-                using var cmd = new NpgsqlCommand(@" SELECT p.pinjam_id AS id_peminjaman, p.buku_id, b.judul AS judul_buku, p.id_user, u.nama AS nama_user, p.tanggal_peminjaman, p.tanggal_pengembalian FROM peminjaman p JOIN pengguna u ON p.id_user = u.id_user JOIN m_buku b ON p.buku_id = b.buku_id ORDER BY p.tanggal_peminjaman DESC;", db.Connection);
+                using var cmd = new NpgsqlCommand(@" SELECT p.id_peminjaman, p.id_buku, b.judul, p.id_user, u.nama, p.tanggal_pinjam, p.tanggal_kembali FROM peminjaman p JOIN pengguna u ON p.id_user = u.id_user JOIN buku b ON p.id_buku = b.id_buku ORDER BY p.tanggal_pinjam DESC;", db.Connection);
                 using var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
