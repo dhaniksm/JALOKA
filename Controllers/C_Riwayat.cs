@@ -16,8 +16,7 @@ namespace JALOKA.Controllers
 
             try
             {
-                using var cmd = new NpgsqlCommand(@" SELECT p.pinjam_id AS id_peminjaman, p.buku_id, b.judul AS judul_buku, p.id_user, u.nama AS nama_user, p.tanggal_peminjaman, p.tanggal_pengembalian 
-                    FROM peminjaman p JOIN pengguna u ON p.id_user = u.id_user JOIN m_buku b ON p.buku_id = b.buku_id ORDER BY p.tanggal_peminjaman DESC;", db.Connection);
+                using var cmd = new NpgsqlCommand(@" SELECT p.pinjam_id AS id_peminjaman, p.buku_id, b.judul AS judul_buku, p.id_user, u.nama AS nama_user, p.tanggal_peminjaman, p.tanggal_pengembalian FROM peminjaman p JOIN pengguna u ON p.id_user = u.id_user JOIN m_buku b ON p.buku_id = b.buku_id ORDER BY p.tanggal_peminjaman DESC;", db.Connection);
                 using var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -46,18 +45,7 @@ namespace JALOKA.Controllers
             var riwayat = new List<M_Riwayat>();
 
             using var db = new D_Connector();
-            using var cmd = new NpgsqlCommand(@"
-        SELECT 
-            p.id_peminjaman,
-            b.judul,
-            p.tanggal_pinjam,
-            p.tanggal_kembali,
-            p.status
-        FROM peminjaman p
-        JOIN buku b ON p.id_buku = b.id_buku
-        WHERE p.id_user = @id_user
-        ORDER BY p.tanggal_pinjam DESC", db.Connection);
-
+            using var cmd = new NpgsqlCommand(@"SELECT p.id_peminjaman, b.judul, p.tanggal_pinjam, p.tanggal_kembali, p.status FROM peminjaman p JOIN buku b ON p.id_buku = b.id_buku WHERE p.id_user = @id_user ORDER BY p.tanggal_pinjam DESC", db.Connection);
             cmd.Parameters.AddWithValue("@id_user", id_user);
 
             using var reader = cmd.ExecuteReader();
