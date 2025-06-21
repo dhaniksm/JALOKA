@@ -171,7 +171,6 @@
             dataGridViewUsers.Size = new Size(921, 512);
             dataGridViewUsers.TabIndex = 24;
             dataGridViewUsers.CellClick += dataGridViewUsers_CellClick;
-            dataGridViewUsers.CellContentClick += dataGridViewUsers_CellContentClick;
             // 
             // textBoxID
             // 
