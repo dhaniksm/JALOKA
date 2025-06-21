@@ -16,7 +16,7 @@ namespace JALOKA.Views
 {
     public partial class V_Login_P : Form
     {
-        public static string nisnLogin; 
+        public static string nisnLogin;
 
         public V_Login_P()
         {
@@ -54,9 +54,8 @@ namespace JALOKA.Views
 
                 if (H_Sesi.LoggedIn())
                 {
+                    //nisnLogin = user.Nisn;
                     H_Sesi.AturSesiP(H_Sesi.id, H_Sesi.nama);
-                    nisnLogin = user.nisn;
-                    H_Sesi.SetSession(H_Sesi.id_user, H_Sesi.nama_user);
                     H_Pesan.Sukses("Login Berhasil");
                 
                     this.Close();

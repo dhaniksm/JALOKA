@@ -65,7 +65,7 @@ namespace JALOKA.Views
             try
             {
                 C_Riwayat riwayat = new C_Riwayat();
-                var data = riwayat.ShowRiwayat();
+                var data = riwayat.TampilkanRiwayat();
 
                 dataGridView1.AutoGenerateColumns = true;
                 dataGridView1.DataSource = null;

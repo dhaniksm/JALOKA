@@ -11,8 +11,6 @@ namespace JALOKA.Controllers
 {
     public class C_Peminjaman
     {
-        private readonly M_Buku buku;
-
         public List<M_Buku> AmbilKeranjang()
         {
             var keranjang = new List<M_Buku>();

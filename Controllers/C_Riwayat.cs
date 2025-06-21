@@ -10,7 +10,7 @@ namespace JALOKA.Controllers
     {
         private readonly D_Connector db = new D_Connector();
 
-        public List<M_Riwayat> ShowRiwayat()
+        public List<M_Riwayat> TampilkanRiwayat()
         {
             var riwayat = new List<M_Riwayat>();
 
@@ -37,7 +37,7 @@ namespace JALOKA.Controllers
             }
             return riwayat;
         }
-        public List<M_Riwayat> ShowRiwayatUser(int id_user)
+        public List<M_Riwayat> TampilkanRiwayatPengguna(int id_user)
         {
             var riwayat = new List<M_Riwayat>();
             using var db = new D_Connector();

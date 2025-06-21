@@ -76,7 +76,7 @@ namespace JALOKA.Views
             C_Riwayat riwayat = new C_Riwayat();
             try
             {
-                var data = riwayat.ShowRiwayatUser(H_Sesi.id);
+                var data = riwayat.TampilkanRiwayatPengguna(H_Sesi.id);
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = data;
 
