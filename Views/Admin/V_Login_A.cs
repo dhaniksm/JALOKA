@@ -25,21 +25,27 @@ namespace JALOKA.Views.Admin
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             C_Admin c_admin = new C_Admin();
+            M_Admin admin = new M_Admin
+            {
+                IdPustakawan = textBoxIDPustakawan.Text,
+                Password = textBoxPassword.Text
+            };
+
             try
             {
-                var admin = new M_Admin
+                c_admin.Login(admin);
+                if (H_Sesi.LoggedA())
                 {
-                    IdPustakawan = textBoxIDPustakawan.Text,
-                    Password = textBoxPassword.Text
-                };
+                    H_Sesi.AturSesiA(H_Sesi.IdAdmin);
+                    H_Pesan.Sukses($"Selamat Datang {H_Sesi.IdAdmin}");
 
-                bool success = c_admin.Login(admin);
-                if (success)
-                {
-                    MessageBox.Show("Berhasil Login!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                     V_Dashboard_A dashboard = new V_Dashboard_A();
                     dashboard.Show();
+                }
+                else
+                {
+                    H_Pesan.Gagal("Login Gagal");
                 }
             }
             catch (Exception ex)

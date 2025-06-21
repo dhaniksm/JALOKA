@@ -8,14 +8,13 @@ namespace JALOKA.Controllers
 {
     public class C_Riwayat
     {
-        private readonly D_Connector db = new D_Connector();
-
         public List<M_Riwayat> TampilkanRiwayat()
         {
             var riwayat = new List<M_Riwayat>();
 
             try
             {
+                using var db = new D_Connector();
                 using var cmd = new NpgsqlCommand(@" SELECT p.id_peminjaman, p.id_buku, b.judul, p.id_user, u.nama, p.tanggal_pinjam, p.tanggal_kembali, p.status FROM peminjaman p JOIN pengguna u ON p.id_user = u.id_user JOIN buku b ON p.id_buku = b.id_buku ORDER BY p.tanggal_pinjam DESC;", db.Connection);
                 using var reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -39,24 +38,31 @@ namespace JALOKA.Controllers
         }
         public List<M_Riwayat> TampilkanRiwayatPengguna(int id_user)
         {
-            var riwayat = new List<M_Riwayat>();
-            using var db = new D_Connector();
-            using var cmd = new NpgsqlCommand(@"SELECT p.id_peminjaman, b.judul, p.tanggal_pinjam, p.tanggal_kembali, p.status FROM peminjaman p JOIN buku b ON p.id_buku = b.id_buku WHERE p.id_user = @id_user ORDER BY p.tanggal_pinjam DESC", db.Connection);
-            cmd.Parameters.AddWithValue("@id_user", id_user);
-
-            using var reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                riwayat.Add(new M_Riwayat
+                using var db = new D_Connector();
+                var riwayat = new List<M_Riwayat>();
+                using var cmd = new NpgsqlCommand(@"SELECT p.id_peminjaman, b.judul, p.tanggal_pinjam, p.tanggal_kembali, p.status FROM peminjaman p JOIN buku b ON p.id_buku = b.id_buku WHERE p.id_user = @id_user ORDER BY p.tanggal_pinjam DESC", db.Connection);
+                cmd.Parameters.AddWithValue("@id_user", id_user);
+
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    IdPeminjaman = Convert.ToInt32(reader["id_peminjaman"]),
-                    Judul = reader["judul"].ToString(),
-                    TanggalPinjam = Convert.ToDateTime(reader["tanggal_pinjam"]),
-                    TanggalKembali = Convert.ToDateTime(reader["tanggal_kembali"]),
-                    Status = reader["status"].ToString()
-                });
+                    riwayat.Add(new M_Riwayat
+                    {
+                        IdPeminjaman = Convert.ToInt32(reader["id_peminjaman"]),
+                        Judul = reader["judul"].ToString(),
+                        TanggalPinjam = Convert.ToDateTime(reader["tanggal_pinjam"]),
+                        TanggalKembali = Convert.ToDateTime(reader["tanggal_kembali"]),
+                        Status = reader["status"].ToString()
+                    });
+                }
+                return riwayat;
             }
-            return riwayat;
+            catch (Exception ex)
+            {
+                throw new Exception("Gagal menampilkan riwayat pengguna: " + ex.Message);
+            }
         }
 
 

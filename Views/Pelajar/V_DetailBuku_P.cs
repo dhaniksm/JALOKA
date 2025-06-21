@@ -21,24 +21,8 @@ namespace JALOKA.Views
         public V_DetailBuku_P(int id_buku)
         {
             InitializeComponent();
-            TabelKeranjang();
             idBuku = id_buku;
             TampilkanDetailBuku();
-        }
-
-        private void TabelKeranjang()
-        {
-            try
-            {
-                using (var db = new D_Connector())
-                {
-                    D_Tabel.CekTabel(db.Connection, "keranjang");
-                }
-            }
-            catch (Exception ex)
-            {
-                H_Pesan.Gagal("Gagal memeriksa tabel keranjang: " + ex.Message);
-            }
         }
 
         private void TampilkanDetailBuku()

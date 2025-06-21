@@ -20,18 +20,22 @@ namespace JALOKA.Controllers
             try
             {
                 using var db = new D_Connector();
-                using var cmd = new NpgsqlCommand("SELECT id_pustakawan, nama_pustakawan FROM admin WHERE id_pustakawan = @id AND password = @pw", db.Connection);
-                cmd.Parameters.AddWithValue("@id", admin.IdPustakawan);
-                cmd.Parameters.AddWithValue("@pw", admin.Password);
+                using var cmd = new NpgsqlCommand("SELECT id_pustakawan FROM admin WHERE id_pustakawan = @id_pustakawan AND password = @password", db.Connection);
+                cmd.Parameters.AddWithValue("@id_pustakawan", admin.IdPustakawan);
+                cmd.Parameters.AddWithValue("@password", admin.Password);
 
                 using var reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
                     string id_pustakawan = reader["id_pustakawan"].ToString();
 
+                    H_Sesi.AturSesiA(id_pustakawan);
                     return true;
                 }
-                return false;
+                else
+                {
+                    return false;
+                }
 
             }
             catch (Exception ex)

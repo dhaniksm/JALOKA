@@ -19,7 +19,6 @@ namespace JALOKA.Controllers
             try
             {
                 using var db = new D_Connector();
-                
                 using var cmd = new NpgsqlCommand("SELECT id_user, nama FROM pengguna WHERE nisn = @nisn AND password = @password", db.Connection);
                 cmd.Parameters.AddWithValue("@nisn", user.Nisn);
                 cmd.Parameters.AddWithValue("@password", user.Password);
@@ -97,13 +96,13 @@ namespace JALOKA.Controllers
             return daftar;
         }
 
-        public M_Pengguna AmbilProfil(string nisn)
+        public M_Pengguna AmbilProfil()
         {
             try
             {
                 using var db = new D_Connector();
-                using var cmd = new NpgsqlCommand("SELECT * FROM pengguna WHERE nisn = @nisn", db.Connection);
-                cmd.Parameters.AddWithValue("@nisn", nisn);
+                using var cmd = new NpgsqlCommand("SELECT * FROM pengguna WHERE id_user = @id_user", db.Connection);
+                cmd.Parameters.AddWithValue("@id_user", H_Sesi.IdUser);
 
                 using var reader = cmd.ExecuteReader();
                 if (reader.Read())

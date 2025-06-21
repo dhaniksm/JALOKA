@@ -9,34 +9,42 @@ namespace JALOKA.Helpers
 {
     public static class H_Sesi
     {
-        public static int id { get; set; }
-        public static string nama{ get; set; }
+        public static int IdUser { get; set; }
+        public static string Nama{ get; set; }
+        public static string IdAdmin { get; set; }
       
         public static void AturSesiP(int id_user, string nama_user)
         {
-            id = id_user;
-            nama = nama_user;
+            IdUser = id_user;
+            Nama = nama_user;
         }
 
-        public static void AturSesiA(int id_pustakawan)
+        public static void AturSesiA(string id_pustakawan)
         {
-            id = id_pustakawan;
+            IdAdmin = id_pustakawan;
         }
 
-        public static void AturSesiK(int id_kurikulum)
+        public static void AturSesiK(string id_kurikulum)
         {
-            id = id_kurikulum;
+            IdAdmin = id_kurikulum;
         }
 
         public static void HapusSesi()
         {
-            id = 0;
-            nama = null;
+            IdUser = 0;
+            IdAdmin = null;
+            Nama = null;
         }
 
-        public static bool LoggedIn()
+        public static bool LoggedP()
         {
-            return id > 0;
+            return IdUser > 0;
         }
+
+        public static bool LoggedA()
+        {
+            return IdAdmin != null;
+        }
+
     }
 }

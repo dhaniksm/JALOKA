@@ -16,27 +16,9 @@ namespace JALOKA.Views
 {
     public partial class V_Login_P : Form
     {
-        public static string nisnLogin;
-
         public V_Login_P()
         {
             InitializeComponent();
-            TabelPengguna();
-        }
-
-        private void TabelPengguna()
-        {
-            try
-            {
-                using (var db = new D_Connector())
-                {
-                    D_Tabel.CekTabel(db.Connection, "pengguna");
-                }
-            }
-            catch (Exception ex)
-            {
-                H_Pesan.Gagal("Gagal memeriksa tabel pengguna " + ex.Message);
-            }
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -52,10 +34,14 @@ namespace JALOKA.Views
             {
                 c_user.Login(user);
 
-                if (H_Sesi.LoggedIn())
+                if (H_Sesi.LoggedP())
                 {
+<<<<<<< HEAD
                     nisnLogin = user.Nisn;
                     H_Sesi.AturSesiP(H_Sesi.id, H_Sesi.nama);
+=======
+                    H_Sesi.AturSesiP(H_Sesi.IdUser, H_Sesi.Nama);
+>>>>>>> d10ee715318cc0f32179199dd1798cf4f5d17540
                     H_Pesan.Sukses("Login Berhasil");
                 
                     this.Close();

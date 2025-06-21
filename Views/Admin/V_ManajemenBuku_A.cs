@@ -23,23 +23,7 @@ namespace JALOKA.Views
         public V_ManajemenBuku_A()
         {
             InitializeComponent();
-            TabelBuku();
             MuatBuku();
-        }
-
-        public void TabelBuku()
-        {
-            try
-            {
-                using (var db = new D_Connector())
-                {
-                    D_Tabel.CekTabel(db.Connection, "buku");
-                }
-            }
-            catch (Exception ex)
-            {
-                H_Pesan.Gagal("Gagal memeriksa tabel buku: " + ex.Message);
-            }
         }
 
         private void MuatBuku()
