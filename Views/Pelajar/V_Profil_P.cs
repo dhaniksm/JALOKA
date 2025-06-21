@@ -1,4 +1,5 @@
 ﻿using JALOKA.Controllers;
+using JALOKA.Helpers;
 using JALOKA.Models;
 using System;
 using System.Collections.Generic;
@@ -23,20 +24,20 @@ namespace JALOKA.Views
         {
             {
                 C_User userController = new C_User();
-                string nisn = V_Login_P.nisnLogin; // Ambil NISN dari login
+                string nisn = V_Login_P.nisnLogin;
 
-                M_Pengguna user = userController.GetProfil(nisn);
+                M_Pengguna user = userController.AmbilProfil(nisn);
                 if (user != null)
                 {
-                    textBoxNisn.Text = user.nisn;
-                    textBoxNama.Text = user.nama;
-                    textBoxEmail.Text = user.email;
-                    textBoxTelepon.Text = user.nomor_hp;
-                    textBoxAlamat.Text = user.alamat;
+                    textBoxNisn.Text = user.Nisn;
+                    textBoxNama.Text = user.Nama;
+                    textBoxEmail.Text = user.Email;
+                    textBoxTelepon.Text = user.NomorHp;
+                    textBoxAlamat.Text = user.Alamat;
                 }
                 else
                 {
-                    MessageBox.Show("Data tidak ditemukan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    H_Pesan.Gagal("Gagal memuat profil");
                 }
             }
         }

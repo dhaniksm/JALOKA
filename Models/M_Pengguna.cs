@@ -8,12 +8,12 @@ namespace JALOKA.Models
 {
     public class M_Pengguna
     {
-        public string id_user { get; set; }
-        public string nisn { get; set; }
-        public string password { get; set; }
-        public string nama { get; set; }
-        public string email { get; set; }
-        public string nomor_hp { get; set; }
-        public string alamat { get; set; }
+        public int IdUser { get; set; }
+        public string Nisn { get; set; }
+        public string Password { get; set; }
+        public string Nama { get; set; }
+        public string Email { get; set; }
+        public string NomorHp { get; set; }
+        public string Alamat { get; set; }
     }
 }

@@ -8,8 +8,8 @@ namespace JALOKA.Models
 {
     public class M_Kurikulum
     {
-        public string id_kurikulum { get; set; }
-        public string password { get; set; }
+        public string IdKurikulum { get; set; }
+        public string Password { get; set; }
         
     }
 }

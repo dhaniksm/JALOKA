@@ -15,7 +15,6 @@ namespace JALOKA.Views
 {
     public partial class V_RiwayatPeminjaman_A : Form
     {
-        private readonly C_Riwayat riwayatController = new C_Riwayat();
         public V_RiwayatPeminjaman_A()
         {
             InitializeComponent();
@@ -65,7 +64,8 @@ namespace JALOKA.Views
         {
             try
             {
-                var data = riwayatController.ShowRiwayat();
+                C_Riwayat riwayat = new C_Riwayat();
+                var data = riwayat.ShowRiwayat();
 
                 dataGridView1.AutoGenerateColumns = true;
                 dataGridView1.DataSource = null;

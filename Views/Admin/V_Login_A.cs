@@ -29,8 +29,8 @@ namespace JALOKA.Views.Admin
             {
                 var admin = new M_Admin
                 {
-                    id_pustakawan = textBoxIDPustakawan.Text,
-                    password = textBoxPassword.Text
+                    IdPustakawan = textBoxIDPustakawan.Text,
+                    Password = textBoxPassword.Text
                 };
 
                 bool success = c_admin.Login(admin);

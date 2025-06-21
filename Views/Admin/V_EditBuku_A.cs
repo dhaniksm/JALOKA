@@ -37,12 +37,12 @@ namespace JALOKA.Views.Admin
                     return;
                 }
 
-                textBoxJudul.Text = buku.judul;
-                textBoxPenulis.Text = buku.penulis;
-                textBoxPenerbit.Text = buku.penerbit;
-                textBoxTahunTerbit.Text = buku.tahun_terbit.ToString();
-                textBoxSinopsis.Text = buku.sinopsis;
-                cover = buku.cover;
+                textBoxJudul.Text = buku.Judul;
+                textBoxPenulis.Text = buku.Penulis;
+                textBoxPenerbit.Text = buku.Penerbit;
+                textBoxTahunTerbit.Text = buku.TahunTerbit.ToString();
+                textBoxSinopsis.Text = buku.Sinopsis;
+                cover = buku.Cover;
 
                 if (cover != null)
                 {
@@ -73,13 +73,13 @@ namespace JALOKA.Views.Admin
             {
                 var buku = new M_Buku
                 {
-                    id_buku = idBuku,
-                    judul = textBoxJudul.Text,
-                    penulis = textBoxPenulis.Text,
-                    penerbit = textBoxPenerbit.Text,
-                    tahun_terbit = int.TryParse(textBoxTahunTerbit.Text, out var tahun) ? tahun : 0,
-                    sinopsis = textBoxSinopsis.Text,
-                    cover = cover
+                    IdBuku = idBuku,
+                    Judul = textBoxJudul.Text,
+                    Penulis = textBoxPenulis.Text,
+                    Penerbit = textBoxPenerbit.Text,
+                    TahunTerbit = int.TryParse(textBoxTahunTerbit.Text, out var tahun) ? tahun : 0,
+                    Sinopsis = textBoxSinopsis.Text,
+                    Cover = cover
                 };
 
                 new C_Buku().EditBuku(buku);

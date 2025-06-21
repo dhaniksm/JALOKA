@@ -64,7 +64,7 @@ namespace JALOKA.Views
 
             if (H_Pesan.Konfirmasi("Yakin ingin menghapus data ini?"))
             {
-                bool success = userController.DeleteUser(textBoxID.Text);
+                bool success = userController.HapusPengguna(textBoxID.Text);
                 if (success)
                 {
                     H_Pesan.Sukses("Data berhasil dihapus.");

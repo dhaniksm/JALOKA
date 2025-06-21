@@ -46,15 +46,15 @@ namespace JALOKA.Views
             try
             {
                 var buku = c_buku.AmbilDetailBuku(idBuku);
-                labelJudul.Text = buku.judul;
-                labelPenulis.Text = buku.penulis;
-                labelPenerbit.Text = buku.penerbit;
-                labelTahunTerbit.Text = buku.tahun_terbit.ToString();
-                labelSinopsis.Text = buku.sinopsis;
+                labelJudul.Text = buku.Judul;
+                labelPenulis.Text = buku.Penulis;
+                labelPenerbit.Text = buku.Penerbit;
+                labelTahunTerbit.Text = buku.TahunTerbit.ToString();
+                labelSinopsis.Text = buku.Sinopsis;
 
-                if (buku.cover != null)
+                if (buku.Cover != null)
                 {
-                    pictureBoxCover.Image = H_Konversi.ByteArrayToImage(buku.cover);
+                    pictureBoxCover.Image = H_Konversi.ByteArrayToImage(buku.Cover);
                     pictureBoxCover.SizeMode = PictureBoxSizeMode.Zoom;
                 }
             }

@@ -8,7 +8,7 @@ namespace JALOKA.Models
 {
     public class M_Admin
     {
-        public string id_pustakawan { get; set; }
-        public string password { get; set; }
+        public string IdPustakawan { get; set; }
+        public string Password { get; set; }
     }
 }

@@ -2,16 +2,16 @@
 {
     public class M_Peminjaman
     {
-        public M_Buku buku { get; set; }
-        public int id_peminjaman { get; set; }
-        public int id_user { get; set; }
-        public string nama_user { get; set; }
-        public int id_buku { get; set; }
-        public string judul_buku { get; set; }
-        public DateTime tanggal_pinjam { get; set; }
-        public DateTime? tanggal_kembali { get; set; }
-        public DateTime? tanggal_dikembalikan { get; set; }
-        public string status { get; set; }
-        public int? dikonfirmasi_oleh { get; set; }
+        public int IdPeminjaman { get; set; }
+        public int IdUser { get; set; }
+        public string NamaUser { get; set; }
+        public int IdPustakawan { get; set; }
+        public M_Buku Buku { get; set; }
+        public int IdBuku { get; set; }
+        public string JudulBuku { get; set; }
+        public DateTime TanggalPinjam { get; set; }
+        public DateTime TanggalKembali { get; set; }
+        public DateTime TanggalDikembalikan { get; set; }
+        public string Status { get; set; }
     }
 }

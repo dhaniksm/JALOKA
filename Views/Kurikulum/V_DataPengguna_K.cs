@@ -55,7 +55,6 @@ namespace JALOKA.Views
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            // Validasi input
             if (string.IsNullOrWhiteSpace(textBoxNama.Text) ||
                 string.IsNullOrWhiteSpace(textBoxEmail.Text) ||
                 string.IsNullOrWhiteSpace(textBoxNoHP.Text) ||
@@ -79,14 +78,14 @@ namespace JALOKA.Views
 
             var pengguna = new M_Pengguna
             {
-                nisn = textBoxIDPelajar.Text,
-                nama = textBoxNama.Text,
-                email = textBoxEmail.Text,
-                nomor_hp = textBoxNoHP.Text,
-                alamat = textBoxAlamat.Text
+                Nisn = textBoxIDPelajar.Text,
+                Nama = textBoxNama.Text,
+                Email = textBoxEmail.Text,
+                NomorHp = textBoxNoHP.Text,
+                Alamat = textBoxAlamat.Text
             };
 
-            bool berhasil = userController.UpdateUser(pengguna);
+            bool berhasil = userController.EditPengguna(pengguna);
             if (berhasil)
             {
                 H_Pesan.Sukses("Data berhasil diperbarui.");
@@ -108,7 +107,7 @@ namespace JALOKA.Views
 
             if (H_Pesan.Konfirmasi("Apakah Anda yakin ingin menghapus data ini?"))
             {
-                bool berhasil = userController.DeleteUser(textBoxIDPelajar.Text);
+                bool berhasil = userController.HapusPengguna(textBoxIDPelajar.Text);
                 if (berhasil)
                 {
                     H_Pesan.Sukses("Data berhasil dihapus.");

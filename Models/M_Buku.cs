@@ -8,14 +8,14 @@ namespace JALOKA.Models
 {
     public class M_Buku
     {
-        public int id_buku { get; set; }
-        public string judul { get; set; }
-        public string penulis { get; set; }
-        public string penerbit { get; set; }
-        public int tahun_terbit { get; set; }
-        public int stok { get; set; }
-        public string sinopsis { get; set; }
-        public byte[] cover { get; set; }
+        public int IdBuku { get; set; }
+        public string Judul { get; set; }
+        public string Penulis { get; set; }
+        public string Penerbit { get; set; }
+        public int TahunTerbit { get; set; }
+        public int Stok { get; set; }
+        public string Sinopsis { get; set; }
+        public byte[] Cover { get; set; }
     }
 }
 

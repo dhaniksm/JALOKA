@@ -11,42 +11,28 @@ namespace JALOKA.Controllers
         public bool Login(M_Admin admin)
         {
             
-            if (string.IsNullOrWhiteSpace(admin.id_pustakawan) && string.IsNullOrWhiteSpace(admin.password))
+            if (string.IsNullOrWhiteSpace(admin.IdPustakawan) || string.IsNullOrWhiteSpace(admin.Password))
             {
-                H_Pesan.Peringatan("ID dan Password tidak boleh kosong.");
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(admin.id_pustakawan))
-            {
-                H_Pesan.Peringatan("ID tidak boleh kosong.");
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(admin.password))
-            {
-                H_Pesan.Peringatan("Password tidak boleh kosong.");
+                H_Pesan.Peringatan("ID atau Password tidak boleh kosong.");
                 return false;
             }
 
             try
             {
-                using (var db = new D_Connector())
+                using var db = new D_Connector();
+                using var cmd = new NpgsqlCommand("SELECT id_pustakawan, nama_pustakawan FROM admin WHERE id_pustakawan = @id AND password = @pw", db.Connection);
+                cmd.Parameters.AddWithValue("@id", admin.IdPustakawan);
+                cmd.Parameters.AddWithValue("@pw", admin.Password);
+
+                using var reader = cmd.ExecuteReader();
+                if (reader.Read())
                 {
-                    var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM admin WHERE id_pustakawan = @id AND password = @pw", db.Connection);
-                    cmd.Parameters.AddWithValue("@id", admin.id_pustakawan);
-                    cmd.Parameters.AddWithValue("@pw", admin.password);
-
-                    int count = Convert.ToInt32(cmd.ExecuteScalar());
-
-                    if (count == 0)
-                    {
-                        H_Pesan.Gagal("ID atau Password salah.");
-                        return false;
-                    }
+                    string id_pustakawan = reader["id_pustakawan"].ToString();
 
                     return true;
                 }
+                return false;
+
             }
             catch (Exception ex)
             {

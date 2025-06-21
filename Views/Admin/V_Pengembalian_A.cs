@@ -16,8 +16,6 @@ namespace JALOKA.Views
 {
     public partial class V_Pengembalian_A : Form
     {
-        private readonly C_Pengembalian c_pengembalian = new C_Pengembalian();
-
         public V_Pengembalian_A()
         {
             InitializeComponent();
@@ -26,6 +24,7 @@ namespace JALOKA.Views
 
         private void TampilkanDaftarPengembalian()
         {
+            C_Pengembalian c_pengembalian = new C_Pengembalian();
             var daftar = c_pengembalian.DaftarPengembalian();
             flowLayoutPanelKonfirmasi.Controls.Clear();
 
@@ -35,7 +34,7 @@ namespace JALOKA.Views
 
                 Label info = new Label
                 {
-                    Text = $"User: {item.nama_user}\nJudul: {item.judul_buku}\nPinjam: {item.tanggal_pinjam:dd MMM yyyy}\nKembali: {item.tanggal_kembali:dd MMM yyyy}",
+                    Text = $"User: {item.NamaUser}\nJudul: {item.JudulBuku}\nPinjam: {item.TanggalPinjam:dd MMM yyyy}\nKembali: {item.TanggalKembali:dd MMM yyyy}",
                     AutoSize = true,
                     Top = 10,
                     Left = 10
@@ -47,7 +46,7 @@ namespace JALOKA.Views
                     Width = 100,
                     Top = 10,
                     Left = 400,
-                    Tag = item.id_peminjaman
+                    Tag = item.IdPeminjaman
                 };
 
                 buttonKonfirmasi.Click += (s, e) =>

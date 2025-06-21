@@ -40,7 +40,7 @@ namespace JALOKA.Views.Admin
 
                     Label labelInfo = new Label
                     {
-                        Text = $"User: {item.id_user}\nBuku: {item.judul_buku}\nTanggal: {item.tanggal_pinjam:dd MMM yyyy}",
+                        Text = $"User: {item.IdUser}\nBuku: {item.JudulBuku}\nTanggal: {item.TanggalPinjam:dd MMM yyyy}",
                         AutoSize = true,
                         Left = 10,
                         Top = 10
@@ -53,7 +53,7 @@ namespace JALOKA.Views.Admin
                         Height = 30,
                         Top = 10,
                         Left = 400,
-                        Tag = item.id_peminjaman
+                        Tag = item.IdPeminjaman,
                     };
                     btnKonfirmasi.Click += BtnKonfirmasi_Click;
 
@@ -64,7 +64,7 @@ namespace JALOKA.Views.Admin
                         Height = 30,
                         Top = 50,
                         Left = 400,
-                        Tag = item.id_peminjaman
+                        Tag = item.IdPeminjaman
                     };
                     btnTolak.Click += BtnTolak_Click;
 

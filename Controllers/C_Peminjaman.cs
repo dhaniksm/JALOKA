@@ -21,29 +21,27 @@ namespace JALOKA.Controllers
             {
                 using var db = new D_Connector();
                 using var cmd = new NpgsqlCommand("SELECT b.id_buku, b.judul, b.penulis, b.penerbit, b.tahun_terbit, b.sinopsis, b.cover FROM keranjang k JOIN buku b ON k.id_buku = b.id_buku WHERE k.id_user = @id_user", db.Connection);
-                cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
+                cmd.Parameters.AddWithValue("@id_user", H_Sesi.id);
 
                 using var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
                     keranjang.Add(new M_Buku
                     {
-                        id_buku = reader.GetInt32(0),
-                        judul = reader.GetString(1),
-                        penulis = reader.GetString(2),
-                        penerbit = reader.GetString(3),
-                        tahun_terbit = reader.GetInt32(4),
-                        sinopsis = reader.IsDBNull(5) ? "" : reader.GetString(5),
-                        cover = reader["cover"] as byte[]
+                        IdBuku = reader.GetInt32(0),
+                        Judul = reader.GetString(1),
+                        Penulis = reader.GetString(2),
+                        Penerbit = reader.GetString(3),
+                        TahunTerbit = reader.GetInt32(4),
+                        Sinopsis = reader.IsDBNull(5) ? "" : reader.GetString(5),
+                        Cover = reader["cover"] as byte[]
                     });
                 }
-                
             }
             catch (Exception ex)
             {
                 H_Pesan.Gagal("Gagal mengambil keranjang: " + ex.Message);
             }
-
             return keranjang;
         }
 
@@ -54,7 +52,7 @@ namespace JALOKA.Controllers
                 using var db = new D_Connector();
                 using (var cek = new NpgsqlCommand("SELECT 1 FROM keranjang WHERE id_user = @id_user AND id_buku = @id_buku", db.Connection))
                 {
-                    cek.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
+                    cek.Parameters.AddWithValue("@id_user", H_Sesi.id);
                     cek.Parameters.AddWithValue("@id_buku", id_buku);
 
                     if (cek.ExecuteScalar() != null)
@@ -63,14 +61,14 @@ namespace JALOKA.Controllers
 
                 using (var hitung = new NpgsqlCommand("SELECT COUNT(*) FROM keranjang WHERE id_user = @id_user", db.Connection))
                 {
-                    hitung.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
+                    hitung.Parameters.AddWithValue("@id_user", H_Sesi.id);
                     int total = Convert.ToInt32(hitung.ExecuteScalar());
                     if (total >= 3)
                         throw new Exception("Maksimal peminjaman adalah 3 buku.");
                 }
 
                 using var insert = new NpgsqlCommand("INSERT INTO keranjang (id_user, id_buku) VALUES (@id_user, @id_buku)", db.Connection);
-                insert.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
+                insert.Parameters.AddWithValue("@id_user", H_Sesi.id);
                 insert.Parameters.AddWithValue("@id_buku", id_buku);
                 insert.ExecuteNonQuery();
             }
@@ -86,7 +84,7 @@ namespace JALOKA.Controllers
             {
                 using var db = new D_Connector();
                 using var cmd = new NpgsqlCommand("DELETE FROM keranjang WHERE id_user = @id_user AND id_buku = @id_buku", db.Connection);
-                cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
+                cmd.Parameters.AddWithValue("@id_user", H_Sesi.id);
                 cmd.Parameters.AddWithValue("@id_buku", id_buku);
                 cmd.ExecuteNonQuery();
             }
@@ -102,7 +100,7 @@ namespace JALOKA.Controllers
             {
                 using var db = new D_Connector();
                 using var cmd = new NpgsqlCommand("DELETE FROM keranjang WHERE id_user = @id_user", db.Connection);
-                cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
+                cmd.Parameters.AddWithValue("@id_user", H_Sesi.id);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -122,8 +120,8 @@ namespace JALOKA.Controllers
                 {
                     using var cmd = new NpgsqlCommand("INSERT INTO peminjaman (id_user, id_buku, tanggal_pinjam, tanggal_kembali, status) VALUES (@id_user, @id_buku, @tanggal_pinjam, @tanggal_kembali, 'menunggu')", db.Connection);
 
-                    cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
-                    cmd.Parameters.AddWithValue("@id_buku", buku.id_buku);
+                    cmd.Parameters.AddWithValue("@id_user", H_Sesi.id);
+                    cmd.Parameters.AddWithValue("@id_buku", buku.IdBuku);
                     cmd.Parameters.AddWithValue("@tanggal_pinjam", DateTime.Now);
                     cmd.Parameters.AddWithValue("@tanggal_kembali", DateTime.Now.AddDays(7));
                     cmd.ExecuteNonQuery();
@@ -151,19 +149,19 @@ namespace JALOKA.Controllers
                 var keranjang = AmbilKeranjang();
                 foreach (var buku in keranjang)
                 {
-                    int stok = AmbilStok(buku.id_buku);
+                    int stok = AmbilStok(buku.IdBuku);
                     if (stok <= 0)
                     {
-                        H_Pesan.Peringatan($"Stok buku \"{buku.judul}\" tidak mencukupi.");
+                        H_Pesan.Peringatan($"Stok buku \"{buku.Judul}\" tidak mencukupi.");
                         return;
                     }
                 }
 
                 foreach (var buku in keranjang)
                 {
-                    AjukanPeminjaman(buku.id_buku);
-                    KurangiStok(buku.id_buku);
-                    HapusDariKeranjang(buku.id_buku);
+                    AjukanPeminjaman(buku.IdBuku);
+                    KurangiStok(buku.IdBuku);
+                    HapusDariKeranjang(buku.IdBuku);
                 }
 
                 H_Pesan.Sukses("Peminjaman berhasil dilakukan.");
@@ -198,7 +196,7 @@ namespace JALOKA.Controllers
             using (var db = new D_Connector())
             {
                 using var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM peminjaman WHERE id_user = @id_user AND status = 'aktif'", db.Connection);
-                cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
+                cmd.Parameters.AddWithValue("@id_user", H_Sesi.id);
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }
         }
@@ -209,29 +207,28 @@ namespace JALOKA.Controllers
 
             using var db = new D_Connector();
             using var cmd = new NpgsqlCommand("SELECT p.id_peminjaman, p.id_user, p.id_buku, p.tanggal_pinjam, b.judul, b.penulis, b.penerbit, b.tahun_terbit, b.cover FROM peminjaman p JOIN buku b ON p.id_buku = b.id_buku WHERE p.id_user = @id_user AND p.status = 'menunggu'", db.Connection);
-            cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
+            cmd.Parameters.AddWithValue("@id_user", H_Sesi.id);
 
             using var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 daftar.Add(new M_Peminjaman
                 {
-                    id_peminjaman = reader.GetInt32(0),
-                    id_user = reader.GetInt32(1),
-                    tanggal_pinjam = reader.GetDateTime(3),
+                    IdPeminjaman = reader.GetInt32(0),
+                    IdUser = reader.GetInt32(1),
+                    TanggalPinjam = reader.GetDateTime(3),
 
-                    buku = new M_Buku
+                    Buku = new M_Buku
                     {
-                        id_buku = reader.GetInt32(2),
-                        judul = reader.GetString(4),
-                        penulis = reader.GetString(5),
-                        penerbit = reader.GetString(6),
-                        tahun_terbit = reader.GetInt32(7),
-                        cover = reader["cover"] as byte[]
+                        IdBuku = reader.GetInt32(2),
+                        Judul = reader.GetString(4),
+                        Penulis = reader.GetString(5),
+                        Penerbit = reader.GetString(6),
+                        TahunTerbit = reader.GetInt32(7),
+                        Cover = reader["cover"] as byte[]
                     }
                 });
             }
-
             return daftar;
         }
 

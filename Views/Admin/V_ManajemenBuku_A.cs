@@ -62,7 +62,7 @@ namespace JALOKA.Views
                     {
                         Width = 120,
                         Height = 150,
-                        Image = H_Konversi.ByteArrayToImage(buku.cover),
+                        Image = H_Konversi.ByteArrayToImage(buku.Cover),
                         SizeMode = PictureBoxSizeMode.StretchImage,
                         Top = 5,
                         Left = 10,
@@ -73,7 +73,7 @@ namespace JALOKA.Views
 
                     Label judul = new Label
                     {
-                        Text = buku.judul,
+                        Text = buku.Judul,
                         Width = 120,
                         Height = 40,
                         Top = 160,
@@ -96,7 +96,7 @@ namespace JALOKA.Views
         {
             if (sender is PictureBox pb && pb.Tag is M_Buku buku)
             {
-                var detail = new V_DetailBuku_A(buku.id_buku);
+                var detail = new V_DetailBuku_A(buku.IdBuku);
                 detail.Show();
                 this.Close();
             }

@@ -16,7 +16,6 @@ namespace JALOKA.Views
 {
     public partial class V_Login_K : Form
     {
-        private C_Kurikulum c_kurikulum = new C_Kurikulum();
         public V_Login_K()
         {
             InitializeComponent();
@@ -38,8 +37,8 @@ namespace JALOKA.Views
         {
             var kurikulum = new M_Kurikulum
             {
-                id_kurikulum = textBoxIDKurikulum.Text,
-                password = textBoxPassword.Text
+                IdKurikulum = textBoxIDKurikulum.Text,
+                Password = textBoxPassword.Text
             };
 
             var controller = new C_Kurikulum();
@@ -47,7 +46,7 @@ namespace JALOKA.Views
 
             if (success)
             {
-                MessageBox.Show("Berhasil Login!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                H_Pesan.Sukses("Login Berhasil");
                 this.Close();
                 V_Dashboard_K dashboard = new V_Dashboard_K();
                 dashboard.Show();

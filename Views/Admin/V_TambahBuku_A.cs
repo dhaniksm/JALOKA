@@ -59,7 +59,7 @@ namespace JALOKA.Views.Admin
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(textBoxJudul.Text) || string.IsNullOrWhiteSpace(textBoxPenulis.Text) || string.IsNullOrWhiteSpace(textBoxPenerbit.Text) || string.IsNullOrWhiteSpace(textBoxTahunTerbit.Text) || string.IsNullOrEmpty(textBoxSinopsis.Text))
+                if (string.IsNullOrWhiteSpace(textBoxJudul.Text) || string.IsNullOrWhiteSpace(textBoxPenulis.Text) || string.IsNullOrWhiteSpace(textBoxPenerbit.Text) || string.IsNullOrEmpty(textBoxSinopsis.Text))
                 {
                     H_Pesan.Gagal("Judul dan Penulis wajib diisi.");
                     return;
@@ -74,12 +74,12 @@ namespace JALOKA.Views.Admin
 
                 var buku = new M_Buku
                 {
-                    judul = textBoxJudul.Text,
-                    penulis = textBoxPenulis.Text,
-                    penerbit = textBoxPenerbit.Text,
-                    tahun_terbit = tahun,
-                    sinopsis = textBoxSinopsis.Text,
-                    cover = cover
+                    Judul = textBoxJudul.Text,
+                    Penulis = textBoxPenulis.Text,
+                    Penerbit = textBoxPenerbit.Text,
+                    TahunTerbit = tahun,
+                    Sinopsis = textBoxSinopsis.Text,
+                    Cover = cover
                 };
 
                 controller.TambahBuku(buku);

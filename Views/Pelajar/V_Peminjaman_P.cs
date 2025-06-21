@@ -83,7 +83,7 @@ namespace JALOKA.Views
                 {
                     var panel = BuatPanelBuku(buku, "Ajukan", () =>
                     {
-                        controller.AjukanPeminjaman(buku.id_buku);
+                        controller.AjukanPeminjaman(buku.IdBuku);
                         MuatKeranjang();
                         MuatMenunggu();
                     });
@@ -105,7 +105,7 @@ namespace JALOKA.Views
 
                 foreach (var peminjaman in menunggu)
                 {
-                    var panel = BuatPanelBuku(peminjaman.buku, "Menunggu", null, true);
+                    var panel = BuatPanelBuku(peminjaman.Buku, "Menunggu", null, true);
                     flowLayoutPanelMenunggu.Controls.Add(panel);
                 }
             }
@@ -130,7 +130,7 @@ namespace JALOKA.Views
                 Width = 80,
                 Height = 100,
                 SizeMode = PictureBoxSizeMode.Zoom,
-                Image = buku.cover != null ? H_Konversi.ByteArrayToImage(buku.cover) : null,
+                Image = buku.Cover != null ? H_Konversi.ByteArrayToImage(buku.Cover) : null,
                 Left = 10,
                 Top = 10
             };
@@ -138,7 +138,7 @@ namespace JALOKA.Views
 
             Label lblJudul = new Label
             {
-                Text = buku.judul,
+                Text = buku.Judul,
                 AutoSize = true,
                 Font = new Font("Segoe UI", 10, FontStyle.Bold),
                 Location = new Point(100, 10)
@@ -147,7 +147,7 @@ namespace JALOKA.Views
 
             Label lblPenulis = new Label
             {
-                Text = $"Penulis: {buku.penulis}",
+                Text = $"Penulis: {buku.Penulis}",
                 AutoSize = true,
                 Location = new Point(100, 35)
             };
@@ -155,7 +155,7 @@ namespace JALOKA.Views
 
             Label lblPenerbit = new Label
             {
-                Text = $"Penerbit: {buku.penerbit}",
+                Text = $"Penerbit: {buku.Penerbit}",
                 AutoSize = true,
                 Location = new Point(100, 55)
             };
@@ -163,7 +163,7 @@ namespace JALOKA.Views
 
             Label lblTahun = new Label
             {
-                Text = $"Tahun: {buku.tahun_terbit}",
+                Text = $"Tahun: {buku.TahunTerbit}",
                 AutoSize = true,
                 Location = new Point(100, 75)
             };
@@ -179,7 +179,7 @@ namespace JALOKA.Views
             };
             btnHapus.Click += (s, e) =>
             {
-                controller.HapusDariKeranjang(buku.id_buku);
+                controller.HapusDariKeranjang(buku.IdBuku);
                 MuatKeranjang();
             };
 

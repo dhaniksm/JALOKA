@@ -34,7 +34,7 @@ namespace JALOKA.Views
 
                 Label labelInfo = new Label
                 {
-                    Text = $"Judul: {item.judul_buku}\nPinjam: {item.tanggal_pinjam:dd MMM yyyy}\nKembali: {item.tanggal_kembali:dd MMM yyyy}",
+                    Text = $"Judul: {item.JudulBuku}\nPinjam: {item.TanggalPinjam:dd MMM yyyy}\nKembali: {item.TanggalKembali:dd MMM yyyy}",
                     AutoSize = true,
                     Top = 10,
                     Left = 10
@@ -46,7 +46,7 @@ namespace JALOKA.Views
                     Width = 150,
                     Top = 10,
                     Left = 300,
-                    Tag = item.id_peminjaman
+                    Tag = item.IdPeminjaman
                 };
                 btnKembalikan.Click += (s, e) =>
                 {

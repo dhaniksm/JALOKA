@@ -38,13 +38,14 @@ namespace JALOKA.Views
                 H_Pesan.Gagal("Gagal memeriksa tabel pengguna " + ex.Message);
             }
         }
+
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             C_User c_user = new C_User();
             M_Pengguna user = new M_Pengguna()
             {
-                nisn = textBoxNisn.Text,
-                password = textBoxPassword.Text
+                Nisn = textBoxNisn.Text,
+                Password = textBoxPassword.Text
             };
 
             try
@@ -53,7 +54,7 @@ namespace JALOKA.Views
 
                 if (H_Sesi.LoggedIn())
                 {
-                    H_Sesi.SetSession(H_Sesi.id_user, H_Sesi.nama_user);
+                    H_Sesi.AturSesiP(H_Sesi.id, H_Sesi.nama);
                     H_Pesan.Sukses("Login Berhasil");
                 
                     this.Close();

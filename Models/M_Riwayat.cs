@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,11 +8,11 @@ namespace JALOKA.Models
 {
     public class M_Riwayat
     {
-        public int id_peminjaman { get; set; }
-        public string judul { get; set; }
-        public string nama { get; set; }
-        public DateTime tanggal_pinjam { get; set; }
-        public DateTime? tanggal_kembali { get; set; }
-        public string status { get; set; }
+        public int IdPeminjaman { get; set; }
+        public string Judul { get; set; }
+        public string Nama { get; set; }
+        public DateTime TanggalPinjam { get; set; }
+        public DateTime TanggalKembali { get; set; }
+        public string Status { get; set; }
     }
 }

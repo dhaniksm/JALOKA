@@ -22,14 +22,12 @@ namespace JALOKA.Controllers
                 {
                     riwayat.Add(new M_Riwayat
                     {
-                        id_peminjaman = Convert.ToInt32(reader["id_peminjaman"]),
-                        judul = reader["judul"].ToString(),
-                        nama = reader["nama"].ToString(),
-                        tanggal_pinjam = Convert.ToDateTime(reader["tanggal_pinjam"]),
-                        tanggal_kembali = reader["tanggal_kembali"] == DBNull.Value
-                            ? (DateTime?)null
-                            : Convert.ToDateTime(reader["tanggal_kembali"]),
-                        status = reader["status"].ToString()
+                        IdPeminjaman = Convert.ToInt32(reader["id_peminjaman"]),
+                        Judul = reader["judul"].ToString(),
+                        Nama = reader["nama"].ToString(),
+                        TanggalPinjam = Convert.ToDateTime(reader["tanggal_pinjam"]),
+                        TanggalKembali = Convert.ToDateTime(reader["tanggal_kembali"]),
+                        Status = reader["status"].ToString()
                     });
                 }
             }
@@ -37,13 +35,11 @@ namespace JALOKA.Controllers
             {
                 throw new Exception("Gagal menampilkan riwayat: " + ex.Message);
             }
-
             return riwayat;
         }
         public List<M_Riwayat> ShowRiwayatUser(int id_user)
         {
             var riwayat = new List<M_Riwayat>();
-
             using var db = new D_Connector();
             using var cmd = new NpgsqlCommand(@"SELECT p.id_peminjaman, b.judul, p.tanggal_pinjam, p.tanggal_kembali, p.status FROM peminjaman p JOIN buku b ON p.id_buku = b.id_buku WHERE p.id_user = @id_user ORDER BY p.tanggal_pinjam DESC", db.Connection);
             cmd.Parameters.AddWithValue("@id_user", id_user);
@@ -53,14 +49,13 @@ namespace JALOKA.Controllers
             {
                 riwayat.Add(new M_Riwayat
                 {
-                    id_peminjaman = Convert.ToInt32(reader["id_peminjaman"]),
-                    judul = reader["judul"].ToString(),
-                    tanggal_pinjam = Convert.ToDateTime(reader["tanggal_pinjam"]),
-                    tanggal_kembali = reader["tanggal_kembali"] is DBNull ? (DateTime?)null : Convert.ToDateTime(reader["tanggal_kembali"]),
-                    status = reader["status"].ToString()
+                    IdPeminjaman = Convert.ToInt32(reader["id_peminjaman"]),
+                    Judul = reader["judul"].ToString(),
+                    TanggalPinjam = Convert.ToDateTime(reader["tanggal_pinjam"]),
+                    TanggalKembali = Convert.ToDateTime(reader["tanggal_kembali"]),
+                    Status = reader["status"].ToString()
                 });
             }
-
             return riwayat;
         }
 

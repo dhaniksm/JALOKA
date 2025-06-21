@@ -33,7 +33,6 @@ namespace JALOKA.Views
                 H_Pesan.Peringatan("Semua field wajib diisi.");
                 return;
             }
-
             
             if (!textBoxEmail.Text.Contains("@"))
             {
@@ -48,18 +47,16 @@ namespace JALOKA.Views
                 return;
             }
 
-            
             var user = new M_Pengguna
             {
-                nisn = textBoxIDPelajar.Text,
-                password = textBoxPassword.Text,
-                nama = textBoxNama.Text,
-                email = textBoxEmail.Text,
-                nomor_hp = textBoxNoTelp.Text,
-                alamat = textBoxAlamat.Text
+                Nisn = textBoxIDPelajar.Text,
+                Password = textBoxPassword.Text,
+                Nama = textBoxNama.Text,
+                Email = textBoxEmail.Text,
+                NomorHp = textBoxNoTelp.Text,
+                Alamat = textBoxAlamat.Text
             };
 
-            
             bool success = c_user.Register(user);
             if (success)
             {

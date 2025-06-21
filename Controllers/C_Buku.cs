@@ -14,15 +14,15 @@ namespace JALOKA.Controllers
         {
             try
             {
-                using (var db = new D_Connector())
+                using var db = new D_Connector();
                 {
                     using var cmd = new NpgsqlCommand("INSERT INTO buku (judul, penulis, penerbit, tahun_terbit, sinopsis, cover, stok) VALUES (@judul, @penulis, @penerbit, @tahun_terbit, @sinopsis, @cover, 1)", db.Connection);
-                    cmd.Parameters.AddWithValue("@judul", buku.judul);
-                    cmd.Parameters.AddWithValue("@penulis", buku.penulis);
-                    cmd.Parameters.AddWithValue("@penerbit", buku.penerbit);
-                    cmd.Parameters.AddWithValue("@tahun_terbit", buku.tahun_terbit);
-                    cmd.Parameters.AddWithValue("@sinopsis", buku.sinopsis);
-                    cmd.Parameters.AddWithValue("@cover", buku.cover ?? (object) DBNull.Value);
+                    cmd.Parameters.AddWithValue("@judul", buku.Judul);
+                    cmd.Parameters.AddWithValue("@penulis", buku.Penulis);
+                    cmd.Parameters.AddWithValue("@penerbit", buku.Penerbit);
+                    cmd.Parameters.AddWithValue("@tahun_terbit", buku.TahunTerbit);
+                    cmd.Parameters.AddWithValue("@sinopsis", buku.Sinopsis);
+                    cmd.Parameters.AddWithValue("@cover", buku.Cover);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -46,12 +46,12 @@ namespace JALOKA.Controllers
                         {
                             daftar.Add(new M_Buku
                             {
-                                id_buku = reader.GetInt32(0),
-                                judul = reader.GetString(1),
-                                penulis = reader.GetString(2),
-                                penerbit = reader.GetString(3),
-                                tahun_terbit = reader.GetInt32(4),
-                                cover = reader["cover"] as byte[]
+                                IdBuku = reader.GetInt32(0),
+                                Judul = reader.GetString(1),
+                                Penulis = reader.GetString(2),
+                                Penerbit = reader.GetString(3),
+                                TahunTerbit = reader.GetInt32(4),
+                                Cover = reader["cover"] as byte[]
                             });
                         }
                     }
@@ -68,15 +68,15 @@ namespace JALOKA.Controllers
         {
             try
             {
-                using (var db = new D_Connector())
+                using var db = new D_Connector();
                 {
                     using var cmd = new NpgsqlCommand("UPDATE buku SET judul = @judul, penulis = @penulis, penerbit = @penerbit, tahun_terbit = @tahun_terbit, cover = @cover WHERE id_buku = @id_buku", db.Connection);
-                    cmd.Parameters.AddWithValue("@id_buku", buku.id_buku);
-                    cmd.Parameters.AddWithValue("@judul", buku.judul);
-                    cmd.Parameters.AddWithValue("@penulis", buku.penulis);
-                    cmd.Parameters.AddWithValue("@penerbit", buku.penerbit);
-                    cmd.Parameters.AddWithValue("@tahun_terbit", buku.tahun_terbit);
-                    cmd.Parameters.AddWithValue("@cover", buku.cover ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@id_buku", buku.IdBuku);
+                    cmd.Parameters.AddWithValue("@judul", buku.Judul);
+                    cmd.Parameters.AddWithValue("@penulis", buku.Penulis);
+                    cmd.Parameters.AddWithValue("@penerbit", buku.Penerbit);
+                    cmd.Parameters.AddWithValue("@tahun_terbit", buku.TahunTerbit);
+                    cmd.Parameters.AddWithValue("@cover", buku.Cover);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -90,7 +90,7 @@ namespace JALOKA.Controllers
         {
             try
             {
-                using (var db = new D_Connector())
+                using var db = new D_Connector();
                 {
                     using var cmd = new NpgsqlCommand("DELETE FROM buku WHERE id_buku = @id_buku", db.Connection);
                     cmd.Parameters.AddWithValue("@id_buku", id_buku);
@@ -117,13 +117,13 @@ namespace JALOKA.Controllers
                     {
                         return new M_Buku
                         {
-                            id_buku = reader.GetInt32(0),
-                            judul = reader.GetString(1),
-                            penulis = reader.GetString(2),
-                            penerbit = reader.GetString(3),
-                            tahun_terbit = reader.GetInt32(4),
-                            sinopsis = reader.IsDBNull(5) ? "" : reader.GetString(5),
-                            cover = reader["cover"] as byte[]
+                            IdBuku = reader.GetInt32(0),
+                            Judul = reader.GetString(1),
+                            Penulis = reader.GetString(2),
+                            Penerbit = reader.GetString(3),
+                            TahunTerbit = reader.GetInt32(4),
+                            Sinopsis = reader.GetString(5),
+                            Cover = reader["cover"] as byte[]
                         };
                     }
                 }
@@ -132,7 +132,6 @@ namespace JALOKA.Controllers
             {
                 H_Pesan.Gagal("Gagal mengambil detail buku: " + ex.Message);
             }
-
             return null;
         }
 

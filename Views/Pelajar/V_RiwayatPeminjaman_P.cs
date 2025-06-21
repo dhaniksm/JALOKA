@@ -14,8 +14,6 @@ namespace JALOKA.Views
 {
     public partial class V_RiwayatPeminjaman_P : Form
     {
-        private readonly C_Riwayat riwayatController = new C_Riwayat();
-
         public V_RiwayatPeminjaman_P()
         {
             InitializeComponent();
@@ -75,17 +73,17 @@ namespace JALOKA.Views
 
         private void LoadData()
         {
+            C_Riwayat riwayat = new C_Riwayat();
             try
             {
-                var data = riwayatController.ShowRiwayatUser(H_Sesi.id_user);
+                var data = riwayat.ShowRiwayatUser(H_Sesi.id);
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = data;
 
-                // Sembunyikan kolom 
-
                 if (dataGridView1.Columns.Contains("nama"))
+                {
                     dataGridView1.Columns["nama"].Visible = false;
-
+                }
                 dataGridView1.ClearSelection();
             }
             catch (Exception ex)

@@ -15,16 +15,16 @@ namespace JALOKA.Controllers
             using var db = new D_Connector();
             using var cmd = new NpgsqlCommand(@"SELECT p.id_peminjaman, b.judul, p.tanggal_pinjam, p.tanggal_kembali FROM peminjaman p  JOIN buku b ON p.id_buku = b.id_buku WHERE p.id_user = @id_user AND p.status = 'dipinjam'", db.Connection);
 
-            cmd.Parameters.AddWithValue("@id_user", H_Sesi.id_user);
+            cmd.Parameters.AddWithValue("@id_user", H_Sesi.id);
             using var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 daftar.Add(new M_Peminjaman
                 {
-                    id_peminjaman = reader.GetInt32(0),
-                    judul_buku = reader.GetString(1),
-                    tanggal_pinjam = reader.GetDateTime(2),
-                    tanggal_kembali = reader.GetDateTime(3),
+                    IdPeminjaman = reader.GetInt32(0),
+                    JudulBuku = reader.GetString(1),
+                    TanggalPinjam = reader.GetDateTime(2),
+                    TanggalKembali = reader.GetDateTime(3),
                 });
             }
             return daftar;
@@ -49,11 +49,11 @@ namespace JALOKA.Controllers
             {
                 daftar.Add(new M_Peminjaman
                 {
-                    id_peminjaman = reader.GetInt32(0),
-                    nama_user = reader.GetString(1),
-                    judul_buku = reader.GetString(2),
-                    tanggal_pinjam = reader.GetDateTime(3),
-                    tanggal_kembali = reader.GetDateTime(4)
+                    IdPeminjaman = reader.GetInt32(0),
+                    NamaUser = reader.GetString(1),
+                    JudulBuku = reader.GetString(2),
+                    TanggalPinjam = reader.GetDateTime(3),
+                    TanggalKembali = reader.GetDateTime(4)
                 });
             }
             return daftar;
@@ -63,7 +63,7 @@ namespace JALOKA.Controllers
         {
             using var db = new D_Connector();
             using var cmd = new NpgsqlCommand(@"UPDATE peminjaman SET status = 'dikembalikan', tanggal_dikembalikan = CURRENT_DATE, dikonfirmasi_oleh = @admin WHERE id_peminjaman = @id", db.Connection);
-            cmd.Parameters.AddWithValue("@admin", H_Sesi.id_user);
+            cmd.Parameters.AddWithValue("@admin", H_Sesi.id);
             cmd.Parameters.AddWithValue("@id", id_peminjaman);
             cmd.ExecuteNonQuery();
         }

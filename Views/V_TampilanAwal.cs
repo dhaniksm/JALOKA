@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using JALOKA.Views.Admin; // <-- Tambahkan baris ini
-using JALOKA.Views;       // <-- Jika butuh akses ke V_Login pelajar
+using JALOKA.Views.Admin; 
+using JALOKA.Views;       
 
 namespace JALOKA.Views
 {

@@ -11,46 +11,32 @@ namespace JALOKA.Controllers
     {
         public bool Login(M_Pengguna user)
         {
-            if (string.IsNullOrWhiteSpace(user.nisn) && string.IsNullOrWhiteSpace(user.password))
+            if (string.IsNullOrWhiteSpace(user.Nisn) || string.IsNullOrWhiteSpace(user.Password))
             {
                 H_Pesan.Peringatan("NISN dan Password tidak boleh kosong.");
                 return false;
             }
-
-            if (string.IsNullOrWhiteSpace(user.nisn))
-            {
-                H_Pesan.Peringatan("NISN tidak boleh kosong.");
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(user.password))
-            {
-                H_Pesan.Peringatan("Password tidak boleh kosong.");
-                return false;
-            }
-
             try
             {
-                using (var db = new D_Connector())
+                using var db = new D_Connector();
+                
+                using var cmd = new NpgsqlCommand("SELECT id_user, nama FROM pengguna WHERE nisn = @nisn AND password = @password", db.Connection);
+                cmd.Parameters.AddWithValue("@nisn", user.Nisn);
+                cmd.Parameters.AddWithValue("@password", user.Password);
+
+                using var reader = cmd.ExecuteReader();
+                if (reader.Read())
                 {
-                    var cmd = new NpgsqlCommand("SELECT id_user, nama FROM pengguna WHERE nisn = @nisn AND password = @password", db.Connection);
-                    cmd.Parameters.AddWithValue("@nisn", user.nisn);
-                    cmd.Parameters.AddWithValue("@password", user.password);
+                    int id_user = Convert.ToInt32(reader["id_user"]);
+                    string nama = reader["nama"].ToString();
 
-                    using var reader = cmd.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        int id_user = Convert.ToInt32(reader["id_user"]);
-                        string nama = reader["nama"].ToString();
-
-                        H_Sesi.SetSession(id_user, nama); //  menyimpan sesi
-                        return true;
-                    }
-                    else
-                    {
-                        H_Pesan.Gagal("NISN atau Password salah.");
-                        return false;
-                    }
+                    H_Sesi.AturSesiP(id_user, nama);
+                    return true;
+                }
+                else
+                {
+                    H_Pesan.Gagal("NISN atau Password salah.");
+                    return false;
                 }
             }
             catch (Exception ex)
@@ -64,17 +50,15 @@ namespace JALOKA.Controllers
         {
             try
             {
-                using (var db = new D_Connector())
-                {
-                    using var cmd = new NpgsqlCommand(@"INSERT INTO pengguna (nisn, password, nama, email, nomor_hp, alamat) VALUES (@nisn, @password, @nama, @email, @nomor_hp, @alamat)", db.Connection);
-                    cmd.Parameters.AddWithValue("@nisn", user.nisn);
-                    cmd.Parameters.AddWithValue("@password", user.password);
-                    cmd.Parameters.AddWithValue("@nama", user.nama);
-                    cmd.Parameters.AddWithValue("@email", user.email);
-                    cmd.Parameters.AddWithValue("@nomor_hp", user.nomor_hp);
-                    cmd.Parameters.AddWithValue("@alamat", user.alamat);
-                    return cmd.ExecuteNonQuery() > 0;
-                }
+                using var db = new D_Connector();
+                using var cmd = new NpgsqlCommand(@"INSERT INTO pengguna (nisn, password, nama, email, nomor_hp, alamat) VALUES (@nisn, @password, @nama, @email, @nomor_hp, @alamat)", db.Connection);
+                cmd.Parameters.AddWithValue("@nisn", user.Nisn);
+                cmd.Parameters.AddWithValue("@password", user.Password);
+                cmd.Parameters.AddWithValue("@nama", user.Nama);
+                cmd.Parameters.AddWithValue("@email", user.Email);
+                cmd.Parameters.AddWithValue("@nomor_hp", user.NomorHp);
+                cmd.Parameters.AddWithValue("@alamat", user.Alamat);
+                return cmd.ExecuteNonQuery() > 0;
             }
             catch (Exception ex)
             {
@@ -85,59 +69,54 @@ namespace JALOKA.Controllers
 
         public List<M_Pengguna> DaftarPengguna()
         {
-            var list = new List<M_Pengguna>();
-
+            var daftar = new List<M_Pengguna>();
             try
             {
-                using (var db = new D_Connector())
+                using var db = new D_Connector();
+                using var cmd = new NpgsqlCommand("SELECT * FROM pengguna ORDER BY id_user ASC", db.Connection);
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    var cmd = new NpgsqlCommand("SELECT * FROM pengguna ORDER BY id_user ASC", db.Connection);
-                    using var reader = cmd.ExecuteReader();
-                    while (reader.Read())
+                    daftar.Add(new M_Pengguna
                     {
-                        list.Add(new M_Pengguna
-                        {
-                            id_user = reader["id_user"].ToString(),
-                            nisn = reader["nisn"].ToString(),
-                            password = reader["password"].ToString(),
-                            nama = reader["nama"].ToString(),
-                            email = reader["email"].ToString(),
-                            nomor_hp = reader["nomor_hp"].ToString(),
-                            alamat = reader["alamat"].ToString()
-                        });
-                    }
+                        IdUser = Convert.ToInt32(reader["id_user"]),
+                        Nisn = reader["nisn"].ToString(),
+                        Password = reader["password"].ToString(),
+                        Nama = reader["nama"].ToString(),
+                        Email = reader["email"].ToString(),
+                        NomorHp = reader["nomor_hp"].ToString(),
+                        Alamat = reader["alamat"].ToString()
+                    });
                 }
+                
             }
             catch (Exception ex)
             {
                 H_Pesan.Gagal("Gagal mengambil data pengguna: " + ex.Message);
             }
-
-            return list;
+            return daftar;
         }
 
-        public M_Pengguna GetProfil(string nisn)
+        public M_Pengguna AmbilProfil(string nisn)
         {
             try
             {
-                using (var db = new D_Connector())
-                {
-                    var cmd = new NpgsqlCommand("SELECT * FROM pengguna WHERE nisn = @nisn", db.Connection);
-                    cmd.Parameters.AddWithValue("@nisn", nisn);
+                using var db = new D_Connector();
+                using var cmd = new NpgsqlCommand("SELECT * FROM pengguna WHERE nisn = @nisn", db.Connection);
+                cmd.Parameters.AddWithValue("@nisn", nisn);
 
-                    using var reader = cmd.ExecuteReader();
-                    if (reader.Read())
+                using var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    return new M_Pengguna
                     {
-                        return new M_Pengguna
-                        {
-                            id_user = reader["id_user"].ToString(),
-                            nisn = reader["nisn"].ToString(),
-                            nama = reader["nama"].ToString(),
-                            email = reader["email"].ToString(),
-                            nomor_hp = reader["nomor_hp"].ToString(),
-                            alamat = reader["alamat"].ToString()
-                        };
-                    }
+                        IdUser = Convert.ToInt32(reader["id_user"]),
+                        Nisn = reader["nisn"].ToString(),
+                        Nama = reader["nama"].ToString(),
+                        Email = reader["email"].ToString(),
+                        NomorHp = reader["nomor_hp"].ToString(),
+                        Alamat = reader["alamat"].ToString()
+                    };
                 }
             }
             catch (Exception ex)
@@ -148,20 +127,18 @@ namespace JALOKA.Controllers
             return null;
         }
 
-        public bool UpdateUser(M_Pengguna user)
+        public bool EditPengguna(M_Pengguna user)
         {
             try
             {
-                using (var db = new D_Connector())
-                {
-                    var cmd = new NpgsqlCommand(@"UPDATE pengguna SET nama = @nama, email = @email, nomor_hp = @nomor_hp, alamat = @alam WHERE nisn = @nisn", db.Connection);
-                    cmd.Parameters.AddWithValue("@nisn", user.nisn);
-                    cmd.Parameters.AddWithValue("@nama", user.nama);
-                    cmd.Parameters.AddWithValue("@email", user.email);
-                    cmd.Parameters.AddWithValue("@nomor_hp", user.nomor_hp);
-                    cmd.Parameters.AddWithValue("@alamat", user.alamat);
-                    return cmd.ExecuteNonQuery() > 0;
-                }
+                using var db = new D_Connector();
+                using var cmd = new NpgsqlCommand(@"UPDATE pengguna SET nama = @nama, email = @email, nomor_hp = @nomor_hp, alamat = @alam WHERE nisn = @nisn", db.Connection);
+                cmd.Parameters.AddWithValue("@nisn", user.Nisn);
+                cmd.Parameters.AddWithValue("@nama", user.Nama);
+                cmd.Parameters.AddWithValue("@email", user.Email);
+                cmd.Parameters.AddWithValue("@nomor_hp", user.NomorHp);
+                cmd.Parameters.AddWithValue("@alamat", user.Alamat);
+                return cmd.ExecuteNonQuery() > 0;
             }
             catch (Exception ex)
             {
@@ -170,17 +147,14 @@ namespace JALOKA.Controllers
             }
         }
 
-        public bool DeleteUser(string nisn)
+        public bool HapusPengguna(string nisn)
         {
             try
             {
-                using (var db = new D_Connector())
-                {
-                    var cmd = new NpgsqlCommand("DELETE FROM pengguna WHERE nisn = @nisn", db.Connection);
-                    cmd.Parameters.AddWithValue("@nisn", nisn);
-
-                    return cmd.ExecuteNonQuery() > 0;
-                }
+                using var db = new D_Connector();
+                using var cmd = new NpgsqlCommand("DELETE FROM pengguna WHERE nisn = @nisn", db.Connection);
+                cmd.Parameters.AddWithValue("@nisn", nisn);
+                return cmd.ExecuteNonQuery() > 0;
             }
             catch (Exception ex)
             {
