@@ -3,40 +3,41 @@ using Npgsql;
 using JALOKA.Database;
 using JALOKA.Models;
 using JALOKA.Helpers;
+using JALOKA.Controllers;
 
 namespace JALOKA.Controllers
 {
-    public class C_Admin
+    public class C_Admin : ILogin
     {
-        public bool Login(M_Admin admin)
+        public bool Login(string id, string password)
         {
-            
-            if (string.IsNullOrWhiteSpace(admin.IdPustakawan) || string.IsNullOrWhiteSpace(admin.Password))
+            if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(password))
             {
-                H_Pesan.Peringatan("ID atau Password tidak boleh kosong.");
+                H_Pesan.Peringatan("ID dan Password tidak boleh kosong.");
                 return false;
             }
 
             try
             {
                 using var db = new D_Connector();
-                using var cmd = new NpgsqlCommand("SELECT id_pustakawan FROM admin WHERE id_pustakawan = @id_pustakawan AND password = @password", db.Connection);
-                cmd.Parameters.AddWithValue("@id_pustakawan", admin.IdPustakawan);
-                cmd.Parameters.AddWithValue("@password", admin.Password);
+                var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM admin WHERE id_pustakawan = @id AND password = @pw", db.Connection);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@pw", password);
 
-                using var reader = cmd.ExecuteReader();
-                if (reader.Read())
-                {
-                    string id_pustakawan = reader["id_pustakawan"].ToString();
+                var result = cmd.ExecuteScalar();
 
-                    H_Sesi.AturSesiA(id_pustakawan);
-                    return true;
-                }
-                else
+                if (result == null)
                 {
+                    H_Pesan.Gagal("ID atau Password salah.");
                     return false;
                 }
 
+                // ✅ Simpan sesi admin
+                string idAdmin = result.ToString();
+                H_Sesi.AturSesiA(idAdmin);
+
+
+                return true;
             }
             catch (Exception ex)
             {

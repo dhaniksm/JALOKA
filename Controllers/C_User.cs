@@ -5,23 +5,25 @@ using JALOKA.Helpers;
 using JALOKA.Models;
 using Npgsql;
 
+
 namespace JALOKA.Controllers
 {
-    public class C_User
+    public class C_User : ILogin
     {
-        public bool Login(M_Pengguna user)
+        public bool Login(string id, string password)
         {
-            if (string.IsNullOrWhiteSpace(user.Nisn) || string.IsNullOrWhiteSpace(user.Password))
+            if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(password))
             {
                 H_Pesan.Peringatan("NISN dan Password tidak boleh kosong.");
                 return false;
             }
+
             try
             {
                 using var db = new D_Connector();
                 using var cmd = new NpgsqlCommand("SELECT id_user, nama FROM pengguna WHERE nisn = @nisn AND password = @password", db.Connection);
-                cmd.Parameters.AddWithValue("@nisn", user.Nisn);
-                cmd.Parameters.AddWithValue("@password", user.Password);
+                cmd.Parameters.AddWithValue("@nisn", id);
+                cmd.Parameters.AddWithValue("@password", password);
 
                 using var reader = cmd.ExecuteReader();
                 if (reader.Read())
@@ -87,7 +89,7 @@ namespace JALOKA.Controllers
                         Alamat = reader["alamat"].ToString()
                     });
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -131,7 +133,7 @@ namespace JALOKA.Controllers
             try
             {
                 using var db = new D_Connector();
-                using var cmd = new NpgsqlCommand(@"UPDATE pengguna SET nama = @nama, email = @email, nomor_hp = @nomor_hp, alamat = @alam WHERE nisn = @nisn", db.Connection);
+                using var cmd = new NpgsqlCommand(@"UPDATE pengguna SET nama = @nama, email = @email, nomor_hp = @nomor_hp, alamat = @alamat WHERE nisn = @nisn", db.Connection);
                 cmd.Parameters.AddWithValue("@nisn", user.Nisn);
                 cmd.Parameters.AddWithValue("@nama", user.Nama);
                 cmd.Parameters.AddWithValue("@email", user.Email);

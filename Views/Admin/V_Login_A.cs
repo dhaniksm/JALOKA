@@ -33,11 +33,11 @@ namespace JALOKA.Views.Admin
 
             try
             {
-                c_admin.Login(admin);
+                c_admin.Login(admin.IdPustakawan, admin.Password);
                 if (H_Sesi.LoggedA())
                 {
                     H_Sesi.AturSesiA(H_Sesi.IdAdmin);
-                    H_Pesan.Sukses($"Selamat Datang {H_Sesi.IdAdmin}");
+                    H_Pesan.Sukses($"Selamat Datang Admin");
 
                     this.Close();
                     V_Dashboard_A dashboard = new V_Dashboard_A();

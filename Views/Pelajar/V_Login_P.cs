@@ -32,16 +32,12 @@ namespace JALOKA.Views
 
             try
             {
-                c_user.Login(user);
+                c_user.Login(user.Nisn, user.Password);
 
                 if (H_Sesi.LoggedP())
                 {
-<<<<<<< HEAD
-                    nisnLogin = user.Nisn;
-                    H_Sesi.AturSesiP(H_Sesi.id, H_Sesi.nama);
-=======
+                    string nisnLogin = user.Nisn;
                     H_Sesi.AturSesiP(H_Sesi.IdUser, H_Sesi.Nama);
->>>>>>> d10ee715318cc0f32179199dd1798cf4f5d17540
                     H_Pesan.Sukses("Login Berhasil");
                 
                     this.Close();

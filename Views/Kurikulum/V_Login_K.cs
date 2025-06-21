@@ -42,7 +42,7 @@ namespace JALOKA.Views
             };
 
             var controller = new C_Kurikulum();
-            bool success = controller.Login(kurikulum);
+            bool success = controller.Login(kurikulum.IdKurikulum, kurikulum.Password);
 
             if (success)
             {

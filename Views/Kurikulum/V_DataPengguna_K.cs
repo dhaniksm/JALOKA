@@ -48,7 +48,7 @@ namespace JALOKA.Views
                 textBoxIDPelajar.Text = row.Cells["nisn"].Value.ToString();
                 textBoxNama.Text = row.Cells["nama"].Value.ToString();
                 textBoxEmail.Text = row.Cells["email"].Value.ToString();
-                textBoxNoHP.Text = row.Cells["nomor_hp"].Value.ToString();
+                textBoxNoHP.Text = row.Cells["nomorhp"].Value.ToString();
                 textBoxAlamat.Text = row.Cells["alamat"].Value.ToString();
             }
         }
