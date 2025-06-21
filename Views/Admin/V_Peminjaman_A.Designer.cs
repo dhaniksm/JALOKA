@@ -110,7 +110,7 @@
             buttonRiwayatPeminjaman.Name = "buttonRiwayatPeminjaman";
             buttonRiwayatPeminjaman.Size = new Size(187, 29);
             buttonRiwayatPeminjaman.TabIndex = 33;
-            buttonRiwayatPeminjaman.Text = "RIwayat Peminjaman";
+            buttonRiwayatPeminjaman.Text = "Riwayat Peminjaman";
             buttonRiwayatPeminjaman.UseVisualStyleBackColor = false;
             buttonRiwayatPeminjaman.Click += buttonRiwayatPeminjaman_Click;
             // 
@@ -143,7 +143,7 @@
             buttonKeluar.FlatAppearance.BorderSize = 0;
             buttonKeluar.FlatStyle = FlatStyle.Flat;
             buttonKeluar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonKeluar.Location = new Point(71, 564);
+            buttonKeluar.Location = new Point(67, 564);
             buttonKeluar.Name = "buttonKeluar";
             buttonKeluar.Size = new Size(104, 34);
             buttonKeluar.TabIndex = 36;

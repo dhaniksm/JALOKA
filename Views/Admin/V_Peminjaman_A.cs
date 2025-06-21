@@ -144,7 +144,9 @@ namespace JALOKA.Views.Admin
 
         private void buttonKeluar_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            V_TampilanAwal tampilanAwal = new V_TampilanAwal();
+            tampilanAwal.Show();
         }
     }
 }
