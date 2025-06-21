@@ -21,7 +21,6 @@ namespace JALOKA.Views
         public V_KatalogBuku_P()
         {
             InitializeComponent();
-            TabelBuku();
             TampilkanBuku();
         }
 

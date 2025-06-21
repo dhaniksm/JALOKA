@@ -63,7 +63,7 @@ namespace JALOKA.Database
                         tanggal_pinjam DATE NOT NULL,
                         tanggal_kembali DATE NOT NULL,
                         status VARCHAR(50) DEFAULT 'menunggu',
-                        dikonfirmasi_oleh INT,
+                        dikonfirmasi_oleh VARCHAR(50),
                         tanggal_dikembalikan DATE,
                         FOREIGN KEY (id_buku) REFERENCES buku(id_buku),
                         FOREIGN KEY (id_user) REFERENCES pengguna(id_user)
@@ -76,12 +76,6 @@ namespace JALOKA.Database
                         jumlah INT DEFAULT 1,
                         FOREIGN KEY (id_user) REFERENCES pengguna(id_user),
                         FOREIGN KEY (id_buku) REFERENCES buku(id_buku)
-                    );",
-                "pengembalian" => @"
-                    CREATE TABLE pengembalian (
-                        id_pengembalian SERIAL PRIMARY KEY,
-                        id_peminjaman INTEGER NOT NULL REFERENCES peminjaman(id_peminjaman) ON DELETE CASCADE,
-                        tanggal_pengembalian DATE NOT NULL
                     );",
                 _ => throw new Exception("Nama tabel tidak dikenali.")
             };

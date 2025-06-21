@@ -84,7 +84,7 @@
             buttonManajemenBuku.FlatAppearance.BorderSize = 0;
             buttonManajemenBuku.FlatStyle = FlatStyle.Flat;
             buttonManajemenBuku.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonManajemenBuku.Location = new Point(59, 180);
+            buttonManajemenBuku.Location = new Point(59, 244);
             buttonManajemenBuku.Name = "buttonManajemenBuku";
             buttonManajemenBuku.Size = new Size(187, 29);
             buttonManajemenBuku.TabIndex = 18;
@@ -99,7 +99,7 @@
             buttonDataPengguna.FlatAppearance.BorderSize = 0;
             buttonDataPengguna.FlatStyle = FlatStyle.Flat;
             buttonDataPengguna.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonDataPengguna.Location = new Point(59, 245);
+            buttonDataPengguna.Location = new Point(59, 181);
             buttonDataPengguna.Name = "buttonDataPengguna";
             buttonDataPengguna.Size = new Size(187, 29);
             buttonDataPengguna.TabIndex = 17;
@@ -171,6 +171,7 @@
             dataGridViewUsers.Size = new Size(921, 512);
             dataGridViewUsers.TabIndex = 24;
             dataGridViewUsers.CellClick += dataGridViewUsers_CellClick;
+            dataGridViewUsers.CellContentClick += dataGridViewUsers_CellContentClick;
             // 
             // textBoxID
             // 

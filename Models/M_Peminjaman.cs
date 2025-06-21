@@ -5,7 +5,7 @@
         public int IdPeminjaman { get; set; }
         public int IdUser { get; set; }
         public string NamaUser { get; set; }
-        public int IdPustakawan { get; set; }
+        public string IdPustakawan { get; set; }
         public M_Buku Buku { get; set; }
         public int IdBuku { get; set; }
         public string JudulBuku { get; set; }

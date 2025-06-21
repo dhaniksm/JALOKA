@@ -24,39 +24,8 @@ namespace JALOKA.Views
         public V_Peminjaman_P()
         {
             InitializeComponent();
-            TabelKeranjang();
-            TabelPeminjaman();
             MuatKeranjang();
             MuatMenunggu();
-        }
-
-        private void TabelKeranjang()
-        {
-            try
-            {
-                using (var db = new D_Connector())
-                {
-                    D_Tabel.CekTabel(db.Connection, "keranjang");
-                }
-            }
-            catch (Exception ex)
-            {
-                H_Pesan.Gagal("Gagal memeriksa tabel keranjang: " + ex.Message);
-            }
-        }
-        private void TabelPeminjaman()
-        {
-            try
-            {
-                using (var db = new D_Connector())
-                {
-                    D_Tabel.CekTabel(db.Connection, "peminjaman");
-                }
-            }
-            catch (Exception ex)
-            {
-                H_Pesan.Gagal("Gagal memeriksa tabel peminjaman: " + ex.Message);
-            }
         }
 
         private void MuatKeranjang()

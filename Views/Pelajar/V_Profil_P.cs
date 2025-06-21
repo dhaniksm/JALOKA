@@ -24,9 +24,8 @@ namespace JALOKA.Views
         {
             {
                 C_User userController = new C_User();
-                string nisn = V_Login_P.nisnLogin;
 
-                M_Pengguna user = userController.AmbilProfil(nisn);
+                M_Pengguna user = userController.AmbilProfil();
                 if (user != null)
                 {
                     textBoxNisn.Text = user.Nisn;
