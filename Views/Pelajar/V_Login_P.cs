@@ -53,6 +53,7 @@ namespace JALOKA.Views
 
                 if (H_Sesi.LoggedIn())
                 {
+                    nisnLogin = user.nisn;
                     H_Sesi.SetSession(H_Sesi.id_user, H_Sesi.nama_user);
                     H_Pesan.Sukses("Login Berhasil");
                 
